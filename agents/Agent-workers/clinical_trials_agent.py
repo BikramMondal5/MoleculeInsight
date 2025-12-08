@@ -1,9 +1,23 @@
 import os
+import sys
 import requests
+import json
 from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
 
 load_dotenv()
+
+# Add parent directory to import cache manager
+parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, parent_dir)
+
+try:
+    from cache_manager import cache_manager
+    from data_processor import summarize_clinical_trials
+    CACHE_ENABLED = True
+except ImportError:
+    print("[Warning] Cache manager not found, running without cache")
+    CACHE_ENABLED = False
 
 # LLM INITIALIZATION
 os.environ["GOOGLE_API_KEY"] = os.getenv("KANKAANNAA_GEMINI_API_KEY1")
@@ -13,9 +27,6 @@ llm = ChatGoogleGenerativeAI(
     temperature=0.3,
 )
 
-# ====================================
-# 1️⃣ Fetch clinical trials from API
-# ====================================
 
 def fetch_trials(molecule):
     url = "https://clinicaltrials.gov/api/query/study_fields"
@@ -33,10 +44,6 @@ def fetch_trials(molecule):
     except:
         return []
 
-
-# ====================================
-# 2️⃣ Process trials into categories
-# ====================================
 
 def analyze_trials(trials):
     phase_count = {}
@@ -90,10 +97,6 @@ def analyze_trials(trials):
     }
 
 
-# ====================================
-# 3️⃣ Generate Summary via Gemini
-# ====================================
-
 def generate_clinical_report(molecule, data):
     prompt = f"""
 You are the Clinical Trials Intelligence Agent.
@@ -139,24 +142,50 @@ DO NOT hallucinate numbers beyond the provided dataset.
     return response.content
 
 
-# ====================================
-# 4️⃣ Main function
-# ====================================
-
 def run_clinical_trials_agent(molecule):
-    print(f"Fetching trials for {molecule}...")
-
+    """
+    Main function with caching and data reduction
+    """
+    print(f"[Clinical Trials Agent] Analyzing {molecule}...")
+    
+    # Try to get from cache first
+    if CACHE_ENABLED:
+        cached_report = cache_manager.get("clinical_trials", molecule)
+        if cached_report:
+            print(f"[Clinical Trials Agent] Using cached report")
+            return cached_report
+    
+    # Fetch fresh data
+    print(f"[Clinical Trials Agent] Fetching data from ClinicalTrials.gov...")
     trials = fetch_trials(molecule)
-    analyzed = analyze_trials(trials)
-    report = generate_clinical_report(molecule, analyzed)
-
+    
+    if not trials:
+        return "No clinical trials data found for this molecule."
+    
+    # Save raw data to cache for reference
+    if CACHE_ENABLED:
+        cache_manager.set("clinical_trials_raw", molecule, trials)
+        print(f"[Clinical Trials Agent] Raw data cached ({len(trials)} trials)")
+    
+    # Process data to reduce size (80-90% reduction)
+    print(f"[Clinical Trials Agent] Processing data (reducing token usage)...")
+    if CACHE_ENABLED:
+        summarized = summarize_clinical_trials(trials)
+    else:
+        summarized = analyze_trials(trials)
+    
+    original_size = len(json.dumps(trials))
+    processed_size = len(json.dumps(summarized))
+    print(f"[Clinical Trials Agent] Data reduced: {original_size} -> {processed_size} bytes ({round((1-processed_size/original_size)*100, 1)}% reduction)")
+    
+    # Generate report using processed data
+    print(f"[Clinical Trials Agent] Generating insights with Gemini...")
+    report = generate_clinical_report(molecule, summarized)
+    
+    # Cache the final report
+    if CACHE_ENABLED:
+        cache_manager.set("clinical_trials", molecule, report)
+    
+    print(f"[Clinical Trials Agent] ✓ Complete")
     return report
 
-
-# ====================================
-# 5️⃣ Test the agent
-# ====================================
-
-if __name__ == "__main__":
-    result = run_clinical_trials_agent("Metformin")
-    print(result)

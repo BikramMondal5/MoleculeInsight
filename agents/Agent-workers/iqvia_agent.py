@@ -145,12 +145,9 @@ RESEARCH ACTIVITY TREND (Semantic Scholar):
 
 Using ALL the above REAL data, generate:
 
-1. **Estimated Market Size (USD)**  
-2. **Estimated CAGR (based on research + trials trends)**  
-3. **Top Competitors**  
-4. **Market Drivers & Barriers**  
-5. **Trend Table (in markdown table format)**  
-6. **Final Summary**
+1. **Top Competitors**  
+2. **Market Drivers & Barriers**  
+3. **Final Summary**
 
 Make the output clean, structured, and factual based on patterns — do not hallucinate numbers not derivable from the data.
 """
