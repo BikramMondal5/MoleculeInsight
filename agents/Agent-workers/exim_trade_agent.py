@@ -15,9 +15,6 @@ llm = ChatGoogleGenerativeAI(
     temperature=0.3,
 )
 
-# ----------------------------------------
-# 1️⃣ Fetch trade data from UN Comtrade API using API key
-# ----------------------------------------
 def fetch_trade_data(hs_code: str, years: list[int], reporter: str = "all", partner: str = "0"):
     """
     hs_code: HS commodity code (string), e.g. "300490"

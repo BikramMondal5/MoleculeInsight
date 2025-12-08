@@ -43,6 +43,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Reports
+# Reports and Cache
 reports/
-*.md (in reports directory)
+agents/cache/
+*.cache
+
+# Don't ignore documentation
+!*.md

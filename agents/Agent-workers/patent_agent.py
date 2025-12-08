@@ -132,6 +132,3 @@ def run_patent_agent(molecule):
     report = generate_patent_report(molecule, analyzed)
     return report
 
-
-if __name__ == "__main__":
-    print(run_patent_agent("Pembrolizumab"))
