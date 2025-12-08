@@ -10,5 +10,5 @@ class User(BaseModel):
 @app.post("/something")
 def process(user: User):
    return{
-        "message": "Something trigger hobe "
+        "message": "Something trigger hobe"
     }

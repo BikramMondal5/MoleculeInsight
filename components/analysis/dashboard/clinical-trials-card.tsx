@@ -1,43 +1,36 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import { AlertCircle } from "lucide-react"
+import ReactMarkdown from "react-markdown"
 
-const trials = [
-  { id: "NCT04521", drug: "Compound A", phase: "Phase III", sponsor: "MegaPharma Inc", status: "Recruiting" },
-  { id: "NCT04612", drug: "Compound B", phase: "Phase II", sponsor: "BioTech Labs", status: "Active" },
-  { id: "NCT04703", drug: "Reference Drug", phase: "Phase III", sponsor: "Incumbent Co", status: "Completed" },
-  { id: "NCT04815", drug: "New Approach", phase: "Phase I", sponsor: "StartUp Bio", status: "Not Yet" },
-]
+interface ClinicalTrialsCardProps {
+  data?: { success: boolean; report?: string; error?: string }
+}
 
-export default function ClinicalTrialsCard() {
+export default function ClinicalTrialsCard({ data }: ClinicalTrialsCardProps) {
+  if (!data || !data.success) {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-lg">Clinical Trials</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <AlertCircle className="w-4 h-4" />
+            <span>{data?.error || "No clinical trials data available"}</span>
+          </div>
+        </CardContent>
+      </Card>
+    )
+  }
+
   return (
     <Card>
       <CardHeader>
         <CardTitle className="text-lg">Clinical Trials</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="overflow-x-auto">
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead className="text-xs">Trial ID</TableHead>
-                <TableHead className="text-xs">Drug</TableHead>
-                <TableHead className="text-xs">Phase</TableHead>
-                <TableHead className="text-xs">Sponsor</TableHead>
-                <TableHead className="text-xs">Status</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {trials.map((trial) => (
-                <TableRow key={trial.id}>
-                  <TableCell className="text-xs font-mono">{trial.id}</TableCell>
-                  <TableCell className="text-xs">{trial.drug}</TableCell>
-                  <TableCell className="text-xs">{trial.phase}</TableCell>
-                  <TableCell className="text-xs">{trial.sponsor}</TableCell>
-                  <TableCell className="text-xs">{trial.status}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+        <div className="prose prose-sm max-w-none dark:prose-invert">
+          <ReactMarkdown>{data.report || "No report generated"}</ReactMarkdown>
         </div>
       </CardContent>
     </Card>

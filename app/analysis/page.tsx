@@ -7,6 +7,14 @@ import ChatPanel from "@/components/analysis/chat-panel"
 import AgentTimeline from "@/components/analysis/agent-timeline"
 import ResultsDashboard from "@/components/analysis/results-dashboard"
 
+interface AnalysisResults {
+  iqvia?: { success: boolean; report?: string; error?: string }
+  clinical_trials?: { success: boolean; report?: string; error?: string }
+  patents?: { success: boolean; report?: string; error?: string }
+  exim?: { success: boolean; report?: string; error?: string }
+  web_intel?: { success: boolean; report?: string; error?: string }
+}
+
 export default function AnalysisPage() {
   const [messages, setMessages] = useState<
     Array<{ id: string; role: "user" | "agent"; agent?: string; content: string }>
@@ -14,12 +22,15 @@ export default function AnalysisPage() {
   const [activeAgents, setActiveAgents] = useState<string[]>([])
   const [isAnalyzing, setIsAnalyzing] = useState(false)
   const [analysisComplete, setAnalysisComplete] = useState(false)
+  const [analysisResults, setAnalysisResults] = useState<AnalysisResults | null>(null)
+  const [currentMolecule, setCurrentMolecule] = useState<string>("")
 
-  const handleRunAnalysis = (query: string, molecule?: string, geography?: string) => {
+  const handleRunAnalysis = async (query: string, molecule?: string, geography?: string) => {
     setIsAnalyzing(true)
     setAnalysisComplete(false)
     setMessages([])
     setActiveAgents([])
+    setAnalysisResults(null)
 
     // Add user message
     setMessages((prev) => [
@@ -31,7 +42,7 @@ export default function AnalysisPage() {
       },
     ])
 
-    // Simulate agents running
+    // Show agent timeline updates
     const agents = [
       { name: "Master Agent", desc: "Decomposing your query..." },
       { name: "IQVIA Insights Agent", desc: "Analyzing market data..." },
@@ -39,10 +50,10 @@ export default function AnalysisPage() {
       { name: "Clinical Trials Agent", desc: "Searching clinical trials..." },
       { name: "Patent Agent", desc: "Analyzing patent landscape..." },
       { name: "Web Intelligence Agent", desc: "Gathering web insights..." },
-      { name: "Internal Knowledge Agent", desc: "Accessing internal database..." },
       { name: "Report Generator Agent", desc: "Compiling report..." },
     ]
 
+    // Simulate agent activation for UI feedback
     agents.forEach((agent, idx) => {
       setTimeout(() => {
         setActiveAgents((prev) => [...prev, agent.name])
@@ -55,25 +66,58 @@ export default function AnalysisPage() {
             content: agent.desc,
           },
         ])
-      }, idx * 500)
+      }, idx * 300)
     })
 
-    setTimeout(
-      () => {
-        setIsAnalyzing(false)
-        setAnalysisComplete(true)
-        setMessages((prev) => [
-          ...prev,
-          {
-            id: "summary",
-            role: "agent",
-            agent: "Report Generator Agent",
-            content: "Analysis complete. Dashboard updated with insights and recommendations.",
-          },
-        ])
-      },
-      agents.length * 500 + 1000,
-    )
+    try {
+      // Call the API
+      const response = await fetch("/api/process", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          query,
+          molecule: molecule || "",
+          geography: geography || "Global",
+        }),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to analyze molecule")
+      }
+
+      // Update results
+      setAnalysisResults(data.results)
+      setCurrentMolecule(data.molecule || molecule || "Unknown")
+      setAnalysisComplete(true)
+
+      // Add completion message
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: "summary",
+          role: "agent",
+          agent: "Report Generator Agent",
+          content: "Analysis complete. Dashboard updated with insights and recommendations.",
+        },
+      ])
+    } catch (error) {
+      console.error("Analysis error:", error)
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: "error",
+          role: "agent",
+          agent: "System",
+          content: `Error: ${error instanceof Error ? error.message : "Failed to complete analysis"}. Please make sure the FastAPI backend is running.`,
+        },
+      ])
+    } finally {
+      setIsAnalyzing(false)
+    }
   }
 
   return (
@@ -103,7 +147,9 @@ export default function AnalysisPage() {
           {/* Chat Panel */}
           {messages.length > 0 && <ChatPanel messages={messages} isAnalyzing={isAnalyzing} />}
 
-          {analysisComplete && <ResultsDashboard />}
+          {analysisComplete && analysisResults && (
+            <ResultsDashboard results={analysisResults} molecule={currentMolecule} />
+          )}
         </div>
       </div>
     </div>

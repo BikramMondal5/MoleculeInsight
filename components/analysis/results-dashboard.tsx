@@ -9,13 +9,26 @@ import EXIMTrendsCard from "./dashboard/exim-trends-card"
 import InternalInsightsCard from "./dashboard/internal-insights-card"
 import InnovationConceptCard from "./dashboard/innovation-concept-card"
 
-export default function ResultsDashboard() {
+interface ResultsDashboardProps {
+  results: {
+    iqvia?: { success: boolean; report?: string; error?: string }
+    clinical_trials?: { success: boolean; report?: string; error?: string }
+    patents?: { success: boolean; report?: string; error?: string }
+    exim?: { success: boolean; report?: string; error?: string }
+    web_intel?: { success: boolean; report?: string; error?: string }
+  }
+  molecule: string
+}
+
+export default function ResultsDashboard({ results, molecule }: ResultsDashboardProps) {
   const handleDownloadPDF = () => {
     console.log("[v0] Download PDF clicked")
+    // TODO: Implement PDF generation
   }
 
   const handleSaveArchive = () => {
     console.log("[v0] Save to Archive clicked")
+    // TODO: Implement archive functionality
   }
 
   return (
@@ -24,7 +37,9 @@ export default function ResultsDashboard() {
       <div className="flex items-center justify-between mb-8">
         <div>
           <h2 className="text-2xl font-bold text-foreground">Analysis Results</h2>
-          <p className="text-muted-foreground mt-1">Complete insights and recommendations</p>
+          <p className="text-muted-foreground mt-1">
+            Complete insights and recommendations for {molecule}
+          </p>
         </div>
         <div className="flex gap-3">
           <Button variant="outline" size="sm" onClick={handleDownloadPDF}>
@@ -40,17 +55,17 @@ export default function ResultsDashboard() {
 
       {/* Dashboard Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <SummaryCard />
-        <MarketInsightsCard />
-        <ClinicalTrialsCard />
-        <PatentLandscapeCard />
-        <EXIMTrendsCard />
-        <InternalInsightsCard />
+        <SummaryCard results={results} molecule={molecule} />
+        <MarketInsightsCard data={results.iqvia} />
+        <ClinicalTrialsCard data={results.clinical_trials} />
+        <PatentLandscapeCard data={results.patents} />
+        <EXIMTrendsCard data={results.exim} />
+        <InternalInsightsCard data={results.web_intel} />
       </div>
 
       {/* Innovation Concept - Full Width */}
       <div className="mt-6">
-        <InnovationConceptCard />
+        <InnovationConceptCard results={results} molecule={molecule} />
       </div>
     </div>
   )
