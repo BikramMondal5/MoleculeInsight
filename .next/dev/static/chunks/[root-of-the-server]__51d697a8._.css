@@ -165,22 +165,15 @@
     --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --color-red-50: #fef2f2;
-    --color-red-100: #ffe2e2;
     --color-red-300: #ffa3a3;
     --color-red-400: #ff6568;
+    --color-red-500: #fb2c36;
     --color-red-600: #e40014;
-    --color-red-800: #9f0712;
     --color-orange-500: #fe6e00;
-    --color-yellow-100: #fef9c2;
-    --color-yellow-800: #874b00;
-    --color-green-100: #dcfce7;
     --color-green-500: #00c758;
     --color-green-600: #00a544;
-    --color-green-800: #016630;
     --color-cyan-500: #00b7d7;
-    --color-blue-100: #dbeafe;
     --color-blue-500: #3080ff;
-    --color-blue-800: #193cb8;
     --color-indigo-500: #625fff;
     --color-purple-500: #ac4bff;
     --color-pink-500: #f6339a;
@@ -240,22 +233,15 @@
   @supports (color: lab(0% 0 0)) {
     :root, :host {
       --color-red-50: lab(96.5005% 4.18511 1.52329);
-      --color-red-100: lab(92.243% 10.2865 3.83865);
       --color-red-300: lab(76.5514% 36.4219 15.5335);
       --color-red-400: lab(63.7053% 60.7449 31.3109);
+      --color-red-500: lab(55.4814% 75.0732 48.8528);
       --color-red-600: lab(48.4493% 77.4328 61.5452);
-      --color-red-800: lab(33.7174% 55.8993 41.0293);
       --color-orange-500: lab(64.272% 57.1788 90.3583);
-      --color-yellow-100: lab(97.3564% -4.51407 27.344);
-      --color-yellow-800: lab(38.7484% 23.5833 51.4916);
-      --color-green-100: lab(96.186% -13.8464 6.52362);
       --color-green-500: lab(70.5521% -66.5147 45.8072);
       --color-green-600: lab(59.0978% -58.6621 41.2579);
-      --color-green-800: lab(37.4616% -36.7971 22.9692);
       --color-cyan-500: lab(67.805% -35.3952 -30.2018);
-      --color-blue-100: lab(92.0301% -2.24757 -11.6453);
       --color-blue-500: lab(54.1736% 13.3368 -74.6839);
-      --color-blue-800: lab(30.2514% 27.7854 -70.2699);
       --color-indigo-500: lab(48.295% 38.3129 -81.9673);
       --color-purple-500: lab(52.0183% 66.11 -78.2316);
       --color-pink-500: lab(56.9303% 76.8162 -8.07021);
@@ -1267,6 +1253,10 @@
     max-width: max-content;
   }
 
+  .max-w-none {
+    max-width: none;
+  }
+
   .max-w-sm {
     max-width: var(--container-sm);
   }
@@ -1653,10 +1643,6 @@
     overflow-y: auto;
   }
 
-  .rounded {
-    border-radius: .25rem;
-  }
-
   .rounded-\[2px\] {
     border-radius: 2px;
   }
@@ -1941,10 +1927,6 @@
     }
   }
 
-  .bg-blue-100 {
-    background-color: var(--color-blue-100);
-  }
-
   .bg-blue-500\/20 {
     background-color: #3080ff33;
   }
@@ -2009,10 +1991,6 @@
 
   .bg-foreground {
     background-color: var(--foreground);
-  }
-
-  .bg-green-100 {
-    background-color: var(--color-green-100);
   }
 
   .bg-green-500\/20 {
@@ -2141,10 +2119,6 @@
     }
   }
 
-  .bg-red-100 {
-    background-color: var(--color-red-100);
-  }
-
   .bg-secondary {
     background-color: var(--secondary);
   }
@@ -2163,10 +2137,6 @@
 
   .bg-white {
     background-color: var(--color-white);
-  }
-
-  .bg-yellow-100 {
-    background-color: var(--color-yellow-100);
   }
 
   .bg-gradient-to-b {
@@ -2427,6 +2397,10 @@
     padding-top: calc(var(--spacing) * .5);
   }
 
+  .pt-2 {
+    padding-top: calc(var(--spacing) * 2);
+  }
+
   .pt-3 {
     padding-top: calc(var(--spacing) * 3);
   }
@@ -2667,10 +2641,6 @@
     color: var(--background);
   }
 
-  .text-blue-800 {
-    color: var(--color-blue-800);
-  }
-
   .text-border {
     color: var(--border);
   }
@@ -2705,12 +2675,12 @@
     }
   }
 
-  .text-green-600 {
-    color: var(--color-green-600);
+  .text-green-500 {
+    color: var(--color-green-500);
   }
 
-  .text-green-800 {
-    color: var(--color-green-800);
+  .text-green-600 {
+    color: var(--color-green-600);
   }
 
   .text-muted-foreground {
@@ -2739,8 +2709,8 @@
     }
   }
 
-  .text-red-800 {
-    color: var(--color-red-800);
+  .text-red-500 {
+    color: var(--color-red-500);
   }
 
   .text-secondary-foreground {
@@ -2763,10 +2733,6 @@
 
   .text-white {
     color: var(--color-white);
-  }
-
-  .text-yellow-800 {
-    color: var(--color-yellow-800);
   }
 
   .tabular-nums {

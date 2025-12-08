@@ -1,43 +1,61 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { AlertCircle, CheckCircle } from "lucide-react"
 
-export default function SummaryCard() {
+interface SummaryCardProps {
+  results: {
+    iqvia?: { success: boolean; report?: string }
+    clinical_trials?: { success: boolean; report?: string }
+    patents?: { success: boolean; report?: string }
+    exim?: { success: boolean; report?: string }
+    web_intel?: { success: boolean; report?: string }
+  }
+  molecule: string
+}
+
+export default function SummaryCard({ results, molecule }: SummaryCardProps) {
+  const agentStatus = [
+    { name: "Market Insights", success: results.iqvia?.success },
+    { name: "Clinical Trials", success: results.clinical_trials?.success },
+    { name: "Patents", success: results.patents?.success },
+    { name: "Trade Data", success: results.exim?.success },
+    { name: "Web Intelligence", success: results.web_intel?.success },
+  ]
+
+  const successCount = agentStatus.filter((a) => a.success).length
+
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-lg">Executive Summary</CardTitle>
+        <CardTitle className="text-lg">Executive Summary - {molecule}</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <p className="text-sm text-foreground leading-relaxed">
-          Current treatments for this indication have significant limitations, leaving unmet needs in patient adherence
-          and efficacy. The market opportunity is substantial with a projected 8.5% CAGR, and there is clear potential
-          for a novel therapeutic approach targeting this patient population.
+          Analysis completed for <strong>{molecule}</strong> using multiple intelligence agents.
+          {successCount === 5
+            ? " All data sources processed successfully."
+            : ` ${successCount}/5 data sources processed successfully.`}
         </p>
-        <ul className="space-y-2 text-sm">
-          <li className="flex gap-3">
-            <span className="text-primary font-bold">•</span>
-            <span>
-              <strong>Unmet Need:</strong> Limited efficacy in treatment-resistant populations
-            </span>
-          </li>
-          <li className="flex gap-3">
-            <span className="text-primary font-bold">•</span>
-            <span>
-              <strong>Market Gap:</strong> No dominant player with &gt;25% market share
-            </span>
-          </li>
-          <li className="flex gap-3">
-            <span className="text-primary font-bold">•</span>
-            <span>
-              <strong>Opportunity:</strong> $2.3B addressable market by 2028
-            </span>
-          </li>
-          <li className="flex gap-3">
-            <span className="text-primary font-bold">•</span>
-            <span>
-              <strong>Timeline:</strong> First-mover advantage window 18-24 months
-            </span>
-          </li>
-        </ul>
+        <div className="space-y-2">
+          <p className="text-xs font-semibold text-muted-foreground">Agent Status:</p>
+          <div className="grid grid-cols-2 gap-2">
+            {agentStatus.map((agent) => (
+              <div key={agent.name} className="flex items-center gap-2 text-xs">
+                {agent.success ? (
+                  <CheckCircle className="w-4 h-4 text-green-500" />
+                ) : (
+                  <AlertCircle className="w-4 h-4 text-red-500" />
+                )}
+                <span className={agent.success ? "text-foreground" : "text-muted-foreground"}>
+                  {agent.name}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <p className="text-xs text-muted-foreground pt-2">
+          Review the detailed insights in each section below. Data is sourced from FDA, ClinicalTrials.gov,
+          PatentsView, UN Comtrade, and news APIs.
+        </p>
       </CardContent>
     </Card>
   )

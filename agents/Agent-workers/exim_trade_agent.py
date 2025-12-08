@@ -6,7 +6,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 load_dotenv()
 
 # Load Gemini API key (for LLM)
-os.environ["GOOGLE_API_KEY"] = os.getenv("GEMINI_API_KEY")
+os.environ["GOOGLE_API_KEY"] = os.getenv("KANKAANNAA_GEMINI_API_KEY2")
 # Load UN Comtrade public-v1 subscription key
 COMTRADE_KEY = os.getenv("COMTRADE_API_KEY")
 
