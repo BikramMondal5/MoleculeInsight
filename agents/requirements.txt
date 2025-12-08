@@ -1,0 +1,8 @@
+langchain==0.3.19
+langchain-core==0.3.35
+langchain-google-genai
+python-dotenv
+requests==2.31.0
+yfinance==0.2.40
+requests==2.31.0
+yfinance==0.2.40
