@@ -6,7 +6,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 load_dotenv()
 
 # Load keys
-os.environ["GOOGLE_API_KEY"] = os.getenv("GEMINI_API_KEY")
+os.environ["GOOGLE_API_KEY"] = os.getenv("KANKAANNAA_GEMINI_API_KEY3")
 NEWS_API_KEY = os.getenv("NEWS_API_KEY") 
 
 llm = ChatGoogleGenerativeAI(

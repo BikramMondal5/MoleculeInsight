@@ -1,14 +1,90 @@
-[00:00:01.853] Server  LOG      ✓ Ready in 1247ms
-[00:03:49.322] Server  LOG      ○ Compiling / ...
-[00:04:26.803] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:04:27.138] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:04:27.138] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:04:27.138] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765211560384}
-[00:04:27.879] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:04:28.049] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:04:28.049] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:04:28.050] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765211561300}
-[00:04:34.887] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:04:35.090] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:04:35.090] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/analysis","route":"/analysis"}
-[00:04:35.090] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/analysis color: rgb(120, 120, 120) color: inherit {"dp":"/analysis","o":"http://localhost:3000/analysis","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765211568338}
+[00:00:01.703] Server  LOG      ✓ Ready in 1146ms
+[00:00:05.917] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:07.394] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/analysis" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
+            <SegmentViewNode type="page" pagePath="analysis/p...">
+              <SegmentTrieNode>
+              <ClientPageRoot Component={function AnalysisPage} serverProvidedParams={{...}}>
+                <AnalysisPage params={Promise} searchParams={Promise}>
+                  <div className="min-h-scre...">
+                    <AnalysisHeader>
+                      <header className="fixed top-...">
+                        <div className="max-w-7xl ...">
+                          <LinkComponent>
+                          <div className="flex items...">
+                            <Button variant="ghost" size="sm">
+                              <button
+                                data-slot="button"
+                                className={"inline-flex items-center justify-center whitespace-nowrap text-sm font-me..."}
+-                               fdprocessedid="lrbq6s"
+                              >
++                               Help
+                            <Button variant="outline" size="sm">
+                              <button
+                                data-slot="button"
+                                className={"inline-flex items-center justify-center whitespace-nowrap text-sm font-me..."}
+-                               fdprocessedid="4mh7wa"
+                              >
++                               Export
+                    ...
+                      <div data-slot="card" className="bg-card te...">
+                        <CardHeader>
+                        <CardContent className="px-0 pt-6">
+                          <div data-slot="card-content" className="px-0 pt-6">
+                            <form onSubmit={function handleSubmit} className="space-y-4">
+                              <div>
+                              <div className="grid grid-...">
+                                <div>
+                                  <label>
+                                  <input
+                                    id="molecule"
+                                    type="text"
+                                    placeholder="e.g., Aspirin"
+                                    value=""
+                                    onChange={function onChange}
+                                    className="w-full px-4 py-2 rounded-lg border border-input bg-background text-fore..."
+                                    disabled={false}
+-                                   fdprocessedid="zxgdhk"
+                                  >
+                                <div>
+                                  <label>
+                                  <select
+                                    id="geography"
+                                    value="Global"
+                                    onChange={function onChange}
+                                    className="w-full px-4 py-2 rounded-lg border border-input bg-background text-fore..."
+                                    disabled={false}
+-                                   fdprocessedid="7mwtgf"
+                                  >
+                              ...
+            ...
+          ...
+
+[00:00:07.394] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:07.394] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/analysis","route":"/analysis"}
+[00:00:07.394] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/analysis color: rgb(120, 120, 120) color: inherit {"dp":"/analysis","o":"http://localhost:3000/analysis","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765215361198}
+[00:01:13.332] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:13.659] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:01:13.659] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:01:13.659] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765215428141}
+[00:01:37.425] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:37.614] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:01:37.614] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/analysis","route":"/analysis"}
+[00:01:37.614] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/analysis color: rgb(120, 120, 120) color: inherit {"dp":"/analysis","o":"http://localhost:3000/analysis","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765215452094}
+[00:03:36.647] Browser LOG     [v0] Download PDF clicked
+[00:03:38.521] Browser LOG     [v0] Save to Archive clicked
