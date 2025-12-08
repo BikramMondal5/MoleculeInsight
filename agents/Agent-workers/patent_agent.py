@@ -13,9 +13,6 @@ llm = ChatGoogleGenerativeAI(
     temperature=0.3,
 )
 
-# =============================================
-# 1️⃣ Fetch Patent Data from USPTO PatentsView
-# =============================================
 
 def fetch_patents(molecule):
     url = "https://api.patentsview.org/patents/query"
@@ -44,10 +41,6 @@ def fetch_patents(molecule):
     except:
         return []
 
-
-# =============================================
-# 2️⃣ Analyze Patent Data
-# =============================================
 
 def analyze_patents(patents):
     assignee_count = {}
@@ -92,10 +85,6 @@ def analyze_patents(patents):
     }
 
 
-# =============================================
-# 3️⃣ Generate Patent Report using Gemini
-# =============================================
-
 def generate_patent_report(molecule, data):
     prompt = f"""
 You are the Patent Intelligence Agent.
@@ -136,10 +125,6 @@ Use only the provided data. Do NOT hallucinate missing numbers.
     return llm.invoke(prompt).content
 
 
-# =============================================
-# 4️⃣ Main Function
-# =============================================
-
 def run_patent_agent(molecule):
     print(f"Fetching patents for {molecule}...")
     patents = fetch_patents(molecule)
@@ -147,10 +132,6 @@ def run_patent_agent(molecule):
     report = generate_patent_report(molecule, analyzed)
     return report
 
-
-# =============================================
-# 5️⃣ Test Run
-# =============================================
 
 if __name__ == "__main__":
     print(run_patent_agent("Pembrolizumab"))
