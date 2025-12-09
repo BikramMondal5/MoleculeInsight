@@ -1,27 +1,47 @@
 "use client"
 
-import { Card } from "@/components/ui/card"
-import { MessageCircle, Network, FileText } from "lucide-react"
+import { BentoGrid, type BentoItem } from "@/components/ui/bento-grid"
+import { MessageCircle, Network, FileText, Globe } from "lucide-react"
 
 export default function HowItWorks() {
-  const steps = [
+  const steps: BentoItem[] = [
     {
-      number: "1",
-      title: "User asks a question",
-      description: "Enter a molecule name or ask about portfolio opportunities",
-      icon: MessageCircle,
+      title: "Smart Inquiry",
+      meta: "Step 1",
+      description: "Simply enter a molecule name or ask about portfolio opportunities to initiate the analysis.",
+      icon: <MessageCircle className="w-4 h-4 text-blue-500" />,
+      status: "Start",
+      tags: ["Query", "Natural Language"],
+      colSpan: 2,
+      hasPersistentHover: true, // Key interaction point
     },
     {
-      number: "2",
-      title: "AI Agents research across data sources",
-      description: "Master Agent orchestrates Workers across IQVIA, ClinicalTrials, Patents, and Web Intelligence",
-      icon: Network,
+      title: "Agent Orchestration",
+      meta: "Step 2",
+      description: "Master Agent instantly delegates tasks to specialized sub-agents.",
+      icon: <Network className="w-4 h-4 text-purple-500" />,
+      status: "Active",
+      tags: ["AI", "Routing"],
+      colSpan: 1,
     },
     {
-      number: "3",
-      title: "You get dashboard + PDF report",
-      description: "Live cards show insights and actionable recommendations in one place",
-      icon: FileText,
+      title: "Deep Data Retrieval",
+      meta: "Step 3",
+      description: "Workers simultaneously scour IQVIA, ClinicalTrials.gov, Patent databases, and Web Intelligence for real-time data.",
+      icon: <Globe className="w-4 h-4 text-sky-500" />,
+      status: "Processing",
+      tags: ["Multi-source", "Real-time"],
+      colSpan: 2,
+    },
+    {
+      title: "Strategic Output",
+      meta: "Step 4",
+      description: "Receive a comprehensive dashboard and PDF report with actionable recommendations.",
+      icon: <FileText className="w-4 h-4 text-emerald-500" />,
+      status: "Complete",
+      tags: ["Dashboard", "PDF"],
+      colSpan: 1,
+      hasPersistentHover: true, // End goal
     },
   ]
 
@@ -35,33 +55,7 @@ export default function HowItWorks() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {steps.map((step, idx) => {
-            const Icon = step.icon
-            return (
-              <div key={idx} className="relative">
-                <Card className="p-8 h-full">
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                        <Icon className="h-6 w-6 text-primary" />
-                      </div>
-                    </div>
-                    <div>
-                      <div className="text-sm font-semibold text-primary mb-2">Step {step.number}</div>
-                      <h3 className="text-lg font-semibold text-foreground mb-2">{step.title}</h3>
-                      <p className="text-muted-foreground">{step.description}</p>
-                    </div>
-                  </div>
-                </Card>
-
-                {idx < steps.length - 1 && (
-                  <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-primary/20 to-transparent" />
-                )}
-              </div>
-            )
-          })}
-        </div>
+        <BentoGrid items={steps} />
       </div>
     </section>
   )
