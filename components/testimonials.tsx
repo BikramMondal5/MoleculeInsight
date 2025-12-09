@@ -121,6 +121,14 @@ export default function TestimonialCarousel() {
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                     See how students and researchers are accelerating discovery with MoleculeInsight.
                 </p>
+
+                {/* Avatars Section (Relocated) */}
+                <div className="flex flex-col items-center gap-4 mt-8">
+                    <div className="flex flex-row items-center justify-center w-full">
+                        <AnimatedTooltip items={people} className="justify-center" />
+                    </div>
+                    <p className="text-sm font-medium text-muted-foreground">Join 573+ researchers</p>
+                </div>
             </div>
 
             <div className="relative overflow-hidden w-full py-4 mb-16">
@@ -162,16 +170,7 @@ export default function TestimonialCarousel() {
                 </div>
             </div>
 
-            {/* Bottom Interaction Bar */}
-            <div className="max-w-6xl mx-auto px-4 relative flex flex-col items-center justify-center mt-8">
-                {/* Avatars Section (Centered) */}
-                <div className="flex flex-col items-center gap-4">
-                    <p className="text-sm font-medium text-muted-foreground">Join 573+ researchers</p>
-                    <div className="flex flex-row items-center justify-center w-full">
-                        <AnimatedTooltip items={people} className="justify-center" />
-                    </div>
-                </div>
-            </div>
+
         </section>
     )
 }
