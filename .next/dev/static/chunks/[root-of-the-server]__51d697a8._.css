@@ -1367,6 +1367,10 @@
     width: calc(var(--spacing) * 9);
   }
 
+  .w-10 {
+    width: calc(var(--spacing) * 10);
+  }
+
   .w-12 {
     width: calc(var(--spacing) * 12);
   }
@@ -5629,6 +5633,12 @@
   @media (min-width: 48rem) {
     .md\:left-100 {
       left: calc(var(--spacing) * 100);
+    }
+  }
+
+  @media (min-width: 48rem) {
+    .md\:left-120 {
+      left: calc(var(--spacing) * 120);
     }
   }
 

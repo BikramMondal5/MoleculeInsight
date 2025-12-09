@@ -63,8 +63,6 @@ const defaultTestimonials = [
 ]
 
 import { AnimatedTooltip } from "@/components/ui/animated-tooltip"
-import { Button } from "@/components/ui/button"
-import { MessageSquare } from "lucide-react"
 
 const people = [
     {
@@ -165,21 +163,13 @@ export default function TestimonialCarousel() {
             </div>
 
             {/* Bottom Interaction Bar */}
-            <div className="max-w-6xl mx-auto px-4 relative flex flex-col md:flex-row items-center justify-center mt-8">
+            <div className="max-w-6xl mx-auto px-4 relative flex flex-col items-center justify-center mt-8">
                 {/* Avatars Section (Centered) */}
                 <div className="flex flex-col items-center gap-4">
-                    <p className="text-sm font-medium text-muted-foreground">Join 1000+ researchers</p>
+                    <p className="text-sm font-medium text-muted-foreground">Join 573+ researchers</p>
                     <div className="flex flex-row items-center justify-center w-full">
-                        <AnimatedTooltip items={people} />
+                        <AnimatedTooltip items={people} className="justify-center" />
                     </div>
-                </div>
-
-                {/* Feedback Button Section (Right Aligned) */}
-                <div className="md:relative md:left-130 md:top-5 flex flex-col items-center md:items-end mt-8 md:mt-0">
-                    <Button className="bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-500/20 rounded-full px-8 h-12">
-                        <MessageSquare className="w-4 h-4 mr-2" />
-                        Share Feedback
-                    </Button>
                 </div>
             </div>
         </section>

@@ -30,6 +30,9 @@ export default function Header() {
           <Link href="#testimonials" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
             Testimonials
           </Link>
+          <Link href="/analysis" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            Analyse
+          </Link>
         </nav>
       </div>
     </header>
