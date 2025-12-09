@@ -8,6 +8,7 @@ interface SummaryCardProps {
     patents?: { success: boolean; report?: string }
     exim?: { success: boolean; report?: string }
     web_intel?: { success: boolean; report?: string }
+    internal_knowledge?: { success: boolean; report?: string }
   }
   molecule: string
 }
@@ -19,6 +20,7 @@ export default function SummaryCard({ results, molecule }: SummaryCardProps) {
     { name: "Patents", success: results.patents?.success },
     { name: "Trade Data", success: results.exim?.success },
     { name: "Web Intelligence", success: results.web_intel?.success },
+    { name: "Internal Knowledge", success: results.internal_knowledge?.success },
   ]
 
   const successCount = agentStatus.filter((a) => a.success).length
@@ -31,7 +33,7 @@ export default function SummaryCard({ results, molecule }: SummaryCardProps) {
       <CardContent className="space-y-4">
         <p className="text-sm text-foreground leading-relaxed">
           Analysis completed for <strong>{molecule}</strong> using multiple intelligence agents.
-          {successCount === 5
+          {successCount === 6
             ? " All data sources processed successfully."
             : ` ${successCount}/5 data sources processed successfully.`}
         </p>

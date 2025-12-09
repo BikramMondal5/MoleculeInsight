@@ -1,89 +1,101 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Lightbulb, AlertCircle, Loader2 } from "lucide-react"
 
 interface InnovationConceptCardProps {
-  results: {
-    iqvia?: { success: boolean }
-    clinical_trials?: { success: boolean }
-    patents?: { success: boolean }
-    exim?: { success: boolean }
-    web_intel?: { success: boolean }
+  data?: { 
+    success: boolean
+    report?: string
+    error?: string 
   }
   molecule: string
 }
 
-export default function InnovationConceptCard({ results, molecule }: InnovationConceptCardProps) {
-  const hasMarketData = results.iqvia?.success
-  const hasClinicalData = results.clinical_trials?.success
-  const hasPatentData = results.patents?.success
-  const hasTradeData = results.exim?.success
+export default function InnovationConceptCard({ data, molecule }: InnovationConceptCardProps) {
+   console.log("[InnovationConceptCard] Received data:", data)
+  console.log("[InnovationConceptCard] Data type:", typeof data)
+  console.log("[InnovationConceptCard] Data success:", data?.success)
+  console.log("[InnovationConceptCard] Data report:", data?.report)
+  // Loading state
+  if (!data) {
+    return (
+      <Card className="border-primary border-2 bg-gradient-to-br from-primary/5 to-transparent">
+        <CardHeader className="pb-3">
+          <CardTitle className="text-xl text-primary flex items-center gap-2">
+            <Loader2 className="w-5 h-5 animate-spin" />
+            Generating Innovation Opportunities...
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-sm text-muted-foreground">
+            Analyzing all data sources to identify strategic opportunities...
+          </p>
+        </CardContent>
+      </Card>
+    )
+  }
+
+  // Error state
+  if (!data.success || !data.report) {
+    return (
+      <Card className="border-primary border-2 bg-gradient-to-br from-primary/5 to-transparent">
+        <CardHeader className="pb-3">
+          <CardTitle className="text-xl text-primary">Innovation Opportunities for {molecule}</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <AlertCircle className="w-4 h-4" />
+            <span>{data.error || "Unable to generate opportunities at this time"}</span>
+          </div>
+        </CardContent>
+      </Card>
+    )
+  }
+
+  // Parse the JSON report
+  let opportunities: Array<{ title: string; description: string }> = []
+  try {
+    opportunities = JSON.parse(data.report)
+  } catch (e) {
+    console.error("Failed to parse innovation opportunities:", e)
+    return (
+      <Card className="border-primary border-2 bg-gradient-to-br from-primary/5 to-transparent">
+        <CardHeader className="pb-3">
+          <CardTitle className="text-xl text-primary">Innovation Opportunities for {molecule}</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <AlertCircle className="w-4 h-4" />
+            <span>Error parsing opportunities data</span>
+          </div>
+        </CardContent>
+      </Card>
+    )
+  }
 
   return (
     <Card className="border-primary border-2 bg-gradient-to-br from-primary/5 to-transparent">
       <CardHeader className="pb-3">
-        <CardTitle className="text-xl text-primary">Innovation Opportunities for {molecule}</CardTitle>
+        <CardTitle className="text-xl text-primary flex items-center gap-2">
+          <Lightbulb className="w-5 h-5" />
+          Innovation Opportunities for {molecule}
+        </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <p className="text-sm text-foreground leading-relaxed">
-          Based on the comprehensive analysis, here are potential innovation opportunities:
+          Based on comprehensive analysis across market insights, clinical trials, patents, trade data, and web intelligence:
         </p>
-        <ul className="space-y-3 text-sm">
-          {hasMarketData && (
-            <li className="flex gap-3">
-              <span className="text-primary font-bold text-lg">•</span>
+        <ul className="space-y-4 text-sm">
+          {opportunities.map((opportunity, index) => (
+            <li key={index} className="flex gap-3">
+              <span className="text-primary font-bold text-lg mt-0.5">•</span>
               <div>
-                <strong className="text-foreground">Market Opportunity:</strong>
-                <p className="text-muted-foreground mt-1">
-                  Review the Market Insights section for detailed analysis of market size, growth trends, and
-                  competitive landscape.
+                <strong className="text-foreground">{opportunity.title}</strong>
+                <p className="text-muted-foreground mt-1 leading-relaxed">
+                  {opportunity.description}
                 </p>
               </div>
             </li>
-          )}
-          {hasClinicalData && (
-            <li className="flex gap-3">
-              <span className="text-primary font-bold text-lg">•</span>
-              <div>
-                <strong className="text-foreground">Clinical Landscape:</strong>
-                <p className="text-muted-foreground mt-1">
-                  Examine the Clinical Trials section to identify research gaps, active trial phases, and potential
-                  white spaces.
-                </p>
-              </div>
-            </li>
-          )}
-          {hasPatentData && (
-            <li className="flex gap-3">
-              <span className="text-primary font-bold text-lg">•</span>
-              <div>
-                <strong className="text-foreground">IP Strategy:</strong>
-                <p className="text-muted-foreground mt-1">
-                  The Patent Landscape section reveals key patent holders, expiration timelines, and potential freedom
-                  to operate opportunities.
-                </p>
-              </div>
-            </li>
-          )}
-          {hasTradeData && (
-            <li className="flex gap-3">
-              <span className="text-primary font-bold text-lg">•</span>
-              <div>
-                <strong className="text-foreground">Market Access:</strong>
-                <p className="text-muted-foreground mt-1">
-                  EXIM trends indicate import/export dynamics and potential geographic market entry points.
-                </p>
-              </div>
-            </li>
-          )}
-          <li className="flex gap-3">
-            <span className="text-primary font-bold text-lg">•</span>
-            <div>
-              <strong className="text-foreground">Next Steps:</strong>
-              <p className="text-muted-foreground mt-1">
-                Review all sections for comprehensive insights. Download the PDF report for detailed analysis and
-                strategic recommendations.
-              </p>
-            </div>
-          </li>
+          ))}
         </ul>
       </CardContent>
     </Card>
