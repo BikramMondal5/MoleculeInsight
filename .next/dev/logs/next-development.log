@@ -1,85 +1,25 @@
-[00:00:02.786] Server  LOG      ✓ Ready in 1824ms
-[00:00:05.894] Server  LOG      ○ Compiling /analysis ...
-[00:00:09.633] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:11.655] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
-
-- A server/client branch `if (typeof window !== 'undefined')`.
-- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
-- Date formatting in a user's locale which doesn't match the server.
-- External changing data without sending a snapshot of it along with the HTML.
-- Invalid HTML tag nesting.
-
-It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
-
-%s%s https://react.dev/link/hydration-mismatch 
-
-  ...
-    <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
-      <RedirectBoundary>
-        <RedirectErrorBoundary router={{...}}>
-          <InnerLayoutRouter url="/analysis" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
-            <SegmentViewNode type="page" pagePath="/OneDrive/...">
-              <SegmentTrieNode>
-              <ClientPageRoot Component={function AnalysisPage} serverProvidedParams={{...}}>
-                <AnalysisPage params={Promise} searchParams={Promise}>
-                  <div className="min-h-scre...">
-                    <AnalysisHeader>
-                      <header className="fixed top-...">
-                        <div className="max-w-7xl ...">
-                          <LinkComponent>
-                          <div className="flex items...">
-                            <Button variant="ghost" size="sm">
-                              <button
-                                data-slot="button"
-                                className={"inline-flex items-center justify-center whitespace-nowrap text-sm font-me..."}
--                               fdprocessedid="5en3gb"
-                              >
-+                               Help
-                            <Button variant="outline" size="sm">
-                              <button
-                                data-slot="button"
-                                className={"inline-flex items-center justify-center whitespace-nowrap text-sm font-me..."}
--                               fdprocessedid="cv22ld"
-                              >
-+                               Export
-                    ...
-                      <div data-slot="card" className="bg-card te...">
-                        <CardHeader>
-                        <CardContent className="px-0 pt-6">
-                          <div data-slot="card-content" className="px-0 pt-6">
-                            <form onSubmit={function handleSubmit} className="space-y-4">
-                              <div>
-                              <div className="grid grid-...">
-                                <div>
-                                  <label>
-                                  <input
-                                    id="molecule"
-                                    type="text"
-                                    placeholder="e.g., Aspirin"
-                                    value=""
-                                    onChange={function onChange}
-                                    className="w-full px-4 py-2 rounded-lg border border-input bg-background text-fore..."
-                                    disabled={false}
--                                   fdprocessedid="urg19"
-                                  >
-                                <div>
-                                  <label>
-                                  <select
-                                    id="geography"
-                                    value="Global"
-                                    onChange={function onChange}
-                                    className="w-full px-4 py-2 rounded-lg border border-input bg-background text-fore..."
-                                    disabled={false}
--                                   fdprocessedid="ge787l"
-                                  >
-                              ...
-            ...
-          ...
-
-[00:00:11.655] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:11.655] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/analysis","route":"/analysis"}
-[00:00:11.655] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/analysis color: rgb(120, 120, 120) color: inherit {"dp":"/analysis","o":"http://localhost:3000/analysis","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765265428360}
-[00:00:13.928] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:14.150] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:14.150] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/analysis","route":"/analysis"}
-[00:00:14.151] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/analysis color: rgb(120, 120, 120) color: inherit {"dp":"/analysis","o":"http://localhost:3000/analysis","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765265431093}
+[00:00:02.425] Server  LOG      ✓ Ready in 1525ms
+[00:00:18.881] Server  LOG      ○ Compiling /analysis ...
+[00:00:25.330] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:25.567] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:25.567] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/analysis","route":"/analysis"}
+[00:00:25.567] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/analysis color: rgb(120, 120, 120) color: inherit {"dp":"/analysis","o":"http://localhost:3000/analysis","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765266231972}
+[00:00:32.054] Server  ERROR   C:\Users\User\OneDrive\Desktop\MoleculeInsight\MoleculeInsight\.next\dev\server\chunks\[root-of-the-server]__24a95d31._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:00:32.085] Server  ERROR   C:\Users\User\OneDrive\Desktop\MoleculeInsight\MoleculeInsight\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.dev.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:00:32.110] Server  ERROR   C:\Users\User\OneDrive\Desktop\MoleculeInsight\MoleculeInsight\.next\dev\server\chunks\7e57a_next_7dda599e._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:00:32.135] Server  ERROR   C:\Users\User\OneDrive\Desktop\MoleculeInsight\MoleculeInsight\node_modules\next\dist\server\base-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:00:32.145] Server  ERROR   C:\Users\User\OneDrive\Desktop\MoleculeInsight\MoleculeInsight\node_modules\next\dist\server\next-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:00:32.152] Server  ERROR   C:\Users\User\OneDrive\Desktop\MoleculeInsight\MoleculeInsight\node_modules\next\dist\server\dev\next-dev-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:00:32.155] Server  ERROR   C:\Users\User\OneDrive\Desktop\MoleculeInsight\MoleculeInsight\node_modules\next\dist\trace\trace.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:00:32.163] Server  ERROR   C:\Users\User\OneDrive\Desktop\MoleculeInsight\MoleculeInsight\node_modules\next\dist\server\lib\router-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:00:32.167] Server  ERROR   C:\Users\User\OneDrive\Desktop\MoleculeInsight\MoleculeInsight\node_modules\next\dist\server\lib\start-server.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:00:32.174] Server  ERROR   Error in /api/process: TypeError: fetch failed
+[00:00:32.302] Browser ERROR   Analysis error: {}
+[00:00:39.047] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:39.227] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:39.227] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:39.227] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765266245626}
+[00:00:44.465] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:44.659] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:44.659] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/analysis","route":"/analysis"}
+[00:00:44.659] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/analysis color: rgb(120, 120, 120) color: inherit {"dp":"/analysis","o":"http://localhost:3000/analysis","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765266251052}

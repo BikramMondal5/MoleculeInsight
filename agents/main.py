@@ -225,29 +225,47 @@ async def analyze_molecule(request: AnalysisRequest):
 
 def extract_molecule_from_query(query: str) -> str:
     """
-    Simple extraction of molecule name from query
-    In production, you could use NER or LLM for better extraction
+    Extract molecule/drug name from query using improved pattern matching
     """
-    # Look for common patterns
-    keywords = ["molecule", "drug", "compound", "for"]
-    query_lower = query.lower()
+    import re
     
-    # Try to extract molecule name after keywords
-    for keyword in keywords:
-        if keyword in query_lower:
-            parts = query_lower.split(keyword)
-            if len(parts) > 1:
-                # Take first word after keyword
-                potential_molecule = parts[1].strip().split()[0] if parts[1].strip() else ""
-                if potential_molecule:
-                    return potential_molecule.capitalize()
+    print(f"[Extraction] Processing query: {query}")
     
-    # If no pattern found, return first capitalized word
+    # Strategy 1: Look for capitalized words that are likely drug names
     words = query.split()
-    for word in words:
-        if word[0].isupper() and len(word) > 3:
-            return word
+    skip_words = {'Evaluate', 'Analysis', 'Study', 'Research', 'Report', 
+                  'Clinical', 'The', 'This', 'That', 'What', 'Which', 
+                  'Type', 'Managing', 'Diabetes', 'Assess', 'Efficacy',
+                  'Safety', 'Profile', 'Treatment', 'Therapy'}
     
+    for word in words:
+        # Remove punctuation
+        clean_word = re.sub(r'[^\w]', '', word)
+        # Check if capitalized and substantial (>4 chars for drug names)
+        if clean_word and len(clean_word) > 4 and clean_word[0].isupper():
+            if clean_word not in skip_words:
+                print(f"[Extraction] Found molecule: {clean_word}")
+                return clean_word
+    
+    # Strategy 2: Look after "of" keyword with proper regex
+    match = re.search(r'\bof\s+([A-Z][a-z]+)', query)
+    if match:
+        molecule = match.group(1)
+        if len(molecule) > 4:
+            print(f"[Extraction] Found after 'of': {molecule}")
+            return molecule
+    
+    # Strategy 3: Common drug suffixes
+    drug_suffixes = ['mab', 'nib', 'ine', 'cin', 'zole', 'pril', 'sartan', 
+                     'statin', 'mycin', 'cillin', 'formin', 'parin']
+    for word in words:
+        clean_word = re.sub(r'[^\w]', '', word)
+        if any(clean_word.lower().endswith(suffix) for suffix in drug_suffixes):
+            if len(clean_word) > 4:
+                print(f"[Extraction] Found by suffix: {clean_word}")
+                return clean_word.capitalize()
+    
+    print(f"[Extraction] ✗ Could not extract molecule")
     return ""
 
 if __name__ == "__main__":
