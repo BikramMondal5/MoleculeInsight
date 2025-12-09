@@ -1,30 +1,53 @@
-# MoleculeInsight
+# 🔬🧬 MoleculeInsight – AI Agent Research Platform
 
-An AI-powered Agent platform for molecular research. MoleculeInsight uses specialized AI agents to explore market data, clinical trials, patents, trade signals, and web intelligence—giving you instant, research-grade insights for pharmaceutical and biotech opportunities.
+![Preview Image](./public/MoleculeInsight-logo.png)
 
-## 🚀 Features
+An AI-powered Agent platform for molecular research. MoleculeInsight uses specialized AI agents to explore market data, clinical trials, patents, trade signals, and web intelligence—giving you instant, research-grade insights for pharmaceutical and biotech opportunities. Let AI agents ⚡ work while you focus on strategic decisions.
 
-- **Multi-Agent Architecture**: Coordinated AI agents working in parallel
-- **Real-time Analysis**: Live agent status updates and progress tracking
-- **Comprehensive Data Sources**: 
-  - IQVIA market insights
-  - ClinicalTrials.gov data
-  - PatentsView patent landscape
-  - UN Comtrade export/import trends
-  - NewsAPI web intelligence
-- **Interactive Dashboard**: Beautiful visualizations and markdown reports
-- **Export Capabilities**: Download PDF reports and archive analyses
+## 🌟 Features
 
-## 📋 Quick Start
+- 🤖 **Multi-Agent Architecture** – Coordinated AI agents working in parallel for faster insights
+- ⚡ **Real-time Analysis** – Live agent status updates and progress tracking  
+- 📊 **Comprehensive Data Sources** – IQVIA market data, ClinicalTrials.gov, PatentsView, UN Comtrade, and NewsAPI
+- 📈 **Interactive Dashboard** – Beautiful visualizations and markdown reports at your fingertips
+- 🎯 **Advanced Query Engine** – Powerful molecule-centric search and analysis
+- 📥 **Export Capabilities** – Download PDF reports and archive analyses for future reference
+- 🔗 **API-First Design** – Seamless integration with your existing workflows
+- 🌍 **Global Coverage** – Access international pharmaceutical and biotech data
+
+## 🛠️ Technologies Used
+
+**Frontend:**
+- Next.js 16 – Modern React framework
+- React 19 – UI library
+- TypeScript – Type-safe development
+- Tailwind CSS – Responsive styling
+- Shadcn UI – Beautiful component library
+- Recharts – Data visualization
+
+**Backend:**
+- FastAPI – High-performance Python framework
+- Python 3.9+ – Core language
+- LangChain – AI agent framework
+- Google Gemini AI – Advanced language model
+- Multi-Agent Orchestrator – Parallel processing engine
+
+## ⚙️ Installation
 
 ### Prerequisites
 - Node.js 18+ with pnpm
 - Python 3.9+
-- API Keys (Gemini, Comtrade, NewsAPI)
+- API Keys: Gemini, UN Comtrade, NewsAPI
 
-### Installation
+### Step-by-Step Setup
 
-1. **Clone and install dependencies:**
+1. **Clone the repository:**
+```bash
+git clone https://github.com/BikramMondal5/MoleculeInsight.git
+cd MoleculeInsight
+```
+
+2. **Install dependencies:**
 ```bash
 pnpm install
 cd agents
@@ -33,23 +56,17 @@ python -m venv venv
 pip install -r requirements.txt
 ```
 
-2. **Configure environment variables:**
+3. **Configure environment variables:**
 ```bash
-# Copy example files
-cd agents
-copy .env.example .env
-cd ..
-copy .env.local.example .env.local
+create a .env file
 
-# Edit agents/.env with your API keys
+# Gemini API: https://aistudio.google.com/api-keys
+# UN Comtrade: https://comtradeplus.un.org/
+# NewsAPI: https://newsapi.org/
 ```
 
-3. **Start the application:**
+4. **Start the application:**
 ```bash
-# Easy way (Windows):
-.\start.ps1
-
-# Manual way:
 # Terminal 1 - Backend
 cd agents
 .\venv\Scripts\Activate.ps1
@@ -59,70 +76,31 @@ python main.py
 pnpm dev
 ```
 
-4. **Access the application:**
-- Frontend: http://localhost:3000
-- Backend API: http://localhost:8000
+5. **Access the application:**
+- 🌐 Frontend: http://localhost:3000
+- 🔌 Backend API: http://localhost:8000
 
-## 📖 Usage
+## 🚀 How to Use
 
-1. Navigate to `/analysis` page
-2. Enter your molecule query (e.g., "Analyze Aspirin for cardiovascular applications")
-3. Optionally specify molecule name and geography
-4. Click "Run Agentic Analysis"
-5. Watch agents work in real-time
-6. Review comprehensive results in the dashboard
+1. ✨ **Navigate** to the `/analysis` page
+2. 🔍 **Enter** your molecule query (e.g., "Analyze Aspirin for cardiovascular applications")
+3. 📍 **Specify** optional molecule name and geography filters
+4. ⚙️ **Click** "Run Agentic Analysis" to start the agents
+5. 👀 **Watch** agents work in real-time with live progress updates
+6. 📊 **Review** comprehensive results, insights, and visualizations in the dashboard
+7. 💾 **Export** your analysis as PDF or archive for future reference
 
-## 🏗️ Architecture
+### Example Queries
+- "What are the latest clinical trials for diabetes treatments in the US?"
+- "Analyze patent landscape for gene therapy solutions"
+- "Show trade trends and market opportunities for immunotherapy drugs"
 
-```
-┌─────────────────┐
-│   Next.js UI    │ ← User Interface
-└────────┬────────┘
-         │
-┌────────▼────────┐
-│  API Route      │ ← Next.js API Route
-└────────┬────────┘
-         │
-┌────────▼────────┐
-│  FastAPI Server │ ← Python Backend
-└────────┬────────┘
-         │
-┌────────▼────────────────────────┐
-│      Agent Orchestrator         │
-└─┬─────┬─────┬─────┬─────┬──────┘
-  │     │     │     │     │
-  ▼     ▼     ▼     ▼     ▼
-IQVIA Clinical Patent EXIM Web
-Agent  Trials  Agent Agent Agent
-      Agent
-```
+## 🤝 Contribution
 
-## 🔑 API Keys Required
+**Have ideas? Found a bug? 🐞 Want to contribute?**
 
-- **Gemini API**: https://makersuite.google.com/app/apikey
-- **UN Comtrade**: https://comtradeplus.un.org/
-- **NewsAPI**: https://newsapi.org/
+We love contributions! Here's how to get started:
 
-## 📚 Documentation
+## 📜 License
 
-See [SETUP.md](SETUP.md) for detailed setup instructions and troubleshooting.
-
-## 🛠️ Tech Stack
-
-**Frontend:**
-- Next.js 16
-- React 19
-- TypeScript
-- Tailwind CSS
-- Shadcn UI
-- Recharts
-
-**Backend:**
-- FastAPI
-- Python 3.9+
-- LangChain
-- Google Gemini AI
-
-## 📄 License
-
-See LICENSE file for details.
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
