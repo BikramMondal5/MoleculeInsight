@@ -87,8 +87,8 @@ function BentoGrid({ items = itemsSample }: BentoGridProps) {
                 >
                     <div
                         className={`absolute inset-0 ${item.hasPersistentHover
-                                ? "opacity-100"
-                                : "opacity-0 group-hover:opacity-100"
+                            ? "opacity-100"
+                            : "opacity-0 group-hover:opacity-100"
                             } transition-opacity duration-300`}
                     >
                         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.02)_1px,transparent_1px)] dark:bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[length:4px_4px]" />
@@ -141,8 +141,8 @@ function BentoGrid({ items = itemsSample }: BentoGridProps) {
 
                     <div
                         className={`absolute inset-0 -z-10 rounded-xl p-px bg-gradient-to-br from-transparent via-gray-100/50 to-transparent dark:via-white/10 ${item.hasPersistentHover
-                                ? "opacity-100"
-                                : "opacity-0 group-hover:opacity-100"
+                            ? "opacity-100"
+                            : "opacity-0 group-hover:opacity-100"
                             } transition-opacity duration-300`}
                     />
                 </div>

@@ -5,6 +5,7 @@ import Hero from "@/components/hero"
 import KeyFeatures from "@/components/key-features"
 import HowItWorks from "@/components/how-it-works"
 import WhoIsItFor from "@/components/who-is-it-for"
+import CTASection from "@/components/cta-section"
 import Footer from "@/components/footer"
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <KeyFeatures />
       <HowItWorks />
       <WhoIsItFor />
+      <CTASection />
       <Footer />
     </div>
   )
