@@ -119,7 +119,7 @@ export default function TestimonialCarousel() {
     return (
         <section id="testimonials" className="py-20 bg-background overflow-hidden relative">
             <div className="max-w-6xl mx-auto px-4 mb-12 text-center">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-teal-500 bg-clip-text text-transparent">Trusted by Researchers</h2>
+                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Trusted by Researchers</h2>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                     See how students and researchers are accelerating discovery with MoleculeInsight.
                 </p>
@@ -165,18 +165,17 @@ export default function TestimonialCarousel() {
             </div>
 
             {/* Bottom Interaction Bar */}
-            <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-8 mt-8">
-                {/* Avatars Section (Red Area) */}
-                <div className="flex flex-col items-center md:items-start gap-4">
+            <div className="max-w-6xl mx-auto px-4 relative flex flex-col md:flex-row items-center justify-center mt-8">
+                {/* Avatars Section (Centered) */}
+                <div className="flex flex-col items-center gap-4">
                     <p className="text-sm font-medium text-muted-foreground">Join 1000+ researchers</p>
                     <div className="flex flex-row items-center justify-center w-full">
                         <AnimatedTooltip items={people} />
                     </div>
                 </div>
 
-                {/* Feedback Button Section (Blue Area) */}
-                <div className="flex flex-col items-center md:items-end gap-3">
-                    <p className="text-sm font-medium text-muted-foreground">We value your input</p>
+                {/* Feedback Button Section (Right Aligned) */}
+                <div className="md:absolute md:right-4 md:bottom-2 flex flex-col items-center md:items-end mt-8 md:mt-0">
                     <Button className="bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-500/20 rounded-full px-8 h-12">
                         <MessageSquare className="w-4 h-4 mr-2" />
                         Share Feedback

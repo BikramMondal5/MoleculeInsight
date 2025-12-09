@@ -49,7 +49,7 @@ export default function HowItWorks() {
     <section id="how-it-works" className="py-20 px-4 md:py-24 bg-card/30">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-teal-500 bg-clip-text text-transparent">How it works</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">How it works</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Three simple steps to unlock molecule insights
           </p>
