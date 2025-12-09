@@ -117,7 +117,7 @@ export default function TestimonialCarousel() {
     return (
         <section id="testimonials" className="pt-20 pb-10 bg-background overflow-hidden relative">
             <div className="max-w-6xl mx-auto px-4 mb-12 text-center">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Trusted by Researchers</h2>
+                <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-teal-500">Trusted by Researchers</h2>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                     See how students and researchers are accelerating discovery with MoleculeInsight.
                 </p>

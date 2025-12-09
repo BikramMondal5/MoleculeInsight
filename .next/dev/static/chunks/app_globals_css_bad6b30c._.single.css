@@ -732,6 +732,10 @@
     z-index: calc(10 * -1);
   }
 
+  .z-0 {
+    z-index: 0;
+  }
+
   .z-10 {
     z-index: 10;
   }
@@ -6017,10 +6021,6 @@
 
   .dark\:text-purple-300:is(.dark *) {
     color: var(--color-purple-300);
-  }
-
-  .dark\:text-white:is(.dark *) {
-    color: var(--color-white);
   }
 
   .dark\:shadow-\[0_2px_12px_rgba\(255\,255\,255\,0\.03\)\]:is(.dark *) {

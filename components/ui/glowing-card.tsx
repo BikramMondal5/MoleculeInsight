@@ -51,7 +51,7 @@ export function GridBackground({
             />
 
             <div className="relative z-20 text-center max-w-4xl">
-                <h1 className='text-4xl md:text-6xl font-bold text-gray-900 dark:text-white tracking-tight'>{title}</h1>
+                <h1 className='text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-r from-[#6A85FF] to-[#3CF57A] bg-clip-text text-transparent'>{title}</h1>
                 {description && (
                     <p className='text-lg md:text-xl mt-5 text-gray-600 dark:text-gray-300'>{description}</p>
                 )}
