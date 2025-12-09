@@ -10,26 +10,26 @@ const features = [
         align: "left",
     },
     {
-        title: "Global Trade Intelligence",
-        description: "Stay ahead of market trends with our Exim Trade Agent. Access real-time export and import data, identify emerging markets, and track competitor movements with precision analytics.",
+        title: "Real-Time Insight Monitoring",
+        description: "Stay ahead with live analytics that track critical trends and anomalies as they emerge. Intelligent monitoring agents continuously evaluate incoming data streams to deliver timely alerts and actionable insights.",
         icon: Globe,
         align: "right",
     },
     {
-        title: "Patent Landscape Analysis",
-        description: "Navigate the complex world of intellectual property with ease. Our specialized agents scour global patent databases to identify prior art, whitespace opportunities, and potential infringement risks.",
+        title: "Intelligent Data Extraction",
+        description: "Automatically extract relevant data from documents, spreadsheets, APIs, and reports. Our AI agents parse unstructured information with precision to deliver clean, structured datasets ready for immediate analysis.",
         icon: Search,
         align: "left",
     },
     {
-        title: "Advanced Molecule Visualization",
-        description: "Interact with complex molecular structures in stunning detail. Our visualization tools allow you to manipulate, analyze, and simulate molecular behavior to accelerate your research and development.",
+        title: "Advanced Data Visualization",
+        description: "Transform complex datasets into clear, interactive visual dashboards. Dynamic charts, graphs, and visual elements allow users to explore patterns, compare metrics, and uncover insights with intuitive clarity.",
         icon: Atom,
         align: "right",
     },
     {
-        title: "Seamless Team Collaboration",
-        description: "Accelerate your R&D workflows with built-in collaboration tools. Share insights, annotate findings, and work together on projects in real-time, ensuring your entire team is always aligned.",
+        title: "Seamless Workflow Integration",
+        description: "Integrate effortlessly with your existing tools, databases, and pipelines. Automated connectors synchronize data across platforms to streamline operations and ensure a smooth, unified workflow.",
         icon: Users,
         align: "left",
     },
@@ -46,7 +46,7 @@ export default function KeyFeatures() {
 
             <div className="max-w-7xl mx-auto px-4 relative z-10">
                 <div className="text-center max-w-3xl mx-auto mb-20">
-                    <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-600">
+                    <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-teal-500">
                         Transform Information into Action
                     </h2>
                     <p className="text-lg text-muted-foreground">

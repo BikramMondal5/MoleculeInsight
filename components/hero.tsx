@@ -1,12 +1,30 @@
 "use client"
 
+import { useEffect, useState } from "react"
+import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Zap } from "lucide-react"
+import { Particles } from "@/components/ui/particles"
 
 export default function Hero() {
+  const { theme } = useTheme()
+  const [color, setColor] = useState("#000000")
+
+  useEffect(() => {
+    setColor(theme === "dark" ? "#ffffff" : "#000000")
+  }, [theme])
+
   return (
-    <section className="pt-32 pb-20 px-4 md:pt-40 md:pb-24">
-      <div className="max-w-4xl mx-auto text-center">
+    <section className="relative pt-32 pb-20 px-4 md:pt-40 md:pb-24 overflow-hidden">
+      <Particles
+        className="absolute inset-0 z-0"
+        quantity={400}
+        size={1.2}
+        ease={80}
+        color={color}
+        refresh
+      />
+      <div className="relative z-10 max-w-4xl mx-auto text-center">
         <div className="inline-block mb-8">
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-full">
             <Zap className="w-4 h-4 text-orange-500 fill-orange-500" />
