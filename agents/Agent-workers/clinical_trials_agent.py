@@ -29,19 +29,70 @@ llm = ChatGoogleGenerativeAI(
 
 
 def fetch_trials(molecule):
-    url = "https://clinicaltrials.gov/api/query/study_fields"
+    """Fetch trials using ClinicalTrials.gov API v2"""
+    url = "https://clinicaltrials.gov/api/v2/studies"
     params = {
-        "expr": molecule,
-        "fields": "Phase,OverallStatus,StartDate,LocationCountry,LeadSponsorName,EnrollmentCount",
-        "min_rnk": 1,
-        "max_rnk": 500,   # retrieve up to 500 trials
-        "fmt": "json",
+        "query.term": molecule,
+        "pageSize": 500,  # max 1000
+        "format": "json"
     }
 
     try:
-        res = requests.get(url, params=params).json()
-        return res["StudyFieldsResponse"]["StudyFields"]
-    except:
+        print(f"[Clinical Trials] Calling API v2 for '{molecule}'...")
+        res = requests.get(url, params=params, timeout=30)
+        res.raise_for_status()
+        
+        data = res.json()
+        
+        # New API structure
+        if "studies" not in data:
+            print(f"[Clinical Trials] ✗ Unexpected API response structure")
+            print(f"[Clinical Trials] Response keys: {data.keys()}")
+            return []
+        
+        # Convert new API format to match expected structure
+        trials = []
+        for study in data["studies"]:
+            protocol = study.get("protocolSection", {})
+            identification = protocol.get("identificationModule", {})
+            status = protocol.get("statusModule", {})
+            design = protocol.get("designModule", {})
+            sponsor = protocol.get("sponsorCollaboratorsModule", {})
+            locations = protocol.get("contactsLocationsModule", {})
+            
+            trial = {
+                "Phase": design.get("phases", ["Unknown"]),
+                "OverallStatus": [status.get("overallStatus", "Unknown")],
+                "StartDate": [status.get("startDateStruct", {}).get("date", "Unknown")],
+                "LeadSponsorName": [sponsor.get("leadSponsor", {}).get("name", "Unknown")],
+                "EnrollmentCount": [str(design.get("enrollmentInfo", {}).get("count", 0))],
+                "LocationCountry": []
+            }
+            
+            # Extract countries
+            if "locations" in locations:
+                countries = set()
+                for loc in locations["locations"]:
+                    if "country" in loc:
+                        countries.add(loc["country"])
+                trial["LocationCountry"] = list(countries)
+            
+            trials.append(trial)
+        
+        print(f"[Clinical Trials] ✓ Found {len(trials)} trials")
+        return trials
+        
+    except requests.exceptions.Timeout:
+        print(f"[Clinical Trials] ✗ API timeout after 30 seconds")
+        return []
+    except requests.exceptions.RequestException as e:
+        print(f"[Clinical Trials] ✗ API request failed: {e}")
+        return []
+    except (KeyError, ValueError, json.JSONDecodeError) as e:
+        print(f"[Clinical Trials] ✗ Error parsing response: {e}")
+        return []
+    except Exception as e:
+        print(f"[Clinical Trials] ✗ Unexpected error: {type(e).__name__}: {e}")
         return []
 
 
@@ -169,18 +220,16 @@ def run_clinical_trials_agent(molecule):
     
     # Process data to reduce size (80-90% reduction)
     print(f"[Clinical Trials Agent] Processing data (reducing token usage)...")
-    if CACHE_ENABLED:
-        summarized = summarize_clinical_trials(trials)
-    else:
-        summarized = analyze_trials(trials)
-    
+    # Always use analyze_trials for consistent data structure
+    analyzed_data = analyze_trials(trials)
+
     original_size = len(json.dumps(trials))
-    processed_size = len(json.dumps(summarized))
+    processed_size = len(json.dumps(analyzed_data))
     print(f"[Clinical Trials Agent] Data reduced: {original_size} -> {processed_size} bytes ({round((1-processed_size/original_size)*100, 1)}% reduction)")
-    
+
     # Generate report using processed data
     print(f"[Clinical Trials Agent] Generating insights with Gemini...")
-    report = generate_clinical_report(molecule, summarized)
+    report = generate_clinical_report(molecule, analyzed_data)
     
     # Cache the final report
     if CACHE_ENABLED:
