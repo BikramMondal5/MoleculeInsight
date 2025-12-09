@@ -1,18 +1,23 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, Zap } from "lucide-react"
 
 export default function Hero() {
   return (
     <section className="pt-32 pb-20 px-4 md:pt-40 md:pb-24">
       <div className="max-w-4xl mx-auto text-center">
-        <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-border bg-card">
-          <p className="text-xs md:text-sm font-medium text-muted-foreground">Powered by Agentic AI</p>
+        <div className="inline-block mb-8">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-full">
+            <Zap className="w-4 h-4 text-orange-500 fill-orange-500" />
+            <span className="text-sm font-semibold text-blue-600">
+              AI-Powered Molecule Analysis
+            </span>
+          </div>
         </div>
 
         <h1 className="text-4xl md:text-6xl font-bold mb-6 text-foreground leading-tight text-balance">
-          Agentic AI for Faster Molecule Repurposing
+          <span className="bg-gradient-to-r from-[#6A85FF] to-[#3CF57A] bg-clip-text text-transparent">Agentic AI</span> for Faster Molecule Repurposing
         </h1>
 
         <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto text-balance">

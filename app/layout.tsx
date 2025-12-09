@@ -8,10 +8,9 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Molecule Innovation Scout - AI Drug Repurposing Assistant",
+  title: "MoleculeInsight - AI Drug Repurposing Assistant",
   description:
     "Rapidly evaluate drug-repurposing opportunities with Agentic AI. Get market insights, clinical trials, patents and innovation opportunities in minutes.",
-  generator: "v0.app",
   icons: {
     icon: [
       {

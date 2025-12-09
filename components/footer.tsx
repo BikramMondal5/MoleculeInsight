@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="border-t border-border bg-card/30 py-12 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="text-center text-muted-foreground text-sm">
-          <p>© {currentYear} Molecule Innovation Scout. All rights reserved.</p>
+          <p>© {currentYear} MoleculeInsight. All rights reserved.</p>
         </div>
       </div>
     </footer>

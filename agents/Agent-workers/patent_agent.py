@@ -131,4 +131,3 @@ def run_patent_agent(molecule):
     analyzed = analyze_patents(patents)
     report = generate_patent_report(molecule, analyzed)
     return report
-
