@@ -2,7 +2,8 @@
 
 import React, { useEffect, useState } from 'react'
 import { Card, CardContent } from "@/components/ui/card"
-import { Star } from "lucide-react"
+import { Star, MessageSquare } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
 // Default testimonial data adapted for MoleculeInsight context
 const defaultTestimonials = [
@@ -115,15 +116,23 @@ export default function TestimonialCarousel() {
     // In a real app, you might fetch data here. For now, we use static data.
 
     return (
-        <section id="testimonials" className="pt-20 pb-10 bg-background overflow-hidden relative">
+        <section id="testimonials" className="pt-20 pb-4 bg-background overflow-hidden relative">
             <div className="max-w-6xl mx-auto px-4 mb-12 text-center">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Trusted by Researchers</h2>
+                <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-teal-500">Trusted by Researchers</h2>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                     See how students and researchers are accelerating discovery with MoleculeInsight.
                 </p>
+
+                {/* Avatars Section (Relocated) */}
+                <div className="flex flex-col items-center gap-4 mt-8">
+                    <div className="flex flex-row items-center justify-center w-full">
+                        <AnimatedTooltip items={people} className="justify-center" />
+                    </div>
+                    <p className="text-sm font-medium text-muted-foreground">Join 573+ researchers</p>
+                </div>
             </div>
 
-            <div className="relative overflow-hidden w-full py-4 mb-16">
+            <div className="relative overflow-hidden w-full py-4 mb-2">
                 {/* Gradients for fade effect on edges */}
                 <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
                 <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
@@ -160,18 +169,14 @@ export default function TestimonialCarousel() {
                         </div>
                     ))}
                 </div>
-            </div>
-
-            {/* Bottom Interaction Bar */}
-            <div className="max-w-6xl mx-auto px-4 relative flex flex-col items-center justify-center mt-8">
-                {/* Avatars Section (Centered) */}
-                <div className="flex flex-col items-center gap-4">
-                    <p className="text-sm font-medium text-muted-foreground">Join 573+ researchers</p>
-                    <div className="flex flex-row items-center justify-center w-full">
-                        <AnimatedTooltip items={people} className="justify-center" />
-                    </div>
+                <div className="flex justify-center mt-8 pb-1">
+                    <Button className="bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-500/20 rounded-full px-8 h-12">
+                        Share Feedback
+                    </Button>
                 </div>
             </div>
+
+
         </section>
     )
 }

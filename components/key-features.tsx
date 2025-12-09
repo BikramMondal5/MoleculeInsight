@@ -37,11 +37,11 @@ const features = [
 
 export default function KeyFeatures() {
     return (
-        <section className="py-24 bg-background overflow-hidden relative">
+        <section className="py-24 bg-background overflow-hidden relative" id="features">
             {/* Background decorations */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                <div className="absolute top-1/4 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-x-1/2" />
-                <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl translate-x-1/2" />
+                <div className="absolute top-1/4 left-0 w-96 h-96 bg-primary/10 dark:bg-primary/5 rounded-full blur-3xl -translate-x-1/2" />
+                <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-blue-500/10 dark:bg-blue-500/5 rounded-full blur-3xl translate-x-1/2" />
             </div>
 
             <div className="max-w-7xl mx-auto px-4 relative z-10">
@@ -70,23 +70,21 @@ export default function KeyFeatures() {
                                 <p className="text-lg text-muted-foreground leading-relaxed">
                                     {feature.description}
                                 </p>
-                                <div className="pt-4">
-                                    <div className="h-1 w-20 bg-gradient-to-r from-primary to-transparent rounded-full" />
-                                </div>
+
                             </div>
 
                             {/* Media Placeholder */}
                             <div className="flex-1 w-full">
-                                <div className="relative aspect-video w-full rounded-[2.5rem] overflow-hidden border border-border/50 bg-muted/30 shadow-2xl group">
+                                <div className="relative aspect-video w-full rounded-[2.5rem] overflow-hidden border border-border/50 bg-card shadow-2xl dark:shadow-primary/10 group">
                                     {/* Placeholder gradient/content */}
-                                    <div className="absolute inset-0 bg-gradient-to-br from-muted/50 to-muted/10 flex items-center justify-center group-hover:scale-105 transition-transform duration-700">
+                                    <div className="absolute inset-0 bg-gradient-to-br from-muted/50 dark:from-muted/30 to-muted/10 dark:to-transparent flex items-center justify-center group-hover:scale-105 transition-transform duration-700">
                                         <span className="text-muted-foreground/50 font-medium">
                                             Media Placeholder {index + 1}
                                         </span>
                                     </div>
 
                                     {/* Decorative corner accent */}
-                                    <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-colors" />
+                                    <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-primary/10 dark:bg-primary/20 rounded-full blur-2xl group-hover:bg-primary/20 dark:group-hover:bg-primary/30 transition-colors" />
                                 </div>
                             </div>
                         </div>
