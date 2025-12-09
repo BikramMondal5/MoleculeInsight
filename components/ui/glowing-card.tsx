@@ -19,7 +19,7 @@ export function GridBackground({
     return (
         <div
             className={cn(
-                'px-10 py-20 rounded-md relative mx-18 flex items-center justify-center overflow-hidden',
+                'px-10 py-20 rounded-md relative mx-auto flex items-center justify-center overflow-hidden',
                 'bg-white dark:bg-black',
                 className
             )}

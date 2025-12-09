@@ -4,7 +4,7 @@ import Header from "@/components/header"
 import Hero from "@/components/hero"
 import KeyFeatures from "@/components/key-features"
 import HowItWorks from "@/components/how-it-works"
-import WhoIsItFor from "@/components/who-is-it-for"
+import TestimonialCarousel from "@/components/testimonials"
 import CTASection from "@/components/cta-section"
 import Footer from "@/components/footer"
 
@@ -15,7 +15,7 @@ export default function Home() {
       <Hero />
       <KeyFeatures />
       <HowItWorks />
-      <WhoIsItFor />
+      <TestimonialCarousel />
       <CTASection />
       <Footer />
     </div>

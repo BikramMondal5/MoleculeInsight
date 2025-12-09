@@ -18,7 +18,7 @@ export default function Hero() {
     <section className="relative pt-32 pb-20 px-4 md:pt-40 md:pb-24 overflow-hidden">
       <Particles
         className="absolute inset-0 z-0"
-        quantity={400}
+        quantity={150}
         size={1.2}
         ease={80}
         color={color}

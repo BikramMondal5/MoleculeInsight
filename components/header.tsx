@@ -21,17 +21,14 @@ export default function Header() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
-          <Link href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-            Home
+          <Link href="#features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            Features
           </Link>
           <Link href="#how-it-works" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
             How it works
           </Link>
-          <Link href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-            Demo
-          </Link>
-          <Link href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-            Login
+          <Link href="#testimonials" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            Testimonials
           </Link>
         </nav>
       </div>
