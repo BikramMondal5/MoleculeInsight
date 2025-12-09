@@ -32,7 +32,7 @@ export default function Hero() {
 
       <div className="relative z-10 max-w-4xl mx-auto text-center">
         <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-border bg-card/80 backdrop-blur-sm shadow-sm">
-          <p className="text-xs md:text-sm font-medium text-muted-foreground">Powered by Agentic AI</p>
+          <p className="text-xs md:text-sm font-medium text-muted-foreground">⚡ Powered by Agentic AI</p>
         </div>
 
         <h1 className="text-4xl md:text-6xl font-bold mb-6 text-foreground leading-tight text-balance">

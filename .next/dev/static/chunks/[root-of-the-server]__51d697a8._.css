@@ -264,6 +264,7 @@
     --animate-pulse: pulse 2s cubic-bezier(.4, 0, .6, 1) infinite;
     --blur-sm: 8px;
     --blur-md: 12px;
+    --blur-xl: 24px;
     --blur-2xl: 40px;
     --blur-3xl: 64px;
     --aspect-video: 16 / 9;
@@ -640,8 +641,16 @@
     position: static;
   }
 
+  .-inset-4 {
+    inset: calc(var(--spacing) * -4);
+  }
+
   .inset-0 {
     inset: calc(var(--spacing) * 0);
+  }
+
+  .inset-2 {
+    inset: calc(var(--spacing) * 2);
   }
 
   .inset-x-0 {
@@ -842,6 +851,10 @@
 
   .z-\[100\] {
     z-index: 100;
+  }
+
+  .z-\[9999\] {
+    z-index: 9999;
   }
 
   .order-first {
@@ -2509,6 +2522,16 @@
     }
   }
 
+  .bg-primary\/40 {
+    background-color: var(--primary);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-primary\/40 {
+      background-color: color-mix(in oklab, var(--primary) 40%, transparent);
+    }
+  }
+
   .bg-primary\/50 {
     background-color: var(--primary);
   }
@@ -2516,6 +2539,16 @@
   @supports (color: color-mix(in lab, red, red)) {
     .bg-primary\/50 {
       background-color: color-mix(in oklab, var(--primary) 50%, transparent);
+    }
+  }
+
+  .bg-primary\/60 {
+    background-color: var(--primary);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-primary\/60 {
+      background-color: color-mix(in oklab, var(--primary) 60%, transparent);
     }
   }
 
@@ -3420,6 +3453,10 @@
     opacity: 1;
   }
 
+  .mix-blend-screen {
+    mix-blend-mode: screen;
+  }
+
   .shadow {
     --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, #0000001a), 0 1px 2px -1px var(--tw-shadow-color, #0000001a);
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
@@ -3547,6 +3584,16 @@
 
   .blur-3xl {
     --tw-blur: blur(var(--blur-3xl));
+    filter: var(--tw-blur, ) var(--tw-brightness, ) var(--tw-contrast, ) var(--tw-grayscale, ) var(--tw-hue-rotate, ) var(--tw-invert, ) var(--tw-saturate, ) var(--tw-sepia, ) var(--tw-drop-shadow, );
+  }
+
+  .blur-md {
+    --tw-blur: blur(var(--blur-md));
+    filter: var(--tw-blur, ) var(--tw-brightness, ) var(--tw-contrast, ) var(--tw-grayscale, ) var(--tw-hue-rotate, ) var(--tw-invert, ) var(--tw-saturate, ) var(--tw-sepia, ) var(--tw-drop-shadow, );
+  }
+
+  .blur-xl {
+    --tw-blur: blur(var(--blur-xl));
     filter: var(--tw-blur, ) var(--tw-brightness, ) var(--tw-contrast, ) var(--tw-grayscale, ) var(--tw-hue-rotate, ) var(--tw-invert, ) var(--tw-saturate, ) var(--tw-sepia, ) var(--tw-drop-shadow, );
   }
 

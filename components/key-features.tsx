@@ -70,9 +70,7 @@ export default function KeyFeatures() {
                                 <p className="text-lg text-muted-foreground leading-relaxed">
                                     {feature.description}
                                 </p>
-                                <div className="pt-4">
-                                    <div className="h-1 w-20 bg-gradient-to-r from-primary to-transparent rounded-full" />
-                                </div>
+
                             </div>
 
                             {/* Media Placeholder */}
