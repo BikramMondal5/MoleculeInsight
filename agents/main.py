@@ -32,6 +32,7 @@ exim_agent = load_agent_module("exim_trade_agent", "exim_trade_agent.py")
 iqvia_agent = load_agent_module("iqvia_agent", "iqvia_agent.py")
 patent_agent = load_agent_module("patent_agent", "patent_agent.py")
 web_agent = load_agent_module("web_agent", "web_agent.py")
+internal_agent = load_agent_module("internal_knowledge_agent", "internal_knowledge_agent.py")
 
 # Extract functions
 run_clinical_trials_agent = clinical_agent.run_clinical_trials_agent
@@ -39,6 +40,7 @@ run_exim_agent = exim_agent.run_exim_agent
 run_iqvia_agent = iqvia_agent.generate_final_report
 run_patent_agent = patent_agent.run_patent_agent
 run_web_intel_agent = web_agent.run_web_intel_agent
+run_internal_knowledge_agent = internal_agent.run_internal_knowledge_agent
 
 app = FastAPI(title="MoleculeInsight API", version="1.0.0")
 
@@ -162,6 +164,21 @@ async def analyze_molecule(request: AnalysisRequest):
         "data": None
     })
     web_future = loop.run_in_executor(executor, safe_run_agent, run_web_intel_agent, molecule, 20)
+
+    # Internal Knowledge Agent
+    updates.append({
+        "agent": "Internal Knowledge Agent",
+        "status": "running",
+        "message": "Analyzing internal knowledge base...",
+        "data": None
+    })
+    internal_future = loop.run_in_executor(
+        executor, 
+        safe_run_agent, 
+        run_internal_knowledge_agent, 
+        molecule,
+        request.query
+    )
     
     # Wait for all agents to complete
     iqvia_result = await iqvia_future
@@ -169,6 +186,7 @@ async def analyze_molecule(request: AnalysisRequest):
     patent_result = await patent_future
     exim_result = await exim_future
     web_result = await web_future
+    internal_result=await internal_future
     
     # Update statuses
     updates.append({
@@ -206,6 +224,11 @@ async def analyze_molecule(request: AnalysisRequest):
             "success": web_result["success"],
             "report": web_result["data"] if web_result["success"] else None,
             "error": web_result.get("error")
+        },
+        "internal_knowledge": { 
+            "success": internal_result["success"],
+            "report": internal_result["data"] if internal_result["success"] else None,
+            "error": internal_result.get("error")
         }
     }
     
@@ -239,8 +262,11 @@ def extract_molecule_from_query(query: str) -> str:
                   'Safety', 'Profile', 'Treatment', 'Therapy'}
     
     for word in words:
-        # Remove punctuation
+        # Remove punctuation but keep the word structure
         clean_word = re.sub(r'[^\w]', '', word)
+        # Remove possessive 's at the end (e.g., "Ibuprofen's" -> "Ibuprofen")
+        clean_word = re.sub(r"s$", "", clean_word) if clean_word.endswith("s") and len(clean_word) > 5 else clean_word
+        
         # Check if capitalized and substantial (>4 chars for drug names)
         if clean_word and len(clean_word) > 4 and clean_word[0].isupper():
             if clean_word not in skip_words:
@@ -260,6 +286,9 @@ def extract_molecule_from_query(query: str) -> str:
                      'statin', 'mycin', 'cillin', 'formin', 'parin']
     for word in words:
         clean_word = re.sub(r'[^\w]', '', word)
+        # Remove possessive 's
+        clean_word = re.sub(r"s$", "", clean_word) if clean_word.endswith("s") and len(clean_word) > 5 else clean_word
+        
         if any(clean_word.lower().endswith(suffix) for suffix in drug_suffixes):
             if len(clean_word) > 4:
                 print(f"[Extraction] Found by suffix: {clean_word}")

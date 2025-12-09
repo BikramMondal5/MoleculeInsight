@@ -8,6 +8,7 @@ import PatentLandscapeCard from "./dashboard/patent-landscape-card"
 import EXIMTrendsCard from "./dashboard/exim-trends-card"
 import InternalInsightsCard from "./dashboard/internal-insights-card"
 import InnovationConceptCard from "./dashboard/innovation-concept-card"
+import InternalKnowledgeCard from "./dashboard/InternalKnowledgeCard"
 
 interface ResultsDashboardProps {
   results: {
@@ -16,6 +17,7 @@ interface ResultsDashboardProps {
     patents?: { success: boolean; report?: string; error?: string }
     exim?: { success: boolean; report?: string; error?: string }
     web_intel?: { success: boolean; report?: string; error?: string }
+    internal_knowledge?: { success: boolean; report?: string; error?: string }
   }
   molecule: string
 }
@@ -60,6 +62,7 @@ export default function ResultsDashboard({ results, molecule }: ResultsDashboard
         <ClinicalTrialsCard data={results.clinical_trials} />
         <PatentLandscapeCard data={results.patents} />
         <EXIMTrendsCard data={results.exim} />
+        <InternalKnowledgeCard data={results.internal_knowledge} />
         <InternalInsightsCard data={results.web_intel} />
       </div>
 

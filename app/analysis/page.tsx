@@ -13,6 +13,7 @@ interface AnalysisResults {
   patents?: { success: boolean; report?: string; error?: string }
   exim?: { success: boolean; report?: string; error?: string }
   web_intel?: { success: boolean; report?: string; error?: string }
+  internal_knowledge?: { success: boolean; report?: string; error?: string }
 }
 
 export default function AnalysisPage() {
@@ -50,6 +51,7 @@ export default function AnalysisPage() {
       { name: "Clinical Trials Agent", desc: "Searching clinical trials..." },
       { name: "Patent Agent", desc: "Analyzing patent landscape..." },
       { name: "Web Intelligence Agent", desc: "Gathering web insights..." },
+      { name: "Internal Knowledge Agent", desc: "Analyzing internal knowledge base..." },
       { name: "Report Generator Agent", desc: "Compiling report..." },
     ]
 

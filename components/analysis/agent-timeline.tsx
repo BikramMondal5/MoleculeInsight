@@ -21,18 +21,24 @@ export default function AgentTimeline({ activeAgents, isAnalyzing }: AgentTimeli
   ]
 
   const getAgentStatus = (agentName: string) => {
-    const index = agents.findIndex((a) => a.name === agentName)
-    const activeIndex = activeAgents.findIndex((a) => a === agentName)
-
-    if (activeIndex >= 0) {
-      if (activeIndex === activeAgents.length - 1 && !isAnalyzing) {
-        return "completed"
-      }
-      return "active"
-    }
-    if (activeAgents.length > 0 && index < agents.findIndex((a) => a.name === activeAgents[0])) {
+    const agentIndex = agents.findIndex((a) => a.name === agentName)
+    const lastActiveIndex = agents.findIndex((a) => a.name === activeAgents[activeAgents.length - 1])
+    
+    // If analysis is complete and this agent is in activeAgents, it's completed
+    if (!isAnalyzing && activeAgents.includes(agentName)) {
       return "completed"
     }
+    
+    // If this agent is the last in activeAgents and we're still analyzing, it's active
+    if (isAnalyzing && activeAgents[activeAgents.length - 1] === agentName) {
+      return "active"
+    }
+    
+    // If this agent comes before the last active agent, it's completed
+    if (activeAgents.length > 0 && agentIndex < lastActiveIndex && lastActiveIndex !== -1) {
+      return "completed"
+    }
+    
     return "pending"
   }
 

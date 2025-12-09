@@ -60,12 +60,24 @@ def fetch_trials(molecule):
             sponsor = protocol.get("sponsorCollaboratorsModule", {})
             locations = protocol.get("contactsLocationsModule", {})
             
+            # Safely extract phases
+            phases = design.get("phases", [])
+            phase_value = phases[0] if phases else "Unknown"
+            
+            # Safely extract enrollment count
+            enrollment_info = design.get("enrollmentInfo", {})
+            enrollment_count = enrollment_info.get("count", 0)
+            
+            # Safely extract start date
+            start_date_struct = status.get("startDateStruct", {})
+            start_date = start_date_struct.get("date", "Unknown")
+            
             trial = {
-                "Phase": design.get("phases", ["Unknown"]),
+                "Phase": [phase_value],
                 "OverallStatus": [status.get("overallStatus", "Unknown")],
-                "StartDate": [status.get("startDateStruct", {}).get("date", "Unknown")],
+                "StartDate": [start_date],
                 "LeadSponsorName": [sponsor.get("leadSponsor", {}).get("name", "Unknown")],
-                "EnrollmentCount": [str(design.get("enrollmentInfo", {}).get("count", 0))],
+                "EnrollmentCount": [str(enrollment_count)],
                 "LocationCountry": []
             }
             
