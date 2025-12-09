@@ -1,6 +1,14 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import {
+    CheckCircle,
+    Clock,
+    Star,
+    TrendingUp,
+    Video,
+    Globe,
+} from "lucide-react";
 
 export interface BentoItem {
     title: string;
@@ -15,12 +23,59 @@ export interface BentoItem {
 }
 
 interface BentoGridProps {
-    items: BentoItem[];
+    items?: BentoItem[];
 }
 
-function BentoGrid({ items }: BentoGridProps) {
+const itemsSample: BentoItem[] = [
+    {
+        title: "Analytics Dashboard",
+        meta: "v2.4.1",
+        description:
+            "Real-time metrics with AI-powered insights and predictive analytics",
+        icon: <TrendingUp className="w-4 h-4 text-blue-500" />,
+        status: "Live",
+        tags: ["Statistics", "Reports", "AI"],
+        colSpan: 2,
+        hasPersistentHover: true,
+    },
+    {
+        title: "Task Manager",
+        meta: "84 completed",
+        description: "Automated workflow management with priority scheduling",
+        icon: <CheckCircle className="w-4 h-4 text-emerald-500" />,
+        status: "Updated",
+        tags: ["Productivity", "Automation"],
+    },
+    {
+        title: "Media Library",
+        meta: "12GB used",
+        description: "Cloud storage with intelligent content processing",
+        icon: <Video className="w-4 h-4 text-purple-500" />,
+        tags: ["Storage", "CDN"],
+        colSpan: 2,
+    },
+    {
+        title: "Global Network",
+        meta: "6 regions",
+        description: "Multi-region deployment with edge computing",
+        icon: <Globe className="w-4 h-4 text-sky-500" />,
+        status: "Beta",
+        tags: ["Infrastructure", "Edge"],
+    },
+];
+
+function BentoGrid({ items = itemsSample }: BentoGridProps) {
+    const colSpanClasses: { [key: number]: string } = {
+        1: "md:col-span-1",
+        2: "md:col-span-2",
+        3: "md:col-span-3",
+        4: "md:col-span-4",
+        5: "md:col-span-5",
+        6: "md:col-span-6",
+    };
+
     return (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 p-4 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-3 p-4 max-w-7xl mx-auto">
             {items.map((item, index) => (
                 <div
                     key={index}
@@ -29,8 +84,7 @@ function BentoGrid({ items }: BentoGridProps) {
                         "border border-gray-100/80 dark:border-white/10 bg-white dark:bg-black",
                         "hover:shadow-[0_2px_12px_rgba(0,0,0,0.03)] dark:hover:shadow-[0_2px_12px_rgba(255,255,255,0.03)]",
                         "hover:-translate-y-0.5 will-change-transform",
-                        item.colSpan || "col-span-1",
-                        item.colSpan === 2 ? "md:col-span-2" : "",
+                        item.colSpan ? colSpanClasses[item.colSpan] : "md:col-span-1",
                         {
                             "shadow-[0_2px_12px_rgba(0,0,0,0.03)] -translate-y-0.5":
                                 item.hasPersistentHover,
@@ -41,8 +95,8 @@ function BentoGrid({ items }: BentoGridProps) {
                 >
                     <div
                         className={`absolute inset-0 ${item.hasPersistentHover
-                                ? "opacity-100"
-                                : "opacity-0 group-hover:opacity-100"
+                            ? "opacity-100"
+                            : "opacity-0 group-hover:opacity-100"
                             } transition-opacity duration-300`}
                     >
                         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.02)_1px,transparent_1px)] dark:bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[length:4px_4px]" />
@@ -95,8 +149,8 @@ function BentoGrid({ items }: BentoGridProps) {
 
                     <div
                         className={`absolute inset-0 -z-10 rounded-xl p-px bg-gradient-to-br from-transparent via-gray-100/50 to-transparent dark:via-white/10 ${item.hasPersistentHover
-                                ? "opacity-100"
-                                : "opacity-0 group-hover:opacity-100"
+                            ? "opacity-100"
+                            : "opacity-0 group-hover:opacity-100"
                             } transition-opacity duration-300`}
                     />
                 </div>
