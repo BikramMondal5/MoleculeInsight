@@ -17,7 +17,7 @@ export default function AboutPage() {
             <div className="p-1.5 bg-primary rounded-lg group-hover:bg-primary/90 transition-colors">
               <Beaker className="w-5 h-5 text-primary-foreground" />
             </div>
-            <span className="text-lg font-semibold text-foreground">Molecule Innovation Scout</span>
+            <span className="text-lg font-semibold text-foreground">MoleculeInsight</span>
           </Link>
 
           <div className="flex items-center gap-4">
@@ -38,7 +38,7 @@ export default function AboutPage() {
           <div className="max-w-6xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">How Agentic AI Powers Your Research</h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-              Molecule Innovation Scout uses an orchestrated network of AI agents to rapidly analyze drug-repurposing
+              MoleculeInsight uses an orchestrated network of AI agents to rapidly analyze drug-repurposing
               opportunities across multiple data sources in minutes, not weeks.
             </p>
           </div>
