@@ -33,6 +33,7 @@ iqvia_agent = load_agent_module("iqvia_agent", "iqvia_agent.py")
 patent_agent = load_agent_module("patent_agent", "patent_agent.py")
 web_agent = load_agent_module("web_agent", "web_agent.py")
 internal_agent = load_agent_module("internal_knowledge_agent", "internal_knowledge_agent.py")
+innovation_agent = load_agent_module("innovation_strategy_agent", "innovation_strategy_agent.py")
 
 # Extract functions
 run_clinical_trials_agent = clinical_agent.run_clinical_trials_agent
@@ -41,6 +42,7 @@ run_iqvia_agent = iqvia_agent.generate_final_report
 run_patent_agent = patent_agent.run_patent_agent
 run_web_intel_agent = web_agent.run_web_intel_agent
 run_internal_knowledge_agent = internal_agent.run_internal_knowledge_agent
+run_innovation_strategy_agent = innovation_agent.run_innovation_strategy_agent
 
 app = FastAPI(title="MoleculeInsight API", version="1.0.0")
 
@@ -186,7 +188,48 @@ async def analyze_molecule(request: AnalysisRequest):
     patent_result = await patent_future
     exim_result = await exim_future
     web_result = await web_future
-    internal_result=await internal_future
+    internal_result = await internal_future
+
+
+    # ADD THESE DEBUG LINES:
+    print("[DEBUG] ✓ All initial agents completed")
+    print(f"[DEBUG] IQVIA success: {iqvia_result.get('success')}")
+    print(f"[DEBUG] Clinical success: {clinical_result.get('success')}")
+    print(f"[DEBUG] About to start innovation agent...")
+
+    # Add this BEFORE running the innovation agent
+    updates.append({
+        "agent": "Innovation Strategy Agent",
+        "status": "running",
+        "message": "Generating strategic innovation opportunities...",
+        "data": None
+    })
+
+    print("[DEBUG] Starting innovation agent executor...")
+
+    # Extract the actual report strings, handling None cases
+    innovation_future = loop.run_in_executor(
+        executor,
+        lambda: safe_run_agent(
+            run_innovation_strategy_agent,
+            molecule=molecule,
+            market_data=iqvia_result.get("data") if iqvia_result.get("success") else None,
+            clinical_data=clinical_result.get("data") if clinical_result.get("success") else None,
+            patent_data=patent_result.get("data") if patent_result.get("success") else None,
+            trade_data=exim_result.get("data") if exim_result.get("success") else None,
+            web_data=web_result.get("data") if web_result.get("success") else None,
+            internal_data=internal_result.get("data") if internal_result.get("success") else None
+        )
+    )
+
+    innovation_result = await innovation_future
+        
+    updates.append({
+        "agent": "Innovation Strategy Agent",
+        "status": "completed" if innovation_result.get("success") else "error",
+        "message": "Strategic opportunities identified" if innovation_result.get("success") else "Failed to generate opportunities",
+        "data": None
+    })
     
     # Update statuses
     updates.append({
@@ -229,7 +272,12 @@ async def analyze_molecule(request: AnalysisRequest):
             "success": internal_result["success"],
             "report": internal_result["data"] if internal_result["success"] else None,
             "error": internal_result.get("error")
-        }
+        },
+        "innovation_opportunities": {
+        "success": innovation_result["success"],
+        "report": innovation_result["data"] if innovation_result["success"] else None,
+        "error": innovation_result.get("error")
+     }
     }
     
     updates.append({
@@ -238,7 +286,9 @@ async def analyze_molecule(request: AnalysisRequest):
         "message": "Analysis complete. Dashboard updated with insights.",
         "data": None
     })
-    
+    print(f"[DEBUG] Innovation result being sent: {results['innovation_opportunities']}")
+    print(f"[DEBUG] Full results structure: {json.dumps(results, indent=2, default=str)}")
+
     return AnalysisResponse(
         success=True,
         molecule=molecule,
@@ -254,45 +304,52 @@ def extract_molecule_from_query(query: str) -> str:
     
     print(f"[Extraction] Processing query: {query}")
     
-    # Strategy 1: Look for capitalized words that are likely drug names
-    words = query.split()
+    # Define skip words (expanded to include common query verbs)
     skip_words = {'Evaluate', 'Analysis', 'Study', 'Research', 'Report', 
                   'Clinical', 'The', 'This', 'That', 'What', 'Which', 
                   'Type', 'Managing', 'Diabetes', 'Assess', 'Efficacy',
-                  'Safety', 'Profile', 'Treatment', 'Therapy'}
+                  'Safety', 'Profile', 'Treatment', 'Therapy', 'Explain',
+                  'Discuss', 'Describe', 'Analyze', 'Compare', 'Review',
+                  'Investigate', 'Explore', 'Examine', 'Detail', 'Provide'}
     
-    for word in words:
-        # Remove punctuation but keep the word structure
-        clean_word = re.sub(r'[^\w]', '', word)
-        # Remove possessive 's at the end (e.g., "Ibuprofen's" -> "Ibuprofen")
-        clean_word = re.sub(r"s$", "", clean_word) if clean_word.endswith("s") and len(clean_word) > 5 else clean_word
-        
-        # Check if capitalized and substantial (>4 chars for drug names)
-        if clean_word and len(clean_word) > 4 and clean_word[0].isupper():
-            if clean_word not in skip_words:
-                print(f"[Extraction] Found molecule: {clean_word}")
-                return clean_word
+    words = query.split()
+    candidates = []
     
-    # Strategy 2: Look after "of" keyword with proper regex
-    match = re.search(r'\bof\s+([A-Z][a-z]+)', query)
-    if match:
-        molecule = match.group(1)
-        if len(molecule) > 4:
-            print(f"[Extraction] Found after 'of': {molecule}")
-            return molecule
-    
-    # Strategy 3: Common drug suffixes
+    # Strategy 1: Common drug suffixes (highest priority)
     drug_suffixes = ['mab', 'nib', 'ine', 'cin', 'zole', 'pril', 'sartan', 
-                     'statin', 'mycin', 'cillin', 'formin', 'parin']
+                     'statin', 'mycin', 'cillin', 'formin', 'parin', 'tinib']
+    
     for word in words:
         clean_word = re.sub(r'[^\w]', '', word)
-        # Remove possessive 's
-        clean_word = re.sub(r"s$", "", clean_word) if clean_word.endswith("s") and len(clean_word) > 5 else clean_word
-        
-        if any(clean_word.lower().endswith(suffix) for suffix in drug_suffixes):
+        if clean_word and any(clean_word.lower().endswith(suffix) for suffix in drug_suffixes):
             if len(clean_word) > 4:
                 print(f"[Extraction] Found by suffix: {clean_word}")
                 return clean_word.capitalize()
+    
+    # Strategy 2: Look for capitalized words (but collect all candidates)
+    for word in words:
+        clean_word = re.sub(r'[^\w]', '', word)
+        
+        if clean_word and len(clean_word) > 4 and clean_word[0].isupper():
+            if clean_word not in skip_words:
+                candidates.append(clean_word)
+    
+    # Strategy 3: Prefer candidates that appear later in the query (likely the subject)
+    # or candidates that are longer (more likely to be drug names)
+    if candidates:
+        # Sort by length (descending) - drug names tend to be longer
+        candidates.sort(key=lambda x: len(x), reverse=True)
+        molecule = candidates[0]
+        print(f"[Extraction] Found molecule: {molecule}")
+        return molecule
+    
+    # Strategy 4: Look after "of" keyword
+    match = re.search(r'\bof\s+([A-Z][a-z]+)', query)
+    if match:
+        molecule = match.group(1)
+        if len(molecule) > 4 and molecule not in skip_words:
+            print(f"[Extraction] Found after 'of': {molecule}")
+            return molecule
     
     print(f"[Extraction] ✗ Could not extract molecule")
     return ""

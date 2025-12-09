@@ -18,6 +18,7 @@ interface ResultsDashboardProps {
     exim?: { success: boolean; report?: string; error?: string }
     web_intel?: { success: boolean; report?: string; error?: string }
     internal_knowledge?: { success: boolean; report?: string; error?: string }
+    innovation_opportunities?: { success: boolean; report?: string; error?: string }
   }
   molecule: string
 }
@@ -66,9 +67,12 @@ export default function ResultsDashboard({ results, molecule }: ResultsDashboard
         <InternalInsightsCard data={results.web_intel} />
       </div>
 
-      {/* Innovation Concept - Full Width */}
+      {/* Innovation Opportunities - Full Width */}
       <div className="mt-6">
-        <InnovationConceptCard results={results} molecule={molecule} />
+        <InnovationConceptCard 
+          data={results.innovation_opportunities} 
+          molecule={molecule} 
+        />
       </div>
     </div>
   )
