@@ -12,7 +12,7 @@ export default function HowItWorks() {
       icon: <MessageCircle className="w-4 h-4 text-blue-500" />,
       status: "Start",
       tags: ["Query", "Natural Language"],
-      colSpan: 2,
+      colSpan: 4,
       hasPersistentHover: true, // Key interaction point
     },
     {
@@ -22,16 +22,16 @@ export default function HowItWorks() {
       icon: <Network className="w-4 h-4 text-purple-500" />,
       status: "Active",
       tags: ["AI", "Routing"],
-      colSpan: 1,
+      colSpan: 2,
     },
     {
       title: "Deep Data Retrieval",
       meta: "Step 3",
-      description: "Workers simultaneously scour IQVIA, ClinicalTrials.gov, Patent databases, and Web Intelligence for real-time data.",
+      description: "Workers search IQVIA, ClinicalTrials, Patents, and Web for real-time data.",
       icon: <Globe className="w-4 h-4 text-sky-500" />,
       status: "Processing",
       tags: ["Multi-source", "Real-time"],
-      colSpan: 2,
+      colSpan: 3,
     },
     {
       title: "Strategic Output",
@@ -40,7 +40,7 @@ export default function HowItWorks() {
       icon: <FileText className="w-4 h-4 text-emerald-500" />,
       status: "Complete",
       tags: ["Dashboard", "PDF"],
-      colSpan: 1,
+      colSpan: 3,
       hasPersistentHover: true, // End goal
     },
   ]

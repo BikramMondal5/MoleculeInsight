@@ -77,3 +77,37 @@
 [00:42:10.694] Server  LOG      ✓ Compiled in 689ms
 [00:47:56.300] Server  LOG      ✓ Compiled in 118ms
 [00:47:58.347] Server  LOG      ✓ Compiled in 239ms
+[00:54:21.918] Server  LOG      ✓ Compiled in 307ms
+[00:55:03.692] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:55:04.289] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:55:04.289] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:55:04.289] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765305245196}
+[00:56:25.923] Server  LOG      ✓ Compiled in 129ms
+[00:56:33.091] Server  LOG      ✓ Compiled in 64ms
+[00:59:27.733] Server  LOG      ✓ Compiled in 132ms
+[00:59:36.665] Server  LOG      ✓ Compiled in 130ms
+[00:59:44.001] Server  LOG      ✓ Compiled in 152ms
+[00:59:53.699] Server  LOG      ✓ Compiled in 118ms
+[00:59:59.631] Server  LOG      ✓ Compiled in 106ms
+[01:00:03.526] Server  LOG      ✓ Compiled in 59ms
+[01:00:08.821] Server  LOG      ✓ Compiled in 111ms
+[01:00:16.376] Server  LOG      ✓ Compiled in 101ms
+[01:00:25.745] Server  LOG      ✓ Compiled in 139ms
+[01:00:33.049] Server  LOG      ✓ Compiled in 72ms
+[01:00:36.719] Server  LOG      ✓ Compiled in 71ms
+[01:00:37.848] Server  LOG      ✓ Compiled in 72ms
+[01:00:46.164] Server  LOG      ✓ Compiled in 86ms
+[01:01:08.038] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:01:08.165] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:01:08.165] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[01:01:08.165] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.6.1","sv":"0.1.3","ts":1765305609075}
+[01:01:20.702] Server  LOG      ✓ Compiled in 257ms
+[01:01:39.430] Server  LOG      ✓ Compiled in 75ms
+[01:01:45.213] Server  LOG      ✓ Compiled in 139ms
+[01:01:49.684] Server  LOG      ✓ Compiled in 131ms
+[01:01:54.904] Server  LOG      ✓ Compiled in 195ms
+[01:02:02.117] Server  LOG      ✓ Compiled in 161ms
+[01:02:09.476] Server  LOG      ✓ Compiled in 126ms
+[01:02:15.143] Server  LOG      ✓ Compiled in 132ms
+[01:02:20.549] Server  LOG      ✓ Compiled in 119ms
+[01:04:09.171] Server  LOG      ✓ Compiled in 310ms

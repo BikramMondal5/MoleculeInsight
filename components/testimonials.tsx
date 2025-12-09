@@ -117,7 +117,7 @@ export default function TestimonialCarousel() {
     // In a real app, you might fetch data here. For now, we use static data.
 
     return (
-        <section id="testimonials" className="py-20 bg-background overflow-hidden relative">
+        <section id="testimonials" className="pt-20 pb-10 bg-background overflow-hidden relative">
             <div className="max-w-6xl mx-auto px-4 mb-12 text-center">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">Trusted by Researchers</h2>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -175,7 +175,7 @@ export default function TestimonialCarousel() {
                 </div>
 
                 {/* Feedback Button Section (Right Aligned) */}
-                <div className="md:absolute md:right-4 md:bottom-2 flex flex-col items-center md:items-end mt-8 md:mt-0">
+                <div className="md:relative md:left-130 md:top-5 flex flex-col items-center md:items-end mt-8 md:mt-0">
                     <Button className="bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-500/20 rounded-full px-8 h-12">
                         <MessageSquare className="w-4 h-4 mr-2" />
                         Share Feedback

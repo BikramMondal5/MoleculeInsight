@@ -65,8 +65,17 @@ const itemsSample: BentoItem[] = [
 ];
 
 function BentoGrid({ items = itemsSample }: BentoGridProps) {
+    const colSpanClasses: { [key: number]: string } = {
+        1: "md:col-span-1",
+        2: "md:col-span-2",
+        3: "md:col-span-3",
+        4: "md:col-span-4",
+        5: "md:col-span-5",
+        6: "md:col-span-6",
+    };
+
     return (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 p-4 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-3 p-4 max-w-7xl mx-auto">
             {items.map((item, index) => (
                 <div
                     key={index}
@@ -75,8 +84,7 @@ function BentoGrid({ items = itemsSample }: BentoGridProps) {
                         "border border-gray-100/80 dark:border-white/10 bg-white dark:bg-black",
                         "hover:shadow-[0_2px_12px_rgba(0,0,0,0.03)] dark:hover:shadow-[0_2px_12px_rgba(255,255,255,0.03)]",
                         "hover:-translate-y-0.5 will-change-transform",
-                        item.colSpan || "col-span-1",
-                        item.colSpan === 2 ? "md:col-span-2" : "",
+                        item.colSpan ? colSpanClasses[item.colSpan] : "md:col-span-1",
                         {
                             "shadow-[0_2px_12px_rgba(0,0,0,0.03)] -translate-y-0.5":
                                 item.hasPersistentHover,
