@@ -92,10 +92,6 @@ export default function AnalysisPage() {
         throw new Error(data.error || "Failed to analyze molecule")
       }
 
-      // Update results
-      console.log("[AnalysisPage] Full response data:", data)
-      console.log("[AnalysisPage] Results:", data.results)
-      console.log("[AnalysisPage] Innovation opportunities:", data.results?.innovation_opportunities)
       setAnalysisResults(data.results)
       setCurrentMolecule(data.molecule || molecule || "Unknown")
       setAnalysisComplete(true)
