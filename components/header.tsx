@@ -3,14 +3,46 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useEffect, useState } from "react"
+import { usePathname } from "next/navigation"
 import { LogOut, User } from "lucide-react"
-import { ThemeToggle } from "@/components/ui/theme-toggle"
 import { Button } from "@/components/ui/button"
 
+// Simple ThemeToggle component
+function ThemeToggle({ className }: { className?: string }) {
+  const [theme, setTheme] = useState("light")
+  
+  useEffect(() => {
+    const root = document.documentElement
+    const currentTheme = root.classList.contains("dark") ? "dark" : "light"
+    setTheme(currentTheme)
+  }, [])
+  
+  const toggleTheme = () => {
+    const root = document.documentElement
+    const newTheme = theme === "light" ? "dark" : "light"
+    root.classList.toggle("dark")
+    setTheme(newTheme)
+  }
+  
+  return (
+    <button
+      onClick={toggleTheme}
+      className={`p-2 rounded-lg hover:bg-accent ${className}`}
+      aria-label="Toggle theme"
+    >
+      {theme === "light" ? "🌙" : "☀️"}
+    </button>
+  )
+}
+
 export default function Header() {
+  const pathname = usePathname()
   const [user, setUser] = useState<{ name: string; email: string; avatar?: string } | null>(null)
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false)
   const [isLoggingOut, setIsLoggingOut] = useState(false)
+
+  // Check if we're on auth pages
+  const isAuthPage = pathname === '/login' || pathname === '/sign-up'
 
   useEffect(() => {
     // Check if user is logged in
@@ -63,7 +95,7 @@ export default function Header() {
               <span className="text-lg font-semibold text-foreground">MoleculeInsight</span>
             </Link>
 
-            {user && (
+            {user && !isAuthPage && (
               <div className="hidden md:flex items-center gap-2 text-sm text-muted-foreground">
                 <User className="w-4 h-4" />
                 <span>Welcome, <span className="font-medium text-foreground">{user.name}</span></span>
@@ -72,34 +104,51 @@ export default function Header() {
           </div>
 
           <div className="flex items-center gap-6">
-            <nav className="hidden md:flex items-center gap-8">
-              {user && (
-                <>
-                  <Link href="#how-it-works" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                    How it works
-                  </Link>
-                  <Link href="#testimonials" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                    Testimonials
-                  </Link>
-                  <Link href="/analysis" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                    Analyse
-                  </Link>
-                </>
-              )}
-            </nav>
+            {/* Only show navigation links if NOT on auth pages */}
+            {!isAuthPage && (
+              <nav className="hidden md:flex items-center gap-8">
+                {user && (
+                  <>
+                    <Link href="#how-it-works" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      How it works
+                    </Link>
+                    <Link href="#testimonials" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      Testimonials
+                    </Link>
+                    <Link href="/analysis" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      Analyse
+                    </Link>
+                  </>
+                )}
+              </nav>
+            )}
 
             <ThemeToggle className="ml-2" />
 
-            {user && (
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setShowLogoutConfirm(true)}
-                className="gap-2 text-destructive border-destructive/30 hover:bg-destructive/10"
-              >
-                <LogOut className="w-4 h-4" />
-                <span className="hidden sm:inline">Logout</span>
-              </Button>
+            {/* Only show auth buttons if NOT on auth pages */}
+            {!isAuthPage && (
+              <>
+                {!user ? (
+                  <div className="flex items-center gap-3">
+                    <Link href="/login">
+                      <Button variant="ghost" size="sm">Login</Button>
+                    </Link>
+                    <Link href="/sign-up">
+                      <Button size="sm">Sign Up</Button>
+                    </Link>
+                  </div>
+                ) : (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setShowLogoutConfirm(true)}
+                    className="gap-2 text-destructive border-destructive/30 hover:bg-destructive/10"
+                  >
+                    <LogOut className="w-4 h-4" />
+                    <span className="hidden sm:inline">Logout</span>
+                  </Button>
+                )}
+              </>
             )}
           </div>
         </div>
