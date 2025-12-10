@@ -47,6 +47,10 @@ export default function LoginPage() {
         const errorParam = searchParams.get('error')
         if (errorParam === 'no_account') {
             setError("No account exists with this Google account. Please sign up first.")
+        } else if (errorParam === 'local_account_exists') {
+            setError("An account already exists with this email. Please sign in manually with your password.")
+        } else if (errorParam === 'use_local_signin') {
+            setError("This account was registered manually. Please sign in with your email and password.")
         } else if (errorParam === 'account_exists') {
             setError("An account already exists with this Google account. Please sign in.")
         } else if (errorParam === 'oauth_failed') {

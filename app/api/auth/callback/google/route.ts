@@ -82,16 +82,25 @@ export async function GET(request: NextRequest) {
       });
       await user.save();
     } else {
-      // User exists
-      if (isSignUpFlow) {
-        // Trying to sign up but account already exists
+        //User check
+        if (isSignUpFlow) {
+        // Check if user registered with local provider
+        if (user.provider === 'local') {
+        return NextResponse.redirect(new URL('/sign-up?error=local_account_exists', request.url));
+        }
+        // Trying to sign up but account already exists with Google
         return NextResponse.redirect(new URL('/login?error=account_exists', request.url));
-      }
+    }
 
-      // Sign in flow - update user info
-      if (!user.googleId) {
+    // Sign in flow - check if user registered with local provider
+    if (user.provider === 'local') {
+        return NextResponse.redirect(new URL('/login?error=use_local_signin', request.url));
+    }
+
+    // Update user info for Google sign-in
+    if (!user.googleId) {
         user.googleId = googleUser.id;
-      }
+    }
       if (!user.avatar) {
         user.avatar = googleUser.picture;
       }

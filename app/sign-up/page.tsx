@@ -17,8 +17,7 @@ export default function SignUpPage() {
     const [lastName, setLastName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [skills, setSkills] = useState("")
-    const [country, setCountry] = useState("")
+    const [confirmPassword, setConfirmPassword] = useState("")
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState("")
 
@@ -52,6 +51,8 @@ export default function SignUpPage() {
         const errorParam = searchParams.get('error')
         if (errorParam === 'no_account') {
             setError("No account exists with this Google account. Please sign up first.")
+        } else if (errorParam === 'local_account_exists') {
+            setError("An account already exists with this email. Please sign in manually with your password.")
         } else if (errorParam === 'account_exists') {
             setError("An account already exists with this Google account. Please sign in instead.")
         } else if (errorParam === 'oauth_failed') {
@@ -79,6 +80,13 @@ export default function SignUpPage() {
             return;
         }
 
+        // Check if passwords match
+        if (password !== confirmPassword) {
+            setError("Passwords do not match");
+            setIsLoading(false);
+            return;
+        }
+
         try {
             const response = await fetch("/api/auth/register", {
             method: "POST",
@@ -90,8 +98,6 @@ export default function SignUpPage() {
                 lastName,
                 email,
                 password,
-                skills,
-                country
             }),
             })
 
@@ -215,42 +221,26 @@ export default function SignUpPage() {
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     required
-                                    minLength={6}
                                     className="h-10 bg-muted/50"
                                 />
+                                <p className="text-xs text-muted-foreground mt-1">
+                                    Must be 8+ characters with uppercase, lowercase, number, and special character
+                                </p>
                             </div>
 
                             <div className="space-y-2">
-                                <label htmlFor="company" className="text-sm font-medium text-foreground">
-                                    Company / Organization
+                                <label htmlFor="confirmPassword" className="text-sm font-medium text-foreground">
+                                    Confirm Password
                                 </label>
                                 <Input
-                                    id="skills"
-                                    type="text"
-                                    placeholder="Pfizer, Novartis, University..."
-                                    value={skills}
-                                    onChange={(e) => setSkills(e.target.value)}
+                                    id="confirmPassword"
+                                    type="password"
+                                    placeholder="••••••••"
+                                    value={confirmPassword}
+                                    onChange={(e) => setConfirmPassword(e.target.value)}
+                                    required
                                     className="h-10 bg-muted/50"
                                 />
-                            </div>
-
-                            <div className="space-y-2">
-                                <label htmlFor="country" className="text-sm font-medium text-foreground">
-                                    Country
-                                </label>
-                                <Select value={country} onValueChange={setCountry}>
-                                    <SelectTrigger className="h-10 bg-muted/50">
-                                        <SelectValue placeholder="Select a country" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectItem value="India">India</SelectItem>
-                                        <SelectItem value="United States">United States</SelectItem>
-                                        <SelectItem value="United Kingdom">United Kingdom</SelectItem>
-                                        <SelectItem value="Canada">Canada</SelectItem>
-                                        <SelectItem value="Germany">Germany</SelectItem>
-                                        <SelectItem value="Other">Other</SelectItem>
-                                    </SelectContent>
-                                </Select>
                             </div>
 
                             <Button

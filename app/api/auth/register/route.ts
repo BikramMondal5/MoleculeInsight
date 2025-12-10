@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
   try {
     await connectDB();
     
-    const { firstName, lastName, email, password, skills, country } = await request.json();
+    const { firstName, lastName, email, password } = await request.json();
 
     // Validation
     if (!firstName || !lastName || !email || !password) {

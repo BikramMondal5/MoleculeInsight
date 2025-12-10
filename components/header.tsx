@@ -73,20 +73,19 @@ export default function Header() {
 
           <div className="flex items-center gap-6">
             <nav className="hidden md:flex items-center gap-8">
-              {!user ? (
-                <Link href="/login" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  Login
-                </Link>
-              ) : null}
-              <Link href="#how-it-works" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                How it works
-              </Link>
-              <Link href="#testimonials" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Testimonials
-              </Link>
-              <Link href="/analysis" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Analyse
-              </Link>
+              {user && (
+                <>
+                  <Link href="#how-it-works" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                    How it works
+                  </Link>
+                  <Link href="#testimonials" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                    Testimonials
+                  </Link>
+                  <Link href="/analysis" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                    Analyse
+                  </Link>
+                </>
+              )}
             </nav>
 
             <ThemeToggle className="ml-2" />
