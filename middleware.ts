@@ -9,7 +9,7 @@ export function middleware(request: NextRequest) {
   const protectedRoutes = ['/', '/analysis', '/app', '/archive', '/about'];
   const authRoutes = ['/login', '/sign-up'];
 
-  const isProtectedRoute = protectedRoutes.some(route => 
+  const isProtectedRoute = protectedRoutes.some(route =>
     pathname === route || pathname.startsWith(`${route}/`)
   );
   const isAuthRoute = authRoutes.includes(pathname);
