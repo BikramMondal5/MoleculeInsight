@@ -37,12 +37,10 @@ export async function POST(request: NextRequest) {
 
         const data = await response.json()
 
-        console.log('[API Route] FastAPI response:', JSON.stringify(data, null, 2))
-
         return NextResponse.json({
             success: true,
             molecule: data.molecule,
-            results: data.results,  // This should contain innovation_opportunities
+            results: data.results, 
             updates: data.updates,
         })
 

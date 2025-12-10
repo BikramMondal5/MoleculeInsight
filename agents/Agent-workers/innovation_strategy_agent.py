@@ -23,7 +23,6 @@ def run_innovation_strategy_agent(
     """
     Innovation Strategy Agent - synthesizes all data to generate strategic opportunities
     """
-    print(f"[Innovation Strategy Agent] Generating opportunities for {molecule}...")
     
     # Build context from all available data
     context_parts = []

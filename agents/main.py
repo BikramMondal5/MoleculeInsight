@@ -190,13 +190,6 @@ async def analyze_molecule(request: AnalysisRequest):
     web_result = await web_future
     internal_result = await internal_future
 
-
-    # ADD THESE DEBUG LINES:
-    print("[DEBUG] ✓ All initial agents completed")
-    print(f"[DEBUG] IQVIA success: {iqvia_result.get('success')}")
-    print(f"[DEBUG] Clinical success: {clinical_result.get('success')}")
-    print(f"[DEBUG] About to start innovation agent...")
-
     # Add this BEFORE running the innovation agent
     updates.append({
         "agent": "Innovation Strategy Agent",
@@ -204,8 +197,6 @@ async def analyze_molecule(request: AnalysisRequest):
         "message": "Generating strategic innovation opportunities...",
         "data": None
     })
-
-    print("[DEBUG] Starting innovation agent executor...")
 
     # Extract the actual report strings, handling None cases
     innovation_future = loop.run_in_executor(
@@ -286,8 +277,6 @@ async def analyze_molecule(request: AnalysisRequest):
         "message": "Analysis complete. Dashboard updated with insights.",
         "data": None
     })
-    print(f"[DEBUG] Innovation result being sent: {results['innovation_opportunities']}")
-    print(f"[DEBUG] Full results structure: {json.dumps(results, indent=2, default=str)}")
 
     return AnalysisResponse(
         success=True,

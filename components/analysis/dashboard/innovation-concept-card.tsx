@@ -11,10 +11,6 @@ interface InnovationConceptCardProps {
 }
 
 export default function InnovationConceptCard({ data, molecule }: InnovationConceptCardProps) {
-   console.log("[InnovationConceptCard] Received data:", data)
-  console.log("[InnovationConceptCard] Data type:", typeof data)
-  console.log("[InnovationConceptCard] Data success:", data?.success)
-  console.log("[InnovationConceptCard] Data report:", data?.report)
   // Loading state
   if (!data) {
     return (
