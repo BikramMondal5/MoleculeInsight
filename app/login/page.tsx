@@ -1,44 +1,109 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
-import { signIn } from "next-auth/react"
+import { useState, useEffect } from "react"
+import { useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
 import Header from "@/components/header"
 import { Particles } from "@/components/ui/particles"
-import { Github, Chrome } from "lucide-react"
+import { Chrome } from "lucide-react"
 
 export default function LoginPage() {
+    const searchParams = useSearchParams()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState("")
+
+    const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+    };
+
+    const validatePassword = (password: string) => {
+    const minLength = 8;
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasLowerCase = /[a-z]/.test(password);
+    const hasNumbers = /\d/.test(password);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+    return {
+        isValid: password.length >= minLength && hasUpperCase && hasLowerCase && hasNumbers && hasSpecialChar,
+        message: password.length < minLength 
+        ? "Password must be at least 8 characters"
+        : !hasUpperCase || !hasLowerCase
+        ? "Password must contain uppercase and lowercase letters"
+        : !hasNumbers
+        ? "Password must contain at least one number"
+        : !hasSpecialChar
+        ? "Password must contain at least one special character"
+        : ""
+    };
+    };
+
+    useEffect(() => {
+        const errorParam = searchParams.get('error')
+        if (errorParam === 'no_account') {
+            setError("No account exists with this Google account. Please sign up first.")
+        } else if (errorParam === 'local_account_exists') {
+            setError("An account already exists with this email. Please sign in manually with your password.")
+        } else if (errorParam === 'use_local_signin') {
+            setError("This account was registered manually. Please sign in with your email and password.")
+        } else if (errorParam === 'account_exists') {
+            setError("An account already exists with this Google account. Please sign in.")
+        } else if (errorParam === 'oauth_failed') {
+            setError("Unable to sign in with Google. Please try again.")
+        }
+    }, [searchParams])
 
     const handleSignIn = async (e: React.FormEvent) => {
         e.preventDefault()
         setIsLoading(true)
         setError("")
 
+        // Validate email
+        if (!validateEmail(email)) {
+            setError("Please enter a valid email address");
+            setIsLoading(false);
+            return;
+        }
+
+        // Validate password (optional for login, but good practice)
+        const passwordValidation = validatePassword(password);
+        if (!passwordValidation.isValid) {
+            setError(passwordValidation.message);
+            setIsLoading(false);
+            return;
+        }
+
         try {
-            const result = await signIn("credentials", {
-                email,
-                password,
-                redirect: false,
+            const response = await fetch("/api/auth/signin", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, password }),
             })
 
-            if (result?.error) {
-                setError(result.error)
-            } else if (result?.ok) {
-                window.location.href = "/"
+            const data = await response.json()
+
+            if (!response.ok || !data.success) {
+            throw new Error(data.message || "Sign in failed")
             }
+
+            window.location.href = "/"
         } catch (err: any) {
             console.error("Auth error", err)
-            setError("An error occurred during sign in")
+            setError(err.message || "An error occurred during sign in")
         } finally {
             setIsLoading(false)
         }
+        }
+
+    const handleGoogleLogin = () => {
+        window.location.href = "/api/auth/google?signup=false"
     }
 
     return (
@@ -56,10 +121,8 @@ export default function LoginPage() {
                             refresh
                         />
                     </div>
-                    {/* Gradient overlay */}
                     <div className="absolute inset-0 bg-gradient-to-br from-background/50 to-background/5 z-10" />
 
-                    {/* Content */}
                     <div className="relative z-20 flex flex-col items-center justify-center p-12 text-center">
                         <div className="w-24 h-24 mb-8 rounded-3xl bg-gradient-to-br from-primary to-blue-600 opacity-10 animate-pulse flex items-center justify-center border border-primary/20 shadow-2xl">
                             <div className="w-12 h-12 bg-primary/20 rounded-xl" />
@@ -106,9 +169,6 @@ export default function LoginPage() {
                                     <label htmlFor="password" className="text-sm font-medium text-foreground">
                                         Password
                                     </label>
-                                    <a href="#" className="text-sm text-primary hover:underline font-medium">
-                                        Forgot Password?
-                                    </a>
                                 </div>
                                 <Input
                                     id="password"
@@ -139,26 +199,15 @@ export default function LoginPage() {
                             </div>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-4">
-                            <Button
-                                type="button"
-                                variant="outline"
-                                className="h-11 gap-2 bg-muted/30 hover:bg-muted hover:text-foreground border-border/50"
-                                onClick={() => signIn("github", { callbackUrl: "/" })}
-                            >
-                                <Github className="w-4 h-4" />
-                                GitHub
-                            </Button>
-                            <Button
-                                type="button"
-                                variant="outline"
-                                className="h-11 gap-2 bg-muted/30 hover:bg-muted hover:text-foreground border-border/50"
-                                onClick={() => signIn("google", { callbackUrl: "/" })}
-                            >
-                                <Chrome className="w-4 h-4" />
-                                Google
-                            </Button>
-                        </div>
+                        <Button
+                            type="button"
+                            variant="outline"
+                            className="w-full h-11 gap-2 bg-muted/30 hover:bg-muted hover:text-foreground border-border/50"
+                            onClick={handleGoogleLogin}
+                        >
+                            <Chrome className="w-4 h-4" />
+                            Google
+                        </Button>
 
                         <p className="text-center text-sm text-muted-foreground">
                             Don't have an account?{" "}

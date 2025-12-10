@@ -1,37 +1,123 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
-import { signIn } from "next-auth/react"
+import { useState, useEffect } from "react"
+import { useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import Link from "next/link"
 import Header from "@/components/header"
 import { Particles } from "@/components/ui/particles"
-import { Github, Chrome } from "lucide-react"
+import { Chrome } from "lucide-react"
 
 export default function SignUpPage() {
-    const [name, setName] = useState("")
-    const [username, setUsername] = useState("")
+    const searchParams = useSearchParams()
+    const [firstName, setFirstName] = useState("")
+    const [lastName, setLastName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [skills, setSkills] = useState("")
-    const [country, setCountry] = useState("")
+    const [confirmPassword, setConfirmPassword] = useState("")
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState("")
+
+    const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+    };
+
+    const validatePassword = (password: string) => {
+    const minLength = 8;
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasLowerCase = /[a-z]/.test(password);
+    const hasNumbers = /\d/.test(password);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+    return {
+        isValid: password.length >= minLength && hasUpperCase && hasLowerCase && hasNumbers && hasSpecialChar,
+        message: password.length < minLength 
+        ? "Password must be at least 8 characters"
+        : !hasUpperCase || !hasLowerCase
+        ? "Password must contain uppercase and lowercase letters"
+        : !hasNumbers
+        ? "Password must contain at least one number"
+        : !hasSpecialChar
+        ? "Password must contain at least one special character"
+        : ""
+    };
+    };
+
+    useEffect(() => {
+        const errorParam = searchParams.get('error')
+        if (errorParam === 'no_account') {
+            setError("No account exists with this Google account. Please sign up first.")
+        } else if (errorParam === 'local_account_exists') {
+            setError("An account already exists with this email. Please sign in manually with your password.")
+        } else if (errorParam === 'account_exists') {
+            setError("An account already exists with this Google account. Please sign in instead.")
+        } else if (errorParam === 'oauth_failed') {
+            setError("Unable to sign up with Google. Please try again.")
+        }
+    }, [searchParams])
 
     const handleSignUp = async (e: React.FormEvent) => {
         e.preventDefault()
         setIsLoading(true)
         setError("")
 
-        // Placeholder for backend logic
-        setTimeout(() => {
+        // Validate email
+        if (!validateEmail(email)) {
+            setError("Please enter a valid email address");
+            setIsLoading(false);
+            return;
+        }
+
+        // Validate password
+        const passwordValidation = validatePassword(password);
+        if (!passwordValidation.isValid) {
+            setError(passwordValidation.message);
+            setIsLoading(false);
+            return;
+        }
+
+        // Check if passwords match
+        if (password !== confirmPassword) {
+            setError("Passwords do not match");
+            setIsLoading(false);
+            return;
+        }
+
+        try {
+            const response = await fetch("/api/auth/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                firstName,
+                lastName,
+                email,
+                password,
+            }),
+            })
+
+            const data = await response.json()
+
+            if (!response.ok || !data.success) {
+            throw new Error(data.message || "Registration failed")
+            }
+
+            window.location.href = "/"
+        } catch (err: any) {
+            console.error("Registration error", err)
+            setError(err.message || "An error occurred during registration")
+        } finally {
             setIsLoading(false)
-            alert("Account created successfully! Please sign in.")
-            window.location.href = "/login"
-        }, 1000)
+        }
+        }
+
+    const handleGoogleSignUp = () => {
+        window.location.href = "/api/auth/google?signup=true"
     }
 
     return (
@@ -49,10 +135,8 @@ export default function SignUpPage() {
                             refresh
                         />
                     </div>
-                    {/* Gradient overlay */}
                     <div className="absolute inset-0 bg-gradient-to-br from-background/50 to-background/5 z-10" />
 
-                    {/* Content */}
                     <div className="relative z-20 flex flex-col items-center justify-center p-12 text-center">
                         <div className="w-24 h-24 mb-8 rounded-3xl bg-gradient-to-br from-primary to-blue-600 opacity-10 animate-pulse flex items-center justify-center border border-primary/20 shadow-2xl">
                             <div className="w-12 h-12 bg-primary/20 rounded-xl" />
@@ -81,30 +165,30 @@ export default function SignUpPage() {
                         <form onSubmit={handleSignUp} className="space-y-4">
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="space-y-2">
-                                    <label htmlFor="name" className="text-sm font-medium text-foreground">
-                                        Full Name
+                                    <label htmlFor="firstName" className="text-sm font-medium text-foreground">
+                                        First Name
                                     </label>
                                     <Input
-                                        id="name"
+                                        id="firstName"
                                         type="text"
-                                        placeholder="John Doe"
-                                        value={name}
-                                        onChange={(e) => setName(e.target.value)}
+                                        placeholder="John"
+                                        value={firstName}
+                                        onChange={(e) => setFirstName(e.target.value)}
                                         required
                                         className="h-10 bg-muted/50"
                                     />
                                 </div>
 
                                 <div className="space-y-2">
-                                    <label htmlFor="username" className="text-sm font-medium text-foreground">
-                                        Username
+                                    <label htmlFor="lastName" className="text-sm font-medium text-foreground">
+                                        Last Name
                                     </label>
                                     <Input
-                                        id="username"
+                                        id="lastName"
                                         type="text"
-                                        placeholder="johndoe"
-                                        value={username}
-                                        onChange={(e) => setUsername(e.target.value)}
+                                        placeholder="Doe"
+                                        value={lastName}
+                                        onChange={(e) => setLastName(e.target.value)}
                                         required
                                         className="h-10 bg-muted/50"
                                     />
@@ -137,42 +221,26 @@ export default function SignUpPage() {
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     required
-                                    minLength={6}
                                     className="h-10 bg-muted/50"
                                 />
+                                <p className="text-xs text-muted-foreground mt-1">
+                                    Must be 8+ characters with uppercase, lowercase, number, and special character
+                                </p>
                             </div>
 
                             <div className="space-y-2">
-                                <label htmlFor="company" className="text-sm font-medium text-foreground">
-                                    Company / Organization
+                                <label htmlFor="confirmPassword" className="text-sm font-medium text-foreground">
+                                    Confirm Password
                                 </label>
                                 <Input
-                                    id="skills" // Mapped to skills temporarily as per request structure
-                                    type="text"
-                                    placeholder="Pfizer, Novartis, University..."
-                                    value={skills}
-                                    onChange={(e) => setSkills(e.target.value)}
+                                    id="confirmPassword"
+                                    type="password"
+                                    placeholder="••••••••"
+                                    value={confirmPassword}
+                                    onChange={(e) => setConfirmPassword(e.target.value)}
+                                    required
                                     className="h-10 bg-muted/50"
                                 />
-                            </div>
-
-                            <div className="space-y-2">
-                                <label htmlFor="country" className="text-sm font-medium text-foreground">
-                                    Country
-                                </label>
-                                <Select value={country} onValueChange={setCountry}>
-                                    <SelectTrigger className="h-10 bg-muted/50">
-                                        <SelectValue placeholder="Select a country" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectItem value="India">India</SelectItem>
-                                        <SelectItem value="United States">United States</SelectItem>
-                                        <SelectItem value="United Kingdom">United Kingdom</SelectItem>
-                                        <SelectItem value="Canada">Canada</SelectItem>
-                                        <SelectItem value="Germany">Germany</SelectItem>
-                                        <SelectItem value="Other">Other</SelectItem>
-                                    </SelectContent>
-                                </Select>
                             </div>
 
                             <Button
@@ -193,26 +261,15 @@ export default function SignUpPage() {
                             </div>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-4">
-                            <Button
-                                type="button"
-                                variant="outline"
-                                className="h-11 gap-2 bg-muted/30 hover:bg-muted hover:text-foreground border-border/50"
-                                onClick={() => signIn("github", { callbackUrl: "/" })}
-                            >
-                                <Github className="w-4 h-4" />
-                                GitHub
-                            </Button>
-                            <Button
-                                type="button"
-                                variant="outline"
-                                className="h-11 gap-2 bg-muted/30 hover:bg-muted hover:text-foreground border-border/50"
-                                onClick={() => signIn("google", { callbackUrl: "/" })}
-                            >
-                                <Chrome className="w-4 h-4" />
-                                Google
-                            </Button>
-                        </div>
+                        <Button
+                            type="button"
+                            variant="outline"
+                            className="w-full h-11 gap-2 bg-muted/30 hover:bg-muted hover:text-foreground border-border/50"
+                            onClick={handleGoogleSignUp}
+                        >
+                            <Chrome className="w-4 h-4" />
+                            Google
+                        </Button>
 
                         <p className="text-center text-sm text-muted-foreground pb-8">
                             Already have an account?{" "}
