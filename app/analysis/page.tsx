@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import AnalysisHeader from "@/components/analysis/header"
+import Header from "@/components/header"
 import AnalysisInputPanel from "@/components/analysis/input-panel"
 import ChatPanel from "@/components/analysis/chat-panel"
 import AgentTimeline from "@/components/analysis/agent-timeline"
@@ -124,7 +124,7 @@ export default function AnalysisPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <AnalysisHeader />
+      <Header />
       <div className="pt-20 px-4 md:px-6">
         <div className="max-w-7xl mx-auto">
           <div className="mb-8">
