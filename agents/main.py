@@ -4,7 +4,6 @@ from pydantic import BaseModel
 from typing import Optional
 import asyncio
 from concurrent.futures import ThreadPoolExecutor
-import json
 
 # Import agent modules
 import sys
