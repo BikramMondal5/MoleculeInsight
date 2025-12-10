@@ -3,32 +3,14 @@ import { useRouter } from "next/navigation"
 import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
-
-// Simple Particles component
-function Particles({ className, quantity = 150, color = "#000000" }: { className?: string, quantity?: number, color?: string }) {
-  return (
-    <div className={className}>
-      <div className="absolute inset-0" style={{
-        background: `radial-gradient(circle, ${color}08 1px, transparent 1px)`,
-        backgroundSize: '50px 50px',
-        animation: 'particles 20s linear infinite'
-      }} />
-      <style jsx>{`
-        @keyframes particles {
-          0% { transform: translate(0, 0); }
-          100% { transform: translate(50px, 50px); }
-        }
-      `}</style>
-    </div>
-  )
-}
+import { Particles } from "@/components/ui/particles"
 
 export default function Hero() {
-  const { theme } = useTheme()
-  const router = useRouter()
-  const [color, setColor] = useState("#000000")
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [isCheckingAuth, setIsCheckingAuth] = useState(true)
+  const router = useRouter()
+  const { theme } = useTheme()
+  const [color, setColor] = useState("#000000")
 
   useEffect(() => {
     setColor(theme === "dark" ? "#ffffff" : "#000000")
@@ -76,7 +58,10 @@ export default function Hero() {
       <Particles
         className="absolute inset-0 z-0"
         quantity={150}
+        size={1.2}
+        ease={80}
         color={color}
+        refresh
       />
       <div className="relative z-10 max-w-4xl mx-auto text-center">
         <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-border bg-card/80 backdrop-blur-sm shadow-sm">

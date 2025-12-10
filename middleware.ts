@@ -6,7 +6,7 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   
   // Protected routes (removed '/' from here)
-  const protectedRoutes = ['/analysis', '/app', '/archive', '/about'];
+  const protectedRoutes = ['/analysis', '/app', '/archive', '/about', '/settings'];
   const authRoutes = ['/login', '/sign-up'];
   
   const isProtectedRoute = protectedRoutes.some(route => 
@@ -31,6 +31,7 @@ export const config = {
   matcher: [
     '/',
     '/analysis/:path*',
+    '/settings/:path*',
     '/app/:path*',
     '/archive/:path*',
     '/about/:path*',

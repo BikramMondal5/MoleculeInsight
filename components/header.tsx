@@ -2,9 +2,9 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { useEffect, useState } from "react"
-import { usePathname } from "next/navigation"
-import { LogOut, User } from "lucide-react"
+import { useEffect, useState, useRef } from "react"
+import { usePathname, useRouter } from "next/navigation"
+import { LogOut, User, Settings, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 // Simple ThemeToggle component
@@ -37,24 +37,78 @@ function ThemeToggle({ className }: { className?: string }) {
 
 export default function Header() {
   const pathname = usePathname()
+  const router = useRouter()
+  const dropdownRef = useRef<HTMLDivElement>(null)
+  
   const [user, setUser] = useState<{ name: string; email: string; avatar?: string } | null>(null)
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false)
+  const [showDropdown, setShowDropdown] = useState(false)
   const [isLoggingOut, setIsLoggingOut] = useState(false)
 
   // Check if we're on auth pages
   const isAuthPage = pathname === '/login' || pathname === '/sign-up'
 
   useEffect(() => {
-    // Check if user is logged in
+    const handleUserUpdate = (event: any) => {
+    // Force immediate update with event data
+    const { name, avatar } = event.detail;
+    setUser((prev: any) => ({ 
+      ...prev, 
+      name, 
+      avatar: avatar || null  
+    }));
+    
+    // Then re-fetch to confirm
     fetch('/api/auth/session')
       .then(res => res.json())
       .then(data => {
         if (data.authenticated) {
+          setUser(data.user);
+        }
+      });
+  };
+
+    window.addEventListener('userUpdated', handleUserUpdate);
+    return () => window.removeEventListener('userUpdated', handleUserUpdate);
+  }, []);
+
+  useEffect(() => {
+    // Check if user is logged in
+    const fetchUser = async () => {
+      try {
+        const response = await fetch('/api/auth/session')
+        const data = await response.json()
+        if (data.authenticated) {
           setUser(data.user)
         }
-      })
-      .catch(err => console.error('Failed to fetch user:', err))
+      } catch (err) {
+        console.error('Failed to fetch user:', err)
+      }
+    }
+    
+    fetchUser()
+    
+    // Refresh user data every 30 seconds to catch updates
+    const interval = setInterval(fetchUser, 30000)
+    return () => clearInterval(interval)
   }, [])
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setShowDropdown(false)
+      }
+    }
+
+    if (showDropdown) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [showDropdown])
 
   const handleLogout = async () => {
     setIsLoggingOut(true)
@@ -97,7 +151,6 @@ export default function Header() {
 
             {user && !isAuthPage && (
               <div className="hidden md:flex items-center gap-2 text-sm text-muted-foreground">
-                <User className="w-4 h-4" />
                 <span>Welcome, <span className="font-medium text-foreground">{user.name}</span></span>
               </div>
             )}
@@ -138,15 +191,73 @@ export default function Header() {
                     </Link>
                   </div>
                 ) : (
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => setShowLogoutConfirm(true)}
-                    className="gap-2 text-destructive border-destructive/30 hover:bg-destructive/10"
-                  >
-                    <LogOut className="w-4 h-4" />
-                    <span className="hidden sm:inline">Logout</span>
-                  </Button>
+                  <div className="relative" ref={dropdownRef}>
+                    <button
+                      onClick={() => setShowDropdown(!showDropdown)}
+                      className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+                    >
+                      {user.avatar ? (
+                        <img
+                          src={user.avatar}
+                          alt={user.name}
+                          className="w-9 h-9 rounded-full object-cover border-2 border-border"
+                        />
+                      ) : (
+                        <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center border-2 border-border">
+                          <User className="w-5 h-5 text-primary" />
+                        </div>
+                      )}
+                      <ChevronDown className={`w-4 h-4 text-muted-foreground transition-transform ${showDropdown ? 'rotate-180' : ''}`} />
+                    </button>
+
+                    {/* Dropdown Menu */}
+                    {showDropdown && (
+                      <div className="absolute right-0 mt-2 w-64 bg-card border border-border rounded-lg shadow-xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+                        <div className="p-4 border-b border-border bg-muted/30">
+                          <div className="flex items-center gap-3">
+                            {user.avatar ? (
+                              <img
+                                src={user.avatar}
+                                alt={user.name}
+                                className="w-12 h-12 rounded-full object-cover border-2 border-border"
+                              />
+                            ) : (
+                              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center border-2 border-border">
+                                <User className="w-6 h-6 text-primary" />
+                              </div>
+                            )}
+                            <div className="flex-1 min-w-0">
+                              <p className="font-medium text-foreground truncate">{user.name}</p>
+                              <p className="text-xs text-muted-foreground truncate">{user.email}</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="p-2">
+                          <button
+                            onClick={() => {
+                              setShowDropdown(false)
+                              router.push('/settings')
+                            }}
+                            className="w-full flex items-center gap-3 px-3 py-2 text-sm text-foreground hover:bg-accent rounded-md transition-colors"
+                          >
+                            <Settings className="w-4 h-4" />
+                            Settings
+                          </button>
+                          <button
+                            onClick={() => {
+                              setShowDropdown(false)
+                              setShowLogoutConfirm(true)
+                            }}
+                            className="w-full flex items-center gap-3 px-3 py-2 text-sm text-destructive hover:bg-destructive/10 rounded-md transition-colors"
+                          >
+                            <LogOut className="w-4 h-4" />
+                            Logout
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 )}
               </>
             )}
