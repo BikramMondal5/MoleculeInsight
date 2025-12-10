@@ -9,7 +9,9 @@ import Link from "next/link"
 import Image from "next/image"
 import Header from "@/components/header"
 
-export default function LoginPage() {
+import { Suspense } from "react"
+
+function LoginForm() {
     const searchParams = useSearchParams()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -106,104 +108,112 @@ export default function LoginPage() {
     }
 
     return (
-        <>
-            <Header />
-            <div className="flex min-h-screen pt-16 bg-background">
-                {/* Left side - Visuals */}
-                <div className="relative hidden lg:flex w-1/2 overflow-hidden border-r border-border">
-                    <Image
-                        src="/login-page-banner.jpeg"
-                        alt="Login banner"
-                        fill
-                        className="object-cover"
-                        priority
-                    />
-                </div>
+        <div className="flex min-h-screen pt-16 bg-background">
+            {/* Left side - Visuals */}
+            <div className="relative hidden lg:flex w-1/2 overflow-hidden border-r border-border">
+                <Image
+                    src="/login-page-banner.jpeg"
+                    alt="Login banner"
+                    fill
+                    className="object-cover"
+                    priority
+                />
+            </div>
 
-                {/* Right side - Login form */}
-                <div className="w-full lg:w-1/2 flex items-center justify-center p-8 md:p-12 bg-background">
-                    <div className="w-full max-w-md space-y-8">
-                        <div className="text-center lg:text-left">
-                            <h2 className="text-3xl font-bold text-foreground tracking-tight">Sign In</h2>
-                            <p className="mt-2 text-muted-foreground">Welcome back to MoleculeInsight. Access your dashboard.</p>
+            {/* Right side - Login form */}
+            <div className="w-full lg:w-1/2 flex items-center justify-center p-8 md:p-12 bg-background">
+                <div className="w-full max-w-md space-y-8">
+                    <div className="text-center lg:text-left">
+                        <h2 className="text-3xl font-bold text-foreground tracking-tight">Sign In</h2>
+                        <p className="mt-2 text-muted-foreground">Welcome back to MoleculeInsight. Access your dashboard.</p>
+                    </div>
+
+                    {error && (
+                        <div className="bg-destructive/10 border border-destructive/20 text-destructive px-4 py-3 rounded-lg text-sm font-medium">
+                            {error}
+                        </div>
+                    )}
+
+                    <form onSubmit={handleSignIn} className="space-y-5">
+                        <div className="space-y-2">
+                            <label htmlFor="email" className="text-sm font-medium text-foreground">
+                                Email
+                            </label>
+                            <Input
+                                id="email"
+                                type="email"
+                                placeholder="name@company.com"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                                className="h-11 bg-muted/50"
+                            />
                         </div>
 
-                        {error && (
-                            <div className="bg-destructive/10 border border-destructive/20 text-destructive px-4 py-3 rounded-lg text-sm font-medium">
-                                {error}
-                            </div>
-                        )}
-
-                        <form onSubmit={handleSignIn} className="space-y-5">
-                            <div className="space-y-2">
-                                <label htmlFor="email" className="text-sm font-medium text-foreground">
-                                    Email
+                        <div className="space-y-2">
+                            <div className="flex items-center justify-between">
+                                <label htmlFor="password" className="text-sm font-medium text-foreground">
+                                    Password
                                 </label>
-                                <Input
-                                    id="email"
-                                    type="email"
-                                    placeholder="name@company.com"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    required
-                                    className="h-11 bg-muted/50"
-                                />
                             </div>
-
-                            <div className="space-y-2">
-                                <div className="flex items-center justify-between">
-                                    <label htmlFor="password" className="text-sm font-medium text-foreground">
-                                        Password
-                                    </label>
-                                </div>
-                                <Input
-                                    id="password"
-                                    type="password"
-                                    placeholder="••••••••"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    required
-                                    className="h-11 bg-muted/50"
-                                />
-                            </div>
-
-                            <Button
-                                type="submit"
-                                disabled={isLoading}
-                                className="w-full h-11 text-base font-semibold shadow-md"
-                            >
-                                {isLoading ? "Signing in..." : "Sign In"}
-                            </Button>
-                        </form>
-
-                        <div className="relative">
-                            <div className="absolute inset-0 flex items-center">
-                                <div className="w-full border-t border-border"></div>
-                            </div>
-                            <div className="relative flex justify-center text-xs uppercase">
-                                <span className="px-2 bg-background text-muted-foreground font-medium">Or continue with</span>
-                            </div>
+                            <Input
+                                id="password"
+                                type="password"
+                                placeholder="••••••••"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                                className="h-11 bg-muted/50"
+                            />
                         </div>
 
                         <Button
-                            type="button"
-                            variant="outline"
-                            className="w-full h-11 gap-2 bg-muted/30 hover:bg-muted hover:text-foreground border-border/50"
-                            onClick={handleGoogleLogin}
+                            type="submit"
+                            disabled={isLoading}
+                            className="w-full h-11 text-base font-semibold shadow-md"
                         >
-                            <Image src="/google-logo.png" alt="Google" width={20} height={20} />
-                            Google
+                            {isLoading ? "Signing in..." : "Sign In"}
                         </Button>
+                    </form>
 
-                        <p className="text-center text-sm text-muted-foreground">
-                            Don't have an account?{" "}
-                            <Link href="/sign-up" className="text-primary hover:underline font-medium">
-                                Sign Up
-                            </Link>
-                        </p>
+                    <div className="relative">
+                        <div className="absolute inset-0 flex items-center">
+                            <div className="w-full border-t border-border"></div>
+                        </div>
+                        <div className="relative flex justify-center text-xs uppercase">
+                            <span className="px-2 bg-background text-muted-foreground font-medium">Or continue with</span>
+                        </div>
                     </div>
+
+                    <Button
+                        type="button"
+                        variant="outline"
+                        className="w-full h-11 gap-2 bg-muted/30 hover:bg-muted hover:text-foreground border-border/50"
+                        onClick={handleGoogleLogin}
+                    >
+                        <Image src="/google-logo.png" alt="Google" width={20} height={20} />
+                        Google
+                    </Button>
+
+                    <p className="text-center text-sm text-muted-foreground">
+                        Don't have an account?{" "}
+                        <Link href="/sign-up" className="text-primary hover:underline font-medium">
+                            Sign Up
+                        </Link>
+                    </p>
                 </div>
             </div>
+        </div>
+    )
+}
+
+export default function LoginPage() {
+    return (
+        <>
+            <Header />
+            <Suspense fallback={<div>Loading...</div>}>
+                <LoginForm />
+            </Suspense>
         </>
     )
 }
