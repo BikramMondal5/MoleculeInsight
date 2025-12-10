@@ -79,7 +79,7 @@ export default function AboutPage() {
         </section>
 
         {/* Agent Details */}
-        <section className="px-4 md:px-6 mb-20 bg-card/30 py-20">
+        <section className="px-4 md:px-6 mb-8 bg-card/30 py-20">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl font-bold text-foreground mb-12 text-center  bg-gradient-to-r from-primary to-teal-500 text-transparent bg-clip-text">Meet Your AI Agents</h2>
 
@@ -222,10 +222,10 @@ export default function AboutPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="px-4 md:px-6">
+        <section className="px-4 md:px-6 pt-0 pb-16">
           <div className="max-w-6xl mx-auto text-center">
             <p className="text-muted-foreground mb-4">
-              Read the full documentation <Link href="/docs" className="text-primary hover:underline font-medium">here</Link>
+              Read the full documentation <Link href="/docs" className="text-primary hover:underline font-medium">here →</Link>
             </p>
             <h2 className="text-3xl font-bold text-foreground mb-6 bg-gradient-to-r from-[#6A85FF] to-[#3CF57A] bg-clip-text text-transparent">Ready to start your analysis?</h2>
             <Button size="lg" className="gap-2" asChild>
