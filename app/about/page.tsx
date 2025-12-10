@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { Beaker, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import AgentArchitecture from "@/components/about/agent-architecture"
+import Image from "next/image"
 import FlowDiagram from "@/components/about/flow-diagram"
 import TechnologyStack from "@/components/about/technology-stack"
 
@@ -53,7 +53,20 @@ export default function AboutPage() {
                 Our 8-agent system works together to provide comprehensive insights
               </p>
             </div>
-            <AgentArchitecture />
+            <div className="w-full relative aspect-[16/9] rounded-xl overflow-hidden bg-muted/50 border border-border">
+              <Image
+                src="/System-Architecture-light.png"
+                alt="System Architecture"
+                fill
+                className="object-contain dark:hidden p-4"
+              />
+              <Image
+                src="/System-Architecture-dark.png"
+                alt="System Architecture"
+                fill
+                className="object-contain hidden dark:block p-4"
+              />
+            </div>
           </div>
         </section>
 
