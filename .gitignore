@@ -22,7 +22,7 @@ build/
 agents/.env
 
 # Next.js
-.next/
+.next/ 
 out/
 .vercel
 
