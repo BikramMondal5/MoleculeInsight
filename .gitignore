@@ -50,3 +50,4 @@ agents/cache/
 
 # Don't ignore documentation
 !*.md
+public/uploads/

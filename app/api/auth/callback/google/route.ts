@@ -101,11 +101,13 @@ export async function GET(request: NextRequest) {
     if (!user.googleId) {
         user.googleId = googleUser.id;
     }
-      if (!user.avatar) {
+
+    if (user.avatar === undefined) {
         user.avatar = googleUser.picture;
-      }
-      user.lastLogin = new Date();
-      await user.save();
+    }
+    
+    user.lastLogin = new Date();
+    await user.save();
     }
    
     // Create session
