@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Card, CardContent } from "@/components/ui/card"
-import { Star } from "lucide-react"
+import { Star, User } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useRouter } from "next/navigation"
 import { FeedbackModal } from "@/components/ui/feedback-modal"
@@ -18,7 +18,7 @@ const defaultTestimonials = [
     {
         name: "James Wilson",
         country: "UK",
-        type: "Biotech VP",
+        type: "Student",
         avatar: "https://i.pravatar.cc/150?u=james",
         feedback: "The comprehensive PDF reports generated are board-ready. It's like having a dedicated analyst team working 24/7 on molecule repurposing opportunities.",
         rating: 5,
@@ -26,7 +26,7 @@ const defaultTestimonials = [
     {
         name: "Elena Rodriguez",
         country: "Spain",
-        type: "Pharmacologist",
+        type: "Researcher",
         avatar: "https://i.pravatar.cc/150?u=elena",
         feedback: "Deep data retrieval from multiple sources is seamless. I can trust the data quality because it links directly to the source documents.",
         rating: 5,
@@ -42,7 +42,7 @@ const defaultTestimonials = [
     {
         name: "Dr. Emily Clarke",
         country: "Canada",
-        type: "Clinical Lead",
+        type: "Researcher",
         avatar: "https://i.pravatar.cc/150?u=emily",
         feedback: "The ease of use is remarkable. Just entering a molecule name gives me a holistic view from molecular properties to current market status.",
         rating: 5,
@@ -50,7 +50,7 @@ const defaultTestimonials = [
     {
         name: "Michael Chang",
         country: "Singapore",
-        type: "Founder",
+        type: "Researcher",
         avatar: "https://i.pravatar.cc/150?u=michael",
         feedback: "We pivoted our drug candidate based on insights from MoleculeInsight. It identified a saturation in our original target indication that saved us millions.",
         rating: 5,
@@ -142,24 +142,55 @@ export default function TestimonialCarousel() {
             })
     }, [])
 
-    useEffect(() => {
-        // Fetch user-submitted feedbacks
-        fetch('/api/get-feedbacks')
-            .then(res => res.json())
-            .then(data => {
+    const fetchFeedbacks = async () => {
+        try {
+            // Get current user session for latest avatar
+            const sessionRes = await fetch('/api/auth/session')
+            const sessionData = await sessionRes.json()
+            const currentUserEmail = sessionData.authenticated ? sessionData.user.email : null
+            const currentUserAvatar = sessionData.authenticated ? sessionData.user.avatar : null
+            const currentUserName = sessionData.authenticated ? sessionData.user.name : null
+
+            const res = await fetch('/api/get-feedbacks')
+            const data = await res.json()
+            
             if (data.feedbacks) {
-                const formatted = data.feedbacks.map((f: any) => ({
-                name: f.userName,
+            const formatted = data.feedbacks.map((f: any) => ({
+                name: f.userEmail === currentUserEmail ? (currentUserName || f.userName) : f.userName,
                 country: f.country || 'Unknown',
                 type: f.userType,
-                avatar: f.userAvatar || `https://i.pravatar.cc/150?u=${f.userEmail}`,
+                avatar: f.userEmail === currentUserEmail ? currentUserAvatar : (f.userAvatar || null),
                 feedback: f.feedback,
                 rating: f.rating,
-                }))
-                setUserFeedbacks(formatted)
+            }))
+            setUserFeedbacks(formatted)
             }
-            })
-            .catch(err => console.error('Failed to fetch feedbacks:', err))
+        } catch (err) {
+            console.error('Failed to fetch feedbacks:', err)
+        }
+        }
+
+        useEffect(() => {
+        fetchFeedbacks()
+        
+        // Listen for feedback updates
+        const handleFeedbackUpdate = () => {
+            fetchFeedbacks()
+        }
+        
+        window.addEventListener('feedbackSubmitted', handleFeedbackUpdate)
+        return () => window.removeEventListener('feedbackSubmitted', handleFeedbackUpdate)
+        }, [])
+
+    useEffect(() => {
+        const handleAvatarUpdate = (event: any) => {
+            const { avatar } = event.detail
+            // Refresh feedbacks to update avatar
+            fetchFeedbacks()
+        }
+        
+        window.addEventListener('userUpdated', handleAvatarUpdate)
+        return () => window.removeEventListener('userUpdated', handleAvatarUpdate)
         }, [])
 
     const handleStartAnalysis = () => {
@@ -203,10 +234,9 @@ export default function TestimonialCarousel() {
                 <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
                 <div
-                    className="flex animate-marquee hover:[animation-play-state:paused]"
+                    className="flex animate-marquee"
                     style={{
                         width: 'max-content',
-                        animation: 'marquee 30s linear infinite',
                     }}
                 >
                     {allTestimonials.map((testimonial, index) => (
@@ -258,6 +288,9 @@ export default function TestimonialCarousel() {
                 .animate-marquee {
                     animation: marquee 30s linear infinite;
                 }
+                .animate-marquee:hover {
+                    animation-play-state: paused;
+                }
             `}</style>
         </section>
     )
@@ -270,18 +303,24 @@ function TestimonialCard({ testimonial }: { testimonial: any }) {
         >
             <CardContent className="p-6 flex flex-col h-full">
                 <div className="flex items-center space-x-3 mb-4">
-                    <img
+                    {testimonial.avatar ? (
+                        <img
                         src={testimonial.avatar}
                         alt={testimonial.name}
                         className="w-12 h-12 rounded-full border border-border object-cover"
-                    />
+                        />
+                    ) : (
+                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center border border-border">
+                        <User className="w-6 h-6 text-primary" />
+                        </div>
+                    )}
                     <div>
                         <h4 className="font-semibold text-foreground text-base">
-                            {testimonial.name}
+                        {testimonial.name}
                         </h4>
                         <p className="text-xs text-muted-foreground">{testimonial.country}</p>
                     </div>
-                </div>
+                    </div>
                 <p className="text-muted-foreground text-sm leading-relaxed italic flex-grow mb-4">
                     "{testimonial.feedback}"
                 </p>

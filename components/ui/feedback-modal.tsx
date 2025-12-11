@@ -4,6 +4,7 @@ import { useState } from "react"
 import { useEffect } from "react"
 import { useToast } from "@/components/ui/use-toast"
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 import {
   Dialog,
   DialogContent,
@@ -12,7 +13,8 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog"
 import { Textarea } from "@/components/ui/textarea"
-import { Star } from "lucide-react"
+import { Star, User } from "lucide-react"
+import { set } from "mongoose"
 
 interface FeedbackModalProps {
   isOpen: boolean
@@ -26,6 +28,9 @@ export function FeedbackModal({ isOpen, onOpenChange, onAuthRequired }: Feedback
   const [feedbackText, setFeedbackText] = useState('')
   const [rating, setRating] = useState(0)
   const [hoverRating, setHoverRating] = useState(0)
+  const [country, setCountry] = useState('')
+  const [error, setError] = useState('')
+  const [userType, setUserType] = useState<'Student' | 'Researcher'>('Researcher')
 
   useEffect(() => {
     fetch('/api/auth/session')
@@ -39,6 +44,7 @@ export function FeedbackModal({ isOpen, onOpenChange, onAuthRequired }: Feedback
 
   const handleFeedbackSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setError('') 
 
     if (!session?.user) {
       onAuthRequired()
@@ -46,11 +52,17 @@ export function FeedbackModal({ isOpen, onOpenChange, onAuthRequired }: Feedback
     }
 
     if (rating === 0) {
-      toast({
-        title: "Rating Required",
-        description: "Please select a rating before submitting.",
-        variant: "destructive",
-      })
+      setError('Please select a rating before submitting.')
+      return
+    }
+
+    if (!country.trim()) {
+      setError('Please enter your country before submitting.')
+      return
+    }
+
+    if (!feedbackText.trim()) {
+      setError('Please write your feedback before submitting.')
       return
     }
 
@@ -63,6 +75,8 @@ export function FeedbackModal({ isOpen, onOpenChange, onAuthRequired }: Feedback
         body: JSON.stringify({
           feedback: feedbackText,
           rating: rating,
+          country: country,
+          userType: userType,
         }),
       })
 
@@ -74,16 +88,15 @@ export function FeedbackModal({ isOpen, onOpenChange, onAuthRequired }: Feedback
         onOpenChange(false)
         setFeedbackText('')
         setRating(0)
-        window.location.reload()
+        setCountry('')
+        setUserType('Researcher')
+        setError('')
+        window.dispatchEvent(new Event('feedbackSubmitted'))
       } else {
-        throw new Error('Failed to submit feedback')
+        setError('Failed to submit feedback. Please try again.')
       }
     } catch (error) {
-      toast({
-        title: "Error",
-        description: "Failed to submit feedback. Please try again.",
-        variant: "destructive",
-      })
+      setError('Failed to submit feedback. Please try again.')
     }
   }
 
@@ -91,6 +104,7 @@ export function FeedbackModal({ isOpen, onOpenChange, onAuthRequired }: Feedback
     onOpenChange(false)
     setRating(0)
     setHoverRating(0)
+    setError('')
   }
 
   return (
@@ -105,15 +119,24 @@ export function FeedbackModal({ isOpen, onOpenChange, onAuthRequired }: Feedback
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleFeedbackSubmit} className="space-y-4 mt-4">
+          {error && (
+            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
+              {error}
+            </div>
+          )}
           {session?.user && (
             <div className="bg-muted/50 p-4 rounded-lg space-y-2">
               <div className="flex items-center gap-3">
-                {session.user.avatar && (
+                {session.user.avatar ? (
                   <img 
                     src={session.user.avatar} 
                     alt={session.user.name}
-                    className="w-12 h-12 rounded-full border-2 border-purple-500"
+                    className="w-12 h-12 rounded-full border-2 border-purple-500 object-cover"
                   />
+                ) : (
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center border-2 border-purple-500">
+                    <User className="w-6 h-6 text-primary" />
+                  </div>
                 )}
                 <div>
                   <p className="font-semibold">{session.user.name}</p>
@@ -122,7 +145,31 @@ export function FeedbackModal({ isOpen, onOpenChange, onAuthRequired }: Feedback
               </div>
             </div>
           )}
-          
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+                <label className="text-sm font-medium mb-2 block">
+                Country
+                </label>
+                <Input
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
+                placeholder="e.g., USA"
+                />
+            </div>
+            <div>
+                <label className="text-sm font-medium mb-2 block">
+                Role
+                </label>
+                <select
+                value={userType}
+                onChange={(e) => setUserType(e.target.value as 'Student' | 'Researcher')}
+                className="w-full h-10 px-3 rounded-md border border-input bg-background"
+                >
+                <option value="Researcher">Researcher</option>
+                <option value="Student">Student</option>
+                </select>
+            </div>
+            </div>
           <div>
             <label className="text-sm font-medium mb-3 block">
               Rate Your Experience
@@ -163,7 +210,6 @@ export function FeedbackModal({ isOpen, onOpenChange, onAuthRequired }: Feedback
               placeholder="Share your experience..."
               value={feedbackText}
               onChange={(e) => setFeedbackText(e.target.value)}
-              required
               rows={6}
               className="resize-none"
             />

@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
     }
 
     const userData = JSON.parse(userSession.value);
-    const { feedback, rating } = await request.json();
+    const { feedback, rating, country, userType } = await request.json();
 
     await dbConnect();
 
@@ -24,14 +24,15 @@ export async function POST(request: NextRequest) {
     }
 
     const newFeedback = await Feedback.create({
-      userId: user._id,
-      userName: user.name,
-      userEmail: user.email,
-      userAvatar: user.avatar,
-      userType: 'User',
-      feedback,
-      rating,
-      isApproved: true,
+    userId: user._id,
+    userName: user.name,
+    userEmail: user.email,
+    userAvatar: user.avatar,
+    userType: userType || 'User',
+    country: country || 'Unknown',
+    feedback,
+    rating,
+    isApproved: true,
     });
 
     return NextResponse.json({ success: true, feedback: newFeedback }, { status: 201 });
