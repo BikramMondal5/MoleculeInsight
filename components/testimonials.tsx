@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useRouter } from "next/navigation"
+import { FeedbackModal } from "@/components/ui/feedback-modal"
 
 // Default testimonial data
 const defaultTestimonials = [
@@ -121,6 +122,9 @@ export default function TestimonialCarousel() {
     const [isAuthenticated, setIsAuthenticated] = useState(false)
     const [isCheckingAuth, setIsCheckingAuth] = useState(true)
     const router = useRouter()
+    const [userFeedbacks, setUserFeedbacks] = useState<any[]>([])
+    const [showFeedbackModal, setShowFeedbackModal] = useState(false)
+    const allTestimonials = [...testimonials, ...userFeedbacks]
 
     useEffect(() => {
         // Check if user is authenticated
@@ -138,6 +142,26 @@ export default function TestimonialCarousel() {
             })
     }, [])
 
+    useEffect(() => {
+        // Fetch user-submitted feedbacks
+        fetch('/api/get-feedbacks')
+            .then(res => res.json())
+            .then(data => {
+            if (data.feedbacks) {
+                const formatted = data.feedbacks.map((f: any) => ({
+                name: f.userName,
+                country: f.country || 'Unknown',
+                type: f.userType,
+                avatar: f.userAvatar || `https://i.pravatar.cc/150?u=${f.userEmail}`,
+                feedback: f.feedback,
+                rating: f.rating,
+                }))
+                setUserFeedbacks(formatted)
+            }
+            })
+            .catch(err => console.error('Failed to fetch feedbacks:', err))
+        }, [])
+
     const handleStartAnalysis = () => {
         if (!isAuthenticated) {
             router.push('/login')
@@ -148,14 +172,11 @@ export default function TestimonialCarousel() {
 
     const handleShareFeedback = () => {
         if (!isAuthenticated) {
-            // Redirect to login if not authenticated
             router.push('/login')
         } else {
-            // Handle feedback submission for authenticated users
-            // You can open a modal or redirect to feedback page
-            console.log('Open feedback form')
+            setShowFeedbackModal(true)
         }
-    }
+        }
 
     return (
         <section id="testimonials" className="pt-20 pb-4 bg-background overflow-hidden relative">
@@ -188,8 +209,7 @@ export default function TestimonialCarousel() {
                         animation: 'marquee 30s linear infinite',
                     }}
                 >
-                    {/* First set of cards */}
-                    {testimonials.map((testimonial, index) => (
+                    {allTestimonials.map((testimonial, index) => (
                         <div
                             key={`first-${index}`}
                             className="px-4 flex-shrink-0"
@@ -197,10 +217,9 @@ export default function TestimonialCarousel() {
                         >
                             <TestimonialCard testimonial={testimonial} />
                         </div>
-                    ))}
+                        ))}
 
-                    {/* Second set of cards for seamless loop */}
-                    {testimonials.map((testimonial, index) => (
+                        {allTestimonials.map((testimonial, index) => (
                         <div
                             key={`second-${index}`}
                             className="px-4 flex-shrink-0"
@@ -208,7 +227,7 @@ export default function TestimonialCarousel() {
                         >
                             <TestimonialCard testimonial={testimonial} />
                         </div>
-                    ))}
+                        ))}
                 </div>
 
                 <div className="flex justify-center mt-8 pb-1">
@@ -221,6 +240,11 @@ export default function TestimonialCarousel() {
                     </Button>
                 </div>
             </div>
+            <FeedbackModal 
+            isOpen={showFeedbackModal}
+            onOpenChange={setShowFeedbackModal}
+            onAuthRequired={() => router.push('/login')}
+            />
 
             <style jsx global>{`
                 @keyframes marquee {

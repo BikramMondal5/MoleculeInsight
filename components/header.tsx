@@ -6,34 +6,7 @@ import { useEffect, useState, useRef } from "react"
 import { usePathname, useRouter } from "next/navigation"
 import { LogOut, User, Settings, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
-
-// Simple ThemeToggle component
-function ThemeToggle({ className }: { className?: string }) {
-  const [theme, setTheme] = useState("light")
-  
-  useEffect(() => {
-    const root = document.documentElement
-    const currentTheme = root.classList.contains("dark") ? "dark" : "light"
-    setTheme(currentTheme)
-  }, [])
-  
-  const toggleTheme = () => {
-    const root = document.documentElement
-    const newTheme = theme === "light" ? "dark" : "light"
-    root.classList.toggle("dark")
-    setTheme(newTheme)
-  }
-  
-  return (
-    <button
-      onClick={toggleTheme}
-      className={`p-2 rounded-lg hover:bg-accent ${className}`}
-      aria-label="Toggle theme"
-    >
-      {theme === "light" ? "🌙" : "☀️"}
-    </button>
-  )
-}
+import { ThemeToggle } from "./ui/theme-toggle"
 
 export default function Header() {
   const pathname = usePathname()
