@@ -7,7 +7,7 @@ venv/
 __pycache__/
 *.pyc
 *.pyo
-*.pyd
+*.pyd 
 .Python
 *.so
 *.egg

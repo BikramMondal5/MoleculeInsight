@@ -162,14 +162,20 @@ export default function Header() {
               <nav className="hidden md:flex items-center gap-8">
                 {user && (
                   <>
-                    <Link href="#how-it-works" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                      How it works
-                    </Link>
-                    <Link href="#testimonials" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                      Testimonials
+                    <Link href="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      Home
                     </Link>
                     <Link href="/analysis" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                       Analyse
+                    </Link>
+                    <Link href="/archive" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      Archive
+                    </Link>
+                    <Link href="/about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      About
+                    </Link>
+                    <Link href="/docs" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      Docs
                     </Link>
                   </>
                 )}

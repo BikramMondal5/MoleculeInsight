@@ -83,13 +83,8 @@ export default function Hero() {
             {isCheckingAuth ? 'Loading...' : 'Start Analysis'}
             <ArrowRight className="w-4 h-4" />
           </Button>
-          <Button 
-            variant="outline" 
-            size="lg" 
-            onClick={handleViewDemo}
-            className="px-8 bg-background/50 backdrop-blur-sm border-border hover:bg-accent"
-          >
-            View Demo
+          <Button variant="outline" size="lg" className="px-8 bg-background/50 backdrop-blur-sm border-border hover:bg-accent">
+            View Docs
           </Button>
         </div>
       </div>

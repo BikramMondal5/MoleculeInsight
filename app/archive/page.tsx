@@ -2,8 +2,9 @@
 
 import { useState, useMemo } from "react"
 import Link from "next/link"
-import { Beaker, Download, Eye, Search } from "lucide-react"
+import { Download, Eye, Search } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Header from "@/components/header"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
@@ -103,25 +104,7 @@ export default function ArchivePage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="fixed top-0 w-full bg-background/95 backdrop-blur border-b border-border z-50">
-        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="p-1.5 bg-primary rounded-lg group-hover:bg-primary/90 transition-colors">
-              <Beaker className="w-5 h-5 text-primary-foreground" />
-            </div>
-            <span className="text-lg font-semibold text-foreground">Molecule Scout</span>
-          </Link>
-
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="sm" asChild>
-              <Link href="/analysis">New Analysis</Link>
-            </Button>
-            <Button variant="outline" size="sm">
-              Settings
-            </Button>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Main Content */}
       <div className="pt-20 px-4 md:px-6">

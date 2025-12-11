@@ -1,42 +1,23 @@
 "use client"
 
 import Link from "next/link"
-import { Beaker, ArrowRight } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import AgentArchitecture from "@/components/about/agent-architecture"
-import FlowDiagram from "@/components/about/flow-diagram"
-import TechnologyStack from "@/components/about/technology-stack"
+import Image from "next/image"
+import Header from "@/components/header"
 
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="fixed top-0 w-full bg-background/95 backdrop-blur border-b border-border z-50">
-        <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="p-1.5 bg-primary rounded-lg group-hover:bg-primary/90 transition-colors">
-              <Beaker className="w-5 h-5 text-primary-foreground" />
-            </div>
-            <span className="text-lg font-semibold text-foreground">MoleculeInsight</span>
-          </Link>
-
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="sm" asChild>
-              <Link href="/">Home</Link>
-            </Button>
-            <Button size="sm" asChild>
-              <Link href="/analysis">Start Analysis</Link>
-            </Button>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Main Content */}
       <div className="pt-24 pb-20">
         {/* Hero Section */}
         <section className="px-4 md:px-6 mb-20">
           <div className="max-w-6xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">How Agentic AI Powers Your Research</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-foreground bg-gradient-to-r from-[#6A85FF] to-[#3CF57A] bg-clip-text text-transparent">How Agentic AI Powers Your Research</h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
               MoleculeInsight uses an orchestrated network of AI agents to rapidly analyze drug-repurposing
               opportunities across multiple data sources in minutes, not weeks.
@@ -44,41 +25,63 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Agent Architecture Diagram */}
+        {/* Architecture & Flow Grid */}
         <section className="px-4 md:px-6 mb-20">
-          <div className="max-w-6xl mx-auto">
-            <div className="mb-8">
-              <h2 className="text-3xl font-bold text-foreground mb-2">System Architecture</h2>
-              <p className="text-muted-foreground">
-                Our 8-agent system works together to provide comprehensive insights
-              </p>
-            </div>
-            <AgentArchitecture />
-          </div>
-        </section>
+          <div className="max-w-7xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* System Architecture */}
+              <div>
+                <div className="mb-6">
+                  <h2 className="text-2xl font-bold text-foreground mb-2 bg-gradient-to-r from-primary to-teal-500 text-transparent bg-clip-text">System Architecture</h2>
+                  <p className="text-muted-foreground text-sm">
+                    Our 8-agent system works together to provide comprehensive insights
+                  </p>
+                </div>
+                <div className="w-full relative aspect-[16/9] rounded-xl overflow-hidden bg-muted/50 border border-border">
+                  <Image
+                    src="/System-Architecture-light.png"
+                    alt="System Architecture"
+                    fill
+                    className="object-contain dark:hidden p-4"
+                  />
+                  <Image
+                    src="/System-Architecture-dark.png"
+                    alt="System Architecture"
+                    fill
+                    className="object-contain hidden dark:block p-4"
+                  />
+                </div>
+              </div>
 
-        {/* Data Flow Diagram */}
-        <section className="px-4 md:px-6 mb-20">
-          <div className="max-w-6xl mx-auto">
-            <div className="mb-8">
-              <h2 className="text-3xl font-bold text-foreground mb-2">Information Flow</h2>
-              <p className="text-muted-foreground">From query to actionable insights in real-time</p>
+              {/* Information Flow */}
+              <div>
+                <div className="mb-6">
+                  <h2 className="text-2xl font-bold text-foreground mb-2 bg-gradient-to-r from-primary to-teal-500 text-transparent bg-clip-text">Information Flow</h2>
+                  <p className="text-muted-foreground text-sm">From query to actionable insights in real-time</p>
+                </div>
+                <div className="w-full relative aspect-[16/9] rounded-xl overflow-hidden bg-muted/50 border border-border">
+                  <Image
+                    src="/info-flow-light.png"
+                    alt="Information Flow"
+                    fill
+                    className="object-contain dark:hidden p-4"
+                  />
+                  <Image
+                    src="/info-flow-dark.png"
+                    alt="Information Flow"
+                    fill
+                    className="object-contain hidden dark:block p-4"
+                  />
+                </div>
+              </div>
             </div>
-            <FlowDiagram />
-          </div>
-        </section>
-
-        {/* Technology Stack */}
-        <section className="px-4 md:px-6 mb-20">
-          <div className="max-w-6xl mx-auto">
-            <TechnologyStack />
           </div>
         </section>
 
         {/* Agent Details */}
-        <section className="px-4 md:px-6 mb-20 bg-card/30 py-20">
+        <section className="px-4 md:px-6 mb-8 bg-card/30 py-20">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-foreground mb-12 text-center">Meet Your AI Agents</h2>
+            <h2 className="text-3xl font-bold text-foreground mb-12 text-center  bg-gradient-to-r from-primary to-teal-500 text-transparent bg-clip-text">Meet Your AI Agents</h2>
 
             <div className="grid md:grid-cols-2 gap-8">
               <div className="bg-card rounded-xl border p-6">
@@ -219,9 +222,12 @@ export default function AboutPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="px-4 md:px-6">
+        <section className="px-4 md:px-6 pt-0 pb-16">
           <div className="max-w-6xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-foreground mb-6">Ready to start your analysis?</h2>
+            <p className="text-muted-foreground mb-4">
+              Read the full documentation <Link href="/docs" className="text-primary hover:underline font-medium">here →</Link>
+            </p>
+            <h2 className="text-3xl font-bold text-foreground mb-6 bg-gradient-to-r from-[#6A85FF] to-[#3CF57A] bg-clip-text text-transparent">Ready to start your analysis?</h2>
             <Button size="lg" className="gap-2" asChild>
               <Link href="/analysis">
                 Start Analysis

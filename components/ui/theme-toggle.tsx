@@ -66,17 +66,17 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
                     )}
                 </div>
                 <div className="flex justify-between items-center w-full px-1">
-                    <Sun
-                        className={cn(
-                            "w-3.5 h-3.5 transition-opacity duration-200",
-                            isDark ? "opacity-30 text-gray-500" : "opacity-0"
-                        )}
-                        strokeWidth={2}
-                    />
                     <Moon
                         className={cn(
                             "w-3.5 h-3.5 transition-opacity duration-200",
                             isDark ? "opacity-0" : "opacity-30 text-gray-600"
+                        )}
+                        strokeWidth={2}
+                    />
+                    <Sun
+                        className={cn(
+                            "w-3.5 h-3.5 transition-opacity duration-200",
+                            isDark ? "opacity-30 text-gray-500" : "opacity-0"
                         )}
                         strokeWidth={2}
                     />
