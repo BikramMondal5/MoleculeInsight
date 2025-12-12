@@ -128,7 +128,7 @@ export default function AnalysisPage() {
       <div className="pt-20 px-4 md:px-6">
         <div className="max-w-7xl mx-auto">
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">New Analysis</h1>
+            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2 bg-gradient-to-r from-primary to-teal-500 text-transparent bg-clip-text">New Analysis</h1>
             <p className="text-muted-foreground">
               Enter a molecule and get market, trials, patents and innovation opportunities in minutes.
             </p>

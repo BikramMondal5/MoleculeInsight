@@ -111,7 +111,7 @@ export default function ArchivePage() {
         <div className="max-w-7xl mx-auto">
           {/* Page Header */}
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">Report Archive</h1>
+            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2 bg-gradient-to-r from-primary to-teal-500 text-transparent bg-clip-text">Report Archive</h1>
             <p className="text-muted-foreground">
               Access all your previous analyses and insights. View dashboards or download PDF reports.
             </p>

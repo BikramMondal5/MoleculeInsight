@@ -1,0 +1,3129 @@
+{
+  "meta": {
+    "disclaimer": "Do not rely on openFDA to make decisions regarding medical care. While we make every effort to ensure that data is accurate, you should assume all results are unvalidated. We may limit or otherwise restrict your access to the API in line with our Terms of Service.",
+    "terms": "https://open.fda.gov/terms/",
+    "license": "https://open.fda.gov/license/",
+    "last_updated": "2025-12-05",
+    "results": {
+      "skip": 0,
+      "limit": 50,
+      "total": 526
+    }
+  },
+  "results": [
+    {
+      "product_ndc": "65427-255",
+      "generic_name": "atorvastatin calcium",
+      "labeler_name": "Pfizer Pharmaceuticals LLC",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "10 mg/1"
+        }
+      ],
+      "finished": false,
+      "packaging": [
+        {
+          "package_ndc": "65427-255-10",
+          "description": "1 BAG in 1 DRUM (65427-255-10)  / 160 TABLET, FILM COATED in 1 BAG",
+          "marketing_start_date": "21-NOV-19"
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {},
+      "marketing_category": "EXPORT ONLY",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "a21f11bb-8b3c-4ae2-8eb4-426bb0a3a64c",
+      "product_type": "DRUG FOR FURTHER PROCESSING",
+      "marketing_start_date": "20191121",
+      "product_id": "65427-255_a21f11bb-8b3c-4ae2-8eb4-426bb0a3a64c",
+      "brand_name_base": null
+    },
+    {
+      "product_ndc": "33342-315",
+      "generic_name": "Atorvastatin calcium",
+      "labeler_name": "Macleods Pharmaceuticals Limited",
+      "brand_name": "Atorvastatin calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "10 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "33342-315-10",
+          "description": "90 TABLET in 1 BOTTLE (33342-315-10)",
+          "marketing_start_date": "20240603",
+          "sample": false
+        },
+        {
+          "package_ndc": "33342-315-12",
+          "description": "10 BLISTER PACK in 1 CARTON (33342-315-12)  / 10 TABLET in 1 BLISTER PACK",
+          "marketing_start_date": "20240603",
+          "sample": false
+        },
+        {
+          "package_ndc": "33342-315-15",
+          "description": "500 TABLET in 1 BOTTLE (33342-315-15)",
+          "marketing_start_date": "20240603",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Macleods Pharmaceuticals Limited"
+        ],
+        "rxcui": [
+          "259255",
+          "617310",
+          "617311",
+          "617312"
+        ],
+        "spl_set_id": [
+          "7bd0f0ec-f7a3-4403-9a1a-11f18213631f"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0333342316158",
+          "0333342316103",
+          "0333342315106",
+          "0333342317155",
+          "0333342318152",
+          "0333342315151",
+          "0333342318107",
+          "0333342317100"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET",
+      "spl_id": "7bd0f0ec-f7a3-4403-9a1a-11f18213631f",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20240603",
+      "product_id": "33342-315_7bd0f0ec-f7a3-4403-9a1a-11f18213631f",
+      "application_number": "ANDA208480",
+      "brand_name_base": "Atorvastatin calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "67046-1351",
+      "generic_name": "Atorvastatin Calcium",
+      "labeler_name": "Coupler LLC",
+      "brand_name": "Atorvastatin Calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "80 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "67046-1351-3",
+          "description": "30 TABLET in 1 BLISTER PACK (67046-1351-3)",
+          "marketing_start_date": "20241108",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20251231",
+      "openfda": {
+        "manufacturer_name": [
+          "Coupler LLC"
+        ],
+        "rxcui": [
+          "259255"
+        ],
+        "spl_set_id": [
+          "266d62d0-dd2b-32a4-e063-6394a90a2e5e"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET",
+      "spl_id": "266d7632-7531-335f-e063-6394a90a2896",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20241108",
+      "product_id": "67046-1351_266d7632-7531-335f-e063-6394a90a2896",
+      "application_number": "ANDA214659",
+      "brand_name_base": "Atorvastatin Calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "76420-943",
+      "generic_name": "Atorvastatin Calcium",
+      "labeler_name": "Asclemed USA, Inc.",
+      "brand_name": "Atorvastatin Calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "10 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "76420-943-00",
+          "description": "1000 TABLET, FILM COATED in 1 BOTTLE (76420-943-00)",
+          "marketing_start_date": "20250408",
+          "sample": false
+        },
+        {
+          "package_ndc": "76420-943-05",
+          "description": "500 TABLET, FILM COATED in 1 BOTTLE (76420-943-05)",
+          "marketing_start_date": "20250408",
+          "sample": false
+        },
+        {
+          "package_ndc": "76420-943-12",
+          "description": "120 TABLET, FILM COATED in 1 BOTTLE (76420-943-12)",
+          "marketing_start_date": "20250408",
+          "sample": false
+        },
+        {
+          "package_ndc": "76420-943-20",
+          "description": "20 TABLET, FILM COATED in 1 BOTTLE (76420-943-20)",
+          "marketing_start_date": "20250408",
+          "sample": false
+        },
+        {
+          "package_ndc": "76420-943-30",
+          "description": "30 TABLET, FILM COATED in 1 BOTTLE (76420-943-30)",
+          "marketing_start_date": "20250408",
+          "sample": false
+        },
+        {
+          "package_ndc": "76420-943-38",
+          "description": "10 BLISTER PACK in 1 CARTON (76420-943-38)  / 10 TABLET, FILM COATED in 1 BLISTER PACK",
+          "marketing_start_date": "20250408",
+          "sample": false
+        },
+        {
+          "package_ndc": "76420-943-55",
+          "description": "5000 TABLET, FILM COATED in 1 BOTTLE (76420-943-55)",
+          "marketing_start_date": "20250408",
+          "sample": false
+        },
+        {
+          "package_ndc": "76420-943-60",
+          "description": "60 TABLET, FILM COATED in 1 BOTTLE (76420-943-60)",
+          "marketing_start_date": "20250408",
+          "sample": false
+        },
+        {
+          "package_ndc": "76420-943-90",
+          "description": "90 TABLET, FILM COATED in 1 BOTTLE (76420-943-90)",
+          "marketing_start_date": "20250408",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Asclemed USA, Inc."
+        ],
+        "rxcui": [
+          "259255",
+          "617310",
+          "617311",
+          "617312"
+        ],
+        "spl_set_id": [
+          "60d51f39-8086-4434-affe-88ab8ca0c7e5"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "352ed2e2-c7bd-ae21-e063-6394a90ad835",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20181223",
+      "product_id": "76420-943_352ed2e2-c7bd-ae21-e063-6394a90ad835",
+      "application_number": "ANDA209288",
+      "brand_name_base": "Atorvastatin Calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "50090-6482",
+      "generic_name": "ATORVASTATIN CALCIUM",
+      "labeler_name": "A-S Medication Solutions",
+      "brand_name": "ATORVASTATIN CALCIUM",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM PROPYLENE GLYCOL SOLVATE",
+          "strength": "20 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50090-6482-0",
+          "description": "90 TABLET, FILM COATED in 1 BOTTLE (50090-6482-0)",
+          "marketing_start_date": "20230517",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20251231",
+      "openfda": {
+        "manufacturer_name": [
+          "A-S Medication Solutions"
+        ],
+        "rxcui": [
+          "617310"
+        ],
+        "spl_set_id": [
+          "25015637-c825-487c-ac33-c5ac46a4732f"
+        ],
+        "unii": [
+          "YRZ789OWMI"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "dbea73a1-6632-4d9f-b87b-4a740a311ce3",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20210801",
+      "product_id": "50090-6482_dbea73a1-6632-4d9f-b87b-4a740a311ce3",
+      "application_number": "ANDA090548",
+      "brand_name_base": "ATORVASTATIN CALCIUM",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "55111-917",
+      "generic_name": "Atorvastatin Calcium Trihydrate",
+      "labeler_name": "Dr. Reddy's Laboratories Limited",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "1 kg/kg"
+        }
+      ],
+      "finished": false,
+      "packaging": [
+        {
+          "package_ndc": "55111-917-00",
+          "description": "1 kg in 1 DRUM (55111-917-00)",
+          "marketing_start_date": "28-MAR-13"
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {},
+      "marketing_category": "BULK INGREDIENT",
+      "dosage_form": "POWDER",
+      "spl_id": "c26ecb39-7a5c-8f41-98bd-ec8852771c4e",
+      "product_type": "BULK INGREDIENT",
+      "marketing_start_date": "20130328",
+      "product_id": "55111-917_c26ecb39-7a5c-8f41-98bd-ec8852771c4e",
+      "brand_name_base": null
+    },
+    {
+      "product_ndc": "65427-157",
+      "generic_name": "atorvastatin calcium",
+      "labeler_name": "Pfizer Pharmaceuticals LLC",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "40 mg/1"
+        }
+      ],
+      "finished": false,
+      "packaging": [
+        {
+          "package_ndc": "65427-157-40",
+          "description": "1 BAG in 1 DRUM (65427-157-40)  / 160 TABLET, FILM COATED in 1 BAG",
+          "marketing_start_date": "21-NOV-19"
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {},
+      "marketing_category": "EXPORT ONLY",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "a21f11bb-8b3c-4ae2-8eb4-426bb0a3a64c",
+      "product_type": "DRUG FOR FURTHER PROCESSING",
+      "marketing_start_date": "20191121",
+      "product_id": "65427-157_a21f11bb-8b3c-4ae2-8eb4-426bb0a3a64c",
+      "brand_name_base": null
+    },
+    {
+      "product_ndc": "71610-163",
+      "generic_name": "ATORVASTATIN CALCIUM",
+      "labeler_name": "Aphena Pharma Solutions - Tennessee, LLC",
+      "brand_name": "ATORVASTATIN CALCIUM",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "40 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "71610-163-15",
+          "description": "15 TABLET, FILM COATED in 1 BOTTLE (71610-163-15)",
+          "marketing_start_date": "20181001",
+          "sample": false
+        },
+        {
+          "package_ndc": "71610-163-30",
+          "description": "30 TABLET, FILM COATED in 1 BOTTLE (71610-163-30)",
+          "marketing_start_date": "20181001",
+          "sample": false
+        },
+        {
+          "package_ndc": "71610-163-45",
+          "description": "45 TABLET, FILM COATED in 1 BOTTLE (71610-163-45)",
+          "marketing_start_date": "20181001",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20251231",
+      "openfda": {
+        "manufacturer_name": [
+          "Aphena Pharma Solutions - Tennessee, LLC"
+        ],
+        "rxcui": [
+          "617311"
+        ],
+        "spl_set_id": [
+          "ed8e76a5-6b40-47fe-9018-25bfe690a4dd"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "505bc442-3fe2-427f-89d9-3057dc391b38",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20171116",
+      "product_id": "71610-163_505bc442-3fe2-427f-89d9-3057dc391b38",
+      "application_number": "ANDA205519",
+      "brand_name_base": "ATORVASTATIN CALCIUM",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "76420-945",
+      "generic_name": "Atorvastatin Calcium",
+      "labeler_name": "Asclemed USA, Inc.",
+      "brand_name": "Atorvastatin Calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "20 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "76420-945-00",
+          "description": "1000 TABLET, FILM COATED in 1 BOTTLE (76420-945-00)",
+          "marketing_start_date": "20250408",
+          "sample": false
+        },
+        {
+          "package_ndc": "76420-945-05",
+          "description": "500 TABLET, FILM COATED in 1 BOTTLE (76420-945-05)",
+          "marketing_start_date": "20250408",
+          "sample": false
+        },
+        {
+          "package_ndc": "76420-945-12",
+          "description": "120 TABLET, FILM COATED in 1 BOTTLE (76420-945-12)",
+          "marketing_start_date": "20250408",
+          "sample": false
+        },
+        {
+          "package_ndc": "76420-945-20",
+          "description": "20 TABLET, FILM COATED in 1 BOTTLE (76420-945-20)",
+          "marketing_start_date": "20250408",
+          "sample": false
+        },
+        {
+          "package_ndc": "76420-945-30",
+          "description": "30 TABLET, FILM COATED in 1 BOTTLE (76420-945-30)",
+          "marketing_start_date": "20250408",
+          "sample": false
+        },
+        {
+          "package_ndc": "76420-945-38",
+          "description": "10 BLISTER PACK in 1 CARTON (76420-945-38)  / 10 TABLET, FILM COATED in 1 BLISTER PACK",
+          "marketing_start_date": "20250408",
+          "sample": false
+        },
+        {
+          "package_ndc": "76420-945-44",
+          "description": "4000 TABLET, FILM COATED in 1 BOTTLE (76420-945-44)",
+          "marketing_start_date": "20250408",
+          "sample": false
+        },
+        {
+          "package_ndc": "76420-945-60",
+          "description": "60 TABLET, FILM COATED in 1 BOTTLE (76420-945-60)",
+          "marketing_start_date": "20250408",
+          "sample": false
+        },
+        {
+          "package_ndc": "76420-945-90",
+          "description": "90 TABLET, FILM COATED in 1 BOTTLE (76420-945-90)",
+          "marketing_start_date": "20250408",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Asclemed USA, Inc."
+        ],
+        "rxcui": [
+          "259255",
+          "617310",
+          "617311",
+          "617312"
+        ],
+        "spl_set_id": [
+          "60d51f39-8086-4434-affe-88ab8ca0c7e5"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "352ed2e2-c7bd-ae21-e063-6394a90ad835",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20181223",
+      "product_id": "76420-945_352ed2e2-c7bd-ae21-e063-6394a90ad835",
+      "application_number": "ANDA209288",
+      "brand_name_base": "Atorvastatin Calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "65427-158",
+      "generic_name": "atorvastatin calcium",
+      "labeler_name": "Pfizer Pharmaceuticals LLC",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "80 mg/1"
+        }
+      ],
+      "finished": false,
+      "packaging": [
+        {
+          "package_ndc": "65427-158-80",
+          "description": "1 BAG in 1 DRUM (65427-158-80)  / 160 TABLET, FILM COATED in 1 BAG",
+          "marketing_start_date": "21-NOV-19"
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {},
+      "marketing_category": "EXPORT ONLY",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "a21f11bb-8b3c-4ae2-8eb4-426bb0a3a64c",
+      "product_type": "DRUG FOR FURTHER PROCESSING",
+      "marketing_start_date": "20191121",
+      "product_id": "65427-158_a21f11bb-8b3c-4ae2-8eb4-426bb0a3a64c",
+      "brand_name_base": null
+    },
+    {
+      "product_ndc": "70518-4422",
+      "generic_name": "Atorvastatin calcium",
+      "labeler_name": "REMEDYREPACK INC.",
+      "brand_name": "Atorvastatin calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "10 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "70518-4422-0",
+          "description": "100 TABLET, FILM COATED in 1 BOTTLE, PLASTIC (70518-4422-0)",
+          "marketing_start_date": "20250804",
+          "sample": false
+        },
+        {
+          "package_ndc": "70518-4422-1",
+          "description": "30 TABLET, FILM COATED in 1 BLISTER PACK (70518-4422-1)",
+          "marketing_start_date": "20250821",
+          "sample": false
+        },
+        {
+          "package_ndc": "70518-4422-2",
+          "description": "90 TABLET, FILM COATED in 1 BOTTLE, PLASTIC (70518-4422-2)",
+          "marketing_start_date": "20250910",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "REMEDYREPACK INC."
+        ],
+        "rxcui": [
+          "617312"
+        ],
+        "spl_set_id": [
+          "f7bb4aac-f716-4dd9-a6d7-6f37e865b843"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "3e7739d5-0d9b-6d91-e063-6394a90a77b7",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20250804",
+      "product_id": "70518-4422_3e7739d5-0d9b-6d91-e063-6394a90a77b7",
+      "application_number": "ANDA217081",
+      "brand_name_base": "Atorvastatin calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "76420-946",
+      "generic_name": "Atorvastatin Calcium",
+      "labeler_name": "Asclemed USA, Inc.",
+      "brand_name": "Atorvastatin Calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "40 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "76420-946-00",
+          "description": "1000 TABLET, FILM COATED in 1 BOTTLE (76420-946-00)",
+          "marketing_start_date": "20250408",
+          "sample": false
+        },
+        {
+          "package_ndc": "76420-946-05",
+          "description": "500 TABLET, FILM COATED in 1 BOTTLE (76420-946-05)",
+          "marketing_start_date": "20250408",
+          "sample": false
+        },
+        {
+          "package_ndc": "76420-946-12",
+          "description": "120 TABLET, FILM COATED in 1 BOTTLE (76420-946-12)",
+          "marketing_start_date": "20250408",
+          "sample": false
+        },
+        {
+          "package_ndc": "76420-946-20",
+          "description": "20 TABLET, FILM COATED in 1 BOTTLE (76420-946-20)",
+          "marketing_start_date": "20250408",
+          "sample": false
+        },
+        {
+          "package_ndc": "76420-946-23",
+          "description": "2000 TABLET, FILM COATED in 1 BOTTLE (76420-946-23)",
+          "marketing_start_date": "20250408",
+          "sample": false
+        },
+        {
+          "package_ndc": "76420-946-30",
+          "description": "30 TABLET, FILM COATED in 1 BOTTLE (76420-946-30)",
+          "marketing_start_date": "20250408",
+          "sample": false
+        },
+        {
+          "package_ndc": "76420-946-38",
+          "description": "10 BLISTER PACK in 1 CARTON (76420-946-38)  / 10 TABLET, FILM COATED in 1 BLISTER PACK",
+          "marketing_start_date": "20250408",
+          "sample": false
+        },
+        {
+          "package_ndc": "76420-946-60",
+          "description": "60 TABLET, FILM COATED in 1 BOTTLE (76420-946-60)",
+          "marketing_start_date": "20250408",
+          "sample": false
+        },
+        {
+          "package_ndc": "76420-946-90",
+          "description": "90 TABLET, FILM COATED in 1 BOTTLE (76420-946-90)",
+          "marketing_start_date": "20250408",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Asclemed USA, Inc."
+        ],
+        "rxcui": [
+          "259255",
+          "617310",
+          "617311",
+          "617312"
+        ],
+        "spl_set_id": [
+          "60d51f39-8086-4434-affe-88ab8ca0c7e5"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "352ed2e2-c7bd-ae21-e063-6394a90ad835",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20181223",
+      "product_id": "76420-946_352ed2e2-c7bd-ae21-e063-6394a90ad835",
+      "application_number": "ANDA209288",
+      "brand_name_base": "Atorvastatin Calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "70518-4423",
+      "generic_name": "Atorvastatin calcium",
+      "labeler_name": "REMEDYREPACK INC.",
+      "brand_name": "Atorvastatin calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "20 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "70518-4423-0",
+          "description": "100 TABLET, FILM COATED in 1 BOTTLE, PLASTIC (70518-4423-0)",
+          "marketing_start_date": "20250804",
+          "sample": false
+        },
+        {
+          "package_ndc": "70518-4423-1",
+          "description": "90 TABLET, FILM COATED in 1 BOTTLE, PLASTIC (70518-4423-1)",
+          "marketing_start_date": "20250829",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "REMEDYREPACK INC."
+        ],
+        "rxcui": [
+          "617310"
+        ],
+        "spl_set_id": [
+          "8cc6240a-58d3-4bca-aa1e-662228957f75"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "3d837091-94d6-f1b7-e063-6394a90a3b47",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20250804",
+      "product_id": "70518-4423_3d837091-94d6-f1b7-e063-6394a90a3b47",
+      "application_number": "ANDA217081",
+      "brand_name_base": "Atorvastatin calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "59651-606",
+      "generic_name": "Atorvastatin Calcium",
+      "labeler_name": "Aurobindo Pharma Limited",
+      "brand_name": "Atorvastatin Calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "10 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "59651-606-05",
+          "description": "500 TABLET, FILM COATED in 1 BOTTLE (59651-606-05)",
+          "marketing_start_date": "20240213",
+          "sample": false
+        },
+        {
+          "package_ndc": "59651-606-30",
+          "description": "30 TABLET, FILM COATED in 1 BOTTLE (59651-606-30)",
+          "marketing_start_date": "20240213",
+          "sample": false
+        },
+        {
+          "package_ndc": "59651-606-90",
+          "description": "90 TABLET, FILM COATED in 1 BOTTLE (59651-606-90)",
+          "marketing_start_date": "20240213",
+          "sample": false
+        },
+        {
+          "package_ndc": "59651-606-99",
+          "description": "1000 TABLET, FILM COATED in 1 BOTTLE (59651-606-99)",
+          "marketing_start_date": "20240213",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Aurobindo Pharma Limited"
+        ],
+        "rxcui": [
+          "259255",
+          "617310",
+          "617311",
+          "617312"
+        ],
+        "spl_set_id": [
+          "536b5e0d-1bb9-4c9d-a588-460d7647308b"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0359651607909"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "2a487354-64a5-49bc-8224-8d3abdca01c0",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20240213",
+      "product_id": "59651-606_2a487354-64a5-49bc-8224-8d3abdca01c0",
+      "application_number": "ANDA217118",
+      "brand_name_base": "Atorvastatin Calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "67877-512",
+      "generic_name": "Atorvastatin Calcium",
+      "labeler_name": "Ascend Laboratories, LLC",
+      "brand_name": "Atorvastatin Calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "20 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "67877-512-05",
+          "description": "500 TABLET, FILM COATED in 1 BOTTLE (67877-512-05)",
+          "marketing_start_date": "20181223",
+          "sample": false
+        },
+        {
+          "package_ndc": "67877-512-10",
+          "description": "1000 TABLET, FILM COATED in 1 BOTTLE (67877-512-10)",
+          "marketing_start_date": "20181223",
+          "sample": false
+        },
+        {
+          "package_ndc": "67877-512-38",
+          "description": "10 BLISTER PACK in 1 CARTON (67877-512-38)  / 10 TABLET, FILM COATED in 1 BLISTER PACK (67877-512-33)",
+          "marketing_start_date": "20181223",
+          "sample": false
+        },
+        {
+          "package_ndc": "67877-512-44",
+          "description": "4000 TABLET, FILM COATED in 1 BOTTLE (67877-512-44)",
+          "marketing_start_date": "20181223",
+          "sample": false
+        },
+        {
+          "package_ndc": "67877-512-90",
+          "description": "90 TABLET, FILM COATED in 1 BOTTLE (67877-512-90)",
+          "marketing_start_date": "20181223",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Ascend Laboratories, LLC"
+        ],
+        "rxcui": [
+          "259255",
+          "617310",
+          "617311",
+          "617312"
+        ],
+        "spl_set_id": [
+          "67e60880-091a-4df7-8696-6e6c42a490e2"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0367877512051",
+          "0367877513102",
+          "0367877514109"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "777b866a-796a-4d15-8cb6-dd0c9a1856e2",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20181223",
+      "product_id": "67877-512_777b866a-796a-4d15-8cb6-dd0c9a1856e2",
+      "application_number": "ANDA209288",
+      "brand_name_base": "Atorvastatin Calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "67046-1593",
+      "generic_name": "Atorvastatin calcium",
+      "labeler_name": "Coupler LLC",
+      "brand_name": "Atorvastatin calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "80 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "67046-1593-3",
+          "description": "30 TABLET, FILM COATED in 1 BLISTER PACK (67046-1593-3)",
+          "marketing_start_date": "20250916",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Coupler LLC"
+        ],
+        "rxcui": [
+          "259255"
+        ],
+        "spl_set_id": [
+          "3eee2ddb-851e-15ad-e063-6394a90a173a"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "3eee2d70-e7f6-05a7-e063-6394a90a7514",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20250916",
+      "product_id": "67046-1593_3eee2d70-e7f6-05a7-e063-6394a90a7514",
+      "application_number": "ANDA217081",
+      "brand_name_base": "Atorvastatin calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "63187-907",
+      "generic_name": "ATORVASTATIN CALCIUM",
+      "labeler_name": "Proficient Rx LP",
+      "brand_name": "ATORVASTATIN CALCIUM",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "80 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "63187-907-30",
+          "description": "30 TABLET, FILM COATED in 1 BOTTLE (63187-907-30)",
+          "marketing_start_date": "20170901",
+          "sample": false
+        },
+        {
+          "package_ndc": "63187-907-60",
+          "description": "60 TABLET, FILM COATED in 1 BOTTLE (63187-907-60)",
+          "marketing_start_date": "20170901",
+          "sample": false
+        },
+        {
+          "package_ndc": "63187-907-90",
+          "description": "90 TABLET, FILM COATED in 1 BOTTLE (63187-907-90)",
+          "marketing_start_date": "20170901",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Proficient Rx LP"
+        ],
+        "rxcui": [
+          "259255"
+        ],
+        "spl_set_id": [
+          "a34d3c72-ce91-47c7-86a1-f32caaed2c47"
+        ],
+        "upc": [
+          "0363187907907"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "6fe42517-aec2-4203-9574-2576c6472a94",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20160804",
+      "product_id": "63187-907_6fe42517-aec2-4203-9574-2576c6472a94",
+      "application_number": "ANDA205519",
+      "brand_name_base": "ATORVASTATIN CALCIUM",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "71335-1710",
+      "generic_name": "Atorvastatin Calcium",
+      "labeler_name": "Bryant Ranch Prepack",
+      "brand_name": "Atorvastatin Calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "10 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "71335-1710-1",
+          "description": "30 TABLET, FILM COATED in 1 BOTTLE (71335-1710-1)",
+          "marketing_start_date": "20210203",
+          "sample": false
+        },
+        {
+          "package_ndc": "71335-1710-2",
+          "description": "90 TABLET, FILM COATED in 1 BOTTLE (71335-1710-2)",
+          "marketing_start_date": "20201204",
+          "sample": false
+        },
+        {
+          "package_ndc": "71335-1710-3",
+          "description": "60 TABLET, FILM COATED in 1 BOTTLE (71335-1710-3)",
+          "marketing_start_date": "20240530",
+          "sample": false
+        },
+        {
+          "package_ndc": "71335-1710-4",
+          "description": "120 TABLET, FILM COATED in 1 BOTTLE (71335-1710-4)",
+          "marketing_start_date": "20210419",
+          "sample": false
+        },
+        {
+          "package_ndc": "71335-1710-5",
+          "description": "100 TABLET, FILM COATED in 1 BOTTLE (71335-1710-5)",
+          "marketing_start_date": "20211119",
+          "sample": false
+        },
+        {
+          "package_ndc": "71335-1710-6",
+          "description": "180 TABLET, FILM COATED in 1 BOTTLE (71335-1710-6)",
+          "marketing_start_date": "20240530",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Bryant Ranch Prepack"
+        ],
+        "rxcui": [
+          "617312"
+        ],
+        "spl_set_id": [
+          "f7af3b3a-b73e-41ee-80e3-2be036672bb7"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "207707b9-50d8-4ad6-b9a2-9ea43d9f31bb",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20111201",
+      "product_id": "71335-1710_207707b9-50d8-4ad6-b9a2-9ea43d9f31bb",
+      "application_number": "ANDA076477",
+      "brand_name_base": "Atorvastatin Calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "67877-511",
+      "generic_name": "Atorvastatin Calcium",
+      "labeler_name": "Ascend Laboratories, LLC",
+      "brand_name": "Atorvastatin Calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "10 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "67877-511-05",
+          "description": "500 TABLET, FILM COATED in 1 BOTTLE (67877-511-05)",
+          "marketing_start_date": "20181223",
+          "sample": false
+        },
+        {
+          "package_ndc": "67877-511-10",
+          "description": "1000 TABLET, FILM COATED in 1 BOTTLE (67877-511-10)",
+          "marketing_start_date": "20181223",
+          "sample": false
+        },
+        {
+          "package_ndc": "67877-511-38",
+          "description": "10 BLISTER PACK in 1 CARTON (67877-511-38)  / 10 TABLET, FILM COATED in 1 BLISTER PACK (67877-511-33)",
+          "marketing_start_date": "20181223",
+          "sample": false
+        },
+        {
+          "package_ndc": "67877-511-55",
+          "description": "5000 TABLET, FILM COATED in 1 BOTTLE (67877-511-55)",
+          "marketing_start_date": "20181223",
+          "sample": false
+        },
+        {
+          "package_ndc": "67877-511-90",
+          "description": "90 TABLET, FILM COATED in 1 BOTTLE (67877-511-90)",
+          "marketing_start_date": "20181223",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Ascend Laboratories, LLC"
+        ],
+        "rxcui": [
+          "259255",
+          "617310",
+          "617311",
+          "617312"
+        ],
+        "spl_set_id": [
+          "67e60880-091a-4df7-8696-6e6c42a490e2"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0367877512051",
+          "0367877513102",
+          "0367877514109"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "777b866a-796a-4d15-8cb6-dd0c9a1856e2",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20181223",
+      "product_id": "67877-511_777b866a-796a-4d15-8cb6-dd0c9a1856e2",
+      "application_number": "ANDA209288",
+      "brand_name_base": "Atorvastatin Calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "50090-6441",
+      "generic_name": "ATORVASTATIN CALCIUM",
+      "labeler_name": "A-S Medication Solutions",
+      "brand_name": "ATORVASTATIN CALCIUM",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM PROPYLENE GLYCOL SOLVATE",
+          "strength": "40 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50090-6441-0",
+          "description": "90 TABLET, FILM COATED in 1 BOTTLE (50090-6441-0)",
+          "marketing_start_date": "20230417",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20251231",
+      "openfda": {
+        "manufacturer_name": [
+          "A-S Medication Solutions"
+        ],
+        "rxcui": [
+          "617311"
+        ],
+        "spl_set_id": [
+          "1b8c55ef-160d-42df-95d1-c008f1182e3e"
+        ],
+        "unii": [
+          "YRZ789OWMI"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "c8101104-2fae-4e29-80cc-87ac0e70a66e",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20210801",
+      "product_id": "50090-6441_c8101104-2fae-4e29-80cc-87ac0e70a66e",
+      "application_number": "ANDA090548",
+      "brand_name_base": "ATORVASTATIN CALCIUM",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "51079-211",
+      "generic_name": "atorvastatin calcium",
+      "labeler_name": "Mylan Institutional Inc.",
+      "brand_name": "Atorvastatin Calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "80 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "51079-211-03",
+          "description": "30 BLISTER PACK in 1 CARTON (51079-211-03)  / 1 TABLET, FILM COATED in 1 BLISTER PACK (51079-211-01)",
+          "marketing_start_date": "20140123",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Mylan Institutional Inc."
+        ],
+        "rxcui": [
+          "259255",
+          "617310",
+          "617311",
+          "617312"
+        ],
+        "spl_set_id": [
+          "7c1083b9-7a20-475d-ba12-4f5d0b53e601"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "3a398bf9-4f72-46b9-e063-6394a90af2d2",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20140123",
+      "product_id": "51079-211_3a398bf9-4f72-46b9-e063-6394a90af2d2",
+      "application_number": "ANDA091226",
+      "brand_name_base": "Atorvastatin Calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "16571-138",
+      "generic_name": "atorvastatin calcium, film coated",
+      "labeler_name": "Rising Pharma Holdings, Inc.",
+      "brand_name": "Atorvastatin Calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "40 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "16571-138-09",
+          "description": "90 TABLET in 1 BOTTLE (16571-138-09)",
+          "marketing_start_date": "20231020",
+          "sample": false
+        },
+        {
+          "package_ndc": "16571-138-10",
+          "description": "1000 TABLET in 1 BOTTLE (16571-138-10)",
+          "marketing_start_date": "20231020",
+          "sample": false
+        },
+        {
+          "package_ndc": "16571-138-50",
+          "description": "500 TABLET in 1 BOTTLE (16571-138-50)",
+          "marketing_start_date": "20231020",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Rising Pharma Holdings, Inc."
+        ],
+        "rxcui": [
+          "259255",
+          "617310",
+          "617311",
+          "617312"
+        ],
+        "spl_set_id": [
+          "73cefb0b-1747-4fe0-b252-377f4ed94c6f"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0316571136094",
+          "0316571138098",
+          "0316571137091"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET",
+      "spl_id": "b94c6347-161c-44f2-8937-34c5098bf755",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20231020",
+      "product_id": "16571-138_b94c6347-161c-44f2-8937-34c5098bf755",
+      "application_number": "ANDA209912",
+      "brand_name_base": "Atorvastatin Calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "60760-709",
+      "generic_name": "Atorvastatin Calcium",
+      "labeler_name": "St. Mary's Medical Park Pharmacy",
+      "brand_name": "Atorvastatin Calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "40 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "60760-709-30",
+          "description": "30 TABLET, FILM COATED in 1 BOTTLE, PLASTIC (60760-709-30)",
+          "marketing_start_date": "20190328",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "St. Mary's Medical Park Pharmacy"
+        ],
+        "rxcui": [
+          "617311"
+        ],
+        "spl_set_id": [
+          "85cd2fb8-d6b2-c3a3-e053-2991aa0ac18c"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "85cd3f96-b84a-f192-e053-2991aa0aee98",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20190328",
+      "product_id": "60760-709_85cd3f96-b84a-f192-e053-2991aa0aee98",
+      "application_number": "ANDA209288",
+      "brand_name_base": "Atorvastatin Calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "51079-208",
+      "generic_name": "atorvastatin calcium",
+      "labeler_name": "Mylan Institutional Inc.",
+      "brand_name": "Atorvastatin Calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "10 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "51079-208-20",
+          "description": "100 BLISTER PACK in 1 CARTON (51079-208-20)  / 1 TABLET, FILM COATED in 1 BLISTER PACK (51079-208-01)",
+          "marketing_start_date": "20140130",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Mylan Institutional Inc."
+        ],
+        "rxcui": [
+          "259255",
+          "617310",
+          "617311",
+          "617312"
+        ],
+        "spl_set_id": [
+          "7c1083b9-7a20-475d-ba12-4f5d0b53e601"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "3a398bf9-4f72-46b9-e063-6394a90af2d2",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20140130",
+      "product_id": "51079-208_3a398bf9-4f72-46b9-e063-6394a90af2d2",
+      "application_number": "ANDA091226",
+      "brand_name_base": "Atorvastatin Calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "22365-004",
+      "generic_name": "atorvastatin calcium",
+      "labeler_name": "Arch Pharmalabs Limited",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "25 kg/25kg"
+        }
+      ],
+      "finished": false,
+      "packaging": [
+        {
+          "package_ndc": "22365-004-04",
+          "description": "25 kg in 1 DRUM (22365-004-04)",
+          "marketing_start_date": "05-JAN-09"
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {},
+      "marketing_category": "BULK INGREDIENT",
+      "dosage_form": "POWDER",
+      "spl_id": "01c1a1a3-dad5-40ca-91c0-96e8ddee98e6",
+      "product_type": "BULK INGREDIENT",
+      "marketing_start_date": "20090105",
+      "product_id": "22365-004_01c1a1a3-dad5-40ca-91c0-96e8ddee98e6",
+      "brand_name_base": null
+    },
+    {
+      "product_ndc": "59651-607",
+      "generic_name": "Atorvastatin Calcium",
+      "labeler_name": "Aurobindo Pharma Limited",
+      "brand_name": "Atorvastatin Calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "20 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "59651-607-05",
+          "description": "500 TABLET, FILM COATED in 1 BOTTLE (59651-607-05)",
+          "marketing_start_date": "20240213",
+          "sample": false
+        },
+        {
+          "package_ndc": "59651-607-30",
+          "description": "30 TABLET, FILM COATED in 1 BOTTLE (59651-607-30)",
+          "marketing_start_date": "20240213",
+          "sample": false
+        },
+        {
+          "package_ndc": "59651-607-90",
+          "description": "90 TABLET, FILM COATED in 1 BOTTLE (59651-607-90)",
+          "marketing_start_date": "20240213",
+          "sample": false
+        },
+        {
+          "package_ndc": "59651-607-99",
+          "description": "1000 TABLET, FILM COATED in 1 BOTTLE (59651-607-99)",
+          "marketing_start_date": "20240213",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Aurobindo Pharma Limited"
+        ],
+        "rxcui": [
+          "259255",
+          "617310",
+          "617311",
+          "617312"
+        ],
+        "spl_set_id": [
+          "536b5e0d-1bb9-4c9d-a588-460d7647308b"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0359651607909"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "2a487354-64a5-49bc-8224-8d3abdca01c0",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20240213",
+      "product_id": "59651-607_2a487354-64a5-49bc-8224-8d3abdca01c0",
+      "application_number": "ANDA217118",
+      "brand_name_base": "Atorvastatin Calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "67877-513",
+      "generic_name": "Atorvastatin Calcium",
+      "labeler_name": "Ascend Laboratories, LLC",
+      "brand_name": "Atorvastatin Calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "40 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "67877-513-05",
+          "description": "500 TABLET, FILM COATED in 1 BOTTLE (67877-513-05)",
+          "marketing_start_date": "20181223",
+          "sample": false
+        },
+        {
+          "package_ndc": "67877-513-10",
+          "description": "1000 TABLET, FILM COATED in 1 BOTTLE (67877-513-10)",
+          "marketing_start_date": "20181223",
+          "sample": false
+        },
+        {
+          "package_ndc": "67877-513-23",
+          "description": "2000 TABLET, FILM COATED in 1 BOTTLE (67877-513-23)",
+          "marketing_start_date": "20181223",
+          "sample": false
+        },
+        {
+          "package_ndc": "67877-513-38",
+          "description": "10 BLISTER PACK in 1 CARTON (67877-513-38)  / 10 TABLET, FILM COATED in 1 BLISTER PACK (67877-513-33)",
+          "marketing_start_date": "20181223",
+          "sample": false
+        },
+        {
+          "package_ndc": "67877-513-90",
+          "description": "90 TABLET, FILM COATED in 1 BOTTLE (67877-513-90)",
+          "marketing_start_date": "20181223",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Ascend Laboratories, LLC"
+        ],
+        "rxcui": [
+          "259255",
+          "617310",
+          "617311",
+          "617312"
+        ],
+        "spl_set_id": [
+          "67e60880-091a-4df7-8696-6e6c42a490e2"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0367877512051",
+          "0367877513102",
+          "0367877514109"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "777b866a-796a-4d15-8cb6-dd0c9a1856e2",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20181223",
+      "product_id": "67877-513_777b866a-796a-4d15-8cb6-dd0c9a1856e2",
+      "application_number": "ANDA209288",
+      "brand_name_base": "Atorvastatin Calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "51079-209",
+      "generic_name": "atorvastatin calcium",
+      "labeler_name": "Mylan Institutional Inc.",
+      "brand_name": "Atorvastatin Calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "20 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "51079-209-20",
+          "description": "100 BLISTER PACK in 1 CARTON (51079-209-20)  / 1 TABLET, FILM COATED in 1 BLISTER PACK (51079-209-01)",
+          "marketing_start_date": "20140129",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Mylan Institutional Inc."
+        ],
+        "rxcui": [
+          "259255",
+          "617310",
+          "617311",
+          "617312"
+        ],
+        "spl_set_id": [
+          "7c1083b9-7a20-475d-ba12-4f5d0b53e601"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "3a398bf9-4f72-46b9-e063-6394a90af2d2",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20140129",
+      "product_id": "51079-209_3a398bf9-4f72-46b9-e063-6394a90af2d2",
+      "application_number": "ANDA091226",
+      "brand_name_base": "Atorvastatin Calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "49867-0054",
+      "generic_name": "ATORVASTATIN CALCIUM PROPYLENE GLYCOL SOLVATE",
+      "labeler_name": "Apotex Inc.",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM PROPYLENE GLYCOL SOLVATE",
+          "strength": "1 kg/kg"
+        }
+      ],
+      "finished": false,
+      "packaging": [
+        {
+          "package_ndc": "49867-0054-0",
+          "description": "50 kg in 1 DRUM (49867-0054-0)",
+          "marketing_start_date": "26-APR-10"
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {},
+      "marketing_category": "BULK INGREDIENT",
+      "dosage_form": "POWDER",
+      "spl_id": "6dd66a2b-9112-a552-7079-3b29bf0769f5",
+      "product_type": "BULK INGREDIENT",
+      "marketing_start_date": "20100426",
+      "product_id": "49867-0054_6dd66a2b-9112-a552-7079-3b29bf0769f5",
+      "brand_name_base": null
+    },
+    {
+      "product_ndc": "16571-136",
+      "generic_name": "atorvastatin calcium, film coated",
+      "labeler_name": "Rising Pharma Holdings, Inc.",
+      "brand_name": "Atorvastatin Calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "10 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "16571-136-09",
+          "description": "90 TABLET in 1 BOTTLE (16571-136-09)",
+          "marketing_start_date": "20231020",
+          "sample": false
+        },
+        {
+          "package_ndc": "16571-136-10",
+          "description": "1000 TABLET in 1 BOTTLE (16571-136-10)",
+          "marketing_start_date": "20231020",
+          "sample": false
+        },
+        {
+          "package_ndc": "16571-136-50",
+          "description": "500 TABLET in 1 BOTTLE (16571-136-50)",
+          "marketing_start_date": "20231020",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Rising Pharma Holdings, Inc."
+        ],
+        "rxcui": [
+          "259255",
+          "617310",
+          "617311",
+          "617312"
+        ],
+        "spl_set_id": [
+          "73cefb0b-1747-4fe0-b252-377f4ed94c6f"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0316571136094",
+          "0316571138098",
+          "0316571137091"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET",
+      "spl_id": "b94c6347-161c-44f2-8937-34c5098bf755",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20231020",
+      "product_id": "16571-136_b94c6347-161c-44f2-8937-34c5098bf755",
+      "application_number": "ANDA209912",
+      "brand_name_base": "Atorvastatin Calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "59651-608",
+      "generic_name": "Atorvastatin Calcium",
+      "labeler_name": "Aurobindo Pharma Limited",
+      "brand_name": "Atorvastatin Calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "40 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "59651-608-05",
+          "description": "500 TABLET, FILM COATED in 1 BOTTLE (59651-608-05)",
+          "marketing_start_date": "20240213",
+          "sample": false
+        },
+        {
+          "package_ndc": "59651-608-30",
+          "description": "30 TABLET, FILM COATED in 1 BOTTLE (59651-608-30)",
+          "marketing_start_date": "20240213",
+          "sample": false
+        },
+        {
+          "package_ndc": "59651-608-90",
+          "description": "90 TABLET, FILM COATED in 1 BOTTLE (59651-608-90)",
+          "marketing_start_date": "20240213",
+          "sample": false
+        },
+        {
+          "package_ndc": "59651-608-99",
+          "description": "1000 TABLET, FILM COATED in 1 BOTTLE (59651-608-99)",
+          "marketing_start_date": "20240213",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Aurobindo Pharma Limited"
+        ],
+        "rxcui": [
+          "259255",
+          "617310",
+          "617311",
+          "617312"
+        ],
+        "spl_set_id": [
+          "536b5e0d-1bb9-4c9d-a588-460d7647308b"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0359651607909"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "2a487354-64a5-49bc-8224-8d3abdca01c0",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20240213",
+      "product_id": "59651-608_2a487354-64a5-49bc-8224-8d3abdca01c0",
+      "application_number": "ANDA217118",
+      "brand_name_base": "Atorvastatin Calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "67877-514",
+      "generic_name": "Atorvastatin Calcium",
+      "labeler_name": "Ascend Laboratories, LLC",
+      "brand_name": "Atorvastatin Calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "80 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "67877-514-05",
+          "description": "500 TABLET, FILM COATED in 1 BOTTLE (67877-514-05)",
+          "marketing_start_date": "20181223",
+          "sample": false
+        },
+        {
+          "package_ndc": "67877-514-10",
+          "description": "1000 TABLET, FILM COATED in 1 BOTTLE (67877-514-10)",
+          "marketing_start_date": "20181223",
+          "sample": false
+        },
+        {
+          "package_ndc": "67877-514-38",
+          "description": "10 BLISTER PACK in 1 CARTON (67877-514-38)  / 10 TABLET, FILM COATED in 1 BLISTER PACK (67877-514-33)",
+          "marketing_start_date": "20181223",
+          "sample": false
+        },
+        {
+          "package_ndc": "67877-514-90",
+          "description": "90 TABLET, FILM COATED in 1 BOTTLE (67877-514-90)",
+          "marketing_start_date": "20181223",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Ascend Laboratories, LLC"
+        ],
+        "rxcui": [
+          "259255",
+          "617310",
+          "617311",
+          "617312"
+        ],
+        "spl_set_id": [
+          "67e60880-091a-4df7-8696-6e6c42a490e2"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0367877512051",
+          "0367877513102",
+          "0367877514109"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "777b866a-796a-4d15-8cb6-dd0c9a1856e2",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20181223",
+      "product_id": "67877-514_777b866a-796a-4d15-8cb6-dd0c9a1856e2",
+      "application_number": "ANDA209288",
+      "brand_name_base": "Atorvastatin Calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "50090-6440",
+      "generic_name": "ATORVASTATIN CALCIUM",
+      "labeler_name": "A-S Medication Solutions",
+      "brand_name": "ATORVASTATIN CALCIUM",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM PROPYLENE GLYCOL SOLVATE",
+          "strength": "40 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50090-6440-0",
+          "description": "30 TABLET, FILM COATED in 1 BOTTLE (50090-6440-0)",
+          "marketing_start_date": "20230417",
+          "sample": false
+        },
+        {
+          "package_ndc": "50090-6440-1",
+          "description": "90 TABLET, FILM COATED in 1 BOTTLE (50090-6440-1)",
+          "marketing_start_date": "20230417",
+          "sample": false
+        },
+        {
+          "package_ndc": "50090-6440-2",
+          "description": "100 TABLET, FILM COATED in 1 BOTTLE (50090-6440-2)",
+          "marketing_start_date": "20230417",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20251231",
+      "openfda": {
+        "manufacturer_name": [
+          "A-S Medication Solutions"
+        ],
+        "rxcui": [
+          "617311"
+        ],
+        "spl_set_id": [
+          "0ab0bcac-10a3-4178-9674-3730683a4183"
+        ],
+        "unii": [
+          "YRZ789OWMI"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "ca11c467-1901-4879-9e30-90c916fe56af",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20210801",
+      "product_id": "50090-6440_ca11c467-1901-4879-9e30-90c916fe56af",
+      "application_number": "ANDA090548",
+      "brand_name_base": "ATORVASTATIN CALCIUM",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "51079-210",
+      "generic_name": "atorvastatin calcium",
+      "labeler_name": "Mylan Institutional Inc.",
+      "brand_name": "Atorvastatin Calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "40 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "51079-210-20",
+          "description": "100 BLISTER PACK in 1 CARTON (51079-210-20)  / 1 TABLET, FILM COATED in 1 BLISTER PACK (51079-210-01)",
+          "marketing_start_date": "20140129",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Mylan Institutional Inc."
+        ],
+        "rxcui": [
+          "259255",
+          "617310",
+          "617311",
+          "617312"
+        ],
+        "spl_set_id": [
+          "7c1083b9-7a20-475d-ba12-4f5d0b53e601"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "3a398bf9-4f72-46b9-e063-6394a90af2d2",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20140129",
+      "product_id": "51079-210_3a398bf9-4f72-46b9-e063-6394a90af2d2",
+      "application_number": "ANDA091226",
+      "brand_name_base": "Atorvastatin Calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "16571-137",
+      "generic_name": "atorvastatin calcium, film coated",
+      "labeler_name": "Rising Pharma Holdings, Inc.",
+      "brand_name": "Atorvastatin Calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "20 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "16571-137-09",
+          "description": "90 TABLET in 1 BOTTLE (16571-137-09)",
+          "marketing_start_date": "20231020",
+          "sample": false
+        },
+        {
+          "package_ndc": "16571-137-10",
+          "description": "1000 TABLET in 1 BOTTLE (16571-137-10)",
+          "marketing_start_date": "20231020",
+          "sample": false
+        },
+        {
+          "package_ndc": "16571-137-50",
+          "description": "500 TABLET in 1 BOTTLE (16571-137-50)",
+          "marketing_start_date": "20231020",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Rising Pharma Holdings, Inc."
+        ],
+        "rxcui": [
+          "259255",
+          "617310",
+          "617311",
+          "617312"
+        ],
+        "spl_set_id": [
+          "73cefb0b-1747-4fe0-b252-377f4ed94c6f"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0316571136094",
+          "0316571138098",
+          "0316571137091"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET",
+      "spl_id": "b94c6347-161c-44f2-8937-34c5098bf755",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20231020",
+      "product_id": "16571-137_b94c6347-161c-44f2-8937-34c5098bf755",
+      "application_number": "ANDA209912",
+      "brand_name_base": "Atorvastatin Calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "59651-609",
+      "generic_name": "Atorvastatin Calcium",
+      "labeler_name": "Aurobindo Pharma Limited",
+      "brand_name": "Atorvastatin Calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "80 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "59651-609-05",
+          "description": "500 TABLET, FILM COATED in 1 BOTTLE (59651-609-05)",
+          "marketing_start_date": "20240213",
+          "sample": false
+        },
+        {
+          "package_ndc": "59651-609-30",
+          "description": "30 TABLET, FILM COATED in 1 BOTTLE (59651-609-30)",
+          "marketing_start_date": "20240213",
+          "sample": false
+        },
+        {
+          "package_ndc": "59651-609-90",
+          "description": "90 TABLET, FILM COATED in 1 BOTTLE (59651-609-90)",
+          "marketing_start_date": "20240213",
+          "sample": false
+        },
+        {
+          "package_ndc": "59651-609-99",
+          "description": "1000 TABLET, FILM COATED in 1 BOTTLE (59651-609-99)",
+          "marketing_start_date": "20240213",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Aurobindo Pharma Limited"
+        ],
+        "rxcui": [
+          "259255",
+          "617310",
+          "617311",
+          "617312"
+        ],
+        "spl_set_id": [
+          "536b5e0d-1bb9-4c9d-a588-460d7647308b"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0359651607909"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "2a487354-64a5-49bc-8224-8d3abdca01c0",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20240213",
+      "product_id": "59651-609_2a487354-64a5-49bc-8224-8d3abdca01c0",
+      "application_number": "ANDA217118",
+      "brand_name_base": "Atorvastatin Calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "16571-139",
+      "generic_name": "atorvastatin calcium, film coated",
+      "labeler_name": "Rising Pharma Holdings, Inc.",
+      "brand_name": "Atorvastatin Calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "80 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "16571-139-09",
+          "description": "90 TABLET in 1 BOTTLE (16571-139-09)",
+          "marketing_start_date": "20231020",
+          "sample": false
+        },
+        {
+          "package_ndc": "16571-139-10",
+          "description": "1000 TABLET in 1 BOTTLE (16571-139-10)",
+          "marketing_start_date": "20231020",
+          "sample": false
+        },
+        {
+          "package_ndc": "16571-139-50",
+          "description": "500 TABLET in 1 BOTTLE (16571-139-50)",
+          "marketing_start_date": "20231020",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Rising Pharma Holdings, Inc."
+        ],
+        "rxcui": [
+          "259255",
+          "617310",
+          "617311",
+          "617312"
+        ],
+        "spl_set_id": [
+          "73cefb0b-1747-4fe0-b252-377f4ed94c6f"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0316571136094",
+          "0316571138098",
+          "0316571137091"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET",
+      "spl_id": "b94c6347-161c-44f2-8937-34c5098bf755",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20231020",
+      "product_id": "16571-139_b94c6347-161c-44f2-8937-34c5098bf755",
+      "application_number": "ANDA209912",
+      "brand_name_base": "Atorvastatin Calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "71205-335",
+      "generic_name": "Atorvastatin calcium",
+      "labeler_name": "Proficient Rx LP",
+      "brand_name": "Atorvastatin calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "80 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "71205-335-20",
+          "description": "20 TABLET, FILM COATED in 1 BOTTLE (71205-335-20)",
+          "marketing_start_date": "20190901",
+          "sample": false
+        },
+        {
+          "package_ndc": "71205-335-30",
+          "description": "30 TABLET, FILM COATED in 1 BOTTLE (71205-335-30)",
+          "marketing_start_date": "20190901",
+          "sample": false
+        },
+        {
+          "package_ndc": "71205-335-60",
+          "description": "60 TABLET, FILM COATED in 1 BOTTLE (71205-335-60)",
+          "marketing_start_date": "20190901",
+          "sample": false
+        },
+        {
+          "package_ndc": "71205-335-90",
+          "description": "90 TABLET, FILM COATED in 1 BOTTLE (71205-335-90)",
+          "marketing_start_date": "20190901",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Proficient Rx LP"
+        ],
+        "rxcui": [
+          "259255"
+        ],
+        "spl_set_id": [
+          "9168df23-4260-46be-9556-8b037af0ea28"
+        ],
+        "upc": [
+          "0371205335304"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "8e206d0f-47fc-43ab-923b-1ca321f02c5e",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20190208",
+      "product_id": "71205-335_8e206d0f-47fc-43ab-923b-1ca321f02c5e",
+      "application_number": "ANDA211933",
+      "brand_name_base": "Atorvastatin calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "0071-0157",
+      "marketing_end_date": "20260331",
+      "generic_name": "atorvastatin calcium",
+      "labeler_name": "Parke-Davis Div of Pfizer Inc",
+      "brand_name": "Lipitor",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "40 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "0071-0157-23",
+          "description": "90 TABLET, FILM COATED in 1 BOTTLE (0071-0157-23)",
+          "marketing_start_date": "19961217",
+          "marketing_end_date": "20260331",
+          "sample": false
+        }
+      ],
+      "openfda": {
+        "manufacturer_name": [
+          "Parke-Davis Div of Pfizer Inc"
+        ],
+        "rxcui": [
+          "259255",
+          "262095",
+          "617310",
+          "617311",
+          "617312",
+          "617314",
+          "617318",
+          "617320"
+        ],
+        "spl_set_id": [
+          "c6e131fe-e7df-4876-83f7-9156fc4e8228"
+        ],
+        "is_original_packager": [
+          true
+        ],
+        "upc": [
+          "0300710155237",
+          "0300710156234"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "NDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "202f0996-09c4-4740-a68d-31a15536ce30",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "19961217",
+      "product_id": "0071-0157_202f0996-09c4-4740-a68d-31a15536ce30",
+      "application_number": "NDA020702",
+      "brand_name_base": "Lipitor",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "68788-8574",
+      "generic_name": "atorvastatin calcium",
+      "labeler_name": "Preferred Pharmaceuticals Inc.",
+      "brand_name": "Atorvastatin Calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "40 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "68788-8574-9",
+          "description": "90 TABLET, FILM COATED in 1 BOTTLE (68788-8574-9)",
+          "marketing_start_date": "20240126",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Preferred Pharmaceuticals Inc."
+        ],
+        "rxcui": [
+          "617311"
+        ],
+        "spl_set_id": [
+          "2d9cb8d9-b367-464d-9bcd-6de8de2b6c23"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "77075b2f-d10f-4fbf-bfae-ab5971aa6c4b",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20240126",
+      "product_id": "68788-8574_77075b2f-d10f-4fbf-bfae-ab5971aa6c4b",
+      "application_number": "ANDA216436",
+      "brand_name_base": "Atorvastatin Calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "68788-4008",
+      "generic_name": "Atorvastatin calcium",
+      "labeler_name": "Preferred Pharmaceuticals Inc.",
+      "brand_name": "Atorvastatin calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "10 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "68788-4008-1",
+          "description": "100 TABLET, FILM COATED in 1 BOTTLE (68788-4008-1)",
+          "marketing_start_date": "20250808",
+          "sample": false
+        },
+        {
+          "package_ndc": "68788-4008-3",
+          "description": "30 TABLET, FILM COATED in 1 BOTTLE (68788-4008-3)",
+          "marketing_start_date": "20250808",
+          "sample": false
+        },
+        {
+          "package_ndc": "68788-4008-6",
+          "description": "60 TABLET, FILM COATED in 1 BOTTLE (68788-4008-6)",
+          "marketing_start_date": "20250808",
+          "sample": false
+        },
+        {
+          "package_ndc": "68788-4008-9",
+          "description": "90 TABLET, FILM COATED in 1 BOTTLE (68788-4008-9)",
+          "marketing_start_date": "20250808",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "Preferred Pharmaceuticals Inc."
+        ],
+        "rxcui": [
+          "617312"
+        ],
+        "spl_set_id": [
+          "4ff0d618-cde4-49ae-8bcb-98dafc3ecdba"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "4ff0d618-cde4-49ae-8bcb-98dafc3ecdba",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20250808",
+      "product_id": "68788-4008_4ff0d618-cde4-49ae-8bcb-98dafc3ecdba",
+      "application_number": "ANDA211933",
+      "brand_name_base": "Atorvastatin calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "67046-1230",
+      "generic_name": "atorvastatin calcium",
+      "labeler_name": "Coupler LLC",
+      "brand_name": "Atorvastatin Calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "20 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "67046-1230-3",
+          "description": "30 TABLET, FILM COATED in 1 BLISTER PACK (67046-1230-3)",
+          "marketing_start_date": "20241104",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20251231",
+      "openfda": {
+        "manufacturer_name": [
+          "Coupler LLC"
+        ],
+        "rxcui": [
+          "617310"
+        ],
+        "spl_set_id": [
+          "261b6b9c-b85e-2fc1-e063-6294a90a258a"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "261b5389-81c3-e433-e063-6394a90a5451",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20241104",
+      "product_id": "67046-1230_261b5389-81c3-e433-e063-6394a90a5451",
+      "application_number": "ANDA216436",
+      "brand_name_base": "Atorvastatin Calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "68071-5008",
+      "generic_name": "Atorvastatin Calcium",
+      "labeler_name": "NuCare Pharmaceuticals,Inc.",
+      "brand_name": "Atorvastatin Calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "10 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "68071-5008-3",
+          "description": "30 TABLET, FILM COATED in 1 BOTTLE (68071-5008-3)",
+          "marketing_start_date": "20190730",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "NuCare Pharmaceuticals,Inc."
+        ],
+        "rxcui": [
+          "617312"
+        ],
+        "spl_set_id": [
+          "8ee8b455-625c-ead6-e053-2a95a90aed29"
+        ],
+        "upc": [
+          "0368071500837"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "1b30e987-a59c-7625-e063-6394a90a3de2",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20181223",
+      "product_id": "68071-5008_1b30e987-a59c-7625-e063-6394a90a3de2",
+      "application_number": "ANDA209288",
+      "brand_name_base": "Atorvastatin Calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "70518-0186",
+      "generic_name": "ATORVASTATIN CALCIUM",
+      "labeler_name": "REMEDYREPACK INC.",
+      "brand_name": "ATORVASTATIN CALCIUM",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM PROPYLENE GLYCOL SOLVATE",
+          "strength": "20 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "70518-0186-0",
+          "description": "30 TABLET, FILM COATED in 1 BLISTER PACK (70518-0186-0)",
+          "marketing_start_date": "20170131",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "REMEDYREPACK INC."
+        ],
+        "rxcui": [
+          "617310"
+        ],
+        "spl_set_id": [
+          "e91c673d-c26c-4ff1-90d2-2b9d47a8d771"
+        ],
+        "unii": [
+          "YRZ789OWMI"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "36346557-a647-7715-e063-6394a90ab6aa",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20170131",
+      "product_id": "70518-0186_36346557-a647-7715-e063-6394a90ab6aa",
+      "application_number": "ANDA090548",
+      "brand_name_base": "ATORVASTATIN CALCIUM",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "70518-4138",
+      "generic_name": "Atorvastatin Calcium",
+      "labeler_name": "REMEDYREPACK INC.",
+      "brand_name": "Atorvastatin Calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "10 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "70518-4138-0",
+          "description": "90 TABLET, FILM COATED in 1 BOTTLE, PLASTIC (70518-4138-0)",
+          "marketing_start_date": "20240710",
+          "sample": false
+        },
+        {
+          "package_ndc": "70518-4138-1",
+          "description": "100 TABLET, FILM COATED in 1 BOTTLE, PLASTIC (70518-4138-1)",
+          "marketing_start_date": "20250319",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "REMEDYREPACK INC."
+        ],
+        "rxcui": [
+          "617312"
+        ],
+        "spl_set_id": [
+          "57f9b462-f08e-483c-9b64-b7e4c8d46927"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "3fb3b563-4bba-0322-e063-6394a90a238d",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20240710",
+      "product_id": "70518-4138_3fb3b563-4bba-0322-e063-6394a90a238d",
+      "application_number": "ANDA209288",
+      "brand_name_base": "Atorvastatin Calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "50090-6054",
+      "generic_name": "Atorvastatin calcium",
+      "labeler_name": "A-S Medication Solutions",
+      "brand_name": "Atorvastatin calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "80 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "50090-6054-0",
+          "description": "30 TABLET, FILM COATED in 1 BOTTLE (50090-6054-0)",
+          "marketing_start_date": "20220824",
+          "sample": false
+        },
+        {
+          "package_ndc": "50090-6054-1",
+          "description": "90 TABLET, FILM COATED in 1 BOTTLE (50090-6054-1)",
+          "marketing_start_date": "20220824",
+          "sample": false
+        },
+        {
+          "package_ndc": "50090-6054-2",
+          "description": "100 TABLET, FILM COATED in 1 BOTTLE (50090-6054-2)",
+          "marketing_start_date": "20230403",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20251231",
+      "openfda": {
+        "manufacturer_name": [
+          "A-S Medication Solutions"
+        ],
+        "rxcui": [
+          "259255"
+        ],
+        "spl_set_id": [
+          "01eadde8-37f3-4474-995f-22c1a65adf12"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "6a5806cd-a79c-44aa-9ed5-2c8831606df0",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20190208",
+      "product_id": "50090-6054_6a5806cd-a79c-44aa-9ed5-2c8831606df0",
+      "application_number": "ANDA211933",
+      "brand_name_base": "Atorvastatin calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "60760-726",
+      "generic_name": "Atorvastatin calcium",
+      "labeler_name": "ST. MARY'S MEDICAL PARK PHARMACY",
+      "brand_name": "Atorvastatin calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "40 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "60760-726-30",
+          "description": "30 TABLET, FILM COATED in 1 BOTTLE, PLASTIC (60760-726-30)",
+          "marketing_start_date": "20250206",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "ST. MARY'S MEDICAL PARK PHARMACY"
+        ],
+        "rxcui": [
+          "617311"
+        ],
+        "spl_set_id": [
+          "2e20a00c-b373-3a8c-e063-6294a90a637b"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "2e208e83-44e1-2ed1-e063-6294a90a68e6",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20240105",
+      "product_id": "60760-726_2e208e83-44e1-2ed1-e063-6294a90a68e6",
+      "application_number": "ANDA217081",
+      "brand_name_base": "Atorvastatin calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "68071-2302",
+      "generic_name": "Atorvastatin calcium",
+      "labeler_name": "NuCare Pharmaceuticals,Inc.",
+      "brand_name": "Atorvastatin calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN CALCIUM TRIHYDRATE",
+          "strength": "40 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "68071-2302-3",
+          "description": "30 TABLET, FILM COATED in 1 BOTTLE (68071-2302-3)",
+          "marketing_start_date": "20201120",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {
+        "manufacturer_name": [
+          "NuCare Pharmaceuticals,Inc."
+        ],
+        "rxcui": [
+          "617311"
+        ],
+        "spl_set_id": [
+          "b490414a-35e7-fded-e053-2a95a90aca8d"
+        ],
+        "upc": [
+          "0368071230239"
+        ],
+        "unii": [
+          "48A5M73Z4Q"
+        ]
+      },
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET, FILM COATED",
+      "spl_id": "1d787988-4064-1880-e063-6294a90afc1d",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20190208",
+      "product_id": "68071-2302_1d787988-4064-1880-e063-6294a90afc1d",
+      "application_number": "ANDA211933",
+      "brand_name_base": "Atorvastatin calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "75834-255",
+      "generic_name": "Atorvastatin calcium",
+      "labeler_name": "NIVAGEN PHARMACEUTICALS, INC.",
+      "brand_name": "Atorvastatin calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN",
+          "strength": "10 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "75834-255-01",
+          "description": "1000 TABLET in 1 BOTTLE (75834-255-01)",
+          "marketing_start_date": "20200826",
+          "sample": false
+        },
+        {
+          "package_ndc": "75834-255-05",
+          "description": "5000 TABLET in 1 BOTTLE (75834-255-05)",
+          "marketing_start_date": "20200826",
+          "sample": false
+        },
+        {
+          "package_ndc": "75834-255-50",
+          "description": "500 TABLET in 1 BOTTLE (75834-255-50)",
+          "marketing_start_date": "20200826",
+          "sample": false
+        },
+        {
+          "package_ndc": "75834-255-90",
+          "description": "90 TABLET in 1 BOTTLE (75834-255-90)",
+          "marketing_start_date": "20200826",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {},
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET",
+      "spl_id": "301ed63e-05d1-077f-e063-6294a90a72ee",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20200826",
+      "product_id": "75834-255_301ed63e-05d1-077f-e063-6294a90a72ee",
+      "application_number": "ANDA213853",
+      "brand_name_base": "Atorvastatin calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    },
+    {
+      "product_ndc": "75834-258",
+      "generic_name": "Atorvastatin calcium",
+      "labeler_name": "NIVAGEN PHARMACEUTICALS, INC.",
+      "brand_name": "Atorvastatin calcium",
+      "active_ingredients": [
+        {
+          "name": "ATORVASTATIN",
+          "strength": "80 mg/1"
+        }
+      ],
+      "finished": true,
+      "packaging": [
+        {
+          "package_ndc": "75834-258-01",
+          "description": "1000 TABLET in 1 BOTTLE (75834-258-01)",
+          "marketing_start_date": "20200826",
+          "sample": false
+        },
+        {
+          "package_ndc": "75834-258-02",
+          "description": "2000 TABLET in 1 BOTTLE (75834-258-02)",
+          "marketing_start_date": "20200826",
+          "sample": false
+        },
+        {
+          "package_ndc": "75834-258-50",
+          "description": "500 TABLET in 1 BOTTLE (75834-258-50)",
+          "marketing_start_date": "20200826",
+          "sample": false
+        },
+        {
+          "package_ndc": "75834-258-90",
+          "description": "90 TABLET in 1 BOTTLE (75834-258-90)",
+          "marketing_start_date": "20200826",
+          "sample": false
+        }
+      ],
+      "listing_expiration_date": "20261231",
+      "openfda": {},
+      "marketing_category": "ANDA",
+      "dosage_form": "TABLET",
+      "spl_id": "301ed63e-05d1-077f-e063-6294a90a72ee",
+      "product_type": "HUMAN PRESCRIPTION DRUG",
+      "route": [
+        "ORAL"
+      ],
+      "marketing_start_date": "20200826",
+      "product_id": "75834-258_301ed63e-05d1-077f-e063-6294a90a72ee",
+      "application_number": "ANDA213853",
+      "brand_name_base": "Atorvastatin calcium",
+      "pharm_class": [
+        "HMG-CoA Reductase Inhibitor [EPC]",
+        "Hydroxymethylglutaryl-CoA Reductase Inhibitors [MoA]"
+      ]
+    }
+  ]
+}

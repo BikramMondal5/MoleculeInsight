@@ -1,0 +1,1546 @@
+{
+    "total": 24797,
+    "offset": 0,
+    "next": 20,
+    "data": [
+        {
+            "paperId": "04bdef3916369fa6cb185bdf3792becb95699ac4",
+            "url": "https://www.semanticscholar.org/paper/04bdef3916369fa6cb185bdf3792becb95699ac4",
+            "title": "Atorvastatin",
+            "year": 2024,
+            "citationCount": 57,
+            "openAccessPdf": {
+                "url": "",
+                "status": "CLOSED",
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.18578/bnfc.138735514?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.18578/bnfc.138735514, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [],
+            "abstract": null
+        },
+        {
+            "paperId": "40111b8ab8cd58847edb855c7614044287c978f2",
+            "url": "https://www.semanticscholar.org/paper/40111b8ab8cd58847edb855c7614044287c978f2",
+            "title": "Atorvastatin for Anthracycline-Associated Cardiac Dysfunction: The STOP-CA Randomized Clinical Trial.",
+            "year": 2023,
+            "citationCount": 123,
+            "openAccessPdf": {
+                "url": "",
+                "status": "CLOSED",
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1001/jama.2023.11887?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1001/jama.2023.11887, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "6546999",
+                    "name": "T. Neilan"
+                },
+                {
+                    "authorId": "2266305241",
+                    "name": "T. Quinaglia"
+                },
+                {
+                    "authorId": "2075120491",
+                    "name": "Takeshi Onoue"
+                },
+                {
+                    "authorId": "47160692",
+                    "name": "Syed S Mahmood"
+                },
+                {
+                    "authorId": "23597026",
+                    "name": "Z. Drobni"
+                },
+                {
+                    "authorId": "1990736825",
+                    "name": "H. Gilman"
+                },
+                {
+                    "authorId": "153087677",
+                    "name": "Amanda Smith"
+                },
+                {
+                    "authorId": "2275475133",
+                    "name": "Julius C. Heemelaar"
+                },
+                {
+                    "authorId": "25657877",
+                    "name": "P. Brahmbhatt"
+                },
+                {
+                    "authorId": "2112615220",
+                    "name": "J\u00f6rg Ho"
+                },
+                {
+                    "authorId": "2179546840",
+                    "name": "Supraja Sama"
+                },
+                {
+                    "authorId": "40266657",
+                    "name": "J. Svoboda"
+                },
+                {
+                    "authorId": "31916893",
+                    "name": "D. Neuberg"
+                },
+                {
+                    "authorId": "1864803",
+                    "name": "J. Abramson"
+                },
+                {
+                    "authorId": "2259021",
+                    "name": "E. Hochberg"
+                },
+                {
+                    "authorId": "2055881110",
+                    "name": "J. Barnes"
+                },
+                {
+                    "authorId": "73586312",
+                    "name": "Philippe Armand"
+                },
+                {
+                    "authorId": "49331990",
+                    "name": "E. Jacobsen"
+                },
+                {
+                    "authorId": "40403220",
+                    "name": "C. Jacobson"
+                },
+                {
+                    "authorId": "153102956",
+                    "name": "A. Kim"
+                },
+                {
+                    "authorId": "8914273",
+                    "name": "J. Soumerai"
+                },
+                {
+                    "authorId": "3846401",
+                    "name": "Yuchi Han"
+                },
+                {
+                    "authorId": "2060453832",
+                    "name": "R. Friedman"
+                },
+                {
+                    "authorId": "3800489",
+                    "name": "A. LaCasce"
+                },
+                {
+                    "authorId": "144190886",
+                    "name": "B. Ky"
+                },
+                {
+                    "authorId": "8600638",
+                    "name": "D. Landsburg"
+                },
+                {
+                    "authorId": "6856186",
+                    "name": "S. Nasta"
+                },
+                {
+                    "authorId": "145990093",
+                    "name": "R. Kwong"
+                },
+                {
+                    "authorId": "1398058595",
+                    "name": "M. Jerosch-Herold"
+                },
+                {
+                    "authorId": "32738632",
+                    "name": "R. Redd"
+                },
+                {
+                    "authorId": "10687025",
+                    "name": "Lanqi Hua"
+                },
+                {
+                    "authorId": "2091800574",
+                    "name": "J. Januzzi"
+                },
+                {
+                    "authorId": "6226890",
+                    "name": "Aarti H Asnani"
+                },
+                {
+                    "authorId": "117269030",
+                    "name": "Negareh Mousavi"
+                },
+                {
+                    "authorId": "1397940267",
+                    "name": "M. Scherrer-Crosbie"
+                }
+            ],
+            "abstract": "Importance\nAnthracyclines treat a broad range of cancers. Basic and retrospective clinical data have suggested that use of atorvastatin may be associated with a reduction in cardiac dysfunction due to anthracycline use.\n\n\nObjective\nTo test whether atorvastatin is associated with a reduction in the proportion of patients with lymphoma receiving anthracyclines who develop cardiac dysfunction.\n\n\nDesign, Setting, and Participants\nDouble-blind randomized clinical trial conducted at 9 academic medical centers in the US and Canada among 300 patients with lymphoma who were scheduled to receive anthracycline-based chemotherapy. Enrollment occurred between January 25, 2017, and September 10, 2021, with final follow-up on October 10, 2022.\n\n\nInterventions\nParticipants were randomized to receive atorvastatin, 40 mg/d (n\u2009=\u2009150), or placebo (n\u2009=\u2009150) for 12 months.\n\n\nMain Outcomes and Measures\nThe primary outcome was the proportion of participants with an absolute decline in left ventricular ejection fraction (LVEF) of \u226510% from prior to chemotherapy to a final value of <55% over 12 months. A secondary outcome was the proportion of participants with an absolute decline in LVEF of \u22655% from prior to chemotherapy to a final value of <55% over 12 months.\n\n\nResults\nOf the 300 participants randomized (mean age, 50 [SD, 17] years; 142 women [47%]), 286 (95%) completed the trial. Among the entire cohort, the baseline mean LVEF was 63% (SD, 4.6%) and the follow-up LVEF was 58% (SD, 5.7%). Study drug adherence was noted in 91% of participants. At 12-month follow-up, 46 (15%) had a decline in LVEF of 10% or greater from prior to chemotherapy to a final value of less than 55%. The incidence of the primary end point was 9% (13/150) in the atorvastatin group and 22% (33/150) in the placebo group (P\u2009=\u2009.002). The odds of a 10% or greater decline in LVEF to a final value of less than 55% after anthracycline treatment was almost 3 times greater for participants randomized to placebo compared with those randomized to atorvastatin (odds ratio, 2.9; 95% CI, 1.4-6.4). Compared with placebo, atorvastatin also reduced the incidence of the secondary end point (13% vs 29%; P\u2009=\u2009.001). There were 13 adjudicated heart failure events (4%) over 24 months of follow-up. There was no difference in the rates of incident heart failure between study groups (3% with atorvastatin, 6% with placebo; P\u2009=\u2009.26). The number of serious related adverse events was low and similar between groups.\n\n\nConclusions and Relevance\nAmong patients with lymphoma treated with anthracycline-based chemotherapy, atorvastatin reduced the incidence of cardiac dysfunction. This finding may support the use of atorvastatin in patients with lymphoma at high risk of cardiac dysfunction due to anthracycline use.\n\n\nTrial Registration\nClinicalTrials.gov Identifier: NCT02943590."
+        },
+        {
+            "paperId": "e794d786a37f7e5f661ffd027ba84f668241c253",
+            "url": "https://www.semanticscholar.org/paper/e794d786a37f7e5f661ffd027ba84f668241c253",
+            "title": "Rosuvastatin versus atorvastatin treatment in adults with coronary artery disease: secondary analysis of the randomised LODESTAR trial",
+            "year": 2023,
+            "citationCount": 44,
+            "openAccessPdf": {
+                "url": "https://www.bmj.com/content/bmj/383/bmj-2023-075837.full.pdf",
+                "status": "HYBRID",
+                "license": "CCBYNC",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC10583134, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2109263202",
+                    "name": "Yong-Joon Lee"
+                },
+                {
+                    "authorId": "144113292",
+                    "name": "Sung\u2010Jin Hong"
+                },
+                {
+                    "authorId": "2259941261",
+                    "name": "W. Kang"
+                },
+                {
+                    "authorId": "36931272",
+                    "name": "B. Hong"
+                },
+                {
+                    "authorId": "2247865087",
+                    "name": "Jong-Young Lee"
+                },
+                {
+                    "authorId": "2130799467",
+                    "name": "Jin-Bae Lee"
+                },
+                {
+                    "authorId": "2243931215",
+                    "name": "Hyung-Jin Cho"
+                },
+                {
+                    "authorId": "2260272715",
+                    "name": "Junghan Yoon"
+                },
+                {
+                    "authorId": "2108154798",
+                    "name": "Seung-Jun Lee"
+                },
+                {
+                    "authorId": "46374746",
+                    "name": "C. Ahn"
+                },
+                {
+                    "authorId": "22567359",
+                    "name": "Jung\u2010Sun Kim"
+                },
+                {
+                    "authorId": "144042779",
+                    "name": "Byeong\u2010Keuk Kim"
+                },
+                {
+                    "authorId": "143766477",
+                    "name": "Y. Ko"
+                },
+                {
+                    "authorId": "50614686",
+                    "name": "D. Choi"
+                },
+                {
+                    "authorId": "2258936119",
+                    "name": "Y. Jang"
+                },
+                {
+                    "authorId": "2213495438",
+                    "name": "Meyong-Ki Hong"
+                }
+            ],
+            "abstract": "Abstract Objective To compare the long term efficacy and safety of rosuvastatin with atorvastatin treatment in adults with coronary artery disease. Design Randomised, open label, multicentre trial. Setting 12 hospitals in South Korea, September 2016 to November 2019. Participants 4400 adults (age \u226519 years) with coronary artery disease. Interventions Participants were assigned to receive either rosuvastatin (n=2204) or atorvastatin (n=2196) using 2\u00d72 factorial randomisation. Main outcome measures The primary outcome was a three year composite of all cause death, myocardial infarction, stroke, or any coronary revascularisation. Secondary outcomes were safety endpoints: new onset diabetes mellitus; hospital admissions due to heart failure; deep vein thrombosis or pulmonary thromboembolism; endovascular revascularisation for peripheral artery disease; aortic intervention or surgery; end stage kidney disease; discontinuation of study drugs owing to intolerance; cataract surgery; and a composite of laboratory detected abnormalities. Results 4341 of the 4400 participants (98.7%) completed the trial. Mean daily dose of study drugs was 17.1 mg (standard deviation (SD) 5.2 mg) in the rosuvastatin group and 36.0 (12.8) mg in the atorvastatin group at three years (P<0.001). The primary outcome occurred in 189 participants (8.7%) in the rosuvastatin group and 178 (8.2%) in the atorvastatin group (hazard ratio 1.06, 95% confidence interval 0.86 to 1.30; P=0.58). The mean low density lipoprotein (LDL) cholesterol level during treatment was 1.8 mmol/L (SD 0.5 mmol/L) in the rosuvastatin group and 1.9 (0.5) mmol/L in the atorvastatin group (P<0.001). The rosuvastatin group had a higher incidence of new onset diabetes mellitus requiring initiation of antidiabetics (7.2% v 5.3%; hazard ratio 1.39, 95% confidence interval 1.03 to 1.87; P=0.03) and cataract surgery (2.5% v 1.5%; 1.66, 1.07 to 2.58; P=0.02). Other safety endpoints did not differ between the two groups. Conclusions In adults with coronary artery disease, rosuvastatin and atorvastatin showed comparable efficacy for the composite outcome of all cause death, myocardial infarction, stroke, or any coronary revascularisation at three years. Rosuvastatin was associated with lower LDL cholesterol levels but a higher risk of new onset diabetes mellitus requiring antidiabetics and cataract surgery compared with atorvastatin. Trial registration ClinicalTrials.gov NCT02579499."
+        },
+        {
+            "paperId": "14a4497bf166e655ca2b727547fc9603f7e2e216",
+            "url": "https://www.semanticscholar.org/paper/14a4497bf166e655ca2b727547fc9603f7e2e216",
+            "title": "Intensive lipid lowering with atorvastatin in patients with stable coronary disease.",
+            "year": 2005,
+            "citationCount": 3433,
+            "openAccessPdf": {
+                "url": "https://doi.org/10.1016/j.jvs.2005.10.023",
+                "status": "BRONZE",
+                "license": "publisher-specific-oa",
+                "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at https://api.unpaywall.org/v2/10.1016/j.jvs.2005.04.037?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1016/j.jvs.2005.04.037, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "145820298",
+                    "name": "J. Larosa"
+                },
+                {
+                    "authorId": "4651228",
+                    "name": "S. Grundy"
+                },
+                {
+                    "authorId": "144382352",
+                    "name": "D. Waters"
+                },
+                {
+                    "authorId": "143980278",
+                    "name": "C. Shear"
+                },
+                {
+                    "authorId": "6601751",
+                    "name": "P. Barter"
+                },
+                {
+                    "authorId": "144073196",
+                    "name": "J. Fruchart"
+                },
+                {
+                    "authorId": "34747086",
+                    "name": "A. Gotto"
+                },
+                {
+                    "authorId": "6354644",
+                    "name": "H. Greten"
+                },
+                {
+                    "authorId": "76925143",
+                    "name": "J. Kastelein"
+                },
+                {
+                    "authorId": "1727148",
+                    "name": "J. Shepherd"
+                },
+                {
+                    "authorId": "4085662",
+                    "name": "N. Wenger"
+                }
+            ],
+            "abstract": null
+        },
+        {
+            "paperId": "76483f997fe0c7d9eea72efc792ccc924b3332de",
+            "url": "https://www.semanticscholar.org/paper/76483f997fe0c7d9eea72efc792ccc924b3332de",
+            "title": "Primary prevention of cardiovascular disease with atorvastatin in type 2 diabetes in the Collaborative Atorvastatin Diabetes Study (CARDS): multicentre randomised placebo-controlled trial",
+            "year": 2004,
+            "citationCount": 3677,
+            "openAccessPdf": {
+                "url": "",
+                "status": "CLOSED",
+                "license": null,
+                "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at https://api.unpaywall.org/v2/10.1016/S0140-6736(04)16895-5?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1016/S0140-6736(04)16895-5, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2329065246",
+                    "name": "H. Colhoun"
+                },
+                {
+                    "authorId": "2241425435",
+                    "name": "D. J. Betteridge"
+                },
+                {
+                    "authorId": "2237540218",
+                    "name": "P. N. Durrington"
+                },
+                {
+                    "authorId": "2268653241",
+                    "name": "G. Hitman"
+                },
+                {
+                    "authorId": "2241435110",
+                    "name": "H. A. W. Neil"
+                },
+                {
+                    "authorId": "34438690",
+                    "name": "S. Livingstone"
+                },
+                {
+                    "authorId": "2361729124",
+                    "name": "Margaret J Thomason"
+                },
+                {
+                    "authorId": "2255750631",
+                    "name": "M. I. Mackness"
+                },
+                {
+                    "authorId": "1398417212",
+                    "name": "V. Charlton-menys"
+                },
+                {
+                    "authorId": "2241425797",
+                    "name": "J. Fuller"
+                }
+            ],
+            "abstract": null
+        },
+        {
+            "paperId": "fd8a66e595196a0cd81d7db13cbb133bee23cd4c",
+            "url": "https://www.semanticscholar.org/paper/fd8a66e595196a0cd81d7db13cbb133bee23cd4c",
+            "title": "Atorvastatin Induces Mitochondria-Dependent Ferroptosis via the Modulation of Nrf2-xCT/GPx4 Axis",
+            "year": 2022,
+            "citationCount": 92,
+            "openAccessPdf": {
+                "url": "https://www.frontiersin.org/articles/10.3389/fcell.2022.806081/pdf",
+                "status": "GOLD",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC8927716, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2145906375",
+                    "name": "Qi Zhang"
+                },
+                {
+                    "authorId": "2064924884",
+                    "name": "H. Qu"
+                },
+                {
+                    "authorId": "2256346694",
+                    "name": "Yinghui Chen"
+                },
+                {
+                    "authorId": "1384458916",
+                    "name": "Xueyang Luo"
+                },
+                {
+                    "authorId": "2110239411",
+                    "name": "Chong Chen"
+                },
+                {
+                    "authorId": "2054421596",
+                    "name": "Bing Xiao"
+                },
+                {
+                    "authorId": "13766291",
+                    "name": "X-Z Ding"
+                },
+                {
+                    "authorId": "2114871132",
+                    "name": "P. Zhao"
+                },
+                {
+                    "authorId": "15467030",
+                    "name": "Yanan Lu"
+                },
+                {
+                    "authorId": "145629629",
+                    "name": "Alex F. Chen"
+                },
+                {
+                    "authorId": "2117160538",
+                    "name": "Yu Yu"
+                }
+            ],
+            "abstract": "As one of the cornerstones of clinical cardiovascular disease treatment, statins have an extensive range of applications. However, statins commonly used have side reactions, especially muscle-related symptoms (SAMS), such as muscle weakness, pain, cramps, and severe condition of rhabdomyolysis. This undesirable muscular effect is one of the chief reasons for statin non-adherence and/or discontinuation, contributing to adverse cardiovascular outcomes. Moreover, the underlying mechanism of muscle cell damage is still unclear. Here, we discovered that ferroptosis, a programmed iron-dependent cell death, serves as a mechanism in statin-induced myopathy. Among four candidates including atorvastatin, lovastatin, rosuvastatin, and pravastatin, only atorvastatin could lead to ferroptosis in human cardiomyocytes (HCM) and murine skeletal muscle cells (C2C12), instead of human umbilical vein endothelial cell (HUVEC). Atorvastatin inhibits HCM and C2C12 cell viability in a dose-dependent manner, accompanying with significant augmentation in intracellular iron ions, reactive oxygen species (ROS), and lipid peroxidation. A noteworthy investigation found that those alterations particularly occurred in mitochondria and resulted in mitochondrial dysfunction. Biomarkers of myocardial injury increase significantly during atorvastatin intervention. However, all of the aforementioned enhancement could be restrained by ferroptosis inhibitors. Mechanistically, GSH depletion and the decrease in nuclear factor erythroid 2-related factor 2 (Nrf2), glutathione peroxidase 4 (GPx4), and xCT cystine\u2013glutamate antiporter (the main component is SLC7A11) are involved in atorvastatin-induced muscular cell ferroptosis and damage. The downregulation of GPx4 in mitochondria-mediated ferroptosis signaling may be the core of it. In conclusion, our findings explore an innovative underlying pathophysiological mechanism of atorvastatin-induced myopathy and highlight that targeting ferroptosis serves as a protective strategy for clinical application."
+        },
+        {
+            "paperId": "3cbe56f2bedf0e6a6dd68db30741e7378c984210",
+            "url": "https://www.semanticscholar.org/paper/3cbe56f2bedf0e6a6dd68db30741e7378c984210",
+            "title": "Atorvastatin versus placebo in patients with covid-19 in intensive care: randomized controlled trial",
+            "year": 2022,
+            "citationCount": 67,
+            "openAccessPdf": {
+                "url": "https://www.bmj.com/content/bmj/376/bmj-2021-068407.full.pdf",
+                "status": "HYBRID",
+                "license": "CCBYNC",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC11785411, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "4054222",
+                    "name": "P. Sadeghipour"
+                },
+                {
+                    "authorId": "3827824",
+                    "name": "B. Bikdeli"
+                },
+                {
+                    "authorId": "40078033",
+                    "name": "Azita H Talasaz"
+                },
+                {
+                    "authorId": "13429175",
+                    "name": "B. Sharif-Kashani"
+                },
+                {
+                    "authorId": "2239211133",
+                    "name": "F. Rashidi"
+                },
+                {
+                    "authorId": "4344242",
+                    "name": "M. Beigmohammadi"
+                },
+                {
+                    "authorId": "36448630",
+                    "name": "K. G. Moghadam"
+                },
+                {
+                    "authorId": "2212465919",
+                    "name": "Somayeh Rezaian"
+                },
+                {
+                    "authorId": "2239211041",
+                    "name": "Seyed Ali Dabbagh"
+                },
+                {
+                    "authorId": "8040187",
+                    "name": "H. Sezavar"
+                },
+                {
+                    "authorId": "2353095272",
+                    "name": "Mohsen Farrokhpour"
+                },
+                {
+                    "authorId": "4005144",
+                    "name": "H. Bakhshandeh"
+                },
+                {
+                    "authorId": "2239211099",
+                    "name": "Atefeh Abedini"
+                },
+                {
+                    "authorId": "3700985",
+                    "name": "Rasoul Aliannejad"
+                },
+                {
+                    "authorId": "2239210897",
+                    "name": "Mahdi Taghi Riahi"
+                },
+                {
+                    "authorId": "117420368",
+                    "name": "Somayeh Lookzadeh"
+                },
+                {
+                    "authorId": "6071283",
+                    "name": "P. Rezaeifar"
+                },
+                {
+                    "authorId": "31852568",
+                    "name": "S. Matin"
+                },
+                {
+                    "authorId": "1963173372",
+                    "name": "Ouria Tahamtan"
+                },
+                {
+                    "authorId": "52470801",
+                    "name": "Keyhan Mohammadi"
+                },
+                {
+                    "authorId": "12918844",
+                    "name": "E. Zoghi"
+                },
+                {
+                    "authorId": "2239211225",
+                    "name": "Seyed Hamid Rahmani"
+                },
+                {
+                    "authorId": "2239211021",
+                    "name": "Hossein Hosseini Seyed"
+                },
+                {
+                    "authorId": "2239211485",
+                    "name": "Masoud Mousavian"
+                },
+                {
+                    "authorId": "120005675",
+                    "name": "Homa Abri"
+                },
+                {
+                    "authorId": "2056544483",
+                    "name": "Elahe Baghizadeh"
+                },
+                {
+                    "authorId": "80127074",
+                    "name": "F. Rafiee"
+                },
+                {
+                    "authorId": "1963197306",
+                    "name": "Sepehr Jamalkhani"
+                },
+                {
+                    "authorId": "2239212972",
+                    "name": "Ahmad Amin"
+                },
+                {
+                    "authorId": "2239211479",
+                    "name": "Seyed Bahram Mohebbi"
+                },
+                {
+                    "authorId": "15160093",
+                    "name": "E. Parhizgar"
+                },
+                {
+                    "authorId": "2007177372",
+                    "name": "Mahshid Soleimanzadeh"
+                },
+                {
+                    "authorId": "66301502",
+                    "name": "Maryam Aghakouchakzadeh"
+                },
+                {
+                    "authorId": "2239211063",
+                    "name": "Vahid Eslami"
+                },
+                {
+                    "authorId": "6523787",
+                    "name": "P. Payandemehr"
+                },
+                {
+                    "authorId": "2241130310",
+                    "name": "Hossein Khalili"
+                },
+                {
+                    "authorId": "1573892927",
+                    "name": "H. Talakoob"
+                },
+                {
+                    "authorId": "2212466386",
+                    "name": "Taranom Tojari"
+                },
+                {
+                    "authorId": "6995710",
+                    "name": "S. Shafaghi"
+                },
+                {
+                    "authorId": "2239210823",
+                    "name": "Samrand Fattah"
+                },
+                {
+                    "authorId": "2239211456",
+                    "name": "Sanaz Ghazi"
+                },
+                {
+                    "authorId": "2239211093",
+                    "name": "Hessam Tabrizi"
+                },
+                {
+                    "authorId": "2237653160",
+                    "name": "Alireza Kakavand"
+                },
+                {
+                    "authorId": "2239211065",
+                    "name": "Kashefizadeh Shaghayegh"
+                },
+                {
+                    "authorId": "2239210406",
+                    "name": "Atabak Shahmirzaei"
+                },
+                {
+                    "authorId": "2243026053",
+                    "name": "M. Najafi"
+                },
+                {
+                    "authorId": "2239211751",
+                    "name": "David Fathi"
+                },
+                {
+                    "authorId": "2239441827",
+                    "name": "Aakriti Jimenez"
+                },
+                {
+                    "authorId": "2239216844",
+                    "name": "Mahesh V Gupta"
+                },
+                {
+                    "authorId": "2239211747",
+                    "name": "Sanjum S Madhavan"
+                },
+                {
+                    "authorId": "2239211575",
+                    "name": "Sahil A Sethi"
+                },
+                {
+                    "authorId": "2239210828",
+                    "name": "Manuel Parikh"
+                },
+                {
+                    "authorId": "2239210908",
+                    "name": "Naser Monreal"
+                },
+                {
+                    "authorId": "2239210403",
+                    "name": "Alireza Hadavand"
+                },
+                {
+                    "authorId": "2239211758",
+                    "name": "Hajighasemi Khalil"
+                },
+                {
+                    "authorId": "2239210886",
+                    "name": "Majid Ansarin"
+                },
+                {
+                    "authorId": "2239210322",
+                    "name": "Saeed Maleki"
+                },
+                {
+                    "authorId": "2239210751",
+                    "name": "Gregory Sadeghian"
+                },
+                {
+                    "authorId": "2239210895",
+                    "name": "Ajay J Piazza"
+                },
+                {
+                    "authorId": "2239211488",
+                    "name": "Benjamin W Kirtane"
+                },
+                {
+                    "authorId": "2239211440",
+                    "name": "Gregg W Van Tassell"
+                },
+                {
+                    "authorId": "2239210553",
+                    "name": "Gregory Y H Stone"
+                },
+                {
+                    "authorId": "2239210350",
+                    "name": "M. LipHarlan"
+                },
+                {
+                    "authorId": "2239210726",
+                    "name": "Samuel Z Krumholz"
+                },
+                {
+                    "authorId": "2239210717",
+                    "name": "Parham Sadeghipour Goldhaber"
+                }
+            ],
+            "abstract": "Abstract Objective To assess the effect of statin treatment versus placebo on clinical outcomes in patients with covid-19 admitted to the intensive care unit (ICU). Design INSPIRATION/INSPIRATION-S was a multicenter, randomized controlled trial with a 2\u00d72 factorial design. Results for the anticoagulation randomization have been reported previously. Results for the double blind randomization to atorvastatin versus placebo are reported here. Setting 11 hospitals in Iran. Participants Adults aged \u226518 years with covid-19 admitted to the ICU. Intervention Atorvastatin 20 mg orally once daily versus placebo, to be continued for 30 days from randomization irrespective of hospital discharge status. Main outcome measures The primary efficacy outcome was a composite of venous or arterial thrombosis, treatment with extracorporeal membrane oxygenation, or all cause mortality within 30 days from randomization. Prespecified safety outcomes included increase in liver enzyme levels more than three times the upper limit of normal and clinically diagnosed myopathy. A clinical events committee blinded to treatment assignment adjudicated the efficacy and safety outcomes. Results Of 605 patients randomized between 29 July 2020 and 4 April 2021 for statin randomization in the INSPIRATION-S trial, 343 were co-randomized to intermediate dose versus standard dose prophylactic anticoagulation with heparin based regimens, whereas 262 were randomized after completion of the anticoagulation study. 587 of the 605 participants were included in the primary analysis of INSPIRATION-S, reported here: 290 were assigned to atorvastatin and 297 to placebo (median age 57 years (interquartile range 45-68 years); 256 (44%) women). The primary outcome occurred in 95 (33%) patients assigned to atorvastatin and 108 (36%) assigned to placebo (odds ratio 0.84, 95% confidence interval 0.58 to 1.21). Death occurred in 90 (31%) patients in the atorvastatin group and 103 (35%) in the placebo group (odds ratio 0.84, 95% confidence interval 0.58 to 1.22). Rates for venous thromboembolism were 2% (n=6) in the atorvastatin group and 3% (n=9) in the placebo group (odds ratio 0.71, 95% confidence interval 0.24 to 2.06). Myopathy was not clinically diagnosed in either group. Liver enzyme levels were increased in five (2%) patients assigned to atorvastatin and six (2%) assigned to placebo (odds ratio 0.85, 95% confidence interval 0.25 to 2.81). Conclusions In adults with covid-19 admitted to the ICU, atorvastatin was not associated with a significant reduction in the composite of venous or arterial thrombosis, treatment with extracorporeal membrane oxygenation, or all cause mortality compared with placebo. Treatment was, however, found to be safe. As the overall event rates were lower than expected, a clinically important treatment effect cannot be excluded. Trial registration ClinicalTrials.gov NCT04486508."
+        },
+        {
+            "paperId": "282c017bb72fac099e2b5c389b969adf4d7c04f2",
+            "url": "https://www.semanticscholar.org/paper/282c017bb72fac099e2b5c389b969adf4d7c04f2",
+            "title": "Atorvastatin in patients with type 2 diabetes mellitus undergoing hemodialysis.",
+            "year": 2005,
+            "citationCount": 2572,
+            "openAccessPdf": {
+                "url": "https://www.nejm.org/doi/pdf/10.1056/NEJMoa043545?articleTools=true",
+                "status": "BRONZE",
+                "license": null,
+                "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at https://api.unpaywall.org/v2/10.1016/j.accreview.2005.09.027?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1016/j.accreview.2005.09.027, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2456975",
+                    "name": "C. Wanner"
+                },
+                {
+                    "authorId": "145685993",
+                    "name": "V. Krane"
+                },
+                {
+                    "authorId": "144780440",
+                    "name": "W. M\u00e4rz"
+                },
+                {
+                    "authorId": "144735503",
+                    "name": "M. Olschewski"
+                },
+                {
+                    "authorId": "48626246",
+                    "name": "J. Mann"
+                },
+                {
+                    "authorId": "48604818",
+                    "name": "G. Ruf"
+                },
+                {
+                    "authorId": "144121799",
+                    "name": "E. Ritz"
+                }
+            ],
+            "abstract": null
+        },
+        {
+            "paperId": "920e56b87cfe8b87fd7777225e46c3f1491f8623",
+            "url": "https://www.semanticscholar.org/paper/920e56b87cfe8b87fd7777225e46c3f1491f8623",
+            "title": "ROS-responsive nano-drug delivery system combining mitochondria-targeting ceria nanoparticles with atorvastatin for acute kidney injury",
+            "year": 2020,
+            "citationCount": 253,
+            "openAccessPdf": {
+                "url": "https://doi.org/10.7150/thno.40395",
+                "status": "GOLD",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC7019163, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "46493026",
+                    "name": "Hui Yu"
+                },
+                {
+                    "authorId": "66188700",
+                    "name": "Feiyang Jin"
+                },
+                {
+                    "authorId": "2115295635",
+                    "name": "Di Liu"
+                },
+                {
+                    "authorId": "66746931",
+                    "name": "Gaofeng Shu"
+                },
+                {
+                    "authorId": "2141792208",
+                    "name": "Xiaojuan Wang"
+                },
+                {
+                    "authorId": "145406078",
+                    "name": "Jing Qi"
+                },
+                {
+                    "authorId": "1713118087",
+                    "name": "Min-cheng Sun"
+                },
+                {
+                    "authorId": "2115893876",
+                    "name": "Ping Yang"
+                },
+                {
+                    "authorId": "8038244",
+                    "name": "Saiping Jiang"
+                },
+                {
+                    "authorId": "38783248",
+                    "name": "Xiaoying Ying"
+                },
+                {
+                    "authorId": "2218957969",
+                    "name": "Yongzhong Du"
+                }
+            ],
+            "abstract": "Acute kidney injury (AKI) caused by sepsis is a serious disease which mitochondrial oxidative stress and inflammatory play a key role in its pathophysiology. Ceria nanoparticles hold strong and recyclable reactive oxygen species (ROS)-scavenging activity, have been applied to treat ROS-related diseases. However, ceria nanoparticles can't selectively target mitochondria and the ultra-small ceria nanoparticles are easily agglomerated. To overcome these shortcomings and improve therapeutic efficiency, we designed an ROS-responsive nano-drug delivery system combining mitochondria-targeting ceria nanoparticles with atorvastatin for acute kidney injury. Methods: Ceria nanoparticles were modified with triphenylphosphine (TCeria NPs), followed by coating with ROS-responsive organic polymer (mPEG-TK-PLGA) and loaded atorvastatin (Atv/PTP-TCeria NPs). The physicochemical properties, in vitro drug release profiles, mitochondria-targeting ability, in vitro antioxidant, anti-apoptotic activity and in vivo treatment efficacy of Atv/PTP-TCeria NPs were examined. Results: Atv/PTP-TCeria NPs could accumulate in kidneys and hold a great ability to ROS-responsively release drug and TCeria NPs could target mitochondria to eliminate excessive ROS. In vitro study suggested Atv/PTP-TCeria NPs exhibited superior antioxidant and anti-apoptotic activity. In vivo study showed that Atv/PTP-TCeria NPs effectively decreased oxidative stress and inflammatory, could protect the mitochondrial structure, reduced apoptosis of tubular cell and tubular necrosis in the sepsis-induced AKI mice model. Conclusions: This ROS-responsive nano-drug delivery system combining mitochondria-targeting ceria nanoparticles with atorvastatin has favorable potentials in the sepsis-induced AKI therapy."
+        },
+        {
+            "paperId": "a54d402bb861a3b0cbc0b3af6e15057c13ba8721",
+            "url": "https://www.semanticscholar.org/paper/a54d402bb861a3b0cbc0b3af6e15057c13ba8721",
+            "title": "Atorvastatin inhibits neuronal apoptosis via activating cAMP/PKA/p\u2010CREB/BDNF pathway in hypoxic\u2010ischemic neonatal rats",
+            "year": 2022,
+            "citationCount": 46,
+            "openAccessPdf": {
+                "url": "",
+                "status": null,
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1096/fj.202101654RR?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1096/fj.202101654RR, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2112483819",
+                    "name": "Luting Yu"
+                },
+                {
+                    "authorId": "1838066462",
+                    "name": "Shixi Liu"
+                },
+                {
+                    "authorId": "1384313918",
+                    "name": "Ruixi Zhou"
+                },
+                {
+                    "authorId": "2118181140",
+                    "name": "Hao Sun"
+                },
+                {
+                    "authorId": "47118902",
+                    "name": "Xiaojuan Su"
+                },
+                {
+                    "authorId": "2155193631",
+                    "name": "Qian Liu"
+                },
+                {
+                    "authorId": "2118509593",
+                    "name": "Shiping Li"
+                },
+                {
+                    "authorId": "41032801",
+                    "name": "Junjie Ying"
+                },
+                {
+                    "authorId": "4603788",
+                    "name": "F. Zhao"
+                },
+                {
+                    "authorId": "144980167",
+                    "name": "D. Mu"
+                },
+                {
+                    "authorId": "145393778",
+                    "name": "Y. Qu"
+                }
+            ],
+            "abstract": "Neuronal apoptosis is one of the main pathological processes of hypoxic\u2010ischemic brain damage (HIBD) and is involved in the development of hypoxic\u2010ischemic encephalopathy (HIE) in neonates. Atorvastatin has been found to have neuroprotective effects in some nervous system diseases, but its role in regulating the pathogenesis of neonatal HIBD remains elusive. Thus, this study aimed to explore the effects and related mechanisms of atorvastatin on the regulation of neuronal apoptosis after HIBD in newborn rats. The rat HIBD model and the neuronal oxygen glucose deprivation (OGD) model were established routinely. Atorvastatin, cAMP inhibitor (SQ22536), and BDNF inhibitor (ANA\u201012) were used to treat HIBD rats and OGD neurons. Cerebral infarction, learning and memory ability, cAMP/PKA/p\u2010CREB/BDNF signaling molecules, and apoptosis\u2010related indicators (TUNEL, cleaved caspase\u20103, and Bax/Bcl2) were then examined. In vivo, atorvastatin reduced cerebral infarction, improved learning and memory ability, decreased the number of TUNEL\u2010positive neurons, inhibited the expression of cleaved caspase\u20103 and Bax/Bcl2, and activated the cAMP/PKA/p\u2010CREB/BDNF pathway in the cerebral cortex after HIBD. In vitro, atorvastatin also decreased the apoptosis\u2010related indicators and activated the cAMP/PKA/p\u2010CREB/BDNF pathway in neurons after OGD. Furthermore, inhibition of cAMP or BDNF attenuated the effect of atorvastatin on the reduction of neuronal apoptosis, suggesting that atorvastatin inhibits HIBD\u2010induced neuronal apoptosis and alleviates brain injury in neonatal rats mainly by activating the cAMP/PKA/p\u2010CREB/BDNF pathway. In conclusion, atorvastatin may be developed as a potential drug for the treatment of neonatal HIE."
+        },
+        {
+            "paperId": "5d5e582bfaf6c6bf494d4b575ce3cdf7f3495fc5",
+            "url": "https://www.semanticscholar.org/paper/5d5e582bfaf6c6bf494d4b575ce3cdf7f3495fc5",
+            "title": "Impact of pitavastatin on new-onset diabetes mellitus compared to atorvastatin and rosuvastatin: a distributed network analysis of 10 real-world databases",
+            "year": 2022,
+            "citationCount": 37,
+            "openAccessPdf": {
+                "url": "https://cardiab.biomedcentral.com/track/pdf/10.1186/s12933-022-01524-6",
+                "status": "GOLD",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC9128291, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "114814306",
+                    "name": "W. Seo"
+                },
+                {
+                    "authorId": "5141167",
+                    "name": "S. Seo"
+                },
+                {
+                    "authorId": "33778897",
+                    "name": "Yerim Kim"
+                },
+                {
+                    "authorId": "11854628",
+                    "name": "J. J. Yoo"
+                },
+                {
+                    "authorId": "2813545",
+                    "name": "W. Shin"
+                },
+                {
+                    "authorId": "40241544",
+                    "name": "Jinseob Kim"
+                },
+                {
+                    "authorId": "35526457",
+                    "name": "S. You"
+                },
+                {
+                    "authorId": "2061806405",
+                    "name": "Rae Woong Park"
+                },
+                {
+                    "authorId": "2110425001",
+                    "name": "Young Min Park"
+                },
+                {
+                    "authorId": "16766822",
+                    "name": "Kyung-Jin Kim"
+                },
+                {
+                    "authorId": "3586483",
+                    "name": "S. Rhee"
+                },
+                {
+                    "authorId": "2144276928",
+                    "name": "Meeyoung Park"
+                },
+                {
+                    "authorId": "82850598",
+                    "name": "E. Jin"
+                },
+                {
+                    "authorId": "2152667150",
+                    "name": "Sung Eun Kim"
+                }
+            ],
+            "abstract": "Background Statin treatment increases the risk of new-onset diabetes mellitus (NODM); however, data directly comparing the risk of NODM among individual statins is limited. We compared the risk of NODM between patients using pitavastatin and atorvastatin or rosuvastatin using reliable, large-scale data. Methods Data of electronic health records from ten hospitals converted to the Observational Medical Outcomes Partnership Common Data Model (n\u2009=\u200914,605,368 patients) were used to identify new users of pitavastatin, atorvastatin, or rosuvastatin (atorvastatin\u2009+\u2009rosuvastatin) for \u2265\u2009180 days without a previous history of diabetes or HbA1c level\u2009\u2265\u20095.7%. We conducted a cohort study using Cox regression analysis to examine the hazard ratio (HR) of NODM after propensity score matching (PSM) and then performed an aggregate meta-analysis of the HR. Results After 1:2 PSM, 10,238 new pitavastatin users (15,998 person-years of follow-up) and 18,605 atorvastatin\u2009+\u2009rosuvastatin users (33,477 person-years of follow-up) were pooled from 10 databases. The meta-analysis of the HRs demonstrated that pitavastatin resulted in a significantly reduced risk of NODM than atorvastatin\u2009+\u2009rosuvastatin (HR 0.72; 95% CI 0.59\u20130.87). In sub-analysis, pitavastatin was associated with a lower risk of NODM than atorvastatin or rosuvastatin after 1:1 PSM (HR 0.69; CI 0.54\u20130.88 and HR 0.74; CI 0.55\u20130.99, respectively). A consistently low risk of NODM in pitavastatin users was observed when compared with low-to-moderate-intensity atorvastatin\u2009+\u2009rosuvastatin users (HR 0.78; CI\u00a00.62\u20130.98). Conclusions In this retrospective, multicenter active-comparator, new-user, cohort study, pitavastatin reduced the risk of NODM compared with atorvastatin or rosuvastatin."
+        },
+        {
+            "paperId": "04e846d663847bcd668c76a6eaef913b2f28e2f0",
+            "url": "https://www.semanticscholar.org/paper/04e846d663847bcd668c76a6eaef913b2f28e2f0",
+            "title": "Atorvastatin suppresses NLRP3 inflammasome activation in intracerebral hemorrhage via TLR4- and MyD88-dependent pathways",
+            "year": 2022,
+            "citationCount": 26,
+            "openAccessPdf": {
+                "url": "https://www.aging-us.com/article/203824/pdf",
+                "status": "GOLD",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC8791214, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "50536515",
+                    "name": "Duo Chen"
+                },
+                {
+                    "authorId": "2066253919",
+                    "name": "L. Sui"
+                },
+                {
+                    "authorId": "2153394158",
+                    "name": "Cao Chen"
+                },
+                {
+                    "authorId": "2135578673",
+                    "name": "Sanchuan Liu"
+                },
+                {
+                    "authorId": "2157167960",
+                    "name": "Xianfeng Sun"
+                },
+                {
+                    "authorId": "6678002",
+                    "name": "Jun-hong Guan"
+                }
+            ],
+            "abstract": "Intracerebral hemorrhage (ICH) is a common neurological condition that causes severe disability and even death. Even though the mechanism is not clear, increasing evidence shows the efficacy of atorvastatin on treating ICH. In this study, we examined the impact of atorvastatin on the NOD-like receptor protein 3 (NLRP3) inflammasome and inflammatory pathways following ICH. Mouse models of ICH were established by collagenase injection in adult C57BL/6 mice. IHC mice received atorvastatin treatment 2 h after hematoma establishment. First, the changes of glial cells and neurons in the brains of ICH patients and mice were detected by immunohistochemistry and western blotting. Second, the molecular mechanisms underlying the microglial activation and neuronal loss were evaluated after the application of atorvastatin. Finally, the behavioral deficits of ICH mice without or with the treatment of atorvastatin were determined by neurological defect scores. The results demonstrated that atorvastatin significantly deactivated glial cells by reducing the expression of glial fibrillary acidic protein (GFAP), Ionized calcium binding adapter molecule 1 (Iba1), tumor necrosis factor (TNF)-\u03b1, and interleukin (IL)-6 in ICH model mice. For inflammasomes, atorvastatin also showed its efficacy by decreasing the expression of NLRP3, cleaved caspase-1, and IL-1\u03b2 in ICH mice. Moreover, atorvastatin markedly inhibited the upregulation of toll-like receptor 4 (TLR4) and myeloid differentiation factor 88 (MyD88), which indicated deactivation of NLRP3 inflammasomes. By inhibiting the activities of inflammasomes in glial cells, neuronal loss was partially prevented by suppressing the apoptosis in the brains of ICH mice, protecting them from neurological defects."
+        },
+        {
+            "paperId": "bf01ce70f2e4a6f6cb7186d06ec752b75e869fbd",
+            "url": "https://www.semanticscholar.org/paper/bf01ce70f2e4a6f6cb7186d06ec752b75e869fbd",
+            "title": "Atorvastatin ameliorates early brain injury after subarachnoid hemorrhage via inhibition of pyroptosis and neuroinflammation",
+            "year": 2021,
+            "citationCount": 71,
+            "openAccessPdf": {
+                "url": "",
+                "status": null,
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1002/jcp.30351?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1002/jcp.30351, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "47740754",
+                    "name": "Junhui Chen"
+                },
+                {
+                    "authorId": "151123932",
+                    "name": "Chunlei Zhang"
+                },
+                {
+                    "authorId": "24571266",
+                    "name": "Tengfeng Yan"
+                },
+                {
+                    "authorId": "2119001660",
+                    "name": "Lixiang Yang"
+                },
+                {
+                    "authorId": "2115768618",
+                    "name": "Yuhai Wang"
+                },
+                {
+                    "authorId": "152899926",
+                    "name": "Zhong-Hua Shi"
+                },
+                {
+                    "authorId": "2487516",
+                    "name": "Mingchang Li"
+                },
+                {
+                    "authorId": "5535308",
+                    "name": "Qianxue Chen"
+                }
+            ],
+            "abstract": "Subarachnoid hemorrhage (SAH) is a subtype of stroke with high mortality and morbidity due to the lack of effective therapy. Atorvastatin has been reported to alleviate early brain injury (EBI) following subarachnoid hemorrhage (SAH) via reducing reactive oxygen species, antiapoptosis, regulated autophagy, and neuroinflammation. Which was the related to the pyroptosis? Pyroptosis can be defined as a highly specific inflammatory programmed cell death, distinct from classical apoptosis and necrosis. However, the precise role of pyroptosis in atorvastatin\u2010mediated neuroprotection following SAH has not been confirmed. The present study aimed to investigate the neuroprotection and potential molecular mechanisms of atorvastatin in the SAH\u2010induced EBI via regulating neural pyroptosis using the filament perforation model of SAH in male C57BL/6 mice, and the hemin\u2010induced neuron damage model in HT\u201022. Atorvastatin or vehicle was administrated 2\u2009h after SAH and hemin\u2010induced neuron damage. The mortality, neurological score, brain water content, and neuronal death were evaluated. The results show that the atorvastatin treatment markedly increased survival rate, neurological score, greater survival of neurons, downregulated the protein expression of NLRP1, cleaved caspase\u20101, interleukin\u20101\u03b2 (IL\u20101\u03b2), and IL\u201018, which indicated that atorvastatin\u2010inhibited pyroptosis and neuroinflammation, ameliorated neuron death in vivo/vitro subjected to SAH. Taken together, this study demonstrates that atorvastatin improved the neurological outcome in rats and reduced the neuron death by against neural pyroptosis and neuroinflammation."
+        },
+        {
+            "paperId": "7f34d87ade6991c7df0c779e0ce199a23b2790fe",
+            "url": "https://www.semanticscholar.org/paper/7f34d87ade6991c7df0c779e0ce199a23b2790fe",
+            "title": "Atorvastatin is associated with reduced cisplatin-induced hearing loss.",
+            "year": 2021,
+            "citationCount": 56,
+            "openAccessPdf": {
+                "url": "http://www.jci.org/articles/view/142616/files/pdf",
+                "status": "HYBRID",
+                "license": "CCBY",
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1172/JCI142616?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1172/JCI142616, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "47347689",
+                    "name": "K. Fernandez"
+                },
+                {
+                    "authorId": "2049432261",
+                    "name": "Paul D Allen"
+                },
+                {
+                    "authorId": "32589362",
+                    "name": "Marnie L Campbell"
+                },
+                {
+                    "authorId": "7725111",
+                    "name": "B. Page"
+                },
+                {
+                    "authorId": "80544772",
+                    "name": "Thomas G Townes"
+                },
+                {
+                    "authorId": "2145254865",
+                    "name": "Chuanlin Li"
+                },
+                {
+                    "authorId": "2190578611",
+                    "name": "Hui Cheng"
+                },
+                {
+                    "authorId": "144487173",
+                    "name": "J. Garrett"
+                },
+                {
+                    "authorId": "11625266",
+                    "name": "M. Mulquin"
+                },
+                {
+                    "authorId": "2073780060",
+                    "name": "A. Clements"
+                },
+                {
+                    "authorId": "14434422",
+                    "name": "D. Mulford"
+                },
+                {
+                    "authorId": "32155647",
+                    "name": "Candice E Ortiz"
+                },
+                {
+                    "authorId": "3943958",
+                    "name": "C. Brewer"
+                },
+                {
+                    "authorId": "3927998",
+                    "name": "J. Dubno"
+                },
+                {
+                    "authorId": "46878644",
+                    "name": "Shawn Newlands"
+                },
+                {
+                    "authorId": "50479187",
+                    "name": "N. Schmitt"
+                },
+                {
+                    "authorId": "6224497",
+                    "name": "L. Cunningham"
+                }
+            ],
+            "abstract": "BACKGROUNDCisplatin is widely used to treat adult and pediatric cancers. It is the most ototoxic drug in clinical use, resulting in permanent hearing loss in approximately 50% of treated patients. There is a major need for therapies that prevent cisplatin-induced hearing loss. Studies in mice suggest that concurrent use of statins reduces cisplatin-induced hearing loss.METHODSWe examined hearing thresholds from 277 adults treated with cisplatin for head and neck cancer. Pretreatment and posttreatment audiograms were collected within 90 days of initiation and completion of cisplatin therapy. The primary outcome measure was a change in hearing as defined by the National Cancer Institute Common Terminology Criteria for Adverse Events (CTCAE).RESULTSAmong patients on concurrent atorvastatin, 9.7% experienced a CTCAE grade 2 or higher cisplatin-induced hearing loss compared with 29.4% in nonstatin users (P < 0.0001). A mixed-effect model analysis showed that atorvastatin use was significantly associated with reduced cisplatin-induced hearing loss (P \u2264 0.01). An adjusted odds ratio (OR) analysis indicated that an atorvastatin user is 53% less likely to acquire a cisplatin-induced hearing loss than a nonstatin user (OR = 0.47; 95% CI, 0.30-0.78). Three-year survival rates were not different between atorvastatin users and nonstatin users (P > 0.05).CONCLUSIONSOur data indicate that atorvastatin use is associated with reduced incidence and severity of cisplatin-induced hearing loss in adults being treated for head and neck cancer.TRIAL REGISTRATIONClinicalTrials.gov identifier NCT03225157.FUNDINGFunding was provided by the Division of Intramural Research at the National Institute on Deafness and Other Communication Disorders (1 ZIA DC000079, ZIA DC000090)."
+        },
+        {
+            "paperId": "f729de821a27d382468dcebf385a82be1c919ffc",
+            "url": "https://www.semanticscholar.org/paper/f729de821a27d382468dcebf385a82be1c919ffc",
+            "title": "Atorvastatin is unlikely to prevent rheumatoid arthritis in high risk individuals: results from the prematurely stopped STAtins to Prevent Rheumatoid Arthritis (STAPRA) trial",
+            "year": 2021,
+            "citationCount": 50,
+            "openAccessPdf": {
+                "url": "https://rmdopen.bmj.com/content/rmdopen/7/1/e001591.full.pdf",
+                "status": "GOLD",
+                "license": "CCBYNC",
+                "disclaimer": "Notice: Paper or abstract available at https://pmc.ncbi.nlm.nih.gov/articles/PMC7942258, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "147379807",
+                    "name": "L. van Boheemen"
+                },
+                {
+                    "authorId": "5276970",
+                    "name": "S. Turk"
+                },
+                {
+                    "authorId": "1432841496",
+                    "name": "M. V. Beers-Tas"
+                },
+                {
+                    "authorId": "47288554",
+                    "name": "W. Bos"
+                },
+                {
+                    "authorId": "46340535",
+                    "name": "D. Marsman"
+                },
+                {
+                    "authorId": "50392707",
+                    "name": "E. Griep"
+                },
+                {
+                    "authorId": "1401724364",
+                    "name": "M. Starmans-Kool"
+                },
+                {
+                    "authorId": "1954875",
+                    "name": "C. Popa"
+                },
+                {
+                    "authorId": "3624474",
+                    "name": "A. V. van Sijl"
+                },
+                {
+                    "authorId": "144604225",
+                    "name": "M. Boers"
+                },
+                {
+                    "authorId": "6323169",
+                    "name": "M. Nurmohamed"
+                },
+                {
+                    "authorId": "5287662",
+                    "name": "D. van Schaardenburg"
+                }
+            ],
+            "abstract": "Objectives Persons at high risk of rheumatoid arthritis (RA) might benefit from a low-risk pharmacological intervention aimed at primary prevention. Previous studies demonstrated disease-modifying effects of statins in patients with RA as well as an association between statin use and a decreased risk of RA development. A randomised, double-blind, placebo-controlled trial investigated whether atorvastatin could prevent arthritis development in high-risk individuals. Methods Arthralgia patients with anticitrullinated protein antibody (ACPA) >3\u2009xULN or ACPA and rheumatoid factor, without (a history of) arthritis, were randomised to receive atorvastatin 40\u2009mg daily or placebo for 3 years. The calculated sample size was 220 participants. The primary endpoint was clinical arthritis. Cox regression analysis was used to determine the effect of atorvastatin on arthritis development. Results Due to a low inclusion rate, mainly because of an unwillingness to participate, the trial was prematurely stopped. Data of the 62 randomised individuals were analysed. Median follow-up was 14 (inner quartiles 6\u201335) months. Fifteen individuals (24%) developed arthritis: 9/31 (29%) in the atorvastatin group; 6/31 (19%) in the placebo group: HR 1.40, 95%\u2009CI 0.50 to 3.95. Conclusions In this small set of randomised high-risk individuals, we did not demonstrate a protective effect of atorvastatin on arthritis development. The main reason for the low inclusion was unwillingness to participate; this may also impede other RA prevention trials. Further research to investigate and solve barriers for prevention trial participation is needed."
+        },
+        {
+            "paperId": "8e7df37bddeafcb8156b633af41830ea1d0457ad",
+            "url": "https://www.semanticscholar.org/paper/8e7df37bddeafcb8156b633af41830ea1d0457ad",
+            "title": "Atorvastatin inhibited TNF-\u03b1 induced matrix degradation in rat nucleus pulposus cells by suppressing NLRP3 inflammasome activity and inducing autophagy through NF-\u03baB signaling",
+            "year": 2021,
+            "citationCount": 37,
+            "openAccessPdf": {
+                "url": "https://www.tandfonline.com/doi/pdf/10.1080/15384101.2021.1973707?needAccess=true&role=button",
+                "status": "BRONZE",
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1080/15384101.2021.1973707?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1080/15384101.2021.1973707, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "2004865987",
+                    "name": "Jiancong Chen"
+                },
+                {
+                    "authorId": "1473254525",
+                    "name": "Jiansen Yan"
+                },
+                {
+                    "authorId": "23586870",
+                    "name": "Shuangxing Li"
+                },
+                {
+                    "authorId": "2141493452",
+                    "name": "Jianxiong Zhu"
+                },
+                {
+                    "authorId": "144535459",
+                    "name": "Jie Zhou"
+                },
+                {
+                    "authorId": "2152749326",
+                    "name": "Jun Li"
+                },
+                {
+                    "authorId": "1591117330",
+                    "name": "Yangyang Zhang"
+                },
+                {
+                    "authorId": "93937638",
+                    "name": "Zhengqi Huang"
+                },
+                {
+                    "authorId": "2152193090",
+                    "name": "Liang Yuan"
+                },
+                {
+                    "authorId": "2519955",
+                    "name": "Kang Xu"
+                },
+                {
+                    "authorId": "2109955717",
+                    "name": "Weijian Chen"
+                },
+                {
+                    "authorId": "96347800",
+                    "name": "Wei Ye"
+                }
+            ],
+            "abstract": "ABSTRACT Intervertebral disc degeneration (IDD) is one of the main causes of lower back pain (LBP). It results from an imbalance between the degradation and synthesis of extracellular matrix (ECM) components in nucleus pulposus (NP) cells. Atorvastatin, an HMG-CoA reductase inhibitor, plays a vital role in many diseases, such as cardiovascular disease and osteoarthritis. However, the effect of atorvastatin on IDD is unclear. Herein, we demonstrated that atorvastatin affects matrix degradation induced by TNF-\u03b1 and demonstrated the mechanism by which TNF-\u03b1 modulates matrix metabolism in rat NP cells. Real-time PCR, western blotting and immunofluorescence staining were performed to detect the mRNA and protein expression of related genes. mRFP-GFP-LC3 adenovirus plasmid transfection and transmission electron microscopy (TEM) were used to detect cell autophagy. NLRP3 inhibitor and lentiviral vectors containing shRNA-NLRP3 were used to show the effect of NLRP3 on autophagic flux and the NF-\u03baB signaling pathway. The results revealed that atorvastatin might suppress matrix degradation induced by TNF-\u03b1 by suppressing NLRP3 inflammasome activity and inducing autophagic flux. Moreover, atorvastatin suppressed NF-\u03baB signaling induced by TNF-\u03b1. NF-\u03baB signaling inhibition suppressed NLRP3 inflammasome activity, and NLRP3 inhibition suppressed NF-\u03baB signaling activation induced by TNF-\u03b1. NLRP3 inhibition or NLRP3 knockdown induced autophagic flux in the presence of TNF-\u03b1. Overall, the present study demonstrated that atorvastatin might suppress matrix degradation induced by TNF-\u03b1 and further revealed the crosstalk among NLRP3 inflammasome activity, autophagy and NF-\u03baB signaling."
+        },
+        {
+            "paperId": "706da63398d9ef6503e8a3c9e35263a286c0e545",
+            "url": "https://www.semanticscholar.org/paper/706da63398d9ef6503e8a3c9e35263a286c0e545",
+            "title": "Safety and Efficacy of Atorvastatin for Chronic Subdural Hematoma in Chinese Patients: A Randomized ClinicalTrial",
+            "year": 2018,
+            "citationCount": 204,
+            "openAccessPdf": {
+                "url": "https://jamanetwork.com/journals/jamaneurology/articlepdf/2694718/jamaneurology_jiang_2018_oi_180048.pdf",
+                "status": "BRONZE",
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1001/jamaneurol.2018.2030?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1001/jamaneurol.2018.2030, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "38650476",
+                    "name": "Rongcai Jiang"
+                },
+                {
+                    "authorId": "2110772375",
+                    "name": "Shi-guang Zhao"
+                },
+                {
+                    "authorId": "153537394",
+                    "name": "Renzhi Wang"
+                },
+                {
+                    "authorId": "48366331",
+                    "name": "H. Feng"
+                },
+                {
+                    "authorId": "2144188735",
+                    "name": "Jianmin Zhang"
+                },
+                {
+                    "authorId": "48569128",
+                    "name": "Xin-gang Li"
+                },
+                {
+                    "authorId": "2117694168",
+                    "name": "Y. Mao"
+                },
+                {
+                    "authorId": "51917505",
+                    "name": "Xian-rui Yuan"
+                },
+                {
+                    "authorId": "49318739",
+                    "name": "Zhou Fei"
+                },
+                {
+                    "authorId": "1485241553",
+                    "name": "Yuanli Zhao"
+                },
+                {
+                    "authorId": "5645922",
+                    "name": "Xinguang Yu"
+                },
+                {
+                    "authorId": "2008163",
+                    "name": "W. Poon"
+                },
+                {
+                    "authorId": "2116833892",
+                    "name": "Xide Zhu"
+                },
+                {
+                    "authorId": "152424366",
+                    "name": "Ning Liu"
+                },
+                {
+                    "authorId": "46981710",
+                    "name": "D. Kang"
+                },
+                {
+                    "authorId": "1647200194",
+                    "name": "Tao Sun"
+                },
+                {
+                    "authorId": "144202294",
+                    "name": "Baohua Jiao"
+                },
+                {
+                    "authorId": "3504565",
+                    "name": "Xianzhi Liu"
+                },
+                {
+                    "authorId": "143813490",
+                    "name": "Rutong Yu"
+                },
+                {
+                    "authorId": "2108037796",
+                    "name": "Junyi Zhang"
+                },
+                {
+                    "authorId": "1938744168",
+                    "name": "Guodong Gao"
+                },
+                {
+                    "authorId": "2069716297",
+                    "name": "J. Hao"
+                },
+                {
+                    "authorId": "31915717",
+                    "name": "N. Su"
+                },
+                {
+                    "authorId": "7188841",
+                    "name": "Gangfeng Yin"
+                },
+                {
+                    "authorId": "2145144586",
+                    "name": "X. Zhu"
+                },
+                {
+                    "authorId": "2141583592",
+                    "name": "Yi-cheng Lu"
+                },
+                {
+                    "authorId": "2181893856",
+                    "name": "Junji Wei"
+                },
+                {
+                    "authorId": "49268092",
+                    "name": "Jin Hu"
+                },
+                {
+                    "authorId": "1384268796",
+                    "name": "Rong Hu"
+                },
+                {
+                    "authorId": "2108980822",
+                    "name": "Jianrong Li"
+                },
+                {
+                    "authorId": "46349024",
+                    "name": "Dong Wang"
+                },
+                {
+                    "authorId": "145300146",
+                    "name": "Hui-jie Wei"
+                },
+                {
+                    "authorId": "2143699699",
+                    "name": "Ye Tian"
+                },
+                {
+                    "authorId": "2055822702",
+                    "name": "P. Lei"
+                },
+                {
+                    "authorId": "2117142983",
+                    "name": "Jing Dong"
+                },
+                {
+                    "authorId": "2144138638",
+                    "name": "Jianning Zhang"
+                }
+            ],
+            "abstract": "Importance Chronic subdural hematoma (CSDH) is a trauma-associated condition commonly found in elderly patients. Surgery is currently the treatment of choice, but it carries a significant risk of recurrence and death. Nonsurgical treatments remain limited and ineffective. Our recent studies suggest that atorvastatin reduces hematomas and improves the clinical outcomes of patients with CSDH. Objective To investigate the safety and therapeutic efficacy of atorvastatin to nonsurgically treat patients with CSDH. Design, Setting, and Participants The Effect of Atorvastatin on Chronic Subdural Hematoma (ATOCH) randomized, placebo-controlled, double-blind phase II clinical trial was conducted in multiple centers in China from February 2014 to November 2015. For this trial, we approached 254 patients with CSDH who received a diagnosis via a computed tomography scan; of these, 200 (78.7%) were enrolled because 23 patients (9.1%) refused to participate and 31 (12.2%) were disqualified. Interventions Patients were randomly assigned to receive either 20 mg of atorvastatin or placebo daily for 8 weeks and were followed up for an additional 16 weeks. Main Outcomes and Measures The primary outcome was change in hematoma volume (HV) by computed tomography after 8 weeks of treatment. The secondary outcomes included HV measured at the 4th, 12th, and 24th weeks and neurological function that was evaluated using the Markwalder grading scale/Glasgow Coma Scale and the Barthel Index at the 8th week. Results One hundred ninety-six patients received treatment (169 men [86.2%]; median [SD] age, 63.6 [14.2] years). The baseline HV and clinical presentations were similar between patients who were taking atorvastatin (98 [50%]) and the placebo (98 [50%]). After 8 weeks, the HV reduction in patients who were taking atorvastatin was 12.55 mL more than those taking the placebo (95% CI, 0.9-23.9 mL; P\u2009=\u2009.003). Forty-five patients (45.9%) who were taking atorvastatin significantly improved their neurological function, but only 28 (28.6%) who were taking the placebo did, resulting in an adjusted odds ratio of 1.957 for clinical improvements (95% CI, 1.07-3.58; P\u2009=\u2009.03). Eleven patients (11.2%) who were taking atorvastatin and 23 (23.5%) who were taking the placebo underwent surgery during the trial for an enlarging hematoma and/or a deteriorating clinical condition (hazard ratio, 0.47; 95% CI, 0.24-0.92; P\u2009=\u2009.03). No significant adverse events were reported. Conclusions and Relevance Atorvastatin may be a safe and efficacious nonsurgical alternative for treating patients with CSDH. Trial Registration ClinicalTrials.gov Identifier: NCT02024373"
+        },
+        {
+            "paperId": "1dc7edb55777d2995fd6d5aa91f0b48a8aed6588",
+            "url": "https://www.semanticscholar.org/paper/1dc7edb55777d2995fd6d5aa91f0b48a8aed6588",
+            "title": "High-dose atorvastatin after stroke or transient ischemic attack.",
+            "year": 2006,
+            "citationCount": 1677,
+            "openAccessPdf": {
+                "url": "https://www.nejm.org/doi/pdf/10.1056/NEJMoa061894?articleTools=true",
+                "status": "BRONZE",
+                "license": "publisher-specific-oa",
+                "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at https://api.unpaywall.org/v2/10.1056/NEJMOA061894?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1056/NEJMOA061894, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "4398030",
+                    "name": "P. Amarenco"
+                },
+                {
+                    "authorId": "2250182946",
+                    "name": "J. Bogousslavsky"
+                },
+                {
+                    "authorId": "2250113102",
+                    "name": "Callahan A rd"
+                },
+                {
+                    "authorId": "34728960",
+                    "name": "L. Goldstein"
+                },
+                {
+                    "authorId": "2250172924",
+                    "name": "M. Hennerici"
+                },
+                {
+                    "authorId": "19487001",
+                    "name": "A. Rudolph"
+                },
+                {
+                    "authorId": "3126489",
+                    "name": "H. Sillesen"
+                },
+                {
+                    "authorId": "9958935",
+                    "name": "L. Simunovic"
+                },
+                {
+                    "authorId": "5078850",
+                    "name": "M. Szarek"
+                },
+                {
+                    "authorId": "2113862280",
+                    "name": "K. Welch"
+                },
+                {
+                    "authorId": "152212191",
+                    "name": "J. Zivin"
+                },
+                {
+                    "authorId": "2250487990",
+                    "name": "Stroke Prevention by Aggressive Reduction in Cholesterol Investigators"
+                }
+            ],
+            "abstract": null
+        },
+        {
+            "paperId": "f07c3f12c67cebb56bbeb6c761bbc002287792ea",
+            "url": "https://www.semanticscholar.org/paper/f07c3f12c67cebb56bbeb6c761bbc002287792ea",
+            "title": "Preparation of a carboxymethylcellulose-iron composite for uptake of atorvastatin in water.",
+            "year": 2019,
+            "citationCount": 168,
+            "openAccessPdf": {
+                "url": "",
+                "status": "CLOSED",
+                "license": null,
+                "disclaimer": "Notice: Paper or abstract available at https://api.unpaywall.org/v2/10.1016/j.ijbiomac.2019.03.211?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1016/j.ijbiomac.2019.03.211, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "145714782",
+                    "name": "I. Ali"
+                },
+                {
+                    "authorId": "103798618",
+                    "name": "Omar M. L. Alharbi"
+                },
+                {
+                    "authorId": "7399025",
+                    "name": "Z. Alothman"
+                },
+                {
+                    "authorId": "4717248",
+                    "name": "A. Alwarthan"
+                },
+                {
+                    "authorId": "2333680400",
+                    "name": "A. M. Al-Mohaimeed"
+                }
+            ],
+            "abstract": null
+        },
+        {
+            "paperId": "d584841ee66c5a91aae1bd5096a54e2715e6fcb7",
+            "url": "https://www.semanticscholar.org/paper/d584841ee66c5a91aae1bd5096a54e2715e6fcb7",
+            "title": "Treatment with Atorvastatin During Vascular Remodeling Promotes Pericyte-Mediated Blood-Brain Barrier Maturation Following Ischemic Stroke",
+            "year": 2021,
+            "citationCount": 31,
+            "openAccessPdf": {
+                "url": "",
+                "status": null,
+                "license": null,
+                "disclaimer": "Notice: The following paper fields have been elided by the publisher: {'abstract'}. Paper or abstract available at https://api.unpaywall.org/v2/10.1007/s12975-020-00883-0?email=<INSERT_YOUR_EMAIL> or https://doi.org/10.1007/s12975-020-00883-0, which is subject to the license by the author or copyright owner provided with this content. Please go to the source to verify the license and copyright information for your use."
+            },
+            "authors": [
+                {
+                    "authorId": "49308443",
+                    "name": "Yirong Yang"
+                },
+                {
+                    "authorId": "46554522",
+                    "name": "Lisa Y. Yang"
+                },
+                {
+                    "authorId": "5357170",
+                    "name": "Victor M. Salayandia"
+                },
+                {
+                    "authorId": "48144980",
+                    "name": "Jeffrey F. Thompson"
+                },
+                {
+                    "authorId": "5224920",
+                    "name": "M. Torbey"
+                },
+                {
+                    "authorId": "1698559",
+                    "name": "Yi Yang"
+                }
+            ],
+            "abstract": null
+        }
+    ]
+}
