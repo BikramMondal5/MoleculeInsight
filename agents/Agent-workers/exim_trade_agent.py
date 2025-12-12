@@ -1,4 +1,5 @@
 import os
+import sys
 import requests
 from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
@@ -138,11 +139,14 @@ try:
 except ImportError as e:
     print(f"[Error] Could not import RAG system: {e}")
 
-def run_exim_agent(molecule: str, hs_code: str, years: list[int]):
+def run_exim_agent(molecule: str, hs_code: str, years: list[int], query: str = ""):
     print(f"Fetching trade data for HS code {hs_code} (Molecule/Drug: {molecule}) using RAG...")
     
-    query = f"""
+    rag_q = f"""
     Generate an EXIM Trade Intelligence report for {molecule} (HS Code: {hs_code}) using the knowledge base.
+    
+    User Query Context: "{query}" (Address this specifically if relevant)
+    
     Include:
     1. Global demand and supply signals
     2. Top import markets (demand hotspots)
@@ -152,7 +156,7 @@ def run_exim_agent(molecule: str, hs_code: str, years: list[int]):
     """
     
     try:
-        response = rag_query(query)
+        response = rag_query(rag_q)
         report = response.get("answer", "No answer.")
     except Exception as e:
         print(f"RAG Error: {e}")

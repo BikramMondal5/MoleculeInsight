@@ -219,22 +219,32 @@ try:
 except ImportError as e:
     print(f"[Error] Could not import RAG system: {e}")
 
-def run_clinical_trials_agent(molecule):
+def run_clinical_trials_agent(molecule, query: str = ""):
     """
     Main function with caching and RAG
     """
     print(f"[Clinical Trials Agent] Analyzing {molecule} using RAG from KnowledgeBase...")
     
-    # Try to get from cache first
+    # Try to get from cache first (only if no specific query, OR incorporate query into cache key)
+    # If query is specific, caching solely by molecule might be wrong. 
+    # For now, let's keep it simple: if query is present, bypass cache or use composite key.
+    # To avoid cache pollution, we'll bypass cache if query is specifically asking for something distinct.
+    # But usually 'query' here is the top-level user query.
+    
+    cache_key = f"{molecule}_{query}" if query else molecule
+    
     if CACHE_ENABLED:
-        cached_report = cache_manager.get("clinical_trials", molecule)
+        cached_report = cache_manager.get("clinical_trials", cache_key)
         if cached_report:
             print(f"[Clinical Trials Agent] Using cached report")
             return cached_report
     
     # RAG Query
-    query = f"""
+    rag_q = f"""
     Generate a detailed clinical trials report for {molecule} based on the documents in the knowledge base.
+    
+    User Query Context: "{query}" (Address this specifically if relevant)
+    
     Include:
     1. Total trials
     2. Phase distribution (Phase 1,2,3,4)
@@ -247,7 +257,7 @@ def run_clinical_trials_agent(molecule):
     """
     
     try:
-        response = rag_query(query)
+        response = rag_query(rag_q)
         report = response.get("answer", "No answer generated.")
     except Exception as e:
         print(f"[Clinical Trials Agent] RAG Error: {e}")
@@ -255,7 +265,7 @@ def run_clinical_trials_agent(molecule):
 
     # Cache the final report
     if CACHE_ENABLED:
-        cache_manager.set("clinical_trials", molecule, report)
+        cache_manager.set("clinical_trials", cache_key, report)
     
     print(f"[Clinical Trials Agent] ✓ Complete")
     return report

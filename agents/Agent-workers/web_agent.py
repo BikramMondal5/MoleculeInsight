@@ -1,4 +1,5 @@
 import os
+import sys
 import requests
 from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
@@ -82,11 +83,14 @@ try:
 except ImportError as e:
     print(f"[Error] Could not import RAG system: {e}")
 
-def run_web_intel_agent(target: str, page_size: int = 20):
+def run_web_intel_agent(target: str, page_size: int = 20, query: str = ""):
     print(f"Fetching web intelligence for: {target} using RAG...")
     
-    query = f"""
+    rag_q = f"""
     Generate a Web Intelligence report for {target} using the knowledge base.
+    
+    User Query Context: "{query}" (Address this specifically if relevant)
+    
     Focus on recent news, developments, and articles.
     Include:
     1. Recent News Highlights (Headlines + Summaries)
@@ -95,7 +99,7 @@ def run_web_intel_agent(target: str, page_size: int = 20):
     """
     
     try:
-        response = rag_query(query)
+        response = rag_query(rag_q)
         report = response.get("answer", "No answer.")
     except Exception as e:
         print(f"RAG Error: {e}")

@@ -1,4 +1,5 @@
 import os
+import sys
 import requests
 from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
@@ -138,11 +139,14 @@ try:
 except ImportError as e:
     print(f"[Error] Could not import RAG system: {e}")
 
-def run_patent_agent(molecule):
+def run_patent_agent(molecule, query: str = ""):
     print(f"Fetching patents for {molecule} using RAG...")
     
-    query = f"""
+    rag_q = f"""
     Generate a patent intelligence report for {molecule} using the knowledge base.
+    
+    User Query Context: "{query}" (Address this specifically if relevant)
+    
     Include:
     1. Total patent count (approximate)
     2. Top assignees
@@ -153,7 +157,7 @@ def run_patent_agent(molecule):
     """
     
     try:
-        response = rag_query(query)
+        response = rag_query(rag_q)
         report = response.get("answer", "No answer.")
     except Exception as e:
         print(f"RAG Error: {e}")

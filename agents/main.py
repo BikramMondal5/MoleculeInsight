@@ -120,7 +120,7 @@ async def analyze_molecule(request: AnalysisRequest):
         "message": "Fetching market data and insights...",
         "data": None
     })
-    iqvia_future = loop.run_in_executor(executor, safe_run_agent, run_iqvia_agent, molecule)
+    iqvia_future = loop.run_in_executor(executor, safe_run_agent, run_iqvia_agent, molecule, request.query)
     
     # Clinical Trials Agent
     updates.append({
@@ -129,7 +129,7 @@ async def analyze_molecule(request: AnalysisRequest):
         "message": "Searching clinical trials database...",
         "data": None
     })
-    clinical_future = loop.run_in_executor(executor, safe_run_agent, run_clinical_trials_agent, molecule)
+    clinical_future = loop.run_in_executor(executor, safe_run_agent, run_clinical_trials_agent, molecule, request.query)
     
     # Patent Agent
     updates.append({
@@ -138,7 +138,7 @@ async def analyze_molecule(request: AnalysisRequest):
         "message": "Analyzing patent landscape...",
         "data": None
     })
-    patent_future = loop.run_in_executor(executor, safe_run_agent, run_patent_agent, molecule)
+    patent_future = loop.run_in_executor(executor, safe_run_agent, run_patent_agent, molecule, request.query)
     
     # EXIM Trade Agent
     updates.append({
@@ -154,7 +154,8 @@ async def analyze_molecule(request: AnalysisRequest):
         run_exim_agent, 
         molecule, 
         "300490", 
-        [2020, 2021, 2022, 2023]
+        [2020, 2021, 2022, 2023],
+        request.query
     )
     
     # Web Intelligence Agent
@@ -164,7 +165,7 @@ async def analyze_molecule(request: AnalysisRequest):
         "message": "Gathering web insights and news...",
         "data": None
     })
-    web_future = loop.run_in_executor(executor, safe_run_agent, run_web_intel_agent, molecule, 20)
+    web_future = loop.run_in_executor(executor, safe_run_agent, run_web_intel_agent, molecule, 20, request.query)
 
     # Internal Knowledge Agent
     updates.append({
