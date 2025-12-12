@@ -1,4 +1,5 @@
 import os
+import sys
 import requests
 from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
@@ -69,12 +70,41 @@ Output everything in clean markdown.
 # ----------------------------------------
 # 3️⃣ Main function
 # ----------------------------------------
-def run_web_intel_agent(target: str, page_size: int = 20):
-    print(f"Fetching news for: {target} …")
-    articles = fetch_news_articles(target, page_size=page_size)
-    if not articles:
-        return f"No news articles found for \"{target}\"."
-    report = generate_news_report(target, articles)
+# Add RAG module to path
+rag_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "RAG")
+sys.path.append(rag_path)
+
+try:
+    from app.rag import rag_query
+    from app.config import GEMINI_API_KEY
+    import google.generativeai as genai
+    if GEMINI_API_KEY:
+         genai.configure(api_key=GEMINI_API_KEY)
+except ImportError as e:
+    print(f"[Error] Could not import RAG system: {e}")
+
+def run_web_intel_agent(target: str, page_size: int = 20, query: str = ""):
+    print(f"Fetching web intelligence for: {target} using RAG...")
+    
+    rag_q = f"""
+    Generate a Web Intelligence report for {target} using the knowledge base.
+    
+    User Query Context: "{query}" (Address this specifically if relevant)
+    
+    Focus on recent news, developments, and articles.
+    Include:
+    1. Recent News Highlights (Headlines + Summaries)
+    2. Strategic implications (Market, Regulatory, Competitors)
+    3. Potential Impacts (Demand/Supply, Investors)
+    """
+    
+    try:
+        response = rag_query(rag_q)
+        report = response.get("answer", "No answer.")
+    except Exception as e:
+        print(f"RAG Error: {e}")
+        report = "Error retrieving web intelligence."
+        
     return report
 
 # ----------------------------------------

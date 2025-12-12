@@ -48,49 +48,73 @@ def build_markdown_report(agg: Dict[str, Any]) -> str:
     # Market Data Section
     if agg.get("market"):
         lines.append("## Market Insights  ")
-        lines.append("```json")
-        lines.append(json.dumps(agg["market"], indent=2))
-        lines.append("```")
+        data = agg["market"]
+        if isinstance(data, dict) and "report" in data and isinstance(data["report"], str):
+             lines.append(data["report"])
+        else:
+             lines.append("```json")
+             lines.append(json.dumps(data, indent=2))
+             lines.append("```")
         lines.append("\n")
 
     # Clinical Trials Section
     if agg.get("clinical_trials"):
         lines.append("## Clinical Trials Overview  ")
-        lines.append("```json")
-        lines.append(json.dumps(agg["clinical_trials"], indent=2))
-        lines.append("```")
+        data = agg["clinical_trials"]
+        if isinstance(data, dict) and "report" in data and isinstance(data["report"], str):
+             lines.append(data["report"])
+        else:
+             lines.append("```json")
+             lines.append(json.dumps(data, indent=2))
+             lines.append("```")
         lines.append("\n")
 
     # Patents Section
     if agg.get("patents"):
         lines.append("## Patent Landscape  ")
-        lines.append("```json")
-        lines.append(json.dumps(agg["patents"], indent=2))
-        lines.append("```")
+        data = agg["patents"]
+        if isinstance(data, dict) and "report" in data and isinstance(data["report"], str):
+             lines.append(data["report"])
+        else:
+             lines.append("```json")
+             lines.append(json.dumps(data, indent=2))
+             lines.append("```")
         lines.append("\n")
 
     # Trade / EXIM Section
     if agg.get("trade"):
         lines.append("## Trade & Market-Access / Export-Import Signals  ")
-        lines.append("```json")
-        lines.append(json.dumps(agg["trade"], indent=2))
-        lines.append("```")
+        data = agg["trade"]
+        if isinstance(data, dict) and "report" in data and isinstance(data["report"], str):
+             lines.append(data["report"])
+        else:
+             lines.append("```json")
+             lines.append(json.dumps(data, indent=2))
+             lines.append("```")
         lines.append("\n")
 
     # News Section
     if agg.get("news"):
         lines.append("## Recent News & Web Signals  ")
-        lines.append("```json")
-        lines.append(json.dumps(agg["news"], indent=2))
-        lines.append("```")
+        data = agg["news"]
+        if isinstance(data, dict) and "report" in data and isinstance(data["report"], str):
+             lines.append(data["report"])
+        else:
+             lines.append("```json")
+             lines.append(json.dumps(data, indent=2))
+             lines.append("```")
         lines.append("\n")
 
     # Internal Knowledge / Additional Data Section
     if agg.get("internal"):
         lines.append("## Internal / Custom Insights  ")
-        lines.append("```json")
-        lines.append(json.dumps(agg["internal"], indent=2))
-        lines.append("```")
+        data = agg["internal"]
+        if isinstance(data, dict) and "report" in data and isinstance(data["report"], str):
+             lines.append(data["report"])
+        else:
+             lines.append("```json")
+             lines.append(json.dumps(data, indent=2))
+             lines.append("```")
         lines.append("\n")
 
     # Footer
