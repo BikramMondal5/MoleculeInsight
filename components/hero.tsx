@@ -49,7 +49,7 @@ export default function Hero() {
             <ArrowRight className="w-4 h-4" />
           </Button>
           <Button variant="outline" size="lg" className="px-8 bg-background/50 backdrop-blur-sm border-border hover:bg-accent">
-            View Docs
+            View docs
           </Button>
         </div>
       </div>
