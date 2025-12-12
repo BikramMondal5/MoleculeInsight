@@ -1,7 +1,7 @@
 import chromadb
 from app.config import DB_DIR
 
-COLLECTION_NAME = "pdf_docs"
+COLLECTION_NAME = "json_docs"
 _client = None
 
 def get_collection():

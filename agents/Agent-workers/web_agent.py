@@ -69,12 +69,38 @@ Output everything in clean markdown.
 # ----------------------------------------
 # 3️⃣ Main function
 # ----------------------------------------
+# Add RAG module to path
+rag_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "RAG")
+sys.path.append(rag_path)
+
+try:
+    from app.rag import rag_query
+    from app.config import GEMINI_API_KEY
+    import google.generativeai as genai
+    if GEMINI_API_KEY:
+         genai.configure(api_key=GEMINI_API_KEY)
+except ImportError as e:
+    print(f"[Error] Could not import RAG system: {e}")
+
 def run_web_intel_agent(target: str, page_size: int = 20):
-    print(f"Fetching news for: {target} …")
-    articles = fetch_news_articles(target, page_size=page_size)
-    if not articles:
-        return f"No news articles found for \"{target}\"."
-    report = generate_news_report(target, articles)
+    print(f"Fetching web intelligence for: {target} using RAG...")
+    
+    query = f"""
+    Generate a Web Intelligence report for {target} using the knowledge base.
+    Focus on recent news, developments, and articles.
+    Include:
+    1. Recent News Highlights (Headlines + Summaries)
+    2. Strategic implications (Market, Regulatory, Competitors)
+    3. Potential Impacts (Demand/Supply, Investors)
+    """
+    
+    try:
+        response = rag_query(query)
+        report = response.get("answer", "No answer.")
+    except Exception as e:
+        print(f"RAG Error: {e}")
+        report = "Error retrieving web intelligence."
+        
     return report
 
 # ----------------------------------------

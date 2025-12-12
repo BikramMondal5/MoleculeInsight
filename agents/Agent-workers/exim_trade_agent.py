@@ -125,11 +125,39 @@ Do not hallucinate — only use the provided data.
 # ----------------------------------------
 # 4️⃣ Main function
 # ----------------------------------------
+# Add RAG module to path
+rag_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "RAG")
+sys.path.append(rag_path)
+
+try:
+    from app.rag import rag_query
+    from app.config import GEMINI_API_KEY
+    import google.generativeai as genai
+    if GEMINI_API_KEY:
+         genai.configure(api_key=GEMINI_API_KEY)
+except ImportError as e:
+    print(f"[Error] Could not import RAG system: {e}")
+
 def run_exim_agent(molecule: str, hs_code: str, years: list[int]):
-    print(f"Fetching trade data for HS code {hs_code} (Molecule/Drug: {molecule}) ...")
-    trades = fetch_trade_data(hs_code, years)
-    analysis = analyze_trade(trades)
-    report = generate_trade_report(hs_code, molecule, analysis)
+    print(f"Fetching trade data for HS code {hs_code} (Molecule/Drug: {molecule}) using RAG...")
+    
+    query = f"""
+    Generate an EXIM Trade Intelligence report for {molecule} (HS Code: {hs_code}) using the knowledge base.
+    Include:
+    1. Global demand and supply signals
+    2. Top import markets (demand hotspots)
+    3. Top exporting countries (supply sources)
+    4. Trend analysis (growth/decline over years)
+    5. Risks and Opportunities
+    """
+    
+    try:
+        response = rag_query(query)
+        report = response.get("answer", "No answer.")
+    except Exception as e:
+        print(f"RAG Error: {e}")
+        report = "Error retrieving trade data."
+    
     return report
 
 # ----------------------------------------

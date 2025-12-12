@@ -18,7 +18,10 @@ if GEMINI_API_KEY:
 # Initialize ChromaDB Client
 # Using PersistentClient as it is the modern replacement for the deprecated Settings(chroma_db_impl=...)
 # This ensures data is saved to ./db
-DB_DIR = "./db"
+# DB_DIR = "./db"
+# Use absolute path for DB directory to share across agents
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DB_DIR = os.path.join(BASE_DIR, "db")
 os.makedirs(DB_DIR, exist_ok=True)
 
 

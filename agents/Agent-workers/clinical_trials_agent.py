@@ -205,11 +205,25 @@ DO NOT hallucinate numbers beyond the provided dataset.
     return response.content
 
 
+# Add RAG module to path
+rag_path = os.path.join(parent_dir, "RAG")
+sys.path.append(rag_path)
+
+try:
+    from app.rag import rag_query
+    from app.config import GEMINI_API_KEY
+    import google.generativeai as genai
+    # Ensure genai is configured with the key from RAG config or local env
+    if GEMINI_API_KEY:
+         genai.configure(api_key=GEMINI_API_KEY)
+except ImportError as e:
+    print(f"[Error] Could not import RAG system: {e}")
+
 def run_clinical_trials_agent(molecule):
     """
-    Main function with caching and data reduction
+    Main function with caching and RAG
     """
-    print(f"[Clinical Trials Agent] Analyzing {molecule}...")
+    print(f"[Clinical Trials Agent] Analyzing {molecule} using RAG from KnowledgeBase...")
     
     # Try to get from cache first
     if CACHE_ENABLED:
@@ -218,31 +232,27 @@ def run_clinical_trials_agent(molecule):
             print(f"[Clinical Trials Agent] Using cached report")
             return cached_report
     
-    # Fetch fresh data
-    print(f"[Clinical Trials Agent] Fetching data from ClinicalTrials.gov...")
-    trials = fetch_trials(molecule)
+    # RAG Query
+    query = f"""
+    Generate a detailed clinical trials report for {molecule} based on the documents in the knowledge base.
+    Include:
+    1. Total trials
+    2. Phase distribution (Phase 1,2,3,4)
+    3. Status distribution (Recruiting, Completed etc.)
+    4. Top 5 sponsors
+    5. Trend over years
+    6. Top countries
+    7. Enrollment analysis
+    8. Clinical landscape summary
+    """
     
-    if not trials:
-        return "No clinical trials data found for this molecule."
-    
-    # Save raw data to cache for reference
-    if CACHE_ENABLED:
-        cache_manager.set("clinical_trials_raw", molecule, trials)
-        print(f"[Clinical Trials Agent] Raw data cached ({len(trials)} trials)")
-    
-    # Process data to reduce size (80-90% reduction)
-    print(f"[Clinical Trials Agent] Processing data (reducing token usage)...")
-    # Always use analyze_trials for consistent data structure
-    analyzed_data = analyze_trials(trials)
+    try:
+        response = rag_query(query)
+        report = response.get("answer", "No answer generated.")
+    except Exception as e:
+        print(f"[Clinical Trials Agent] RAG Error: {e}")
+        report = "Error retrieving clinical trials data."
 
-    original_size = len(json.dumps(trials))
-    processed_size = len(json.dumps(analyzed_data))
-    print(f"[Clinical Trials Agent] Data reduced: {original_size} -> {processed_size} bytes ({round((1-processed_size/original_size)*100, 1)}% reduction)")
-
-    # Generate report using processed data
-    print(f"[Clinical Trials Agent] Generating insights with Gemini...")
-    report = generate_clinical_report(molecule, analyzed_data)
-    
     # Cache the final report
     if CACHE_ENABLED:
         cache_manager.set("clinical_trials", molecule, report)

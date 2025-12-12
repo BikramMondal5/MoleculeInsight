@@ -125,9 +125,38 @@ Use only the provided data. Do NOT hallucinate missing numbers.
     return llm.invoke(prompt).content
 
 
+# Add RAG module to path
+rag_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "RAG")
+sys.path.append(rag_path)
+
+try:
+    from app.rag import rag_query
+    from app.config import GEMINI_API_KEY
+    import google.generativeai as genai
+    if GEMINI_API_KEY:
+         genai.configure(api_key=GEMINI_API_KEY)
+except ImportError as e:
+    print(f"[Error] Could not import RAG system: {e}")
+
 def run_patent_agent(molecule):
-    print(f"Fetching patents for {molecule}...")
-    patents = fetch_patents(molecule)
-    analyzed = analyze_patents(patents)
-    report = generate_patent_report(molecule, analyzed)
+    print(f"Fetching patents for {molecule} using RAG...")
+    
+    query = f"""
+    Generate a patent intelligence report for {molecule} using the knowledge base.
+    Include:
+    1. Total patent count (approximate)
+    2. Top assignees
+    3. Top inventor countries
+    4. Key CPC technology classes
+    5. Filing trends over years
+    6. Patent landscape summary
+    """
+    
+    try:
+        response = rag_query(query)
+        report = response.get("answer", "No answer.")
+    except Exception as e:
+        print(f"RAG Error: {e}")
+        report = "Error retrieving patent data."
+        
     return report
