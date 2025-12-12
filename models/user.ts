@@ -24,7 +24,7 @@ const UserSchema = new Schema<IUser>(
     name: { type: String, required: true },
     firstName: { type: String },
     lastName: { type: String },
-    avatar: { type: String },
+    avatar: { type: String, default: null },
     provider: { type: String, enum: ['local', 'google'], default: 'local' },
     isActive: { type: Boolean, default: true },
     lastLogin: { type: Date },

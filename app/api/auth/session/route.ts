@@ -18,7 +18,8 @@ export async function GET(request: NextRequest) {
         id: userData.userId,
         name: userData.name,
         email: userData.email,
-        avatar: userData.avatar
+        avatar: userData.avatar || null,
+        provider: userData.provider
       }
     });
   } catch (error) {
