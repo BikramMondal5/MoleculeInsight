@@ -3,25 +3,33 @@ from app.utils.embeddings import embed_query
 from app.utils.vectorstore import query_vectorstore
 
 # Initialize specific model for generation
-# We put this here to avoid circular imports or re-init issues, 
-# though it could live in config if we wanted a global model object.
-model = genai.GenerativeModel('gemini-2.5-flash')
+# Global model removed to support per-request keys
+# model = genai.GenerativeModel('gemini-2.5-flash')
 
-def rag_query(query: str):
+def rag_query(query: str, api_key: str = None):
     """
     Performs RAG:
     1. Embed query
     2. Retrieve context
     3. Generate answer
+    
+    Args:
+        query: potentially complex user query
+        api_key: specific gemini api key for this agent
     """
     
+    # Configure GENAI if key provided (Warning: Global effect in thread)
+    if api_key:
+        genai.configure(api_key=api_key)
+    
     # 1. Embed Query
+    # embed_query will use the currently configured global key
     query_emb = embed_query(query)
     
     # 2. Retrieve top 5 chunks
     results = query_vectorstore(query_emb, n_results=5)
     
-    # Flatten results (results['documents'] is List[List[str]])
+    # Flatten results
     retrieved_chunks = results['documents'][0] if (results and results['documents']) else []
     
     if not retrieved_chunks:
@@ -44,6 +52,8 @@ def rag_query(query: str):
     
     # 4. Call Gemini
     try:
+        # Instantiate model fresh each time or rely on configured default
+        model = genai.GenerativeModel('gemini-2.5-flash')
         response = model.generate_content(prompt)
         answer_text = response.text
         return {"answer": answer_text}

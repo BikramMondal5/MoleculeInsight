@@ -38,15 +38,14 @@ sys.path.append(rag_path)
 
 try:
     from app.rag import rag_query
-    from app.config import GEMINI_API_KEY
-    import google.generativeai as genai
-    if GEMINI_API_KEY:
-         genai.configure(api_key=GEMINI_API_KEY)
+    # RAG module handles configuration per request
 except ImportError as e:
     print(f"[Error] Could not import RAG system: {e}")
 
 def generate_final_report(molecule, query: str = ""):
     print(f"Generating IQVIA Market Insights for {molecule} using RAG...")
+    
+    agent_key = os.getenv("BIKRAM_GEMINI_API_KEY1")
     
     rag_q = f"""
     Generate an IQVIA Market Insights report for {molecule} using the knowledge base.
@@ -64,7 +63,7 @@ def generate_final_report(molecule, query: str = ""):
     """
     
     try:
-        response = rag_query(rag_q)
+        response = rag_query(rag_q, api_key=agent_key)
         report = response.get("answer", "No answer.")
     except Exception as e:
         print(f"RAG Error: {e}")

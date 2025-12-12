@@ -132,15 +132,14 @@ sys.path.append(rag_path)
 
 try:
     from app.rag import rag_query
-    from app.config import GEMINI_API_KEY
-    import google.generativeai as genai
-    if GEMINI_API_KEY:
-         genai.configure(api_key=GEMINI_API_KEY)
+    # RAG module handles configuration per request
 except ImportError as e:
     print(f"[Error] Could not import RAG system: {e}")
 
 def run_exim_agent(molecule: str, hs_code: str, years: list[int], query: str = ""):
     print(f"Fetching trade data for HS code {hs_code} (Molecule/Drug: {molecule}) using RAG...")
+    
+    agent_key = os.getenv("KANKAANNAA_GEMINI_API_KEY2")
     
     rag_q = f"""
     Generate an EXIM Trade Intelligence report for {molecule} (HS Code: {hs_code}) using the knowledge base.
@@ -156,7 +155,7 @@ def run_exim_agent(molecule: str, hs_code: str, years: list[int], query: str = "
     """
     
     try:
-        response = rag_query(rag_q)
+        response = rag_query(rag_q, api_key=agent_key)
         report = response.get("answer", "No answer.")
     except Exception as e:
         print(f"RAG Error: {e}")

@@ -1,17 +1,11 @@
 import os
-from dotenv import load_dotenv
-from langchain_google_genai import ChatGoogleGenerativeAI
-
-load_dotenv()
-
-os.environ["GOOGLE_API_KEY"] = os.getenv("ARIJIT_GEMINI_API_KEY2")
-import os
-from dotenv import load_dotenv
-from langchain_google_genai import ChatGoogleGenerativeAI
 import sys
+from dotenv import load_dotenv
+from langchain_google_genai import ChatGoogleGenerativeAI
 
 load_dotenv()
 
+# Set key specifically for running direct LLM if needed, though we use RAG mostly now.
 os.environ["GOOGLE_API_KEY"] = os.getenv("ARIJIT_GEMINI_API_KEY2")
 
 llm = ChatGoogleGenerativeAI(
@@ -25,10 +19,7 @@ sys.path.append(rag_path)
 
 try:
     from app.rag import rag_query
-    from app.config import GEMINI_API_KEY
-    import google.generativeai as genai
-    if GEMINI_API_KEY:
-         genai.configure(api_key=GEMINI_API_KEY)
+    # RAG module handles configuration per request
 except ImportError as e:
     print(f"[Error] Could not import RAG system: {e}")
 
@@ -37,6 +28,8 @@ def run_internal_knowledge_agent(molecule: str, query: str = ""):
     Internal Knowledge Agent - generates insights based on internal knowledge base
     """
     print(f"[Internal Knowledge Agent] Analyzing {molecule} using RAG...")
+    
+    agent_key = os.getenv("ARIJIT_GEMINI_API_KEY2")
     
     rag_q = f"""
     Internal Knowledge Query:
@@ -52,7 +45,7 @@ def run_internal_knowledge_agent(molecule: str, query: str = ""):
     """
     
     try:
-        response = rag_query(rag_q)
+        response = rag_query(rag_q, api_key=agent_key)
         print(f"[Internal Knowledge Agent] ✓ Complete")
         return response.get("answer", "No answer.")
     except Exception as e:

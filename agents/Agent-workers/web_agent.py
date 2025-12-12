@@ -76,15 +76,14 @@ sys.path.append(rag_path)
 
 try:
     from app.rag import rag_query
-    from app.config import GEMINI_API_KEY
-    import google.generativeai as genai
-    if GEMINI_API_KEY:
-         genai.configure(api_key=GEMINI_API_KEY)
+    # RAG module handles configuration per request
 except ImportError as e:
     print(f"[Error] Could not import RAG system: {e}")
 
 def run_web_intel_agent(target: str, page_size: int = 20, query: str = ""):
     print(f"Fetching web intelligence for: {target} using RAG...")
+    
+    agent_key = os.getenv("KANKAANNAA_GEMINI_API_KEY3")
     
     rag_q = f"""
     Generate a Web Intelligence report for {target} using the knowledge base.
@@ -99,7 +98,7 @@ def run_web_intel_agent(target: str, page_size: int = 20, query: str = ""):
     """
     
     try:
-        response = rag_query(rag_q)
+        response = rag_query(rag_q, api_key=agent_key)
         report = response.get("answer", "No answer.")
     except Exception as e:
         print(f"RAG Error: {e}")

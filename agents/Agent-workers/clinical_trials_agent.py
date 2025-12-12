@@ -211,11 +211,7 @@ sys.path.append(rag_path)
 
 try:
     from app.rag import rag_query
-    from app.config import GEMINI_API_KEY
-    import google.generativeai as genai
-    # Ensure genai is configured with the key from RAG config or local env
-    if GEMINI_API_KEY:
-         genai.configure(api_key=GEMINI_API_KEY)
+    # We no longer need global config here, RAG module handles it per request
 except ImportError as e:
     print(f"[Error] Could not import RAG system: {e}")
 
@@ -225,11 +221,8 @@ def run_clinical_trials_agent(molecule, query: str = ""):
     """
     print(f"[Clinical Trials Agent] Analyzing {molecule} using RAG from KnowledgeBase...")
     
-    # Try to get from cache first (only if no specific query, OR incorporate query into cache key)
-    # If query is specific, caching solely by molecule might be wrong. 
-    # For now, let's keep it simple: if query is present, bypass cache or use composite key.
-    # To avoid cache pollution, we'll bypass cache if query is specifically asking for something distinct.
-    # But usually 'query' here is the top-level user query.
+    # Load specific agent key
+    agent_key = os.getenv("KANKAANNAA_GEMINI_API_KEY1")
     
     cache_key = f"{molecule}_{query}" if query else molecule
     
@@ -257,7 +250,8 @@ def run_clinical_trials_agent(molecule, query: str = ""):
     """
     
     try:
-        response = rag_query(rag_q)
+        # Pass the specific agent key to rag_query
+        response = rag_query(rag_q, api_key=agent_key)
         report = response.get("answer", "No answer generated.")
     except Exception as e:
         print(f"[Clinical Trials Agent] RAG Error: {e}")
