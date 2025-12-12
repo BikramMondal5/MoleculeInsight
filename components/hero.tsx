@@ -74,8 +74,8 @@ export default function Hero() {
           Enter a molecule and get market, trials, patents and innovation opportunities in minutes.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button 
-            size="lg" 
+          <Button
+            size="lg"
             onClick={handleStartAnalysis}
             disabled={isCheckingAuth}
             className="bg-primary hover:bg-primary/90 text-primary-foreground gap-2 px-8 shadow-lg shadow-primary/25"
@@ -84,7 +84,7 @@ export default function Hero() {
             <ArrowRight className="w-4 h-4" />
           </Button>
           <Button variant="outline" size="lg" className="px-8 bg-background/50 backdrop-blur-sm border-border hover:bg-accent">
-            View docs
+            View Docs
           </Button>
         </div>
       </div>
