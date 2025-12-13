@@ -1,11 +1,12 @@
+import CollapsibleResultCard from "./collapsible-result-card"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Lightbulb, AlertCircle, Loader2 } from "lucide-react"
 
 interface InnovationConceptCardProps {
-  data?: { 
+  data?: {
     success: boolean
     report?: string
-    error?: string 
+    error?: string
   }
   molecule: string
 }
@@ -33,17 +34,15 @@ export default function InnovationConceptCard({ data, molecule }: InnovationConc
   // Error state
   if (!data.success || !data.report) {
     return (
-      <Card className="border-primary border-2 bg-gradient-to-br from-primary/5 to-transparent">
-        <CardHeader className="pb-3">
-          <CardTitle className="text-xl text-primary">Innovation Opportunities for {molecule}</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <AlertCircle className="w-4 h-4" />
-            <span>{data.error || "Unable to generate opportunities at this time"}</span>
-          </div>
-        </CardContent>
-      </Card>
+      <CollapsibleResultCard
+        title={`Innovation Opportunities for ${molecule}`}
+        className="border-primary border-2 bg-gradient-to-br from-primary/5 to-transparent"
+      >
+        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+          <AlertCircle className="w-4 h-4" />
+          <span>{data.error || "Unable to generate opportunities at this time"}</span>
+        </div>
+      </CollapsibleResultCard>
     )
   }
 
@@ -54,29 +53,25 @@ export default function InnovationConceptCard({ data, molecule }: InnovationConc
   } catch (e) {
     console.error("Failed to parse innovation opportunities:", e)
     return (
-      <Card className="border-primary border-2 bg-gradient-to-br from-primary/5 to-transparent">
-        <CardHeader className="pb-3">
-          <CardTitle className="text-xl text-primary">Innovation Opportunities for {molecule}</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <AlertCircle className="w-4 h-4" />
-            <span>Error parsing opportunities data</span>
-          </div>
-        </CardContent>
-      </Card>
+      <CollapsibleResultCard
+        title={`Innovation Opportunities for ${molecule}`}
+        className="border-primary border-2 bg-gradient-to-br from-primary/5 to-transparent"
+      >
+        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+          <AlertCircle className="w-4 h-4" />
+          <span>Error parsing opportunities data</span>
+        </div>
+      </CollapsibleResultCard>
     )
   }
 
   return (
-    <Card className="border-primary border-2 bg-gradient-to-br from-primary/5 to-transparent">
-      <CardHeader className="pb-3">
-        <CardTitle className="text-xl text-primary flex items-center gap-2">
-          <Lightbulb className="w-5 h-5" />
-          Innovation Opportunities for {molecule}
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-4">
+    <CollapsibleResultCard
+      title={`Innovation Opportunities for ${molecule}`}
+      className="border-primary border-2 bg-gradient-to-br from-primary/5 to-transparent"
+      defaultOpen={false}
+    >
+      <div className="space-y-4">
         <p className="text-sm text-foreground leading-relaxed">
           Based on comprehensive analysis across market insights, clinical trials, patents, trade data, and web intelligence:
         </p>
@@ -93,7 +88,7 @@ export default function InnovationConceptCard({ data, molecule }: InnovationConc
             </li>
           ))}
         </ul>
-      </CardContent>
-    </Card>
+      </div>
+    </CollapsibleResultCard>
   )
 }
