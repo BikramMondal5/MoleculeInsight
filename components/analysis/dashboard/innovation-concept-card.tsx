@@ -2,10 +2,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Lightbulb, AlertCircle, Loader2 } from "lucide-react"
 
 interface InnovationConceptCardProps {
-  data?: { 
+  data?: {
     success: boolean
     report?: string
-    error?: string 
+    error?: string
   }
   molecule: string
 }
