@@ -106,7 +106,7 @@ export default function CollapsibleResultCard({
                                             <span className="sr-only">Close</span>
                                         </button>
                                     </CardHeader>
-                                    <CardContent className="flex-1 overflow-y-auto p-6 container mx-auto max-w-7xl">
+                                    <CardContent className="flex-1 overflow-y-auto w-full p-6 md:px-12 md:pt-4 md:pb-10">
                                         <motion.div
                                             initial={{ opacity: 0, y: 20 }}
                                             animate={{ opacity: 1, y: 0 }}
