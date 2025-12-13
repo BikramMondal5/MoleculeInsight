@@ -1,6 +1,13 @@
 "use client"
 import { Button } from "@/components/ui/button"
 import { Download, Archive } from "lucide-react"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 import SummaryCard from "./dashboard/summary-card"
 import MarketInsightsCard from "./dashboard/market-insights-card"
 import ClinicalTrialsCard from "./dashboard/clinical-trials-card"
@@ -56,23 +63,41 @@ export default function ResultsDashboard({ results, molecule }: ResultsDashboard
         </div>
       </div>
 
-      {/* Dashboard Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <SummaryCard results={results} molecule={molecule} />
-        <MarketInsightsCard data={results.iqvia} />
-        <ClinicalTrialsCard data={results.clinical_trials} />
-        <PatentLandscapeCard data={results.patents} />
-        <EXIMTrendsCard data={results.exim} />
-        <InternalKnowledgeCard data={results.internal_knowledge} />
-        <InternalInsightsCard data={results.web_intel} />
-      </div>
-
-      {/* Innovation Opportunities - Full Width */}
-      <div className="mt-6">
-        <InnovationConceptCard 
-          data={results.innovation_opportunities} 
-          molecule={molecule} 
-        />
+      {/* Results Carousel */}
+      <div className="px-10">
+        <Carousel className="w-full" opts={{ align: "start" }}>
+          <CarouselContent className="-ml-4">
+            <CarouselItem className="pl-4 md:basis-1/2 xl:basis-1/3">
+              <SummaryCard results={results} molecule={molecule} />
+            </CarouselItem>
+            <CarouselItem className="pl-4 md:basis-1/2 xl:basis-1/3">
+              <MarketInsightsCard data={results.iqvia} />
+            </CarouselItem>
+            <CarouselItem className="pl-4 md:basis-1/2 xl:basis-1/3">
+              <ClinicalTrialsCard data={results.clinical_trials} />
+            </CarouselItem>
+            <CarouselItem className="pl-4 md:basis-1/2 xl:basis-1/3">
+              <PatentLandscapeCard data={results.patents} />
+            </CarouselItem>
+            <CarouselItem className="pl-4 md:basis-1/2 xl:basis-1/3">
+              <EXIMTrendsCard data={results.exim} />
+            </CarouselItem>
+            <CarouselItem className="pl-4 md:basis-1/2 xl:basis-1/3">
+              <InternalKnowledgeCard data={results.internal_knowledge} />
+            </CarouselItem>
+            <CarouselItem className="pl-4 md:basis-1/2 xl:basis-1/3">
+              <InternalInsightsCard data={results.web_intel} />
+            </CarouselItem>
+            <CarouselItem className="pl-4 md:basis-1/2 xl:basis-1/3">
+              <InnovationConceptCard
+                data={results.innovation_opportunities}
+                molecule={molecule}
+              />
+            </CarouselItem>
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
       </div>
     </div>
   )
