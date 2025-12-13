@@ -88,16 +88,18 @@ export default function ResultsDashboard({ results, molecule }: ResultsDashboard
             <CarouselItem className="pl-4 md:basis-1/2 xl:basis-1/3">
               <InternalInsightsCard data={results.web_intel} />
             </CarouselItem>
-            <CarouselItem className="pl-4 md:basis-1/2 xl:basis-1/3">
-              <InnovationConceptCard
-                data={results.innovation_opportunities}
-                molecule={molecule}
-              />
-            </CarouselItem>
           </CarouselContent>
           <CarouselPrevious />
           <CarouselNext />
         </Carousel>
+      </div>
+
+      {/* Innovation Opportunities - Footer Section */}
+      <div className="mt-12 px-10">
+        <InnovationConceptCard
+          data={results.innovation_opportunities}
+          molecule={molecule}
+        />
       </div>
     </div>
   )

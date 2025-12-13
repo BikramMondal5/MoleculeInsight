@@ -1,10 +1,10 @@
-"use client"
-
-import { useState } from "react"
+import { useState, useEffect, useId } from "react"
+import { createPortal } from "react-dom"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ChevronDown, ChevronUp } from "lucide-react"
+import { X, Maximize2 } from "lucide-react"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
+import { motion, AnimatePresence } from "framer-motion"
 
 interface CollapsibleResultCardProps {
     title: string
@@ -20,6 +20,20 @@ export default function CollapsibleResultCard({
     className,
 }: CollapsibleResultCardProps) {
     const [isOpen, setIsOpen] = useState(defaultOpen)
+    const [mounted, setMounted] = useState(false)
+    const uniqueId = useId()
+
+    useEffect(() => {
+        setMounted(true)
+        if (isOpen) {
+            document.body.style.overflow = "hidden"
+        } else {
+            document.body.style.overflow = "unset"
+        }
+        return () => {
+            document.body.style.overflow = "unset"
+        }
+    }, [isOpen])
 
     const toggleOpen = (e?: React.MouseEvent) => {
         e?.stopPropagation()
@@ -27,50 +41,87 @@ export default function CollapsibleResultCard({
     }
 
     return (
-        <Card
-            className={cn(
-                "transition-all duration-300 relative overflow-hidden",
-                !isOpen && "cursor-pointer hover:scale-[1.01] hover:shadow-md h-[250px]",
-                isOpen && "h-full",
-                className
-            )}
-            onClick={!isOpen ? toggleOpen : undefined}
-        >
-            <CardHeader
+        <>
+            <motion.div
+                layoutId={`card-container-${title}-${uniqueId}`}
+                onClick={toggleOpen}
                 className={cn(
-                    "flex flex-row items-center justify-between space-y-0 pb-2 border-b transition-colors",
-                    isOpen && "cursor-pointer hover:bg-muted/50"
+                    "cursor-pointer h-[250px] relative overflow-hidden transition-all duration-300 isolate",
+                    className
                 )}
-                onClick={isOpen ? toggleOpen : undefined}
+                initial={{ borderRadius: 12 }}
             >
-                <CardTitle className="text-lg font-semibold">{title}</CardTitle>
-                <button
-                    onClick={toggleOpen}
-                    className="text-muted-foreground hover:text-foreground transition-colors p-1"
-                >
-                    {isOpen ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
-                </button>
-            </CardHeader>
-
-            <CardContent className="p-0">
-                {!isOpen ? (
-                    <div className="flex flex-col items-center justify-center p-6 h-[200px] animate-in fade-in duration-500">
-                        <div className="relative w-32 h-32 opacity-90 transition-transform duration-300 hover:scale-105">
-                            <Image
-                                src="/MoleculeInsight-logo.png"
-                                alt="Molecule Insight"
-                                fill
-                                className="object-contain drop-shadow-sm"
-                                priority
-                            />
+                {/* We use a standard Card structure but assume motion handles the layout size */}
+                <Card className="h-full w-full border-0 shadow-none bg-transparent pointer-events-none">
+                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 border-b">
+                        <CardTitle className="text-lg font-semibold">{title}</CardTitle>
+                        <Maximize2 className="h-5 w-5 text-muted-foreground" />
+                    </CardHeader>
+                    <CardContent className="p-0 h-full">
+                        <div className="flex flex-col items-center justify-center p-6 h-[200px]">
+                            <div className="relative w-32 h-32 opacity-90 transition-transform duration-300 group-hover:scale-105">
+                                <Image
+                                    src="/MoleculeInsight-logo.png"
+                                    alt="Molecule Insight"
+                                    fill
+                                    className="object-contain drop-shadow-sm"
+                                    priority
+                                />
+                            </div>
                         </div>
-                    </div>
-                ) : (
-                    <div className="p-6 pt-4 animate-in fade-in slide-in-from-top-2 duration-500">
-                        {children}
-                    </div>
-                )}
-            </CardContent>
-        </Card>
+                    </CardContent>
+                </Card>
+            </motion.div>
+
+            {mounted && createPortal(
+                <AnimatePresence>
+                    {isOpen && (
+                        <div className="fixed inset-0 z-[100] isolate">
+                            {/* Backdrop */}
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                onClick={toggleOpen}
+                                className="absolute inset-0 bg-background/80 backdrop-blur-sm"
+                            />
+
+                            {/* Expanded Card */}
+                            <motion.div
+                                layoutId={`card-container-${title}-${uniqueId}`}
+                                className={cn(
+                                    "absolute inset-0 z-[101] flex flex-col bg-background overflow-hidden",
+                                    "shadow-2xl"
+                                )}
+                                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                            >
+                                <Card className="h-full w-full flex flex-col rounded-none border-0 shadow-none">
+                                    <CardHeader className="flex flex-row items-center justify-between space-y-0 py-4 px-6 border-b shrink-0 bg-card">
+                                        <CardTitle className="text-xl font-bold">{title}</CardTitle>
+                                        <button
+                                            onClick={toggleOpen}
+                                            className="rounded-full bg-secondary/50 p-2 hover:bg-secondary transition-colors"
+                                        >
+                                            <X className="h-5 w-5" />
+                                            <span className="sr-only">Close</span>
+                                        </button>
+                                    </CardHeader>
+                                    <CardContent className="flex-1 overflow-y-auto p-6 container mx-auto max-w-7xl">
+                                        <motion.div
+                                            initial={{ opacity: 0, y: 20 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ delay: 0.1 }}
+                                        >
+                                            {children}
+                                        </motion.div>
+                                    </CardContent>
+                                </Card>
+                            </motion.div>
+                        </div>
+                    )}
+                </AnimatePresence>,
+                document.body
+            )}
+        </>
     )
 }
