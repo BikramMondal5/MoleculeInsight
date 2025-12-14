@@ -5,7 +5,7 @@ const FASTAPI_URL = process.env.FASTAPI_URL || 'http://localhost:8000'
 export async function POST(request: NextRequest) {
     try {
         const body = await request.json()
-        const { query, molecule, geography, agent } = body
+        const { query, molecule, geography } = body
 
         if (!query && !molecule) {
             return NextResponse.json(
@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
             )
         }
 
-        // Call FastAPI backend
+        // Call FastAPI backend - always run all agents
         const response = await fetch(`${FASTAPI_URL}/api/analyze`, {
             method: 'POST',
             headers: {
@@ -24,7 +24,6 @@ export async function POST(request: NextRequest) {
                 query: query || '',
                 molecule: molecule || '',
                 geography: geography || 'Global',
-                agent: agent || 'All Agents',
             }),
         })
 

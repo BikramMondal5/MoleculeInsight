@@ -27,7 +27,7 @@ export default function AnalysisPage() {
   const [analysisResults, setAnalysisResults] = useState<AnalysisResults | null>(null)
   const [currentMolecule, setCurrentMolecule] = useState<string>("")
 
-  const handleRunAnalysis = async (query: string, molecule?: string, geography?: string, agent?: string) => {
+  const handleRunAnalysis = async (query: string, molecule?: string, geography?: string) => {
     setIsAnalyzing(true)
     setAnalysisComplete(false)
     setMessages([])
@@ -44,7 +44,7 @@ export default function AnalysisPage() {
       },
     ])
 
-    // Show agent timeline updates based on selected agent
+    // Show agent timeline updates - all agents will run
     const allAgents = [
       { name: "Master Agent", desc: "Decomposing your query..." },
       { name: "IQVIA Insights Agent", desc: "Analyzing market data..." },
@@ -53,32 +53,12 @@ export default function AnalysisPage() {
       { name: "Patent Agent", desc: "Analyzing patent landscape..." },
       { name: "Web Intelligence Agent", desc: "Gathering web insights..." },
       { name: "Internal Knowledge Agent", desc: "Analyzing internal knowledge base..." },
+      { name: "Innovation Strategy Agent", desc: "Generating strategic opportunities..." },
       { name: "Report Generator Agent", desc: "Compiling report..." },
     ]
 
-    // Filter agents based on selection
-    let agents = allAgents;
-    if (agent && agent !== "All Agents") {
-      const agentMap: Record<string, string> = {
-        "IQVIA Insights": "IQVIA Insights Agent",
-        "Clinical Trials": "Clinical Trials Agent",
-        "Patent Analysis": "Patent Agent",
-        "EXIM Trade": "EXIM Agent",
-        "Web Intelligence": "Web Intelligence Agent",
-        "Internal Knowledge": "Internal Knowledge Agent",
-        "Innovation Strategy": "Innovation Strategy Agent"
-      }
-
-      const selectedAgentName = agentMap[agent];
-      agents = allAgents.filter(a =>
-        a.name === "Master Agent" ||
-        a.name === "Report Generator Agent" ||
-        a.name === selectedAgentName
-      );
-    }
-
     // Simulate agent activation for UI feedback
-    agents.forEach((agentItem, idx) => {
+    allAgents.forEach((agentItem, idx) => {
       setTimeout(() => {
         setActiveAgents((prev) => [...prev, agentItem.name])
         setMessages((prev) => [
@@ -94,7 +74,7 @@ export default function AnalysisPage() {
     })
 
     try {
-      // Call the API
+      // Call the API - no agent parameter, defaults to "All Agents"
       const response = await fetch("/api/process", {
         method: "POST",
         headers: {
@@ -104,7 +84,6 @@ export default function AnalysisPage() {
           query,
           molecule: molecule || "",
           geography: geography || "Global",
-          agent: agent || "All Agents",
         }),
       })
 
@@ -150,7 +129,7 @@ export default function AnalysisPage() {
       <div className="pt-20 px-4 md:px-6">
         <div className="max-w-7xl mx-auto">
           <div className="mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2 bg-gradient-to-r from-primary to-teal-500 text-transparent bg-clip-text">New Analysis</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-2 bg-linear-to-r from-primary to-teal-500 text-transparent bg-clip-text">New Analysis</h1>
             <p className="text-muted-foreground">
               Enter a molecule and get market, trials, patents and innovation opportunities in minutes.
             </p>
