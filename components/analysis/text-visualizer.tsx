@@ -210,7 +210,7 @@ export default function TextVisualizer({ isOpen, onClose, title, content }: Text
         <Dialog open={isOpen} onOpenChange={onClose}>
             <DialogContent className="max-w-[95vw] w-[95vw] sm:max-w-[95vw] max-h-[90vh] overflow-y-auto">
                 <DialogHeader>
-                    <DialogTitle className="text-2xl font-bold">Text Visualization - {title}</DialogTitle>
+                    <DialogTitle className="text-2xl font-bold">Visualization - {title}</DialogTitle>
                 </DialogHeader>
 
                 <div className="space-y-6 mt-4">
@@ -232,11 +232,11 @@ export default function TextVisualizer({ isOpen, onClose, title, content }: Text
 
                     {/* Numeric Data Visualizations */}
                     {numericData.length > 0 && (
-                        <>
+                        <div className="grid grid-cols-2 gap-6">
                             {/* Pie Chart */}
                             <Card className="p-6">
-                                <h3 className="text-lg font-semibold mb-4 text-center">Numeric Data Distribution (Pie Chart)</h3>
-                                <ResponsiveContainer width="100%" height={300}>
+                                <h3 className="text-lg font-semibold mb-4 text-center">Data Distribution Overview</h3>
+                                <ResponsiveContainer width="100%" height={350}>
                                     <PieChart>
                                         <Pie
                                             data={numericData}
@@ -244,7 +244,7 @@ export default function TextVisualizer({ isOpen, onClose, title, content }: Text
                                             cy="50%"
                                             labelLine={false}
                                             label={({ label, percent }) => `${label}: ${(percent * 100).toFixed(0)}%`}
-                                            outerRadius={100}
+                                            outerRadius={110}
                                             fill="#8884d8"
                                             dataKey="value"
                                         >
@@ -259,7 +259,7 @@ export default function TextVisualizer({ isOpen, onClose, title, content }: Text
 
                             {/* Bar Chart */}
                             <Card className="p-6">
-                                <h3 className="text-lg font-semibold mb-4 text-center">Numeric Data Comparison (Bar Chart)</h3>
+                                <h3 className="text-lg font-semibold mb-4 text-center">Quantitative Analysis</h3>
                                 <ResponsiveContainer width="100%" height={350}>
                                     <BarChart data={numericData}>
                                         <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
@@ -284,55 +284,58 @@ export default function TextVisualizer({ isOpen, onClose, title, content }: Text
                                     </BarChart>
                                 </ResponsiveContainer>
                             </Card>
-                        </>
+                        </div>
                     )}
 
-                    {/* Top Keywords */}
-                    <Card className="p-6">
-                        <h3 className="text-lg font-semibold mb-4">Top Keywords</h3>
-                        <div className="flex flex-wrap gap-2">
-                            {wordFrequency.slice(0, 20).map(({ word, count }, index) => (
-                                <Badge
-                                    key={word}
-                                    variant="outline"
-                                    className="px-3 py-1.5 text-sm hover:scale-105 transition-transform"
-                                    style={{
-                                        background: `hsl(${index * 18}, 70%, 15%)`,
-                                        borderColor: `hsl(${index * 18}, 70%, 50%)`,
-                                        color: `hsl(${index * 18}, 70%, 70%)`
-                                    }}
-                                >
-                                    {word} ({count})
-                                </Badge>
-                            ))}
-                        </div>
-                    </Card>
+                    {/* Keywords and Frequency Grid */}
+                    <div className="grid grid-cols-2 gap-6">
+                        {/* Top Keywords */}
+                        <Card className="p-6">
+                            <h3 className="text-lg font-semibold mb-4">Top Keywords</h3>
+                            <div className="flex flex-wrap gap-2">
+                                {wordFrequency.slice(0, 20).map(({ word, count }, index) => (
+                                    <Badge
+                                        key={word}
+                                        variant="outline"
+                                        className="px-3 py-1.5 text-sm hover:scale-105 transition-transform"
+                                        style={{
+                                            background: `hsl(${index * 18}, 70%, 15%)`,
+                                            borderColor: `hsl(${index * 18}, 70%, 50%)`,
+                                            color: `hsl(${index * 18}, 70%, 70%)`
+                                        }}
+                                    >
+                                        {word} ({count})
+                                    </Badge>
+                                ))}
+                            </div>
+                        </Card>
 
-                    {/* Word Frequency Chart */}
-                    <Card className="p-6">
-                        <h3 className="text-lg font-semibold mb-4">Word Frequency Distribution</h3>
-                        <div className="space-y-2">
-                            {wordFrequency.slice(0, 15).map(({ word, count }, index) => {
-                                const maxCount = wordFrequency[0]?.count || 1
-                                const percentage = (count / maxCount) * 100
-                                return (
-                                    <div key={word} className="flex items-center gap-3">
-                                        <span className="text-sm font-medium w-32 truncate capitalize">{word}</span>
-                                        <div className="flex-1 h-6 bg-muted rounded-full overflow-hidden">
-                                            <div
-                                                className="h-full rounded-full transition-all duration-500 ease-out"
-                                                style={{
-                                                    width: `${percentage}%`,
-                                                    background: `linear-gradient(90deg, hsl(${index * 24}, 70%, 50%), hsl(${index * 24 + 40}, 70%, 60%))`
-                                                }}
-                                            />
+                        {/* Word Frequency Chart */}
+                        <Card className="p-6">
+                            <h3 className="text-lg font-semibold mb-4">Word Frequency Distribution</h3>
+                            <div className="space-y-2">
+                                {wordFrequency.slice(0, 15).map(({ word, count }, index) => {
+                                    const maxCount = wordFrequency[0]?.count || 1
+                                    const percentage = (count / maxCount) * 100
+                                    return (
+                                        <div key={word} className="flex items-center gap-3">
+                                            <span className="text-sm font-medium w-32 truncate capitalize">{word}</span>
+                                            <div className="flex-1 h-6 bg-muted rounded-full overflow-hidden">
+                                                <div
+                                                    className="h-full rounded-full transition-all duration-500 ease-out"
+                                                    style={{
+                                                        width: `${percentage}%`,
+                                                        background: `linear-gradient(90deg, hsl(${index * 24}, 70%, 50%), hsl(${index * 24 + 40}, 70%, 60%))`
+                                                    }}
+                                                />
+                                            </div>
+                                            <span className="text-sm text-muted-foreground w-12 text-right">{count}</span>
                                         </div>
-                                        <span className="text-sm text-muted-foreground w-12 text-right">{count}</span>
-                                    </div>
-                                )
-                            })}
-                        </div>
-                    </Card>
+                                    )
+                                })}
+                            </div>
+                        </Card>
+                    </div>
                 </div>
             </DialogContent>
         </Dialog>

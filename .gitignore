@@ -45,7 +45,6 @@ yarn-error.log*
 
 # Reports and Cache
 reports/
-agents/cache/
 *.cache
 
 # Don't ignore documentation
