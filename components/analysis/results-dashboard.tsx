@@ -56,8 +56,8 @@ export default function ResultsDashboard({ results, molecule }: ResultsDashboard
         </div>
       </div>
 
-      {/* Dashboard Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      {/* Dashboard Grid - Playing Card Style */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         <SummaryCard results={results} molecule={molecule} />
         <MarketInsightsCard data={results.iqvia} />
         <ClinicalTrialsCard data={results.clinical_trials} />

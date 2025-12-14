@@ -115,8 +115,8 @@ class Pixel {
     }
 }
 
-// Then define the web component
-class PixelCanvasElement extends HTMLElement {
+// Then define the web component (only on client side)
+const PixelCanvasElement = typeof HTMLElement !== 'undefined' ? class extends HTMLElement {
     private canvas: HTMLCanvasElement
     private ctx: CanvasRenderingContext2D | null
     private pixels: Pixel[] = []
@@ -325,7 +325,7 @@ class PixelCanvasElement extends HTMLElement {
 
         animate()
     }
-}
+} : class { } as any
 
 // React component wrapper
 import * as React from "react"
