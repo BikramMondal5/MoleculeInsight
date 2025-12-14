@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Download } from "lucide-react"
+import { Download, BarChart3 } from "lucide-react"
 import { PixelCanvas } from "@/components/ui/pixel-canvas"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import jsPDF from "jspdf"
+import TextVisualizer from "@/components/analysis/text-visualizer"
 
 interface CollapsibleResultCardProps {
     title: string
@@ -29,9 +30,28 @@ export default function CollapsibleResultCard({
     className,
 }: CollapsibleResultCardProps) {
     const [isOpen, setIsOpen] = useState(defaultOpen)
+    const [isVisualizerOpen, setIsVisualizerOpen] = useState(false)
 
     const toggleOpen = () => {
         setIsOpen(!isOpen)
+    }
+
+    const handleVisualize = () => {
+        setIsVisualizerOpen(true)
+    }
+
+    const getTextContent = (): string => {
+        // Extract text from children
+        const extractText = (node: React.ReactNode): string => {
+            if (typeof node === 'string') return node
+            if (typeof node === 'number') return String(node)
+            if (Array.isArray(node)) return node.map(extractText).join('\n')
+            if (node && typeof node === 'object' && 'props' in node) {
+                return extractText((node as any).props.children)
+            }
+            return ''
+        }
+        return extractText(children)
     }
 
     const handleExportPDF = () => {
@@ -121,21 +141,39 @@ export default function CollapsibleResultCard({
                 <DialogContent className="max-w-full w-full max-h-screen h-screen overflow-y-auto sm:max-w-full rounded-none border-0 p-8">
                     <DialogHeader className="flex flex-row items-center justify-between space-y-0">
                         <DialogTitle className="text-2xl font-bold">{title}</DialogTitle>
-                        <Button
-                            onClick={handleExportPDF}
-                            variant="outline"
-                            size="sm"
-                            className="flex items-center gap-2"
-                        >
-                            <Download className="w-4 h-4" />
-                            Export PDF
-                        </Button>
+                        <div className="flex items-center gap-2">
+                            <Button
+                                onClick={handleVisualize}
+                                variant="outline"
+                                size="sm"
+                                className="flex items-center gap-2"
+                            >
+                                <BarChart3 className="w-4 h-4" />
+                                Visualize
+                            </Button>
+                            <Button
+                                onClick={handleExportPDF}
+                                variant="outline"
+                                size="sm"
+                                className="flex items-center gap-2"
+                            >
+                                <Download className="w-4 h-4" />
+                                Export PDF
+                            </Button>
+                        </div>
                     </DialogHeader>
                     <div className="mt-4 prose prose-sm max-w-none dark:prose-invert">
                         {children}
                     </div>
                 </DialogContent>
             </Dialog>
+
+            <TextVisualizer
+                isOpen={isVisualizerOpen}
+                onClose={() => setIsVisualizerOpen(false)}
+                title={title}
+                content={getTextContent()}
+            />
         </>
     )
 }
