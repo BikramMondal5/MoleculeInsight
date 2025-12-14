@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import Link from "next/link"
 import { Download, Eye, Search } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -16,89 +16,113 @@ import {
   PaginationPrevious,
   PaginationNext,
 } from "@/components/ui/pagination"
+import { useToast } from "@/hooks/use-toast"
 
-// Sample archive data
-const archiveReports = [
-  {
-    id: 1,
-    name: "Molecule X – Respiratory India Analysis",
-    molecule: "X",
-    region: "India",
-    date: "08-Dec-25",
-    timestamp: new Date("2025-12-08"),
-  },
-  {
-    id: 2,
-    name: "Molecule Y – CNS Global Opportunities",
-    molecule: "Y",
-    region: "Global",
-    date: "07-Dec-25",
-    timestamp: new Date("2025-12-07"),
-  },
-  {
-    id: 3,
-    name: "Molecule Z – Oncology US Market",
-    molecule: "Z",
-    region: "US",
-    date: "06-Dec-25",
-    timestamp: new Date("2025-12-06"),
-  },
-  {
-    id: 4,
-    name: "Molecule A – Cardiovascular Europe",
-    molecule: "A",
-    region: "Europe",
-    date: "05-Dec-25",
-    timestamp: new Date("2025-12-05"),
-  },
-  {
-    id: 5,
-    name: "Molecule B – Immunology APAC",
-    molecule: "B",
-    region: "APAC",
-    date: "04-Dec-25",
-    timestamp: new Date("2025-12-04"),
-  },
-  {
-    id: 6,
-    name: "Molecule C – Diabetes Worldwide",
-    molecule: "C",
-    region: "Global",
-    date: "03-Dec-25",
-    timestamp: new Date("2025-12-03"),
-  },
-]
+interface ArchiveReport {
+  id: string
+  reportName: string
+  molecule: string
+  region: string
+  date: string
+  timestamp: Date
+}
 
 const ITEMS_PER_PAGE = 5
 
 export default function ArchivePage() {
+  const { toast } = useToast()
   const [searchQuery, setSearchQuery] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
+  const [archiveReports, setArchiveReports] = useState<ArchiveReport[]>([])
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    fetchArchives()
+  }, [])
+
+  const fetchArchives = async () => {
+    try {
+      setIsLoading(true)
+      const response = await fetch('/api/archive')
+      const data = await response.json()
+
+      if (response.ok && data.success) {
+        setArchiveReports(data.archives)
+      } else {
+        throw new Error(data.error || 'Failed to fetch archives')
+      }
+    } catch (error) {
+      console.error('Fetch archives error:', error)
+      toast({
+        title: "Error",
+        description: "Failed to load archived reports.",
+        variant: "destructive",
+      })
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   // Filter reports based on search query
   const filteredReports = useMemo(() => {
     return archiveReports.filter((report) => {
       const query = searchQuery.toLowerCase()
       return (
-        report.name.toLowerCase().includes(query) ||
+        report.reportName.toLowerCase().includes(query) ||
         report.molecule.toLowerCase().includes(query) ||
         report.region.toLowerCase().includes(query)
       )
     })
-  }, [searchQuery])
+  }, [searchQuery, archiveReports])
 
   // Paginate filtered results
   const totalPages = Math.ceil(filteredReports.length / ITEMS_PER_PAGE)
   const paginatedReports = filteredReports.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE)
 
-  const handleView = (reportId: number) => {
+  const handleView = (reportId: string) => {
     console.log("[v0] Viewing report:", reportId)
     // In production, navigate to the report detail page or open dashboard
   }
 
-  const handleDownloadPDF = (reportId: number, reportName: string) => {
-    console.log("[v0] Downloading PDF for report:", reportId)
-    // In production, trigger PDF download
+  const handleDownloadPDF = async (reportId: string, reportName: string) => {
+    try {
+      const response = await fetch(`/api/archive/${reportId}`)
+      const data = await response.json()
+
+      if (response.ok && data.success) {
+        // Convert base64 to blob and download
+        const byteCharacters = atob(data.pdfData)
+        const byteNumbers = new Array(byteCharacters.length)
+        for (let i = 0; i < byteCharacters.length; i++) {
+          byteNumbers[i] = byteCharacters.charCodeAt(i)
+        }
+        const byteArray = new Uint8Array(byteNumbers)
+        const blob = new Blob([byteArray], { type: 'application/pdf' })
+
+        const url = window.URL.createObjectURL(blob)
+        const a = document.createElement('a')
+        a.href = url
+        a.download = `${reportName.replace(/[^a-z0-9]/gi, '_')}.pdf`
+        document.body.appendChild(a)
+        a.click()
+        window.URL.revokeObjectURL(url)
+        document.body.removeChild(a)
+
+        toast({
+          title: "Success!",
+          description: "PDF downloaded successfully.",
+        })
+      } else {
+        throw new Error(data.error || 'Failed to download PDF')
+      }
+    } catch (error) {
+      console.error('Download PDF error:', error)
+      toast({
+        title: "Error",
+        description: "Failed to download PDF. Please try again.",
+        variant: "destructive",
+      })
+    }
   }
 
   return (
@@ -141,7 +165,11 @@ export default function ArchivePage() {
               <CardTitle className="text-lg">Reports ({filteredReports.length})</CardTitle>
             </CardHeader>
             <CardContent>
-              {paginatedReports.length > 0 ? (
+              {isLoading ? (
+                <div className="text-center py-12 text-muted-foreground">
+                  Loading archived reports...
+                </div>
+              ) : paginatedReports.length > 0 ? (
                 <div className="overflow-x-auto">
                   <Table>
                     <TableHeader>
@@ -156,7 +184,7 @@ export default function ArchivePage() {
                     <TableBody>
                       {paginatedReports.map((report) => (
                         <TableRow key={report.id}>
-                          <TableCell className="text-sm font-medium text-foreground">{report.name}</TableCell>
+                          <TableCell className="text-sm font-medium text-foreground">{report.reportName}</TableCell>
                           <TableCell className="text-sm text-muted-foreground">{report.molecule}</TableCell>
                           <TableCell className="text-sm text-muted-foreground">{report.region}</TableCell>
                           <TableCell className="text-sm text-muted-foreground">{report.date}</TableCell>
@@ -174,8 +202,8 @@ export default function ArchivePage() {
                               <Button
                                 variant="ghost"
                                 size="sm"
-                                onClick={() => handleDownloadPDF(report.id, report.name)}
-                                title="Download PDF report"
+                                onClick={() => handleDownloadPDF(report.id, report.reportName)}
+                                title="Download PDF"
                               >
                                 <Download className="w-4 h-4" />
                                 <span className="hidden sm:inline">PDF</span>
@@ -196,55 +224,57 @@ export default function ArchivePage() {
           </Card>
 
           {/* Pagination */}
-          {totalPages > 1 && (
-            <div className="mt-6">
-              <Pagination>
-                <PaginationContent>
-                  <PaginationItem>
-                    <PaginationPrevious
-                      href="#"
-                      onClick={(e) => {
-                        e.preventDefault()
-                        if (currentPage > 1) setCurrentPage(currentPage - 1)
-                      }}
-                      className={currentPage === 1 ? "pointer-events-none opacity-50" : ""}
-                    />
-                  </PaginationItem>
+          {
+            totalPages > 1 && (
+              <div className="mt-6">
+                <Pagination>
+                  <PaginationContent>
+                    <PaginationItem>
+                      <PaginationPrevious
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault()
+                          if (currentPage > 1) setCurrentPage(currentPage - 1)
+                        }}
+                        className={currentPage === 1 ? "pointer-events-none opacity-50" : ""}
+                      />
+                    </PaginationItem>
 
-                  {Array.from({ length: totalPages }).map((_, idx) => {
-                    const pageNum = idx + 1
-                    return (
-                      <PaginationItem key={pageNum}>
-                        <PaginationLink
-                          href="#"
-                          onClick={(e) => {
-                            e.preventDefault()
-                            setCurrentPage(pageNum)
-                          }}
-                          isActive={currentPage === pageNum}
-                        >
-                          {pageNum}
-                        </PaginationLink>
-                      </PaginationItem>
-                    )
-                  })}
+                    {Array.from({ length: totalPages }).map((_, idx) => {
+                      const pageNum = idx + 1
+                      return (
+                        <PaginationItem key={pageNum}>
+                          <PaginationLink
+                            href="#"
+                            onClick={(e) => {
+                              e.preventDefault()
+                              setCurrentPage(pageNum)
+                            }}
+                            isActive={currentPage === pageNum}
+                          >
+                            {pageNum}
+                          </PaginationLink>
+                        </PaginationItem>
+                      )
+                    })}
 
-                  <PaginationItem>
-                    <PaginationNext
-                      href="#"
-                      onClick={(e) => {
-                        e.preventDefault()
-                        if (currentPage < totalPages) setCurrentPage(currentPage + 1)
-                      }}
-                      className={currentPage === totalPages ? "pointer-events-none opacity-50" : ""}
-                    />
-                  </PaginationItem>
-                </PaginationContent>
-              </Pagination>
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
+                    <PaginationItem>
+                      <PaginationNext
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault()
+                          if (currentPage < totalPages) setCurrentPage(currentPage + 1)
+                        }}
+                        className={currentPage === totalPages ? "pointer-events-none opacity-50" : ""}
+                      />
+                    </PaginationItem>
+                  </PaginationContent>
+                </Pagination>
+              </div>
+            )
+          }
+        </div >
+      </div >
+    </div >
   )
 }

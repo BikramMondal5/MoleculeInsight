@@ -1,4 +1,5 @@
 "use client"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Download, Archive } from "lucide-react"
 import SummaryCard from "./dashboard/summary-card"
@@ -10,6 +11,7 @@ import InternalInsightsCard from "./dashboard/internal-insights-card"
 import InnovationConceptCard from "./dashboard/innovation-concept-card"
 import InternalKnowledgeCard from "./dashboard/InternalKnowledgeCard"
 import jsPDF from "jspdf"
+import { useToast } from "@/hooks/use-toast"
 
 interface ResultsDashboardProps {
   results: {
@@ -22,9 +24,13 @@ interface ResultsDashboardProps {
     innovation_opportunities?: { success: boolean; report?: string; error?: string }
   }
   molecule: string
+  query: string
+  region: string
 }
 
-export default function ResultsDashboard({ results, molecule }: ResultsDashboardProps) {
+export default function ResultsDashboard({ results, molecule, query, region }: ResultsDashboardProps) {
+  const { toast } = useToast()
+  const [isSaving, setIsSaving] = useState(false)
   const handleDownloadPDF = () => {
     const pdf = new jsPDF({
       orientation: 'portrait',
@@ -151,9 +157,146 @@ export default function ResultsDashboard({ results, molecule }: ResultsDashboard
     pdf.save(fileName)
   }
 
-  const handleSaveArchive = () => {
-    console.log("[v0] Save to Archive clicked")
-    // TODO: Implement archive functionality
+  const handleSaveArchive = async () => {
+    try {
+      setIsSaving(true)
+
+      // Generate PDF
+      const pdf = new jsPDF({
+        orientation: 'portrait',
+        unit: 'mm',
+        format: 'a4'
+      })
+
+      const pageWidth = pdf.internal.pageSize.getWidth()
+      const pageHeight = pdf.internal.pageSize.getHeight()
+      const margins = 20
+      const maxLineWidth = pageWidth - (margins * 2)
+      let yPosition = 20
+
+      // Helper function to convert markdown to plain text
+      const markdownToPlainText = (markdown: string): string => {
+        return markdown
+          .replace(/^#{1,6}\s+/gm, '')
+          .replace(/(\*\*|__)(.*?)\1/g, '$2')
+          .replace(/(\*|_)(.*?)\1/g, '$2')
+          .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+          .replace(/`([^`]+)`/g, '$1')
+          .replace(/```[\s\S]*?```/g, '')
+          .replace(/^(-{3,}|\*{3,})$/gm, '')
+          .replace(/^[\s]*[-*+]\s+/gm, '• ')
+          .replace(/\n{3,}/g, '\n\n')
+          .trim()
+      }
+
+      // Add main title
+      pdf.setFontSize(20)
+      pdf.setFont('helvetica', 'bold')
+      pdf.text(`Analysis Results - ${molecule}`, margins, yPosition)
+      yPosition += 15
+
+      // Helper function to add section
+      const addSection = (title: string, content: string) => {
+        if (yPosition > pageHeight - 40) {
+          pdf.addPage()
+          yPosition = 20
+        }
+
+        pdf.setFontSize(14)
+        pdf.setFont('helvetica', 'bold')
+        pdf.text(title, margins, yPosition)
+        yPosition += 8
+
+        const plainText = markdownToPlainText(content)
+        pdf.setFontSize(10)
+        pdf.setFont('helvetica', 'normal')
+
+        const lines = pdf.splitTextToSize(plainText, maxLineWidth)
+        const lineHeight = 6
+
+        lines.forEach((line: string) => {
+          if (yPosition + lineHeight > pageHeight - 20) {
+            pdf.addPage()
+            yPosition = 20
+          }
+          pdf.text(line, margins, yPosition)
+          yPosition += lineHeight
+        })
+
+        yPosition += 10
+      }
+
+      // Add all sections
+      if (results.iqvia?.success && results.iqvia.report) {
+        addSection('Market Insights (IQVIA)', results.iqvia.report)
+      }
+      if (results.clinical_trials?.success && results.clinical_trials.report) {
+        addSection('Clinical Trials', results.clinical_trials.report)
+      }
+      if (results.patents?.success && results.patents.report) {
+        addSection('Patent Landscape', results.patents.report)
+      }
+      if (results.exim?.success && results.exim.report) {
+        addSection('EXIM Trends', results.exim.report)
+      }
+      if (results.internal_knowledge?.success && results.internal_knowledge.report) {
+        addSection('Internal Knowledge', results.internal_knowledge.report)
+      }
+      if (results.web_intel?.success && results.web_intel.report) {
+        addSection('Web Intelligence', results.web_intel.report)
+      }
+      if (results.innovation_opportunities?.success && results.innovation_opportunities.report) {
+        try {
+          const opportunities = JSON.parse(results.innovation_opportunities.report)
+          let formattedText = 'Based on comprehensive analysis across market insights, clinical trials, patents, trade data, and web intelligence:\n\n'
+          opportunities.forEach((opportunity: { title: string; description: string }, index: number) => {
+            formattedText += `${index + 1}. ${opportunity.title}\n${opportunity.description}\n\n`
+          })
+          addSection('Innovation Opportunities', formattedText)
+        } catch (e) {
+          addSection('Innovation Opportunities', results.innovation_opportunities.report)
+        }
+      }
+
+      // Get PDF as base64
+      const pdfBase64 = pdf.output('datauristring').split(',')[1]
+
+      // Save to archive
+      const response = await fetch('/api/archive', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          reportName: `${molecule} - ${region} Analysis`,
+          molecule,
+          query,
+          region,
+          pdfData: pdfBase64,
+          results,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok && data.success) {
+        toast({
+          title: "Success!",
+          description: "Report saved to archive successfully.",
+        })
+      } else {
+        throw new Error(data.error || 'Failed to save to archive')
+      }
+    } catch (error) {
+      console.error('Save to archive error:', error)
+      toast({
+        title: "Error",
+        description: "Failed to save report to archive. Please try again.",
+        variant: "destructive",
+      })
+    } finally {
+      setIsSaving(false)
+    }
   }
 
   return (
@@ -171,7 +314,7 @@ export default function ResultsDashboard({ results, molecule }: ResultsDashboard
             <Download className="w-4 h-4 mr-2" />
             Download PDF
           </Button>
-          <Button variant="outline" size="sm" onClick={handleSaveArchive}>
+          <Button variant="outline" size="sm" onClick={handleSaveArchive} disabled={isSaving}>
             <Archive className="w-4 h-4 mr-2" />
             Save to Archive
           </Button>

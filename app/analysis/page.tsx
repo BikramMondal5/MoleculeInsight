@@ -26,6 +26,8 @@ export default function AnalysisPage() {
   const [analysisComplete, setAnalysisComplete] = useState(false)
   const [analysisResults, setAnalysisResults] = useState<AnalysisResults | null>(null)
   const [currentMolecule, setCurrentMolecule] = useState<string>("")
+  const [currentQuery, setCurrentQuery] = useState<string>("")
+  const [currentRegion, setCurrentRegion] = useState<string>("")
 
   const handleRunAnalysis = async (query: string, molecule?: string, geography?: string) => {
     setIsAnalyzing(true)
@@ -33,6 +35,8 @@ export default function AnalysisPage() {
     setMessages([])
     setActiveAgents([])
     setAnalysisResults(null)
+    setCurrentQuery(query)
+    setCurrentRegion(geography || "Global")
 
     // Add user message
     setMessages((prev) => [
@@ -151,7 +155,12 @@ export default function AnalysisPage() {
           {messages.length > 0 && <ChatPanel messages={messages} isAnalyzing={isAnalyzing} />}
 
           {analysisComplete && analysisResults && (
-            <ResultsDashboard results={analysisResults} molecule={currentMolecule} />
+            <ResultsDashboard
+              results={analysisResults}
+              molecule={currentMolecule}
+              query={currentQuery}
+              region={currentRegion}
+            />
           )}
         </div>
       </div>
