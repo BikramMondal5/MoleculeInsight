@@ -82,13 +82,28 @@ pip install -r requirements.txt
 ```
 
 ### 3. Environment Configuration
-You need to configure the RAG system's environment variables.
+You need to configure environment variables for both the backend and frontend.
+
+#### Backend (RAG system)
 Create a `.env` file in `agents/RAG/.env` (yes, inside the RAG directory):
 
 ```env
 GOOGLE_API_KEY=your_gemini_api_key_here
 # Add other keys if required by specific agents (e.g., NEWS_API_KEY, COMTRADE_KEY)
 ```
+
+#### Frontend (Next.js)
+Create or update the `.env` file in the project root:
+
+```env
+NEXTAUTH_URL=http://localhost:3000
+```
+For production deployments (e.g., Vercel), set `NEXTAUTH_URL` to your deployed URL, e.g.:
+
+```env
+NEXTAUTH_URL=https://molecule-insight.vercel.app
+```
+Make sure to set this variable in your Vercel dashboard under Project Settings → Environment Variables.
 
 ### 4. RAG Knowledge Ingestion (Optional)
 To populate the vector database with your internal JSON/PDF documents:
@@ -125,6 +140,14 @@ pnpm dev
 > The web app will be available at `http://localhost:3000`
 
 ---
+
+## 🚀 Deployment
+
+For production deployment (e.g., Vercel), ensure you set all required environment variables in the Vercel dashboard, especially:
+
+- `NEXTAUTH_URL=https://molecule-insight.vercel.app`
+
+This ensures authentication and OAuth redirects work correctly in production.
 
 ## 🧭 How to Use
 
