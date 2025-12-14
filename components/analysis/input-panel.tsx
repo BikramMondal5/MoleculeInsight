@@ -105,6 +105,11 @@ export default function AnalysisInputPanel({ onRunAnalysis, isAnalyzing }: Input
               <option>Internal Knowledge</option>
               <option>Innovation Strategy</option>
             </select>
+            {selectedAgent === "Innovation Strategy" && (
+              <p className="text-xs text-muted-foreground mt-2 bg-primary/10 p-2 rounded">
+                ℹ️ Innovation Strategy requires data from all agents. All agents will run automatically.
+              </p>
+            )}
           </div>
 
           {/* Submit Button */}

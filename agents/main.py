@@ -14,6 +14,9 @@ import importlib.util
 current_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, current_dir)
 
+# Import cache manager
+from cache_manager import CacheManager
+
 # Import agents from Agent-workers directory (handle hyphen in folder name)
 agents_dir = os.path.join(current_dir, "Agent-workers")
 
@@ -75,6 +78,12 @@ class AnalysisResponse(BaseModel):
 # Thread pool for running agents concurrently
 executor = ThreadPoolExecutor(max_workers=6)
 
+# Initialize cache manager
+cache_manager = CacheManager(
+    cache_dir=os.path.join(current_dir, "cache"),
+    default_expiry_hours=168  # 7 days
+)
+
 def safe_run_agent(agent_func, *args, **kwargs):
     """Wrapper to safely run agent and handle errors"""
     try:
@@ -82,6 +91,31 @@ def safe_run_agent(agent_func, *args, **kwargs):
         return {"success": True, "data": result}
     except Exception as e:
         return {"success": False, "error": str(e), "data": None}
+
+def safe_run_agent_with_cache(agent_name, agent_func, molecule, query, *args, **kwargs):
+    """Wrapper to run agent with caching support"""
+    # Try to get from cache
+    cache_key_params = {"query": query}
+    if args:
+        cache_key_params["args"] = str(args)
+    if kwargs:
+        cache_key_params["kwargs"] = str(kwargs)
+    
+    cached_data = cache_manager.get(agent_name, molecule, **cache_key_params)
+    
+    if cached_data is not None:
+        print(f"[{agent_name}] Using cached response for {molecule}")
+        return {"success": True, "data": cached_data, "cached": True}
+    
+    # Cache miss - run the agent
+    print(f"[{agent_name}] Cache miss - running agent for {molecule}")
+    try:
+        result = agent_func(*args, **kwargs)
+        # Store in cache
+        cache_manager.set(agent_name, molecule, result, **cache_key_params)
+        return {"success": True, "data": result, "cached": False}
+    except Exception as e:
+        return {"success": False, "error": str(e), "data": None, "cached": False}
 
 @app.get("/")
 async def root():
@@ -124,6 +158,17 @@ async def analyze_molecule(request: AnalysisRequest):
     internal_result = {"success": False, "data": None, "error": "Agent not selected"}
     innovation_result = {"success": False, "data": None, "error": "Agent not selected"}
     
+    # Special case: If only Innovation Strategy is selected, run all agents to gather data
+    if selected_agent == "Innovation Strategy":
+        print(f"[Innovation Strategy] Running all agents to gather comprehensive data for {molecule}")
+        selected_agent = "All Agents"  # Temporarily set to run all agents
+        updates.append({
+            "agent": "Master Agent",
+            "status": "running",
+            "message": f"Running all agents to gather data for innovation opportunities...",
+            "data": None
+        })
+    
     # Run selected agent(s)
     if selected_agent == "All Agents" or selected_agent == "IQVIA Insights":
         updates.append({
@@ -132,7 +177,16 @@ async def analyze_molecule(request: AnalysisRequest):
             "message": "Fetching market data and insights...",
             "data": None
         })
-        iqvia_future = loop.run_in_executor(executor, safe_run_agent, run_iqvia_agent, molecule, request.query)
+        iqvia_future = loop.run_in_executor(
+            executor, 
+            safe_run_agent_with_cache, 
+            "IQVIA",
+            run_iqvia_agent, 
+            molecule, 
+            request.query,
+            molecule,
+            request.query
+        )
         iqvia_result = await iqvia_future
     
     if selected_agent == "All Agents" or selected_agent == "Clinical Trials":
@@ -142,7 +196,16 @@ async def analyze_molecule(request: AnalysisRequest):
             "message": "Searching clinical trials database...",
             "data": None
         })
-        clinical_future = loop.run_in_executor(executor, safe_run_agent, run_clinical_trials_agent, molecule, request.query)
+        clinical_future = loop.run_in_executor(
+            executor, 
+            safe_run_agent_with_cache,
+            "ClinicalTrials",
+            run_clinical_trials_agent, 
+            molecule, 
+            request.query,
+            molecule,
+            request.query
+        )
         clinical_result = await clinical_future
     
     if selected_agent == "All Agents" or selected_agent == "Patent Analysis":
@@ -152,7 +215,16 @@ async def analyze_molecule(request: AnalysisRequest):
             "message": "Analyzing patent landscape...",
             "data": None
         })
-        patent_future = loop.run_in_executor(executor, safe_run_agent, run_patent_agent, molecule, request.query)
+        patent_future = loop.run_in_executor(
+            executor,
+            safe_run_agent_with_cache,
+            "Patent",
+            run_patent_agent,
+            molecule,
+            request.query,
+            molecule,
+            request.query
+        )
         patent_result = await patent_future
     
     if selected_agent == "All Agents" or selected_agent == "EXIM Trade":
@@ -164,8 +236,11 @@ async def analyze_molecule(request: AnalysisRequest):
         })
         exim_future = loop.run_in_executor(
             executor, 
-            safe_run_agent, 
+            safe_run_agent_with_cache,
+            "EXIM",
             run_exim_agent, 
+            molecule,
+            request.query,
             molecule, 
             "300490", 
             [2020, 2021, 2022, 2023],
@@ -180,7 +255,17 @@ async def analyze_molecule(request: AnalysisRequest):
             "message": "Gathering web insights and news...",
             "data": None
         })
-        web_future = loop.run_in_executor(executor, safe_run_agent, run_web_intel_agent, molecule, 20, request.query)
+        web_future = loop.run_in_executor(
+            executor,
+            safe_run_agent_with_cache,
+            "WebIntelligence",
+            run_web_intel_agent,
+            molecule,
+            request.query,
+            molecule,
+            20,
+            request.query
+        )
         web_result = await web_future
 
     if selected_agent == "All Agents" or selected_agent == "Internal Knowledge":
@@ -192,8 +277,11 @@ async def analyze_molecule(request: AnalysisRequest):
         })
         internal_future = loop.run_in_executor(
             executor, 
-            safe_run_agent, 
-            run_internal_knowledge_agent, 
+            safe_run_agent_with_cache,
+            "InternalKnowledge",
+            run_internal_knowledge_agent,
+            molecule,
+            request.query,
             molecule,
             request.query
         )
@@ -349,9 +437,48 @@ def extract_molecule_from_query(query: str) -> str:
     print(f"[Extraction] ✗ Could not extract molecule")
     return ""
 
+@app.get("/api/cache/info")
+async def get_cache_info():
+    """Get information about cached data"""
+    try:
+        info = cache_manager.get_cache_info()
+        return {
+            "success": True,
+            "cache_count": len(info),
+            "cache_items": info
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error fetching cache info: {str(e)}")
+
+@app.post("/api/cache/clear")
+async def clear_cache():
+    """Clear all cache files"""
+    try:
+        count = cache_manager.clear_all()
+        return {
+            "success": True,
+            "message": f"Cleared {count} cache files"
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error clearing cache: {str(e)}")
+
+@app.post("/api/cache/clear-expired")
+async def clear_expired_cache():
+    """Clear only expired cache files"""
+    try:
+        count = cache_manager.clear_expired()
+        return {
+            "success": True,
+            "message": f"Cleared {count} expired cache files"
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error clearing expired cache: {str(e)}")
+
 if __name__ == "__main__":
     import uvicorn
     print("Starting MoleculeInsight FastAPI Server...")
     print("API Documentation: http://localhost:8000/docs")
     print("Health Check: http://localhost:8000/health")
+    print(f"Cache Directory: {cache_manager.cache_dir}")
+    print(f"Cache Expiry: {cache_manager.default_expiry.days} days")
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)

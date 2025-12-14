@@ -5,13 +5,13 @@ import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { User, Mail, Camera, Trash2, Save, X, AlertTriangle, ChevronDown, ChevronUp } from "lucide-react"
+import { User, Mail, Camera, Trash2, Save, X, AlertTriangle, ChevronDown, ChevronUp, Database, RefreshCw } from "lucide-react"
 import Header from "@/components/header"
 
 export default function SettingsPage() {
   const router = useRouter()
   const fileInputRef = useRef<HTMLInputElement>(null)
-  
+
   const [user, setUser] = useState<any>(null)
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
@@ -22,6 +22,8 @@ export default function SettingsPage() {
   const [error, setError] = useState("")
   const [success, setSuccess] = useState("")
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null)
+  const [cacheInfo, setCacheInfo] = useState<any>(null)
+  const [clearingCache, setClearingCache] = useState(false)
 
   const faqs = [
     {
@@ -52,13 +54,14 @@ export default function SettingsPage() {
 
   useEffect(() => {
     fetchUserData()
+    fetchCacheInfo()
   }, [])
 
-  const fetchUserData = async () => {
+  const fetchUser = async () => {
     try {
       const response = await fetch('/api/auth/session')
       const data = await response.json()
-      
+
       if (data.authenticated) {
         setUser(data.user)
         setName(data.user.name)
@@ -74,10 +77,51 @@ export default function SettingsPage() {
     }
   }
 
+  const fetchCacheInfo = async () => {
+    try {
+      const FASTAPI_URL = process.env.NEXT_PUBLIC_FASTAPI_URL || 'http://localhost:8000'
+      const response = await fetch(`${FASTAPI_URL}/api/cache/info`)
+      if (response.ok) {
+        const data = await response.json()
+        setCacheInfo(data)
+      }
+    } catch (error) {
+      console.error('Error fetching cache info:', error)
+    }
+  }
+
+  const handleClearCache = async (type: 'all' | 'expired') => {
+    setClearingCache(true)
+    setError("")
+    setSuccess("")
+
+    try {
+      const FASTAPI_URL = process.env.NEXT_PUBLIC_FASTAPI_URL || 'http://localhost:8000'
+      const endpoint = type === 'all' ? '/api/cache/clear' : '/api/cache/clear-expired'
+      const response = await fetch(`${FASTAPI_URL}${endpoint}`, {
+        method: 'POST'
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setSuccess(data.message || 'Cache cleared successfully!')
+        setTimeout(() => setSuccess(""), 3000)
+        fetchCacheInfo()
+      } else {
+        setError(data.detail || 'Failed to clear cache')
+      }
+    } catch (err) {
+      setError('An error occurred while clearing cache')
+    } finally {
+      setClearingCache(false)
+    }
+  }
+
   const refreshHeader = () => {
     // Dispatch custom event to notify header
-    window.dispatchEvent(new CustomEvent('userUpdated', { 
-      detail: { name, avatar:avatar || null } 
+    window.dispatchEvent(new CustomEvent('userUpdated', {
+      detail: { name, avatar: avatar || null }
     }));
   };
 
@@ -176,7 +220,7 @@ export default function SettingsPage() {
         setAvatar("")
         setUser({ ...user, avatar: "" })
         // Call refreshHeader AFTER state update with empty string
-        window.dispatchEvent(new CustomEvent('userUpdated', { 
+        window.dispatchEvent(new CustomEvent('userUpdated', {
           detail: { name, avatar: null }  // Explicitly pass null
         }));
         setSuccess('Photo removed successfully!')
@@ -344,6 +388,66 @@ export default function SettingsPage() {
                 <p className="text-sm text-muted-foreground">
                   Account Type: <span className="font-medium text-foreground capitalize">{user?.provider || "Local"}</span>
                 </p>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Cache Management Section */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Database className="w-5 h-5" />
+                Cache Management
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-sm text-muted-foreground">
+                Cached agent responses improve performance by avoiding redundant API calls.
+              </p>
+
+              {cacheInfo && (
+                <div className="bg-muted/50 rounded-lg p-4 space-y-2">
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm font-medium">Total Cached Items:</span>
+                    <span className="text-sm font-bold text-primary">{cacheInfo.cache_count || 0}</span>
+                  </div>
+                  <div className="text-xs text-muted-foreground">
+                    Cache expires after 7 days of inactivity
+                  </div>
+                </div>
+              )}
+
+              <div className="flex gap-3 pt-2">
+                <Button
+                  onClick={() => fetchCacheInfo()}
+                  disabled={clearingCache}
+                  variant="outline"
+                  size="sm"
+                  className="gap-2"
+                >
+                  <RefreshCw className="w-4 h-4" />
+                  Refresh Info
+                </Button>
+                <Button
+                  onClick={() => handleClearCache('expired')}
+                  disabled={clearingCache}
+                  variant="outline"
+                  size="sm"
+                  className="gap-2"
+                >
+                  <Trash2 className="w-4 h-4" />
+                  Clear Expired
+                </Button>
+                <Button
+                  onClick={() => handleClearCache('all')}
+                  disabled={clearingCache}
+                  variant="destructive"
+                  size="sm"
+                  className="gap-2"
+                >
+                  <Trash2 className="w-4 h-4" />
+                  Clear All Cache
+                </Button>
               </div>
             </CardContent>
           </Card>
