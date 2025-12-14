@@ -59,21 +59,35 @@ export default function ResultsDashboard({ results, molecule }: ResultsDashboard
       {/* Dashboard Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <SummaryCard results={results} molecule={molecule} />
-        <MarketInsightsCard data={results.iqvia} />
-        <ClinicalTrialsCard data={results.clinical_trials} />
-        <PatentLandscapeCard data={results.patents} />
-        <EXIMTrendsCard data={results.exim} />
-        <InternalKnowledgeCard data={results.internal_knowledge} />
-        <InternalInsightsCard data={results.web_intel} />
+        {results.iqvia?.success && results.iqvia?.report && (
+          <MarketInsightsCard data={results.iqvia} />
+        )}
+        {results.clinical_trials?.success && results.clinical_trials?.report && (
+          <ClinicalTrialsCard data={results.clinical_trials} />
+        )}
+        {results.patents?.success && results.patents?.report && (
+          <PatentLandscapeCard data={results.patents} />
+        )}
+        {results.exim?.success && results.exim?.report && (
+          <EXIMTrendsCard data={results.exim} />
+        )}
+        {results.internal_knowledge?.success && results.internal_knowledge?.report && (
+          <InternalKnowledgeCard data={results.internal_knowledge} />
+        )}
+        {results.web_intel?.success && results.web_intel?.report && (
+          <InternalInsightsCard data={results.web_intel} />
+        )}
       </div>
 
       {/* Innovation Opportunities - Full Width */}
-      <div className="mt-6">
-        <InnovationConceptCard 
-          data={results.innovation_opportunities} 
-          molecule={molecule} 
-        />
-      </div>
+      {results.innovation_opportunities?.success && results.innovation_opportunities?.report && (
+        <div className="mt-6">
+          <InnovationConceptCard
+            data={results.innovation_opportunities}
+            molecule={molecule}
+          />
+        </div>
+      )}
     </div>
   )
 }

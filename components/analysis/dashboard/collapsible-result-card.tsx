@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ChevronDown, ChevronUp } from "lucide-react"
-import Image from "next/image"
+import { PixelCanvas } from "@/components/ui/pixel-canvas"
 import { cn } from "@/lib/utils"
 
 interface CollapsibleResultCardProps {
@@ -29,16 +29,25 @@ export default function CollapsibleResultCard({
     return (
         <Card
             className={cn(
-                "transition-all duration-300 relative overflow-hidden",
-                !isOpen && "cursor-pointer hover:scale-[1.01] hover:shadow-md h-[250px]",
+                "group relative transition-all duration-300 overflow-hidden border-border",
+                !isOpen && "cursor-pointer hover:scale-[1.01] hover:shadow-md h-[250px] hover:border-primary/50",
                 isOpen && "h-full",
                 className
             )}
             onClick={!isOpen ? toggleOpen : undefined}
         >
+            {!isOpen && (
+                <PixelCanvas
+                    gap={8}
+                    speed={25}
+                    colors={["#e0f2fe", "#7dd3fc", "#0ea5e9"]}
+                    variant="default"
+                />
+            )}
+
             <CardHeader
                 className={cn(
-                    "flex flex-row items-center justify-between space-y-0 pb-2 border-b transition-colors",
+                    "relative z-10 flex flex-row items-center justify-between space-y-0 pb-2 border-b transition-colors",
                     isOpen && "cursor-pointer hover:bg-muted/50"
                 )}
                 onClick={isOpen ? toggleOpen : undefined}
@@ -52,18 +61,12 @@ export default function CollapsibleResultCard({
                 </button>
             </CardHeader>
 
-            <CardContent className="p-0">
+            <CardContent className="relative z-10 p-0">
                 {!isOpen ? (
                     <div className="flex flex-col items-center justify-center p-6 h-[200px] animate-in fade-in duration-500">
-                        <div className="relative w-32 h-32 opacity-90 transition-transform duration-300 hover:scale-105">
-                            <Image
-                                src="/MoleculeInsight-logo.png"
-                                alt="Molecule Insight"
-                                fill
-                                className="object-contain drop-shadow-sm"
-                                priority
-                            />
-                        </div>
+                        <p className="text-sm text-muted-foreground text-center">
+                            Click to expand and view details
+                        </p>
                     </div>
                 ) : (
                     <div className="p-6 pt-4 animate-in fade-in slide-in-from-top-2 duration-500">
