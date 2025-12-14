@@ -27,7 +27,7 @@ export default function AnalysisPage() {
   const [analysisResults, setAnalysisResults] = useState<AnalysisResults | null>(null)
   const [currentMolecule, setCurrentMolecule] = useState<string>("")
 
-  const handleRunAnalysis = async (query: string, molecule?: string, geography?: string) => {
+  const handleRunAnalysis = async (query: string, molecule?: string, geography?: string, agent?: string) => {
     setIsAnalyzing(true)
     setAnalysisComplete(false)
     setMessages([])
@@ -44,8 +44,8 @@ export default function AnalysisPage() {
       },
     ])
 
-    // Show agent timeline updates
-    const agents = [
+    // Show agent timeline updates based on selected agent
+    const allAgents = [
       { name: "Master Agent", desc: "Decomposing your query..." },
       { name: "IQVIA Insights Agent", desc: "Analyzing market data..." },
       { name: "EXIM Agent", desc: "Checking export/import opportunities..." },
@@ -56,17 +56,38 @@ export default function AnalysisPage() {
       { name: "Report Generator Agent", desc: "Compiling report..." },
     ]
 
+    // Filter agents based on selection
+    let agents = allAgents;
+    if (agent && agent !== "All Agents") {
+      const agentMap: Record<string, string> = {
+        "IQVIA Insights": "IQVIA Insights Agent",
+        "Clinical Trials": "Clinical Trials Agent",
+        "Patent Analysis": "Patent Agent",
+        "EXIM Trade": "EXIM Agent",
+        "Web Intelligence": "Web Intelligence Agent",
+        "Internal Knowledge": "Internal Knowledge Agent",
+        "Innovation Strategy": "Innovation Strategy Agent"
+      }
+
+      const selectedAgentName = agentMap[agent];
+      agents = allAgents.filter(a =>
+        a.name === "Master Agent" ||
+        a.name === "Report Generator Agent" ||
+        a.name === selectedAgentName
+      );
+    }
+
     // Simulate agent activation for UI feedback
-    agents.forEach((agent, idx) => {
+    agents.forEach((agentItem, idx) => {
       setTimeout(() => {
-        setActiveAgents((prev) => [...prev, agent.name])
+        setActiveAgents((prev) => [...prev, agentItem.name])
         setMessages((prev) => [
           ...prev,
           {
             id: `agent-${idx}`,
             role: "agent",
-            agent: agent.name,
-            content: agent.desc,
+            agent: agentItem.name,
+            content: agentItem.desc,
           },
         ])
       }, idx * 300)
@@ -83,6 +104,7 @@ export default function AnalysisPage() {
           query,
           molecule: molecule || "",
           geography: geography || "Global",
+          agent: agent || "All Agents",
         }),
       })
 

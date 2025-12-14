@@ -5,7 +5,7 @@ const FASTAPI_URL = process.env.FASTAPI_URL || 'http://localhost:8000'
 export async function POST(request: NextRequest) {
     try {
         const body = await request.json()
-        const { query, molecule, geography } = body
+        const { query, molecule, geography, agent } = body
 
         if (!query && !molecule) {
             return NextResponse.json(
@@ -24,6 +24,7 @@ export async function POST(request: NextRequest) {
                 query: query || '',
                 molecule: molecule || '',
                 geography: geography || 'Global',
+                agent: agent || 'All Agents',
             }),
         })
 
@@ -40,7 +41,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({
             success: true,
             molecule: data.molecule,
-            results: data.results, 
+            results: data.results,
             updates: data.updates,
         })
 

@@ -58,6 +58,7 @@ class AnalysisRequest(BaseModel):
     query: str
     molecule: Optional[str] = None
     geography: Optional[str] = "Global"
+    agent: Optional[str] = "All Agents"
 
 class AgentUpdate(BaseModel):
     agent: str
@@ -93,7 +94,7 @@ async def health_check():
 @app.post("/api/analyze", response_model=AnalysisResponse)
 async def analyze_molecule(request: AnalysisRequest):
     """
-    Main endpoint to analyze a molecule using all agents
+    Main endpoint to analyze a molecule using selected agent(s)
     """
     molecule = request.molecule or extract_molecule_from_query(request.query)
     
@@ -101,132 +102,137 @@ async def analyze_molecule(request: AnalysisRequest):
         raise HTTPException(status_code=400, detail="Please provide a molecule name")
     
     updates = []
+    selected_agent = request.agent or "All Agents"
     
     # Step 1: Master Agent - Query Processing
     updates.append({
         "agent": "Master Agent",
         "status": "running",
-        "message": f"Analyzing query for molecule: {molecule}",
+        "message": f"Analyzing query for molecule: {molecule} using {selected_agent}",
         "data": None
     })
     
     # Run all agents concurrently
     loop = asyncio.get_event_loop()
     
-    # IQVIA Agent
-    updates.append({
-        "agent": "IQVIA Insights Agent",
-        "status": "running",
-        "message": "Fetching market data and insights...",
-        "data": None
-    })
-    iqvia_future = loop.run_in_executor(executor, safe_run_agent, run_iqvia_agent, molecule, request.query)
+    # Initialize results with None
+    iqvia_result = {"success": False, "data": None, "error": "Agent not selected"}
+    clinical_result = {"success": False, "data": None, "error": "Agent not selected"}
+    patent_result = {"success": False, "data": None, "error": "Agent not selected"}
+    exim_result = {"success": False, "data": None, "error": "Agent not selected"}
+    web_result = {"success": False, "data": None, "error": "Agent not selected"}
+    internal_result = {"success": False, "data": None, "error": "Agent not selected"}
+    innovation_result = {"success": False, "data": None, "error": "Agent not selected"}
     
-    # Clinical Trials Agent
-    updates.append({
-        "agent": "Clinical Trials Agent",
-        "status": "running",
-        "message": "Searching clinical trials database...",
-        "data": None
-    })
-    clinical_future = loop.run_in_executor(executor, safe_run_agent, run_clinical_trials_agent, molecule, request.query)
+    # Run selected agent(s)
+    if selected_agent == "All Agents" or selected_agent == "IQVIA Insights":
+        updates.append({
+            "agent": "IQVIA Insights Agent",
+            "status": "running",
+            "message": "Fetching market data and insights...",
+            "data": None
+        })
+        iqvia_future = loop.run_in_executor(executor, safe_run_agent, run_iqvia_agent, molecule, request.query)
+        iqvia_result = await iqvia_future
     
-    # Patent Agent
-    updates.append({
-        "agent": "Patent Agent",
-        "status": "running",
-        "message": "Analyzing patent landscape...",
-        "data": None
-    })
-    patent_future = loop.run_in_executor(executor, safe_run_agent, run_patent_agent, molecule, request.query)
+    if selected_agent == "All Agents" or selected_agent == "Clinical Trials":
+        updates.append({
+            "agent": "Clinical Trials Agent",
+            "status": "running",
+            "message": "Searching clinical trials database...",
+            "data": None
+        })
+        clinical_future = loop.run_in_executor(executor, safe_run_agent, run_clinical_trials_agent, molecule, request.query)
+        clinical_result = await clinical_future
     
-    # EXIM Trade Agent
-    updates.append({
-        "agent": "EXIM Agent",
-        "status": "running",
-        "message": "Checking export/import opportunities...",
-        "data": None
-    })
-    # HS code 300490 for medicaments - you can make this configurable
-    exim_future = loop.run_in_executor(
-        executor, 
-        safe_run_agent, 
-        run_exim_agent, 
-        molecule, 
-        "300490", 
-        [2020, 2021, 2022, 2023],
-        request.query
-    )
+    if selected_agent == "All Agents" or selected_agent == "Patent Analysis":
+        updates.append({
+            "agent": "Patent Agent",
+            "status": "running",
+            "message": "Analyzing patent landscape...",
+            "data": None
+        })
+        patent_future = loop.run_in_executor(executor, safe_run_agent, run_patent_agent, molecule, request.query)
+        patent_result = await patent_future
     
-    # Web Intelligence Agent
-    updates.append({
-        "agent": "Web Intelligence Agent",
-        "status": "running",
-        "message": "Gathering web insights and news...",
-        "data": None
-    })
-    web_future = loop.run_in_executor(executor, safe_run_agent, run_web_intel_agent, molecule, 20, request.query)
-
-    # Internal Knowledge Agent
-    updates.append({
-        "agent": "Internal Knowledge Agent",
-        "status": "running",
-        "message": "Analyzing internal knowledge base...",
-        "data": None
-    })
-    internal_future = loop.run_in_executor(
-        executor, 
-        safe_run_agent, 
-        run_internal_knowledge_agent, 
-        molecule,
-        request.query
-    )
-    
-    # Wait for all agents to complete
-    iqvia_result = await iqvia_future
-    clinical_result = await clinical_future
-    patent_result = await patent_future
-    exim_result = await exim_future
-    web_result = await web_future
-    internal_result = await internal_future
-
-    # Add this BEFORE running the innovation agent
-    updates.append({
-        "agent": "Innovation Strategy Agent",
-        "status": "running",
-        "message": "Generating strategic innovation opportunities...",
-        "data": None
-    })
-
-    # Extract the actual report strings, handling None cases
-    innovation_future = loop.run_in_executor(
-        executor,
-        lambda: safe_run_agent(
-            run_innovation_strategy_agent,
-            molecule=molecule,
-            market_data=iqvia_result.get("data") if iqvia_result.get("success") else None,
-            clinical_data=clinical_result.get("data") if clinical_result.get("success") else None,
-            patent_data=patent_result.get("data") if patent_result.get("success") else None,
-            trade_data=exim_result.get("data") if exim_result.get("success") else None,
-            web_data=web_result.get("data") if web_result.get("success") else None,
-            internal_data=internal_result.get("data") if internal_result.get("success") else None
+    if selected_agent == "All Agents" or selected_agent == "EXIM Trade":
+        updates.append({
+            "agent": "EXIM Agent",
+            "status": "running",
+            "message": "Checking export/import opportunities...",
+            "data": None
+        })
+        exim_future = loop.run_in_executor(
+            executor, 
+            safe_run_agent, 
+            run_exim_agent, 
+            molecule, 
+            "300490", 
+            [2020, 2021, 2022, 2023],
+            request.query
         )
-    )
+        exim_result = await exim_future
+    
+    if selected_agent == "All Agents" or selected_agent == "Web Intelligence":
+        updates.append({
+            "agent": "Web Intelligence Agent",
+            "status": "running",
+            "message": "Gathering web insights and news...",
+            "data": None
+        })
+        web_future = loop.run_in_executor(executor, safe_run_agent, run_web_intel_agent, molecule, 20, request.query)
+        web_result = await web_future
 
-    innovation_result = await innovation_future
+    if selected_agent == "All Agents" or selected_agent == "Internal Knowledge":
+        updates.append({
+            "agent": "Internal Knowledge Agent",
+            "status": "running",
+            "message": "Analyzing internal knowledge base...",
+            "data": None
+        })
+        internal_future = loop.run_in_executor(
+            executor, 
+            safe_run_agent, 
+            run_internal_knowledge_agent, 
+            molecule,
+            request.query
+        )
+        internal_result = await internal_future
+
+    if selected_agent == "All Agents" or selected_agent == "Innovation Strategy":
+        updates.append({
+            "agent": "Innovation Strategy Agent",
+            "status": "running",
+            "message": "Generating strategic innovation opportunities...",
+            "data": None
+        })
+        innovation_future = loop.run_in_executor(
+            executor,
+            lambda: safe_run_agent(
+                run_innovation_strategy_agent,
+                molecule=molecule,
+                market_data=iqvia_result.get("data") if iqvia_result.get("success") else None,
+                clinical_data=clinical_result.get("data") if clinical_result.get("success") else None,
+                patent_data=patent_result.get("data") if patent_result.get("success") else None,
+                trade_data=exim_result.get("data") if exim_result.get("success") else None,
+                web_data=web_result.get("data") if web_result.get("success") else None,
+                internal_data=internal_result.get("data") if internal_result.get("success") else None
+            )
+        )
+        innovation_result = await innovation_future
         
-    updates.append({
-        "agent": "Innovation Strategy Agent",
-        "status": "completed" if innovation_result.get("success") else "error",
-        "message": "Strategic opportunities identified" if innovation_result.get("success") else "Failed to generate opportunities",
-        "data": None
-    })
+        updates.append({
+            "agent": "Innovation Strategy Agent",
+            "status": "completed" if innovation_result.get("success") else "error",
+            "message": "Strategic opportunities identified" if innovation_result.get("success") else "Failed to generate opportunities",
+            "data": None
+        })
     
     # Update statuses
     updates.append({
         "agent": "Master Agent",
         "status": "completed",
-        "message": "All agents completed analysis",
+        "message": f"{selected_agent} completed analysis",
         "data": None
     })
     

@@ -8,7 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { ArrowRight, Loader2 } from "lucide-react"
 
 interface InputPanelProps {
-  onRunAnalysis: (query: string, molecule?: string, geography?: string) => void
+  onRunAnalysis: (query: string, molecule?: string, geography?: string, agent?: string) => void
   isAnalyzing: boolean
 }
 
@@ -16,11 +16,12 @@ export default function AnalysisInputPanel({ onRunAnalysis, isAnalyzing }: Input
   const [query, setQuery] = useState("")
   const [molecule, setMolecule] = useState("")
   const [geography, setGeography] = useState("Global")
+  const [selectedAgent, setSelectedAgent] = useState("All Agents")
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (query.trim()) {
-      onRunAnalysis(query, molecule, geography)
+      onRunAnalysis(query, molecule, geography, selectedAgent)
     }
   }
 
@@ -81,6 +82,29 @@ export default function AnalysisInputPanel({ onRunAnalysis, isAnalyzing }: Input
                 <option>US</option>
               </select>
             </div>
+          </div>
+
+          {/* Agent Selection */}
+          <div>
+            <label htmlFor="agent" className="text-sm font-medium text-foreground block mb-2">
+              Select Agent
+            </label>
+            <select
+              id="agent"
+              value={selectedAgent}
+              onChange={(e) => setSelectedAgent(e.target.value)}
+              className="w-full px-4 py-2 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+              disabled={isAnalyzing}
+            >
+              <option>All Agents</option>
+              <option>IQVIA Insights</option>
+              <option>Clinical Trials</option>
+              <option>Patent Analysis</option>
+              <option>EXIM Trade</option>
+              <option>Web Intelligence</option>
+              <option>Internal Knowledge</option>
+              <option>Innovation Strategy</option>
+            </select>
           </div>
 
           {/* Submit Button */}
