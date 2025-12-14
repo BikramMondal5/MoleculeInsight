@@ -34,15 +34,20 @@ export default function InnovationConceptCard({ data, molecule }: InnovationConc
   // Error state
   if (!data.success || !data.report) {
     return (
-      <CollapsibleResultCard
-        title={`Innovation Opportunities for ${molecule}`}
-        className="border-primary border-2 bg-gradient-to-br from-primary/5 to-transparent"
-      >
-        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-          <AlertCircle className="w-4 h-4" />
-          <span>{data.error || "Unable to generate opportunities at this time"}</span>
-        </div>
-      </CollapsibleResultCard>
+      <Card className="border-primary border-2 bg-gradient-to-br from-primary/5 to-transparent">
+        <CardHeader>
+          <CardTitle className="text-xl text-primary flex items-center gap-2">
+            <Lightbulb className="w-5 h-5" />
+            Innovation Opportunities for {molecule}
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <AlertCircle className="w-4 h-4" />
+            <span>{data.error || "Unable to generate opportunities at this time"}</span>
+          </div>
+        </CardContent>
+      </Card>
     )
   }
 
@@ -53,42 +58,51 @@ export default function InnovationConceptCard({ data, molecule }: InnovationConc
   } catch (e) {
     console.error("Failed to parse innovation opportunities:", e)
     return (
-      <CollapsibleResultCard
-        title={`Innovation Opportunities for ${molecule}`}
-        className="border-primary border-2 bg-gradient-to-br from-primary/5 to-transparent"
-      >
-        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-          <AlertCircle className="w-4 h-4" />
-          <span>Error parsing opportunities data</span>
-        </div>
-      </CollapsibleResultCard>
+      <Card className="border-primary border-2 bg-gradient-to-br from-primary/5 to-transparent">
+        <CardHeader>
+          <CardTitle className="text-xl text-primary flex items-center gap-2">
+            <Lightbulb className="w-5 h-5" />
+            Innovation Opportunities for {molecule}
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <AlertCircle className="w-4 h-4" />
+            <span>Error parsing opportunities data</span>
+          </div>
+        </CardContent>
+      </Card>
     )
   }
 
   return (
-    <CollapsibleResultCard
-      title={`Innovation Opportunities for ${molecule}`}
-      className="border-primary border-2 bg-gradient-to-br from-primary/5 to-transparent"
-      defaultOpen={false}
-    >
-      <div className="space-y-4">
-        <p className="text-sm text-foreground leading-relaxed">
-          Based on comprehensive analysis across market insights, clinical trials, patents, trade data, and web intelligence:
-        </p>
-        <ul className="space-y-4 text-sm">
-          {opportunities.map((opportunity, index) => (
-            <li key={index} className="flex gap-3">
-              <span className="text-primary font-bold text-lg mt-0.5">•</span>
-              <div>
-                <strong className="text-foreground">{opportunity.title}</strong>
-                <p className="text-muted-foreground mt-1 leading-relaxed">
-                  {opportunity.description}
-                </p>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </CollapsibleResultCard>
+    <Card className="border-primary border-2 bg-gradient-to-br from-primary/5 to-transparent">
+      <CardHeader>
+        <CardTitle className="text-xl text-primary flex items-center gap-2">
+          <Lightbulb className="w-5 h-5" />
+          Innovation Opportunities for {molecule}
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        <div className="space-y-4">
+          <p className="text-sm text-foreground leading-relaxed">
+            Based on comprehensive analysis across market insights, clinical trials, patents, trade data, and web intelligence:
+          </p>
+          <ul className="space-y-4 text-sm">
+            {opportunities.map((opportunity, index) => (
+              <li key={index} className="flex gap-3">
+                <span className="text-primary font-bold text-lg mt-0.5">•</span>
+                <div>
+                  <strong className="text-foreground">{opportunity.title}</strong>
+                  <p className="text-muted-foreground mt-1 leading-relaxed">
+                    {opportunity.description}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </CardContent>
+    </Card>
   )
 }

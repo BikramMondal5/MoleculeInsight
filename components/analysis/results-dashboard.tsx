@@ -1,8 +1,7 @@
 "use client"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Download, Archive } from "lucide-react"
-import SummaryCard from "./dashboard/summary-card"
+import { Download, Archive, BarChart } from "lucide-react"
 import MarketInsightsCard from "./dashboard/market-insights-card"
 import ClinicalTrialsCard from "./dashboard/clinical-trials-card"
 import PatentLandscapeCard from "./dashboard/patent-landscape-card"
@@ -10,6 +9,7 @@ import EXIMTrendsCard from "./dashboard/exim-trends-card"
 import InternalInsightsCard from "./dashboard/internal-insights-card"
 import InnovationConceptCard from "./dashboard/innovation-concept-card"
 import InternalKnowledgeCard from "./dashboard/InternalKnowledgeCard"
+import SummaryModal from "./summary-modal"
 import jsPDF from "jspdf"
 import { useToast } from "@/hooks/use-toast"
 
@@ -31,6 +31,7 @@ interface ResultsDashboardProps {
 export default function ResultsDashboard({ results, molecule, query, region }: ResultsDashboardProps) {
   const { toast } = useToast()
   const [isSaving, setIsSaving] = useState(false)
+  const [showSummary, setShowSummary] = useState(false)
   const handleDownloadPDF = () => {
     const pdf = new jsPDF({
       orientation: 'portrait',
@@ -161,7 +162,6 @@ export default function ResultsDashboard({ results, molecule, query, region }: R
     try {
       setIsSaving(true)
 
-      // Generate PDF
       const pdf = new jsPDF({
         orientation: 'portrait',
         unit: 'mm',
@@ -310,6 +310,10 @@ export default function ResultsDashboard({ results, molecule, query, region }: R
           </p>
         </div>
         <div className="flex gap-3">
+          <Button variant="outline" size="sm" onClick={() => setShowSummary(true)}>
+            <BarChart className="w-4 h-4 mr-2" />
+            Summary
+          </Button>
           <Button variant="outline" size="sm" onClick={handleDownloadPDF}>
             <Download className="w-4 h-4 mr-2" />
             Download PDF
@@ -322,8 +326,7 @@ export default function ResultsDashboard({ results, molecule, query, region }: R
       </div>
 
       {/* Dashboard Grid - Playing Card Style */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        <SummaryCard results={results} molecule={molecule} />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <MarketInsightsCard data={results.iqvia} />
         <ClinicalTrialsCard data={results.clinical_trials} />
         <PatentLandscapeCard data={results.patents} />
@@ -339,6 +342,14 @@ export default function ResultsDashboard({ results, molecule, query, region }: R
           molecule={molecule}
         />
       </div>
+
+      {/* Summary Modal */}
+      <SummaryModal
+        isOpen={showSummary}
+        onClose={() => setShowSummary(false)}
+        results={results}
+        molecule={molecule}
+      />
     </div>
   )
 }
