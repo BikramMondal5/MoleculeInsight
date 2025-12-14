@@ -9,6 +9,7 @@ import EXIMTrendsCard from "./dashboard/exim-trends-card"
 import InternalInsightsCard from "./dashboard/internal-insights-card"
 import InnovationConceptCard from "./dashboard/innovation-concept-card"
 import InternalKnowledgeCard from "./dashboard/InternalKnowledgeCard"
+import jsPDF from "jspdf"
 
 interface ResultsDashboardProps {
   results: {
@@ -25,8 +26,89 @@ interface ResultsDashboardProps {
 
 export default function ResultsDashboard({ results, molecule }: ResultsDashboardProps) {
   const handleDownloadPDF = () => {
-    console.log("[v0] Download PDF clicked")
-    // TODO: Implement PDF generation
+    const pdf = new jsPDF({
+      orientation: 'portrait',
+      unit: 'mm',
+      format: 'a4'
+    })
+
+    const pageWidth = pdf.internal.pageSize.getWidth()
+    const pageHeight = pdf.internal.pageSize.getHeight()
+    const margins = 20
+    const maxLineWidth = pageWidth - (margins * 2)
+    let yPosition = 20
+
+    // Add main title
+    pdf.setFontSize(20)
+    pdf.setFont('helvetica', 'bold')
+    pdf.text(`Analysis Results - ${molecule}`, margins, yPosition)
+    yPosition += 15
+
+    // Helper function to add section
+    const addSection = (title: string, content: string) => {
+      // Check if we need a new page
+      if (yPosition > pageHeight - 40) {
+        pdf.addPage()
+        yPosition = 20
+      }
+
+      // Add section title
+      pdf.setFontSize(14)
+      pdf.setFont('helvetica', 'bold')
+      pdf.text(title, margins, yPosition)
+      yPosition += 8
+
+      // Add content
+      pdf.setFontSize(10)
+      pdf.setFont('helvetica', 'normal')
+
+      const lines = pdf.splitTextToSize(content, maxLineWidth)
+      const lineHeight = 6
+
+      lines.forEach((line: string) => {
+        if (yPosition + lineHeight > pageHeight - 20) {
+          pdf.addPage()
+          yPosition = 20
+        }
+        pdf.text(line, margins, yPosition)
+        yPosition += lineHeight
+      })
+
+      yPosition += 10 // Space between sections
+    }
+
+    // Add all sections
+    if (results.iqvia?.success && results.iqvia.report) {
+      addSection('Market Insights (IQVIA)', results.iqvia.report)
+    }
+
+    if (results.clinical_trials?.success && results.clinical_trials.report) {
+      addSection('Clinical Trials', results.clinical_trials.report)
+    }
+
+    if (results.patents?.success && results.patents.report) {
+      addSection('Patent Landscape', results.patents.report)
+    }
+
+    if (results.exim?.success && results.exim.report) {
+      addSection('EXIM Trends', results.exim.report)
+    }
+
+    if (results.internal_knowledge?.success && results.internal_knowledge.report) {
+      addSection('Internal Knowledge', results.internal_knowledge.report)
+    }
+
+    if (results.web_intel?.success && results.web_intel.report) {
+      addSection('Web Intelligence', results.web_intel.report)
+    }
+
+    if (results.innovation_opportunities?.success && results.innovation_opportunities.report) {
+      addSection('Innovation Opportunities', results.innovation_opportunities.report)
+    }
+
+    // Download PDF
+    const fileName = `${molecule.replace(/[^a-z0-9]/gi, '_')}_analysis_report.pdf`
+    pdf.save(fileName)
   }
 
   const handleSaveArchive = () => {
