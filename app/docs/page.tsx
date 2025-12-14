@@ -14,6 +14,7 @@ const MoleculeInsightDocs = () => {
         'guides': false,
         'resources': false
     });
+    const [expandedQuickStart, setExpandedQuickStart] = useState(false);
 
     const toggleSection = (section: string) => {
         setExpandedSections(prev => ({
@@ -28,7 +29,16 @@ const MoleculeInsightDocs = () => {
             icon: Rocket,
             subsections: [
                 { id: 'introduction', title: 'Introduction', badge: null },
-                { id: 'quick-start', title: 'Quick Start Guide', badge: 'Popular' }
+                {
+                    id: 'quick-start',
+                    title: 'Quick Start Guide',
+                    badge: 'Popular',
+                    hasChildren: true,
+                    children: [
+                        { id: 'quick-start-researchers', title: 'For Researchers/Students', badge: null },
+                        { id: 'quick-start-developers', title: 'For Developers', badge: null }
+                    ]
+                }
             ]
         },
         'core-concepts': {
@@ -104,79 +114,382 @@ Watch agents work in real-time with live progress indicators and status updates 
 ### Comprehensive Results
 Get insights on clinical development status, patent landscapes, market projections, trade dependencies, recent publications, and internal research findings.`,
 
-            'quick-start': `# Quick Start Guide
+            'quick-start-researchers': `# Quick Start Guide for Researchers/Students
 
-Get MoleculeInsight running in less than 10 minutes.
+Get started with MoleculeInsight in minutes - no coding required!
+
+## What You'll Need
+
+- A modern web browser (Chrome, Firefox, Safari, or Edge)
+- Internet connection
+- A research question about a molecule or drug
+
+## Accessing MoleculeInsight
+
+### Option 1: Use the Hosted Version (Recommended)
+Visit **https://moleculeinsight.app** (if available) to use the platform immediately without any setup.
+
+### Option 2: Request Access from Your Institution
+Many academic institutions provide access to MoleculeInsight. Check with your:
+- University library
+- Research department
+- Lab supervisor
+
+## Your First Analysis (5 minutes)
+
+### Step 1: Navigate to the Analysis Page
+Click on **"Analyse"** in the top navigation menu.
+
+### Step 2: Enter Your Research Query
+Type a clear, specific question. Examples:
+
+**Good queries:**
+- "Analyze repurposing opportunities for Metformin in Alzheimer's disease"
+- "What is the patent landscape for SGLT2 inhibitors?"
+- "Evaluate market potential for GLP-1 agonists in obesity treatment"
+
+**Avoid vague queries:**
+- "Tell me about diabetes drugs"
+- "Find opportunities"
+
+### Step 3: Click "Run Agentic Analysis"
+The system will automatically:
+- Search clinical trials databases
+- Analyze patent information
+- **Clinical Trials**: Ongoing studies and trial phases
+- **Patent Landscape**: IP protection and expiring patents
+- **Market Intelligence**: Market size, growth projections, competitors
+- **Trade Analysis**: Global supply chain insights
+- **Web Intelligence**: Recent publications and news
+- **Internal Knowledge**: Relevant documents from your institution
+- **AI Innovation Strategy**: Synthesized recommendations
+
+### Step 6: Export Your Report
+Click **"Download Full Report"** to get:
+- **PDF**: Professional report with charts and visualizations
+- **Markdown**: Editable text format for your thesis or paper
+- **JSON**: Raw data for further analysis
+
+## Tips for Better Results
+
+### Be Specific
+**GOOD**: "Analyze clinical trial landscape for Aspirin in cardiovascular disease in elderly patients"  
+**AVOID**: "Aspirin trials"
+
+### Include Context
+- Specify the therapeutic area
+- Mention the target patient population
+- Define the geographic region if relevant
+
+### Use Scientific Names
+- Use INN (International Nonproprietary Names)
+- Include both generic and brand names when relevant
+
+## Adding Your Own Research Data
+
+If your institution has configured the RAG system, you can:
+
+1. Upload your research papers (PDF format)
+2. Add lab notebooks and protocols
+3. Include internal reports
+
+**Contact your system administrator** to enable this feature.
+
+## Getting Help
+
+- Check the **Troubleshooting** section for common issues
+- Review **Example Queries** for inspiration
+- Contact your institution's support team
+
+## Next Steps
+
+- Explore the **Core Concepts** section to understand how the system works
+- Read **Example Queries** for research inspiration
+- Learn about **Running an Analysis** for advanced techniques`,
+
+            'quick-start-developers': `# Quick Start Guide for Developers
+
+Set up MoleculeInsight development environment and start contributing.
 
 ## Prerequisites
 
-- **Node.js** v18 or higher
-- **Python** 3.9 or higher
-- **Google Gemini API Key** (free for students with .edu email)
-- At least 8GB RAM (16GB recommended)
-- 2GB free disk space
+Before you begin, ensure you have:
 
-## Installation (5 minutes)
+- **Node.js** v18 or higher ([Download](https://nodejs.org/))
+- **Python** 3.9 or higher ([Download](https://www.python.org/))
+- **Git** ([Download](https://git-scm.com/))
+- **Google Gemini API Key** ([Get free key](https://ai.google.dev/))
+- **8GB RAM** minimum (16GB recommended)
+- **2GB free disk space**
+
+### Optional API Keys
+- **NewsAPI Key** for web intelligence ([Get key](https://newsapi.org/))
+- **UN Comtrade Key** for trade data ([Get key](https://comtradeplus.un.org/))
+
+## Installation (10 minutes)
 
 ### Step 1: Clone the Repository
+
 \`\`\`bash
 git clone https://github.com/BikramMondal5/MoleculeInsight.git
 cd MoleculeInsight
 \`\`\`
 
 ### Step 2: Backend Setup
+
 \`\`\`bash
+# Navigate to agents directory
 cd agents
+
+# Create virtual environment
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\\Scripts\\activate
+
+# Activate virtual environment
+# On Windows:
+venv\\Scripts\\activate
+# On macOS/Linux:
+source venv/bin/activate
+
+# Install dependencies
 pip install -r requirements.txt
 \`\`\`
 
 ### Step 3: Frontend Setup
+
 \`\`\`bash
+# Return to project root
 cd ..
+
+# Install pnpm globally (if not already installed)
 npm install -g pnpm
+
+# Install dependencies
 pnpm install
 \`\`\`
 
-### Step 4: Configure API Keys
+### Step 4: Configure Environment Variables
 
+#### Backend Configuration
 Create \`.env\` file in \`agents/RAG/\`:
+
 \`\`\`env
+# Required
 GOOGLE_API_KEY=your_gemini_api_key_here
+
+# Optional
 NEWS_API_KEY=your_newsapi_key
 COMTRADE_KEY=your_comtrade_key
+
+# RAG Configuration
 CHROMA_PERSIST_DIR=./db
 COLLECTION_NAME=molecule_knowledge
+EMBEDDING_MODEL=models/embedding-001
 \`\`\`
 
+#### Frontend Configuration
 Create \`.env.local\` in project root:
+
 \`\`\`env
+# API Configuration
 NEXT_PUBLIC_API_URL=http://localhost:8000
+
+# NextAuth Configuration (for authentication)
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=your_secret_key_here
+
+# MongoDB (for user data)
+MONGODB_URI=your_mongodb_connection_string
 \`\`\`
 
-## Running MoleculeInsight
+## Running the Development Environment
 
-### Start Backend
+### Start Backend Server
+
 \`\`\`bash
 cd agents
 python main.py
 \`\`\`
 
-### Start Frontend (new terminal)
+Backend will start on **http://localhost:8000**
+
+### Start Frontend Development Server
+
+Open a new terminal:
+
 \`\`\`bash
 pnpm dev
 \`\`\`
 
-Access at: **http://localhost:3000**
+Frontend will start on **http://localhost:3000**
 
-## Your First Analysis
+## Project Structure
 
-1. Navigate to http://localhost:3000/analysis
-2. Enter query: "Analyze market potential for Aspirin in cardiovascular disease"
-3. Click "Run Agentic Analysis"
-4. Watch real-time progress (5-8 minutes)
-5. Review results and download report`,
+\`\`\`
+MoleculeInsight/
+├── app/                    # Next.js app directory
+│   ├── analysis/          # Analysis page
+│   ├── docs/              # Documentation
+│   └── api/               # API routes
+├── components/            # React components
+│   ├── ui/               # UI components
+│   └── header.tsx        # Header component
+├── agents/               # Python backend
+│   ├── orchestrator.py   # Master agent
+│   ├── workers/          # Worker agents
+│   └── RAG/              # RAG system
+├── lib/                  # Utility functions
+└── public/               # Static assets
+\`\`\`
+
+## Development Workflow
+
+### 1. Create a Feature Branch
+
+\`\`\`bash
+git checkout -b feature/your-feature-name
+\`\`\`
+
+### 2. Make Your Changes
+
+**Frontend Development:**
+- Components are in \`components/\`
+- Pages are in \`app/\`
+- Use TypeScript for type safety
+- Follow existing code style
+
+**Backend Development:**
+- Agents are in \`agents/workers/\`
+- Add new agents by extending base classes
+- Update \`orchestrator.py\` to include new agents
+
+### 3. Test Your Changes
+
+\`\`\`bash
+# Frontend tests
+pnpm test
+
+# Backend tests
+cd agents
+pytest
+\`\`\`
+
+### 4. Commit and Push
+
+\`\`\`bash
+git add .
+git commit -m "feat: your feature description"
+git push origin feature/your-feature-name
+\`\`\`
+
+### 5. Create Pull Request
+Open a PR on GitHub with:
+- Clear description of changes
+- Screenshots (if UI changes)
+- Test results
+
+## Adding a New AI Agent
+
+### 1. Create Agent File
+
+Create \`agents/workers/your_agent.py\`:
+
+\`\`\`python
+from agents.base_agent import BaseAgent
+
+class YourAgent(BaseAgent):
+    def __init__(self):
+        super().__init__("Your Agent Name")
+    
+    async def execute(self, query: str):
+        # Your agent logic here
+        return {
+            "status": "success",
+            "data": {}
+        }
+\`\`\`
+
+### 2. Register in Orchestrator
+
+Update \`agents/orchestrator.py\`:
+
+\`\`\`python
+from workers.your_agent import YourAgent
+
+# Add to agent list
+self.agents.append(YourAgent())
+\`\`\`
+
+### 3. Update Frontend
+
+Add agent status in \`app/analysis/page.tsx\`.
+
+## Debugging
+
+### Backend Debugging
+
+\`\`\`bash
+# Enable debug mode
+export DEBUG=True
+
+# View logs
+tail -f agents/logs/app.log
+\`\`\`
+
+### Frontend Debugging
+
+- Use React DevTools
+- Check browser console
+- Use Next.js built-in error overlay
+
+## Common Development Tasks
+
+### Reset Database
+
+\`\`\`bash
+cd agents/RAG
+rm -rf db/
+python ingest_all.py
+\`\`\`
+
+### Update Dependencies
+
+\`\`\`bash
+# Frontend
+pnpm update
+
+# Backend
+pip install -r requirements.txt --upgrade
+\`\`\`
+
+### Build for Production
+
+\`\`\`bash
+# Frontend
+pnpm build
+
+# Backend
+# No build step required
+\`\`\`
+
+## Contributing Guidelines
+
+1. **Code Style**: Follow existing patterns
+2. **Type Safety**: Use TypeScript types
+3. **Documentation**: Update docs for new features
+4. **Tests**: Add tests for new functionality
+5. **Commits**: Use conventional commits
+
+## Getting Help
+
+- **Issues**: [GitHub Issues](https://github.com/BikramMondal5/MoleculeInsight/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/BikramMondal5/MoleculeInsight/discussions)
+- **Discord**: Join our developer community
+
+## Next Steps
+
+- Read **Agent Architecture** for system design
+- Explore **API Reference** for endpoints
+- Check **Contributing** guidelines`,
 
             'how-it-works': `# How MoleculeInsight Works
 
@@ -375,8 +688,8 @@ KnowledgeBase/
 
 ### Naming Conventions
 Use descriptive filenames:
-- ✅ 2023_11_metformin_breast_cancer_phase2_results.pdf
-- ❌ document1.pdf
+- **GOOD**: 2023_11_metformin_breast_cancer_phase2_results.pdf
+- **AVOID**: document1.pdf
 
 ### Update Frequency
 Re-run ingestion when:
@@ -399,12 +712,12 @@ Complete guide from query to results.
 
 ### Research Question Clarity
 
-✅ **Good queries**:
+**Good queries**:
 - "Find repurposing opportunities for Metformin in Alzheimer's disease"
 - "Analyze patent landscape for SGLT2 inhibitors expiring in 3 years"
 - "Market potential for GLP-1 agonists in obesity treatment"
 
-❌ **Vague queries**:
+**Vague queries**:
 - "Tell me about diabetes drugs"
 - "Find opportunities"
 
@@ -438,10 +751,10 @@ Click "Run Agentic Analysis"
 
 ### 5. Monitor Progress
 Watch real-time status:
-- ✅ Complete
-- 🔄 Working
-- ⏳ Pending
-- ❌ Error
+- Complete
+- Working
+- Pending
+- Error
 
 ### 6. Review Results
 Results appear as interactive cards:
@@ -710,10 +1023,6 @@ python ingest_all.py
                 {/* Sidebar */}
                 <div className="w-80 bg-card border-r border-border overflow-y-auto h-[calc(100vh-4rem)] sticky top-16">
                     <div className="p-6">
-                        <div className="flex items-center gap-2 mb-6">
-                            <Database className="w-8 h-8 text-primary" />
-                            <h1 className="text-2xl font-bold text-foreground">Documentation</h1>
-                        </div>
 
                         <div className="mb-4">
                             <div className="relative">
@@ -744,26 +1053,62 @@ python ingest_all.py
                                     {expandedSections[key] && (
                                         <div className="ml-6 mt-1 space-y-1">
                                             {section.subsections.map(sub => (
-                                                <button
-                                                    key={sub.id}
-                                                    onClick={() => setActiveSection(sub.id)}
-                                                    className={`w-full text-left px-3 py-1.5 text-sm rounded-lg transition-colors ${activeSection === sub.id
-                                                            ? 'bg-primary/10 text-primary font-medium'
-                                                            : 'text-muted-foreground hover:bg-accent'
-                                                        }`}
-                                                >
-                                                    <div className="flex items-center justify-between">
-                                                        <span>{sub.title}</span>
-                                                        {sub.badge && (
-                                                            <span className={`px-2 py-0.5 text-xs rounded-full ${sub.badge === 'Popular' ? 'bg-purple-500/10 text-purple-500' :
-                                                                    sub.badge === 'New' ? 'bg-green-500/10 text-green-500' :
-                                                                        'bg-primary/10 text-primary'
-                                                                }`}>
-                                                                {sub.badge}
-                                                            </span>
-                                                        )}
-                                                    </div>
-                                                </button>
+                                                <div key={sub.id}>
+                                                    {sub.hasChildren ? (
+                                                        <>
+                                                            <button
+                                                                onClick={() => setExpandedQuickStart(!expandedQuickStart)}
+                                                                className="w-full text-left px-3 py-1.5 text-sm rounded-lg transition-colors text-muted-foreground hover:bg-accent flex items-center justify-between"
+                                                            >
+                                                                <div className="flex items-center gap-2">
+                                                                    <span>{sub.title}</span>
+                                                                    {sub.badge && (
+                                                                        <span className="px-2 py-0.5 text-xs rounded-full bg-purple-500/10 text-purple-500">
+                                                                            {sub.badge}
+                                                                        </span>
+                                                                    )}
+                                                                </div>
+                                                                {expandedQuickStart ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}
+                                                            </button>
+                                                            {expandedQuickStart && sub.children && (
+                                                                <div className="ml-4 mt-1 space-y-1">
+                                                                    {sub.children.map(child => (
+                                                                        <button
+                                                                            key={child.id}
+                                                                            onClick={() => setActiveSection(child.id)}
+                                                                            className={`w-full text-left px-3 py-1.5 text-sm rounded-lg transition-colors ${activeSection === child.id
+                                                                                ? 'bg-primary/10 text-primary font-medium'
+                                                                                : 'text-muted-foreground hover:bg-accent'
+                                                                                }`}
+                                                                        >
+                                                                            {child.title}
+                                                                        </button>
+                                                                    ))}
+                                                                </div>
+                                                            )}
+                                                        </>
+                                                    ) : (
+                                                        <button
+                                                            onClick={() => setActiveSection(sub.id)}
+                                                            className={`w-full text-left px-3 py-1.5 text-sm rounded-lg transition-colors ${activeSection === sub.id
+                                                                ? 'bg-primary/10 text-primary font-medium'
+                                                                : 'text-muted-foreground hover:bg-accent'
+                                                                }`}
+                                                        >
+                                                            <div className="flex items-center justify-between">
+                                                                <span>{sub.title}</span>
+                                                                {sub.badge && (
+                                                                    <span className={`px-2 py-0.5 text-xs rounded-full ${sub.badge === 'Popular' ? 'bg-purple-500/10 text-purple-500' :
+                                                                        sub.badge === 'New' ? 'bg-green-500/10 text-green-500' :
+                                                                            'bg-primary/10 text-primary'
+                                                                        }`}>
+                                                                        {sub.badge}
+                                                                    </span>
+                                                                )}
+                                                            </div>
+                                                        </button>
+                                                    )}
+                                                </div>
                                             ))}
                                         </div>
                                     )}
