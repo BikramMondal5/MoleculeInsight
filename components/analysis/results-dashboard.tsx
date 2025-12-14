@@ -38,6 +38,30 @@ export default function ResultsDashboard({ results, molecule }: ResultsDashboard
     const maxLineWidth = pageWidth - (margins * 2)
     let yPosition = 20
 
+    // Helper function to convert markdown to plain text
+    const markdownToPlainText = (markdown: string): string => {
+      return markdown
+        // Remove headers (###, ##, #)
+        .replace(/^#{1,6}\s+/gm, '')
+        // Remove bold (**text** or __text__)
+        .replace(/(\*\*|__)(.*?)\1/g, '$2')
+        // Remove italic (*text* or _text_)
+        .replace(/(\*|_)(.*?)\1/g, '$2')
+        // Remove links [text](url)
+        .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+        // Remove inline code (`code`)
+        .replace(/`([^`]+)`/g, '$1')
+        // Remove code blocks (```code```)
+        .replace(/```[\s\S]*?```/g, '')
+        // Remove horizontal rules (---, ***)
+        .replace(/^(-{3,}|\*{3,})$/gm, '')
+        // Convert list items (-, *, +) to bullets
+        .replace(/^[\s]*[-*+]\s+/gm, '• ')
+        // Clean up extra whitespace
+        .replace(/\n{3,}/g, '\n\n')
+        .trim()
+    }
+
     // Add main title
     pdf.setFontSize(20)
     pdf.setFont('helvetica', 'bold')
@@ -58,11 +82,14 @@ export default function ResultsDashboard({ results, molecule }: ResultsDashboard
       pdf.text(title, margins, yPosition)
       yPosition += 8
 
+      // Convert markdown to plain text
+      const plainText = markdownToPlainText(content)
+
       // Add content
       pdf.setFontSize(10)
       pdf.setFont('helvetica', 'normal')
 
-      const lines = pdf.splitTextToSize(content, maxLineWidth)
+      const lines = pdf.splitTextToSize(plainText, maxLineWidth)
       const lineHeight = 6
 
       lines.forEach((line: string) => {
@@ -103,7 +130,20 @@ export default function ResultsDashboard({ results, molecule }: ResultsDashboard
     }
 
     if (results.innovation_opportunities?.success && results.innovation_opportunities.report) {
-      addSection('Innovation Opportunities', results.innovation_opportunities.report)
+      // Parse JSON and format as readable text
+      try {
+        const opportunities = JSON.parse(results.innovation_opportunities.report)
+        let formattedText = 'Based on comprehensive analysis across market insights, clinical trials, patents, trade data, and web intelligence:\n\n'
+
+        opportunities.forEach((opportunity: { title: string; description: string }, index: number) => {
+          formattedText += `${index + 1}. ${opportunity.title}\n${opportunity.description}\n\n`
+        })
+
+        addSection('Innovation Opportunities', formattedText)
+      } catch (e) {
+        // If parsing fails, use raw report
+        addSection('Innovation Opportunities', results.innovation_opportunities.report)
+      }
     }
 
     // Download PDF
