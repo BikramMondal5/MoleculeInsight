@@ -11,41 +11,41 @@ async function connectDB() {
 export async function GET(request: NextRequest) {
   try {
     await connectDB();
-   
+
     const { searchParams } = new URL(request.url);
     const code = searchParams.get('code');
     const error = searchParams.get('error');
-    const state = searchParams.get('state'); 
-   
+    const state = searchParams.get('state');
+
     if (error || !code) {
       console.error('OAuth error:', error);
       return NextResponse.redirect(new URL('/login?error=oauth_failed', request.url));
     }
-   
+
     // Exchange code for tokens
     const tokenParams = new URLSearchParams();
     tokenParams.append('client_id', process.env.GOOGLE_CLIENT_ID as string);
     tokenParams.append('client_secret', process.env.GOOGLE_CLIENT_SECRET as string);
     tokenParams.append('code', code);
     tokenParams.append('grant_type', 'authorization_code');
-    tokenParams.append('redirect_uri', `${process.env.NEXTAUTH_URL || 'http://localhost:3000'}/api/auth/callback/google`);
-   
+    tokenParams.append('redirect_uri', `${process.env.NEXTAUTH_URL || 'https://molecule-insight.vercel.app'}/api/auth/callback/google`);
+
     const tokenResponse = await fetch('https://oauth2.googleapis.com/token', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: tokenParams,
     });
-   
+
     const tokens = await tokenResponse.json();
-   
+
     if (!tokens.access_token) {
       throw new Error('Failed to get access token');
     }
-   
+
     // Get user info from Google
     const userResponse = await fetch(`https://www.googleapis.com/oauth2/v2/userinfo?access_token=${tokens.access_token}`);
     const googleUser = await userResponse.json();
-   
+
     // Check if user exists
     let user = await User.findOne({
       $or: [
@@ -82,34 +82,34 @@ export async function GET(request: NextRequest) {
       });
       await user.save();
     } else {
-        //User check
-        if (isSignUpFlow) {
+      //User check
+      if (isSignUpFlow) {
         // Check if user registered with local provider
         if (user.provider === 'local') {
-        return NextResponse.redirect(new URL('/sign-up?error=local_account_exists', request.url));
+          return NextResponse.redirect(new URL('/sign-up?error=local_account_exists', request.url));
         }
         // Trying to sign up but account already exists with Google
         return NextResponse.redirect(new URL('/login?error=account_exists', request.url));
-    }
+      }
 
-    // Sign in flow - check if user registered with local provider
-    if (user.provider === 'local') {
+      // Sign in flow - check if user registered with local provider
+      if (user.provider === 'local') {
         return NextResponse.redirect(new URL('/login?error=use_local_signin', request.url));
-    }
+      }
 
-    // Update user info for Google sign-in
-    if (!user.googleId) {
+      // Update user info for Google sign-in
+      if (!user.googleId) {
         user.googleId = googleUser.id;
+      }
+
+      if (user.avatar === undefined) {
+        user.avatar = googleUser.picture;
+      }
+
+      user.lastLogin = new Date();
+      await user.save();
     }
 
-    if (user.avatar === undefined) {
-        user.avatar = googleUser.picture;
-    }
-    
-    user.lastLogin = new Date();
-    await user.save();
-    }
-   
     // Create session
     const sessionData = {
       userId: user._id.toString(),
@@ -117,10 +117,10 @@ export async function GET(request: NextRequest) {
       name: user.name,
       avatar: user.avatar
     };
-   
+
     const successParam = isNewUser ? 'registered' : 'signin';
     const response = NextResponse.redirect(new URL(`/?${successParam}=true`, request.nextUrl.origin));
-   
+
     response.cookies.set('user_session', JSON.stringify(sessionData), {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
@@ -128,9 +128,9 @@ export async function GET(request: NextRequest) {
       maxAge: 60 * 60 * 24 * 7,
       path: '/'
     });
-   
+
     return response;
-   
+
   } catch (error) {
     console.error('OAuth callback error:', error);
     const origin = request.nextUrl.origin;

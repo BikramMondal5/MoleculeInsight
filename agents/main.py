@@ -53,8 +53,8 @@ app = FastAPI(title="MoleculeInsight API", version="1.0.0")
 # CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://localhost:3001"],
-    allow_credentials=True,
+    allow_origins=["https://molecule-insight.vercel.app", "http://localhost:3000"],
+    allow_credentials=True, 
     allow_methods=["*"],
     allow_headers=["*"],
 )
