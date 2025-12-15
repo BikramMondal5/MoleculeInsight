@@ -8,10 +8,22 @@ export interface PubChemCIDResponse {
     }
 }
 
+export interface CompoundProperties {
+    MolecularFormula?: string
+    MolecularWeight?: string
+    IUPACName?: string
+    CanonicalSMILES?: string
+    InChI?: string
+    InChIKey?: string
+    Title?: string
+    Description?: string
+}
+
 export interface MoleculeData {
     cid: number
     sdfData: string
     moleculeName: string
+    properties?: CompoundProperties
 }
 
 /**
@@ -68,7 +80,45 @@ export async function fetchPubChemSDF(cid: number): Promise<string | null> {
 }
 
 /**
- * Fetch complete molecule data (CID + SDF) for a molecule by name
+ * Fetch compound properties from PubChem
+ * @param cid - The PubChem Compound ID
+ * @returns CompoundProperties object or null if not found
+ */
+export async function fetchCompoundProperties(cid: number): Promise<CompoundProperties | null> {
+    try {
+        const response = await fetch(
+            `https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/${cid}/property/MolecularFormula,MolecularWeight,IUPACName,CanonicalSMILES,InChI,InChIKey,Title/JSON`
+        )
+
+        if (!response.ok) {
+            console.error(`Failed to fetch properties for CID ${cid}:`, response.statusText)
+            return null
+        }
+
+        const data = await response.json()
+
+        if (data.PropertyTable?.Properties && data.PropertyTable.Properties.length > 0) {
+            const props = data.PropertyTable.Properties[0]
+            return {
+                MolecularFormula: props.MolecularFormula,
+                MolecularWeight: props.MolecularWeight?.toString(),
+                IUPACName: props.IUPACName,
+                CanonicalSMILES: props.CanonicalSMILES,
+                InChI: props.InChI,
+                InChIKey: props.InChIKey,
+                Title: props.Title
+            }
+        }
+
+        return null
+    } catch (error) {
+        console.error(`Error fetching properties for CID ${cid}:`, error)
+        return null
+    }
+}
+
+/**
+ * Fetch complete molecule data (CID + SDF + Properties) for a molecule by name
  * @param moleculeName - The name of the molecule
  * @returns MoleculeData object or null if not found
  */
@@ -82,8 +132,11 @@ export async function fetchMoleculeData(moleculeName: string): Promise<MoleculeD
             return null
         }
 
-        // Step 2: Get the SDF data
-        const sdfData = await fetchPubChemSDF(cid)
+        // Step 2: Get the SDF data and properties in parallel
+        const [sdfData, properties] = await Promise.all([
+            fetchPubChemSDF(cid),
+            fetchCompoundProperties(cid)
+        ])
 
         if (!sdfData) {
             console.error(`Could not fetch SDF data for CID: ${cid}`)
@@ -93,7 +146,8 @@ export async function fetchMoleculeData(moleculeName: string): Promise<MoleculeD
         return {
             cid,
             sdfData,
-            moleculeName
+            moleculeName,
+            properties: properties || undefined
         }
     } catch (error) {
         console.error(`Error fetching molecule data for ${moleculeName}:`, error)

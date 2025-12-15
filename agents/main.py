@@ -36,6 +36,7 @@ patent_agent = load_agent_module("patent_agent", "patent_agent.py")
 web_agent = load_agent_module("web_agent", "web_agent.py")
 internal_agent = load_agent_module("internal_knowledge_agent", "internal_knowledge_agent.py")
 innovation_agent = load_agent_module("innovation_strategy_agent", "innovation_strategy_agent.py")
+wikipedia_agent = load_agent_module("wikipedia_agent", "wikipedia_agent.py")
 
 # Extract functions
 run_clinical_trials_agent = clinical_agent.run_clinical_trials_agent
@@ -45,6 +46,7 @@ run_patent_agent = patent_agent.run_patent_agent
 run_web_intel_agent = web_agent.run_web_intel_agent
 run_internal_knowledge_agent = internal_agent.run_internal_knowledge_agent
 run_innovation_strategy_agent = innovation_agent.run_innovation_strategy_agent
+run_wikipedia_agent = wikipedia_agent.run_wikipedia_agent
 
 app = FastAPI(title="MoleculeInsight API", version="1.0.0")
 
@@ -257,6 +259,24 @@ async def analyze_molecule(request: AnalysisRequest):
         molecule,
         request.query
     )
+
+    # Wikipedia Agent - with caching
+    updates.append({
+        "agent": "Wikipedia Agent",
+        "status": "running",
+        "message": "Fetching molecule information from Wikipedia...",
+        "data": None
+    })
+    wikipedia_future = loop.run_in_executor(
+        executor,
+        safe_run_agent_with_cache,
+        "Wikipedia",
+        run_wikipedia_agent,
+        molecule,
+        request.query,
+        molecule,
+        request.query
+    )
     
     # Wait for all agents to complete
     iqvia_result = await iqvia_future
@@ -265,6 +285,7 @@ async def analyze_molecule(request: AnalysisRequest):
     exim_result = await exim_future
     web_result = await web_future
     internal_result = await internal_future
+    wikipedia_result = await wikipedia_future
 
     # Innovation Strategy Agent - with caching
     updates.append({
@@ -360,6 +381,11 @@ async def analyze_molecule(request: AnalysisRequest):
             "success": internal_result["success"],
             "report": internal_result["data"] if internal_result["success"] else None,
             "error": internal_result.get("error")
+        },
+        "wikipedia": {
+            "success": wikipedia_result["success"],
+            "report": wikipedia_result["data"] if wikipedia_result["success"] else None,
+            "error": wikipedia_result.get("error")
         },
         "innovation_opportunities": {
         "success": innovation_result["success"],

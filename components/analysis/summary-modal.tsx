@@ -8,6 +8,7 @@ import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { fetchMoleculeData, type MoleculeData } from "@/lib/pubchem"
 import MoleculeViewer3D from "./molecule-viewer-3d"
+import ReactMarkdown from "react-markdown"
 
 interface SummaryModalProps {
     isOpen: boolean
@@ -19,6 +20,7 @@ interface SummaryModalProps {
         exim?: { success: boolean; report?: string }
         web_intel?: { success: boolean; report?: string }
         internal_knowledge?: { success: boolean; report?: string }
+        wikipedia?: { success: boolean; report?: string }
     }
     molecule: string
 }
@@ -254,13 +256,13 @@ export default function SummaryModal({ isOpen, onClose, results, molecule }: Sum
 
                     {/* 3D Molecule Viewer Section */}
                     <div className="space-y-3 pt-4 border-t border-border">
-                        <p className="text-xs font-semibold text-muted-foreground">3D Molecular Structure:</p>
+                        <p className="text-xs font-semibold text-muted-foreground">3D Molecular Structure & Properties:</p>
 
                         {isLoadingMolecule && (
                             <Card className="p-8 bg-gradient-to-br from-blue-500/5 to-purple-500/5 border-blue-500/20">
                                 <div className="flex flex-col items-center justify-center gap-3">
                                     <Loader2 className="w-8 h-8 animate-spin text-blue-500" />
-                                    <p className="text-sm text-muted-foreground">Fetching 3D structure from PubChem...</p>
+                                    <p className="text-sm text-muted-foreground">Fetching 3D structure and properties from PubChem...</p>
                                 </div>
                             </Card>
                         )}
@@ -276,26 +278,109 @@ export default function SummaryModal({ isOpen, onClose, results, molecule }: Sum
 
                         {!isLoadingMolecule && moleculeData && (
                             <Card className="p-6 bg-gradient-to-br from-blue-500/5 to-purple-500/5 border-blue-500/20">
-                                <div className="space-y-4">
-                                    <div className="flex items-center justify-between">
-                                        <div>
-                                            <h4 className="font-semibold text-base">{moleculeData.moleculeName}</h4>
-                                            <p className="text-xs text-muted-foreground">PubChem CID: {moleculeData.cid}</p>
-                                        </div>
-                                        <Badge variant="outline" className="bg-green-500/10 text-green-500 border-green-500/20">
-                                            3D Structure Loaded
-                                        </Badge>
+                                {/* Header */}
+                                <div className="flex items-center justify-between mb-4">
+                                    <div>
+                                        <h4 className="font-semibold text-lg">{moleculeData.moleculeName}</h4>
+                                        <p className="text-xs text-muted-foreground">PubChem CID: {moleculeData.cid}</p>
+                                    </div>
+                                    <Badge variant="outline" className="bg-green-500/10 text-green-500 border-green-500/20">
+                                        3D Structure Loaded
+                                    </Badge>
+                                </div>
+
+                                {/* 50/50 Grid Layout */}
+                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                                    {/* Left: 3D Viewer */}
+                                    <div className="space-y-2">
+                                        <MoleculeViewer3D
+                                            sdfData={moleculeData.sdfData}
+                                            height="400px"
+                                            backgroundColor="rgba(0, 0, 0, 0.02)"
+                                        />
+                                        <p className="text-xs text-muted-foreground text-center">
+                                            Interactive 3D model • Drag to rotate • Scroll to zoom
+                                        </p>
                                     </div>
 
-                                    <MoleculeViewer3D
-                                        sdfData={moleculeData.sdfData}
-                                        height="400px"
-                                        backgroundColor="rgba(0, 0, 0, 0.02)"
-                                    />
+                                    {/* Right: Wikipedia Information & Compound Details */}
+                                    <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2">
+                                        <div>
+                                            <h5 className="text-sm font-semibold mb-3 text-foreground flex items-center gap-2">
+                                                <span>📖</span>
+                                                Molecule Information
+                                            </h5>
 
-                                    <p className="text-xs text-muted-foreground text-center">
-                                        Interactive 3D model • Drag to rotate • Scroll to zoom
-                                    </p>
+                                            {/* Wikipedia Information */}
+                                            {results.wikipedia?.success && results.wikipedia.report ? (
+                                                <div className="space-y-3">
+                                                    <div className="bg-gradient-to-br from-green-500/5 to-blue-500/5 rounded-lg p-4 border border-green-500/20">
+                                                        <div className="prose prose-sm max-w-none dark:prose-invert">
+                                                            <ReactMarkdown
+                                                                className="text-xs text-foreground leading-relaxed"
+                                                                components={{
+                                                                    h1: ({ node, ...props }) => <h1 className="text-sm font-bold mb-2 text-foreground" {...props} />,
+                                                                    h2: ({ node, ...props }) => <h2 className="text-sm font-semibold mb-2 text-foreground" {...props} />,
+                                                                    h3: ({ node, ...props }) => <h3 className="text-xs font-semibold mb-1 text-foreground" {...props} />,
+                                                                    p: ({ node, ...props }) => <p className="text-xs mb-2 text-foreground leading-relaxed" {...props} />,
+                                                                    strong: ({ node, ...props }) => <strong className="font-semibold text-foreground" {...props} />,
+                                                                    em: ({ node, ...props }) => <em className="italic text-foreground" {...props} />,
+                                                                    ul: ({ node, ...props }) => <ul className="list-disc list-inside mb-2 text-xs" {...props} />,
+                                                                    ol: ({ node, ...props }) => <ol className="list-decimal list-inside mb-2 text-xs" {...props} />,
+                                                                    li: ({ node, ...props }) => <li className="mb-1 text-foreground" {...props} />,
+                                                                    a: ({ node, ...props }) => <a className="text-blue-500 hover:text-blue-600 underline" {...props} />,
+                                                                    hr: ({ node, ...props }) => <hr className="my-3 border-border" {...props} />,
+                                                                }}
+                                                            >
+                                                                {results.wikipedia.report}
+                                                            </ReactMarkdown>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ) : (
+                                                <div className="bg-orange-500/5 rounded-lg p-3 border border-orange-500/20 mb-3">
+                                                    <p className="text-xs text-muted-foreground">
+                                                        📚 Wikipedia information not available for this molecule.
+                                                    </p>
+                                                </div>
+                                            )}
+
+                                            {/* PubChem Properties as Additional Info */}
+                                            <div className="space-y-3 mt-4">
+                                                <h6 className="text-xs font-semibold text-muted-foreground">Chemical Properties (PubChem)</h6>
+
+                                                {/* Molecular Formula */}
+                                                {moleculeData.properties?.MolecularFormula && (
+                                                    <div className="bg-[#1F202A] rounded-lg p-3 border border-border/50">
+                                                        <p className="text-xs text-muted-foreground mb-1">Molecular Formula</p>
+                                                        <p className="text-sm font-mono font-semibold text-foreground">
+                                                            {moleculeData.properties.MolecularFormula}
+                                                        </p>
+                                                    </div>
+                                                )}
+
+                                                {/* Molecular Weight */}
+                                                {moleculeData.properties?.MolecularWeight && (
+                                                    <div className="bg-[#1F202A] rounded-lg p-3 border border-border/50">
+                                                        <p className="text-xs text-muted-foreground mb-1">Molecular Weight</p>
+                                                        <p className="text-sm font-semibold text-foreground">
+                                                            {parseFloat(moleculeData.properties.MolecularWeight).toFixed(2)} g/mol
+                                                        </p>
+                                                    </div>
+                                                )}
+
+                                                {/* IUPAC Name */}
+                                                {moleculeData.properties?.IUPACName && (
+                                                    <div className="bg-[#1F202A] rounded-lg p-3 border border-border/50">
+                                                        <p className="text-xs text-muted-foreground mb-1">IUPAC Name</p>
+                                                        <p className="text-xs font-medium text-foreground leading-relaxed break-words">
+                                                            {moleculeData.properties.IUPACName}
+                                                        </p>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </Card>
                         )}
