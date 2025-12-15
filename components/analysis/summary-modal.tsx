@@ -1,10 +1,13 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { AlertCircle, CheckCircle } from "lucide-react"
+import { AlertCircle, CheckCircle, Loader2 } from "lucide-react"
 import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid } from "recharts"
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { fetchMoleculeData, type MoleculeData } from "@/lib/pubchem"
+import MoleculeViewer3D from "./molecule-viewer-3d"
 
 interface SummaryModalProps {
     isOpen: boolean
@@ -21,6 +24,39 @@ interface SummaryModalProps {
 }
 
 export default function SummaryModal({ isOpen, onClose, results, molecule }: SummaryModalProps) {
+    // State for 3D molecule data
+    const [moleculeData, setMoleculeData] = useState<MoleculeData | null>(null)
+    const [isLoadingMolecule, setIsLoadingMolecule] = useState(false)
+    const [moleculeError, setMoleculeError] = useState<string | null>(null)
+
+    // Fetch molecule data when modal opens
+    useEffect(() => {
+        if (isOpen && molecule && molecule.trim()) {
+            setIsLoadingMolecule(true)
+            setMoleculeError(null)
+
+            fetchMoleculeData(molecule)
+                .then((data) => {
+                    if (data) {
+                        setMoleculeData(data)
+                    } else {
+                        setMoleculeError("Could not fetch 3D structure from PubChem")
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error fetching molecule data:", error)
+                    setMoleculeError("Failed to load 3D structure")
+                })
+                .finally(() => {
+                    setIsLoadingMolecule(false)
+                })
+        } else {
+            // Reset when modal closes
+            setMoleculeData(null)
+            setMoleculeError(null)
+        }
+    }, [isOpen, molecule])
+
     const agentStatus = [
         { name: "Market Insights", success: results.iqvia?.success },
         { name: "Clinical Trials", success: results.clinical_trials?.success },
@@ -216,6 +252,55 @@ export default function SummaryModal({ isOpen, onClose, results, molecule }: Sum
                         </div>
                     </div>
 
+                    {/* 3D Molecule Viewer Section */}
+                    <div className="space-y-3 pt-4 border-t border-border">
+                        <p className="text-xs font-semibold text-muted-foreground">3D Molecular Structure:</p>
+
+                        {isLoadingMolecule && (
+                            <Card className="p-8 bg-gradient-to-br from-blue-500/5 to-purple-500/5 border-blue-500/20">
+                                <div className="flex flex-col items-center justify-center gap-3">
+                                    <Loader2 className="w-8 h-8 animate-spin text-blue-500" />
+                                    <p className="text-sm text-muted-foreground">Fetching 3D structure from PubChem...</p>
+                                </div>
+                            </Card>
+                        )}
+
+                        {!isLoadingMolecule && moleculeError && (
+                            <Card className="p-6 bg-gradient-to-br from-orange-500/5 to-red-500/5 border-orange-500/20">
+                                <div className="flex items-center gap-3">
+                                    <AlertCircle className="w-5 h-5 text-orange-500" />
+                                    <p className="text-sm text-muted-foreground">{moleculeError}</p>
+                                </div>
+                            </Card>
+                        )}
+
+                        {!isLoadingMolecule && moleculeData && (
+                            <Card className="p-6 bg-gradient-to-br from-blue-500/5 to-purple-500/5 border-blue-500/20">
+                                <div className="space-y-4">
+                                    <div className="flex items-center justify-between">
+                                        <div>
+                                            <h4 className="font-semibold text-base">{moleculeData.moleculeName}</h4>
+                                            <p className="text-xs text-muted-foreground">PubChem CID: {moleculeData.cid}</p>
+                                        </div>
+                                        <Badge variant="outline" className="bg-green-500/10 text-green-500 border-green-500/20">
+                                            3D Structure Loaded
+                                        </Badge>
+                                    </div>
+
+                                    <MoleculeViewer3D
+                                        sdfData={moleculeData.sdfData}
+                                        height="400px"
+                                        backgroundColor="rgba(0, 0, 0, 0.02)"
+                                    />
+
+                                    <p className="text-xs text-muted-foreground text-center">
+                                        Interactive 3D model • Drag to rotate • Scroll to zoom
+                                    </p>
+                                </div>
+                            </Card>
+                        )}
+                    </div>
+
                     {/* Charts Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-border">
                         {/* Data Quality Pie Chart */}
@@ -256,7 +341,7 @@ export default function SummaryModal({ isOpen, onClose, results, molecule }: Sum
                                         cx="50%"
                                         cy="50%"
                                         labelLine={false}
-                                        label={({ name, value }) => value > 0 ? `${value}%` : ''}
+                                        label={false}
                                         outerRadius={90}
                                         innerRadius={55}
                                         fill="#8884d8"
@@ -298,7 +383,7 @@ export default function SummaryModal({ isOpen, onClose, results, molecule }: Sum
                                     </p>
                                     <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 blur-xl opacity-20"></div>
                                 </div>
-                                <p className="text-xs text-muted-foreground">Average Data Richness Score</p>
+                                <p className="text-xs text-muted-foreground">Agent Accuracy</p>
                             </div>
                         </div>
 
