@@ -4,8 +4,6 @@
 
 **MoleculeInsight** is an advanced AI-powered platform designed for comprehensive molecular research. By orchestrating a team of specialized AI agents, it aggregates and analyzes data from clinical trials, patents, global trade, market intelligence, and web sources. Using Retrieval-Augmented Generation (RAG), it also leverages internal knowledge bases to provide research-grade insights for pharmaceutical and biotech decision-making.
 
----
-
 ## 🌟 Key Features
 
 - **🤖 Multi-Agent Orchestration** – A coordinated system of specialized agents running in parallel to gather diverse data points.
@@ -30,8 +28,6 @@
   - **PubChem**: Chemical properties and 3D structures.
 - **📈 Interactive Dashboard** – Rich visualizations using Recharts and Shadcn UI.
 - **📝 Automated Reporting** – Generates detailed markdown and PDF reports of the analysis.
-
----
 
 ## �️ System Architecture
 
@@ -60,8 +56,6 @@ Located in `agents/Agent-workers/`, these specialized agents perform distinct ta
 7. **Wikipedia Agent**: Fetches comprehensive molecule information and context from Wikipedia using LangChain.
 8. **Innovation Strategy Agent**: Synthesizes all gathered data to propose strategic opportunities.
 
----
-
 ## ⚙️ Installation & Setup
 
 ### Prerequisites
@@ -79,15 +73,14 @@ cd MoleculeInsight
 The backend handles all AI agents and RAG logic.
 
 ```bash
+# Terminal 1
 cd agents
+
 # Create a virtual environment
 python -m venv venv
 
 # Activate Virtual Environment
-# Windows (PowerShell):
 .\venv\Scripts\Activate.ps1
-# Mac/Linux:
-# source venv/bin/activate
 
 # Install dependencies
 pip install -r requirements.txt
@@ -100,8 +93,8 @@ You need to configure environment variables for both the backend and frontend.
 Create a `.env` file in `agents/RAG/.env` (yes, inside the RAG directory):
 
 ```env
-GOOGLE_API_KEY=your_gemini_api_key_here
-# Add other keys if required by specific agents (e.g., NEWS_API_KEY, COMTRADE_KEY)
+GEMINI_API_KEY=your_gemini_api_key_here
+# Add other keys if required by specific agents (e.g., NEWS_API_KEY, COMTRADE_KEY etc.)
 ```
 
 #### Frontend (Next.js)
@@ -110,12 +103,6 @@ Create or update the `.env` file in the project root:
 ```env
 NEXTAUTH_URL=http://localhost:3000
 ```
-For production deployments (e.g., Vercel), set `NEXTAUTH_URL` to your deployed URL, e.g.:
-
-```env
-NEXTAUTH_URL=https://molecule-insight.vercel.app
-```
-Make sure to set this variable in your Vercel dashboard under Project Settings → Environment Variables.
 
 ### 4. RAG Knowledge Ingestion (Optional)
 To populate the vector database with your internal JSON/PDF documents:
@@ -133,8 +120,6 @@ Open a new terminal in the project root:
 pnpm install
 ```
 
----
-
 ## 🚀 Running the Application
 
 ### Start the Backend
@@ -150,16 +135,6 @@ In your frontend terminal (root directory):
 pnpm dev
 ```
 > The web app will be available at `http://localhost:3000`
-
----
-
-## 🚀 Deployment
-
-For production deployment (e.g., Vercel), ensure you set all required environment variables in the Vercel dashboard, especially:
-
-- `NEXTAUTH_URL=https://molecule-insight.vercel.app`
-
-This ensures authentication and OAuth redirects work correctly in production.
 
 ## 🧭 How to Use
 
@@ -177,7 +152,6 @@ This ensures authentication and OAuth redirects work correctly in production.
    - **Data Visualizations**: Charts showing agent accuracy and data coverage
 7. **Export**: Download the comprehensive report as a PDF.
 
----
 
 ## 🎯 Executive Summary Features
 
@@ -208,14 +182,11 @@ The Executive Summary modal provides a comprehensive overview of the analyzed mo
 - **Coverage Comparison**: Bar chart comparing data coverage across agents
 - **Agent Status**: Real-time success/failure indicators for each agent
 
----
+## 🤝 Contribution
 
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to verify the `agents/Agent-workers` logic or add new data sources to the RAG pipeline.
-
----
+**Found a bug? 🐞 Have a feature request?**
+- Open an issue or submit a pull request — contributions are always welcome!
 
 ## 📜 License
 
-This project is licensed under the MIT License.
+This project is licensed under the `MIT License`.
