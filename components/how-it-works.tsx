@@ -6,42 +6,42 @@ import { MessageCircle, Network, FileText, Globe } from "lucide-react"
 export default function HowItWorks() {
   const steps: BentoItem[] = [
     {
-      title: "Smart Inquiry",
+      title: "Define Your Research Focus",
       meta: "Step 1",
-      description: "Simply enter a molecule name or ask about portfolio opportunities to initiate the analysis.",
+      description: "Initiate your study by entering a molecule name or research topic. Our system supports natural language queries for seamless exploration.",
       icon: <MessageCircle className="w-4 h-4 text-blue-500" />,
       status: "Start",
-      tags: ["Query", "Natural Language"],
+      tags: ["Research Query", "Molecule Search"],
       colSpan: 4,
-      hasPersistentHover: true, // Key interaction point
+      hasPersistentHover: true,
     },
     {
-      title: "Agent Orchestration",
+      title: "Multi-Agent Orchestration",
       meta: "Step 2",
-      description: "Master Agent instantly delegates tasks to specialized sub-agents.",
+      description: "A team of AI agents simultaneously analyzes clinical trials, patents, trade data, and market intelligence.",
       icon: <Network className="w-4 h-4 text-purple-500" />,
       status: "Active",
-      tags: ["AI", "Routing"],
+      tags: ["Parallel Processing", "Deep Analysis"],
       colSpan: 2,
     },
     {
-      title: "Deep Data Retrieval",
+      title: "RAG & Knowledge Synthesis",
       meta: "Step 3",
-      description: "Workers search IQVIA, ClinicalTrials, Patents, and Web for real-time data.",
+      description: "The RAG engine fuses internal knowledge bases with external sources like Wikipedia to generate context-aware, scientific insights.",
       icon: <Globe className="w-4 h-4 text-sky-500" />,
       status: "Processing",
-      tags: ["Multi-source", "Real-time"],
+      tags: ["Data Synthesis", "Contextual AI"],
       colSpan: 3,
     },
     {
-      title: "Strategic Output",
+      title: "Interactive Visualization & Reporting",
       meta: "Step 4",
-      description: "Receive a comprehensive dashboard and PDF report with actionable recommendations.",
+      description: "Explore 3D molecular structures, analyze real-time dashboards, and export comprehensive PDF reports for your publication or thesis.",
       icon: <FileText className="w-4 h-4 text-emerald-500" />,
       status: "Complete",
-      tags: ["Dashboard", "PDF"],
+      tags: ["3D Viewer", "Thesis Ready"],
       colSpan: 3,
-      hasPersistentHover: true, // End goal
+      hasPersistentHover: true,
     },
   ]
 

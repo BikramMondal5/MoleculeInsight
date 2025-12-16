@@ -21,7 +21,7 @@ const defaultTestimonials = [
         type: "Student",
         avatar: "https://i.pravatar.cc/150?u=james",
         feedback: "The comprehensive PDF reports generated are board-ready. It's like having a dedicated analyst team working 24/7 on molecule repurposing opportunities.",
-        rating: 5,
+        rating: 4,
     },
     {
         name: "Elena Rodriguez",
@@ -37,7 +37,7 @@ const defaultTestimonials = [
         type: "Student",
         avatar: "https://i.pravatar.cc/150?u=akira",
         feedback: "For evaluating biotech startups, this tool is indispensable. It quickly validates claims and highlights the competitive landscape in minutes.",
-        rating: 5,
+        rating: 4,
     },
     {
         name: "Dr. Emily Clarke",
@@ -153,34 +153,34 @@ export default function TestimonialCarousel() {
 
             const res = await fetch('/api/get-feedbacks')
             const data = await res.json()
-            
+
             if (data.feedbacks) {
-            const formatted = data.feedbacks.map((f: any) => ({
-                name: f.userEmail === currentUserEmail ? (currentUserName || f.userName) : f.userName,
-                country: f.country || 'Unknown',
-                type: f.userType,
-                avatar: f.userEmail === currentUserEmail ? currentUserAvatar : (f.userAvatar || null),
-                feedback: f.feedback,
-                rating: f.rating,
-            }))
-            setUserFeedbacks(formatted)
+                const formatted = data.feedbacks.map((f: any) => ({
+                    name: f.userEmail === currentUserEmail ? (currentUserName || f.userName) : f.userName,
+                    country: f.country || 'Unknown',
+                    type: f.userType,
+                    avatar: f.userEmail === currentUserEmail ? currentUserAvatar : (f.userAvatar || null),
+                    feedback: f.feedback,
+                    rating: f.rating,
+                }))
+                setUserFeedbacks(formatted)
             }
         } catch (err) {
             console.error('Failed to fetch feedbacks:', err)
         }
-        }
+    }
 
-        useEffect(() => {
+    useEffect(() => {
         fetchFeedbacks()
-        
+
         // Listen for feedback updates
         const handleFeedbackUpdate = () => {
             fetchFeedbacks()
         }
-        
+
         window.addEventListener('feedbackSubmitted', handleFeedbackUpdate)
         return () => window.removeEventListener('feedbackSubmitted', handleFeedbackUpdate)
-        }, [])
+    }, [])
 
     useEffect(() => {
         const handleAvatarUpdate = (event: any) => {
@@ -188,10 +188,10 @@ export default function TestimonialCarousel() {
             // Refresh feedbacks to update avatar
             fetchFeedbacks()
         }
-        
+
         window.addEventListener('userUpdated', handleAvatarUpdate)
         return () => window.removeEventListener('userUpdated', handleAvatarUpdate)
-        }, [])
+    }, [])
 
     const handleStartAnalysis = () => {
         if (!isAuthenticated) {
@@ -207,13 +207,13 @@ export default function TestimonialCarousel() {
         } else {
             setShowFeedbackModal(true)
         }
-        }
+    }
 
     return (
         <section id="testimonials" className="pt-20 pb-4 bg-background overflow-hidden relative">
             <div className="max-w-6xl mx-auto px-4 mb-12 text-center">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-teal-500">
-                    Trusted by Researchers
+                    Trusted by Researchers & Students
                 </h2>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                     See how students and researchers are accelerating discovery with MoleculeInsight.
@@ -247,9 +247,9 @@ export default function TestimonialCarousel() {
                         >
                             <TestimonialCard testimonial={testimonial} />
                         </div>
-                        ))}
+                    ))}
 
-                        {allTestimonials.map((testimonial, index) => (
+                    {allTestimonials.map((testimonial, index) => (
                         <div
                             key={`second-${index}`}
                             className="px-4 flex-shrink-0"
@@ -257,11 +257,11 @@ export default function TestimonialCarousel() {
                         >
                             <TestimonialCard testimonial={testimonial} />
                         </div>
-                        ))}
+                    ))}
                 </div>
 
                 <div className="flex justify-center mt-8 pb-1">
-                    <Button 
+                    <Button
                         onClick={handleShareFeedback}
                         disabled={isCheckingAuth}
                         className="bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-500/20 rounded-full px-8 h-12"
@@ -270,10 +270,10 @@ export default function TestimonialCarousel() {
                     </Button>
                 </div>
             </div>
-            <FeedbackModal 
-            isOpen={showFeedbackModal}
-            onOpenChange={setShowFeedbackModal}
-            onAuthRequired={() => router.push('/login')}
+            <FeedbackModal
+                isOpen={showFeedbackModal}
+                onOpenChange={setShowFeedbackModal}
+                onAuthRequired={() => router.push('/login')}
             />
 
             <style jsx global>{`
@@ -305,22 +305,22 @@ function TestimonialCard({ testimonial }: { testimonial: any }) {
                 <div className="flex items-center space-x-3 mb-4">
                     {testimonial.avatar ? (
                         <img
-                        src={testimonial.avatar}
-                        alt={testimonial.name}
-                        className="w-12 h-12 rounded-full border border-border object-cover"
+                            src={testimonial.avatar}
+                            alt={testimonial.name}
+                            className="w-12 h-12 rounded-full border border-border object-cover"
                         />
                     ) : (
                         <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center border border-border">
-                        <User className="w-6 h-6 text-primary" />
+                            <User className="w-6 h-6 text-primary" />
                         </div>
                     )}
                     <div>
                         <h4 className="font-semibold text-foreground text-base">
-                        {testimonial.name}
+                            {testimonial.name}
                         </h4>
                         <p className="text-xs text-muted-foreground">{testimonial.country}</p>
                     </div>
-                    </div>
+                </div>
                 <p className="text-muted-foreground text-sm leading-relaxed italic flex-grow mb-4">
                     "{testimonial.feedback}"
                 </p>
@@ -329,19 +329,17 @@ function TestimonialCard({ testimonial }: { testimonial: any }) {
                         {[1, 2, 3, 4, 5].map((star) => (
                             <Star
                                 key={star}
-                                className={`h-4 w-4 ${
-                                    star <= (testimonial.rating || 5)
-                                        ? 'fill-yellow-400 text-yellow-400'
-                                        : 'fill-none text-muted-foreground/30'
-                                }`}
+                                className={`h-4 w-4 ${star <= (testimonial.rating || 5)
+                                    ? 'fill-yellow-400 text-yellow-400'
+                                    : 'fill-none text-muted-foreground/30'
+                                    }`}
                             />
                         ))}
                     </div>
-                    <span className={`px-2.5 py-0.5 text-[10px] font-medium rounded-full ${
-                        testimonial.type === "Student"
-                            ? "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300"
-                            : "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300"
-                    }`}>
+                    <span className={`px-2.5 py-0.5 text-[10px] font-medium rounded-full ${testimonial.type === "Student"
+                        ? "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300"
+                        : "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300"
+                        }`}>
                         {testimonial.type}
                     </span>
                 </div>
