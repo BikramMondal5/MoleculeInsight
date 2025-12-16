@@ -8,7 +8,8 @@ const features = [
         description: "Transform raw data into actionable insights with our intelligent report generator. Automated agents analyze complex datasets to deliver comprehensive summaries and strategic recommendations in seconds.",
         icon: FileText,
         align: "left",
-        image: "/AI-Powered-Report-Generation.png"
+        image: "/AI-Powered-Report-Generation.png",
+        imageClassName: "object-contain p-4"
     },
     {
         title: "Real-Time Insight Monitoring",
@@ -18,16 +19,19 @@ const features = [
         video: "/Real-Time-Insight-Monitoring.mp4"
     },
     {
-        title: "Intelligent Data Extraction",
-        description: "Automatically extract relevant data from documents, spreadsheets, APIs, and reports. Our AI agents parse unstructured information with precision to deliver clean, structured datasets ready for immediate analysis.",
-        icon: Search,
+        title: "One-Click PDF Export",
+        description: "Generate professional, shareable PDF reports for individual agent responses or compile the entire analysis into one comprehensive document. Instantly export specific insights or full strategic overviews for your team.",
+        icon: FileText,
         align: "left",
+        video: "/One-Click-PDF-Export.mp4"
     },
     {
-        title: "Advanced Data Visualization",
-        description: "Transform complex datasets into clear, interactive visual dashboards. Dynamic charts, graphs, and visual elements allow users to explore patterns, compare metrics, and uncover insights with intuitive clarity.",
+        title: "Summaries & Analytics",
+        description: "Monitor real-time agent precision with dynamic charts and graphs. Access executive summaries for all agents featuring coverage comparisons, agent status indicators.",
         icon: Atom,
         align: "right",
+        image: "/Summaries-Analytics.png",
+        imageClassName: "object-cover"
     },
     {
         title: "Immersive 3D Molecular Visualization",
@@ -84,7 +88,7 @@ export default function KeyFeatures() {
                                         <img
                                             src={feature.image}
                                             alt={feature.title}
-                                            className="absolute inset-0 w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-700"
+                                            className={`absolute inset-0 w-full h-full group-hover:scale-105 transition-transform duration-700 ${feature.imageClassName || "object-contain p-4"}`}
                                         />
                                     ) : feature.video ? (
                                         <video
